@@ -238,6 +238,14 @@ class SystemsCatalog {
       ${this.renderForm(system)}
 
       <section class="systems-impact-section">
+        <h3>Enterprise Context</h3>
+        <div class="metadata-actions">
+          <button class="toolbar-button" id="systems-explore" type="button">Explore Relationships</button>
+          <button class="toolbar-button" id="systems-impact" type="button">Impact Analysis</button>
+        </div>
+      </section>
+
+      <section class="systems-impact-section">
         <h3>Process Usage</h3>
         ${processes.length === 0
           ? '<div class="systems-catalog-empty-inline">No process currently references this system or one of its interfaces.</div>'
@@ -305,6 +313,10 @@ class SystemsCatalog {
       });
     this.root.querySelector<HTMLButtonElement>('#systems-catalog-delete')
       ?.addEventListener('click', () => void this.deleteSelected());
+    this.root.querySelector<HTMLButtonElement>('#systems-explore')
+      ?.addEventListener('click', () => this.openSelectedInExplorer('relationships'));
+    this.root.querySelector<HTMLButtonElement>('#systems-impact')
+      ?.addEventListener('click', () => this.openSelectedInExplorer('impact'));
 
     this.bindFilter('#systems-filter-query', 'query');
     this.bindFilter('#systems-filter-layer', 'architectureLayer');
@@ -340,6 +352,14 @@ class SystemsCatalog {
           detail: { recordKind: 'interface', recordId },
         }));
       }));
+  }
+
+  private openSelectedInExplorer(mode: 'relationships' | 'impact'): void {
+    if (!this.selectedId) return;
+    this.dialog.close();
+    document.dispatchEvent(new CustomEvent('enterprise-modeler:open-enterprise-explorer', {
+      detail: { type: 'system', id: this.selectedId, mode },
+    }));
   }
 
   private bindFilter(selector: string, key: keyof SystemFilters): void {
