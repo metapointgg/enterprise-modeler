@@ -267,7 +267,7 @@ class ProcessManager {
 
         <label class="metadata-field">
           <span>Name</span>
-          <input id="process-manager-process-name" type="text" required value="${escapeHtml(process?.name ?? '')}" placeholder="e.g. Customer Risk Assessment" />
+          <input id="process-manager-process-name" type="text" required value="${escapeHtml(process?.name ?? '')}" placeholder="e.g. Order Fulfilment" />
         </label>
 
         <label class="metadata-field">
