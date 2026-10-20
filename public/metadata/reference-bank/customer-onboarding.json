@@ -1,0 +1,192 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_CustomerOnboarding",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Capture application",
+      "ownerPersonId": "person-onboarding-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-onboarding-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Digital Identity Verification Service",
+        "LSEG World-Check One",
+        "Microsoft SharePoint Online",
+        "Temenos Transact (T24)"
+      ],
+      "controls": [
+        "CDD complete before relationship activation",
+        "Sanctions/PEP screening before onboarding and on review"
+      ],
+      "risks": [
+        "Customer misidentification or impersonation",
+        "Sanctions breach or prohibited customer relationship",
+        "Money laundering or terrorist financing"
+      ],
+      "regulations": [
+        "Money Laundering Regulations 2017",
+        "UK Sanctions & Anti-Money Laundering framework",
+        "FCA Consumer Duty",
+        "UK GDPR & Data Protection Act 2018"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Verify identity",
+      "ownerPersonId": "person-onboarding-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-onboarding-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Digital Identity Verification Service",
+        "LSEG World-Check One",
+        "Microsoft SharePoint Online",
+        "Temenos Transact (T24)"
+      ],
+      "controls": [
+        "CDD complete before relationship activation",
+        "Sanctions/PEP screening before onboarding and on review"
+      ],
+      "risks": [
+        "Customer misidentification or impersonation",
+        "Sanctions breach or prohibited customer relationship",
+        "Money laundering or terrorist financing"
+      ],
+      "regulations": [
+        "Money Laundering Regulations 2017",
+        "UK Sanctions & Anti-Money Laundering framework",
+        "FCA Consumer Duty",
+        "UK GDPR & Data Protection Act 2018"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Screen sanctions and PEP",
+      "ownerPersonId": "person-onboarding-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-onboarding-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Digital Identity Verification Service",
+        "LSEG World-Check One",
+        "Microsoft SharePoint Online",
+        "Temenos Transact (T24)"
+      ],
+      "controls": [
+        "CDD complete before relationship activation",
+        "Sanctions/PEP screening before onboarding and on review"
+      ],
+      "risks": [
+        "Customer misidentification or impersonation",
+        "Sanctions breach or prohibited customer relationship",
+        "Money laundering or terrorist financing"
+      ],
+      "regulations": [
+        "Money Laundering Regulations 2017",
+        "UK Sanctions & Anti-Money Laundering framework",
+        "FCA Consumer Duty",
+        "UK GDPR & Data Protection Act 2018"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Assess customer risk",
+      "ownerPersonId": "person-onboarding-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-onboarding-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Digital Identity Verification Service",
+        "LSEG World-Check One",
+        "Microsoft SharePoint Online",
+        "Temenos Transact (T24)"
+      ],
+      "controls": [
+        "CDD complete before relationship activation",
+        "Sanctions/PEP screening before onboarding and on review"
+      ],
+      "risks": [
+        "Customer misidentification or impersonation",
+        "Sanctions breach or prohibited customer relationship",
+        "Money laundering or terrorist financing"
+      ],
+      "regulations": [
+        "Money Laundering Regulations 2017",
+        "UK Sanctions & Anti-Money Laundering framework",
+        "FCA Consumer Duty",
+        "UK GDPR & Data Protection Act 2018"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Create customer in T24",
+      "ownerPersonId": "person-onboarding-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-onboarding-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Digital Identity Verification Service",
+        "LSEG World-Check One",
+        "Microsoft SharePoint Online",
+        "Temenos Transact (T24)"
+      ],
+      "controls": [
+        "CDD complete before relationship activation",
+        "Sanctions/PEP screening before onboarding and on review"
+      ],
+      "risks": [
+        "Customer misidentification or impersonation",
+        "Sanctions breach or prohibited customer relationship",
+        "Money laundering or terrorist financing"
+      ],
+      "regulations": [
+        "Money Laundering Regulations 2017",
+        "UK Sanctions & Anti-Money Laundering framework",
+        "FCA Consumer Duty",
+        "UK GDPR & Data Protection Act 2018"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_6": {
+      "status": "Draft",
+      "description": "Confirm onboarding",
+      "ownerPersonId": "person-onboarding-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-onboarding-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Digital Identity Verification Service",
+        "LSEG World-Check One",
+        "Microsoft SharePoint Online",
+        "Temenos Transact (T24)"
+      ],
+      "controls": [
+        "CDD complete before relationship activation",
+        "Sanctions/PEP screening before onboarding and on review"
+      ],
+      "risks": [
+        "Customer misidentification or impersonation",
+        "Sanctions breach or prohibited customer relationship",
+        "Money laundering or terrorist financing"
+      ],
+      "regulations": [
+        "Money Laundering Regulations 2017",
+        "UK Sanctions & Anti-Money Laundering framework",
+        "FCA Consumer Duty",
+        "UK GDPR & Data Protection Act 2018"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

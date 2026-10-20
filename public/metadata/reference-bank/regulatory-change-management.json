@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_RegulatoryChangeManagement",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Identify regulatory change",
+      "ownerPersonId": "person-compliance-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-compliance-manager",
+      "links": [],
+      "systems": [
+        "Microsoft SharePoint Online",
+        "Regulatory Reporting Workspace"
+      ],
+      "controls": [],
+      "risks": [
+        "Regulatory change not identified or implemented"
+      ],
+      "regulations": [
+        "Financial Services and Markets Act 2000",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Assess applicability",
+      "ownerPersonId": "person-compliance-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-compliance-manager",
+      "links": [],
+      "systems": [
+        "Microsoft SharePoint Online",
+        "Regulatory Reporting Workspace"
+      ],
+      "controls": [],
+      "risks": [
+        "Regulatory change not identified or implemented"
+      ],
+      "regulations": [
+        "Financial Services and Markets Act 2000",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Map impacted processes systems and data",
+      "ownerPersonId": "person-compliance-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-compliance-manager",
+      "links": [],
+      "systems": [
+        "Microsoft SharePoint Online",
+        "Regulatory Reporting Workspace"
+      ],
+      "controls": [],
+      "risks": [
+        "Regulatory change not identified or implemented"
+      ],
+      "regulations": [
+        "Financial Services and Markets Act 2000",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Assign actions",
+      "ownerPersonId": "person-compliance-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-compliance-manager",
+      "links": [],
+      "systems": [
+        "Microsoft SharePoint Online",
+        "Regulatory Reporting Workspace"
+      ],
+      "controls": [],
+      "risks": [
+        "Regulatory change not identified or implemented"
+      ],
+      "regulations": [
+        "Financial Services and Markets Act 2000",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Implement change",
+      "ownerPersonId": "person-compliance-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-compliance-manager",
+      "links": [],
+      "systems": [
+        "Microsoft SharePoint Online",
+        "Regulatory Reporting Workspace"
+      ],
+      "controls": [],
+      "risks": [
+        "Regulatory change not identified or implemented"
+      ],
+      "regulations": [
+        "Financial Services and Markets Act 2000",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_6": {
+      "status": "Draft",
+      "description": "Validate and close",
+      "ownerPersonId": "person-compliance-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-compliance-manager",
+      "links": [],
+      "systems": [
+        "Microsoft SharePoint Online",
+        "Regulatory Reporting Workspace"
+      ],
+      "controls": [],
+      "risks": [
+        "Regulatory change not identified or implemented"
+      ],
+      "regulations": [
+        "Financial Services and Markets Act 2000",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

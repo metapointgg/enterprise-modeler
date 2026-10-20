@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_DepositFunding",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Receive inbound funds",
+      "ownerPersonId": "person-savings-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-savings-ops-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Payments Gateway",
+        "Digital Banking Portal"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Payment Services Regulations 2017",
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Match payment to account",
+      "ownerPersonId": "person-savings-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-savings-ops-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Payments Gateway",
+        "Digital Banking Portal"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Payment Services Regulations 2017",
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Post deposit to T24",
+      "ownerPersonId": "person-savings-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-savings-ops-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Payments Gateway",
+        "Digital Banking Portal"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Payment Services Regulations 2017",
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Resolve unmatched funds",
+      "ownerPersonId": "person-savings-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-savings-ops-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Payments Gateway",
+        "Digital Banking Portal"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Payment Services Regulations 2017",
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Confirm funds available",
+      "ownerPersonId": "person-savings-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-savings-ops-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Payments Gateway",
+        "Digital Banking Portal"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Payment Services Regulations 2017",
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

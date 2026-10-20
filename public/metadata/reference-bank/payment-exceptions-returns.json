@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_PaymentExceptionsReturns",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Receive exception or return",
+      "ownerPersonId": "person-savings-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-savings-ops-manager",
+      "links": [],
+      "systems": [
+        "Payments Gateway",
+        "Temenos Transact (T24)",
+        "Salesforce CRM"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Payment Services Regulations 2017",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Identify affected transaction",
+      "ownerPersonId": "person-savings-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-savings-ops-manager",
+      "links": [],
+      "systems": [
+        "Payments Gateway",
+        "Temenos Transact (T24)",
+        "Salesforce CRM"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Payment Services Regulations 2017",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Investigate cause",
+      "ownerPersonId": "person-savings-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-savings-ops-manager",
+      "links": [],
+      "systems": [
+        "Payments Gateway",
+        "Temenos Transact (T24)",
+        "Salesforce CRM"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Payment Services Regulations 2017",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Repair return or recall",
+      "ownerPersonId": "person-savings-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-savings-ops-manager",
+      "links": [],
+      "systems": [
+        "Payments Gateway",
+        "Temenos Transact (T24)",
+        "Salesforce CRM"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Payment Services Regulations 2017",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Update T24",
+      "ownerPersonId": "person-savings-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-savings-ops-manager",
+      "links": [],
+      "systems": [
+        "Payments Gateway",
+        "Temenos Transact (T24)",
+        "Salesforce CRM"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Payment Services Regulations 2017",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_6": {
+      "status": "Draft",
+      "description": "Notify customer where required",
+      "ownerPersonId": "person-savings-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-savings-ops-manager",
+      "links": [],
+      "systems": [
+        "Payments Gateway",
+        "Temenos Transact (T24)",
+        "Salesforce CRM"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Payment Services Regulations 2017",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

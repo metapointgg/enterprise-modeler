@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_ControlTesting",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Define test plan",
+      "ownerPersonId": "person-risk-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-risk-manager",
+      "links": [],
+      "systems": [
+        "Microsoft SharePoint Online",
+        "Microsoft Power BI"
+      ],
+      "controls": [
+        "Policy approval and scheduled review"
+      ],
+      "risks": [],
+      "regulations": [
+        "PRA Rulebook",
+        "Financial Services and Markets Act 2000"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Obtain control evidence",
+      "ownerPersonId": "person-risk-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-risk-manager",
+      "links": [],
+      "systems": [
+        "Microsoft SharePoint Online",
+        "Microsoft Power BI"
+      ],
+      "controls": [
+        "Policy approval and scheduled review"
+      ],
+      "risks": [],
+      "regulations": [
+        "PRA Rulebook",
+        "Financial Services and Markets Act 2000"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Test design and operation",
+      "ownerPersonId": "person-risk-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-risk-manager",
+      "links": [],
+      "systems": [
+        "Microsoft SharePoint Online",
+        "Microsoft Power BI"
+      ],
+      "controls": [
+        "Policy approval and scheduled review"
+      ],
+      "risks": [],
+      "regulations": [
+        "PRA Rulebook",
+        "Financial Services and Markets Act 2000"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Record exceptions",
+      "ownerPersonId": "person-risk-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-risk-manager",
+      "links": [],
+      "systems": [
+        "Microsoft SharePoint Online",
+        "Microsoft Power BI"
+      ],
+      "controls": [
+        "Policy approval and scheduled review"
+      ],
+      "risks": [],
+      "regulations": [
+        "PRA Rulebook",
+        "Financial Services and Markets Act 2000"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Agree remediation",
+      "ownerPersonId": "person-risk-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-risk-manager",
+      "links": [],
+      "systems": [
+        "Microsoft SharePoint Online",
+        "Microsoft Power BI"
+      ],
+      "controls": [
+        "Policy approval and scheduled review"
+      ],
+      "risks": [],
+      "regulations": [
+        "PRA Rulebook",
+        "Financial Services and Markets Act 2000"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_6": {
+      "status": "Draft",
+      "description": "Report assurance",
+      "ownerPersonId": "person-risk-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-risk-manager",
+      "links": [],
+      "systems": [
+        "Microsoft SharePoint Online",
+        "Microsoft Power BI"
+      ],
+      "controls": [
+        "Policy approval and scheduled review"
+      ],
+      "risks": [],
+      "regulations": [
+        "PRA Rulebook",
+        "Financial Services and Markets Act 2000"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

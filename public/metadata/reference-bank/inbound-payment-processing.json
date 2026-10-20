@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_InboundPaymentProcessing",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Receive inbound payment",
+      "ownerPersonId": "person-savings-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-savings-ops-manager",
+      "links": [],
+      "systems": [
+        "Payments Gateway",
+        "Temenos Transact (T24)"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Payment Services Regulations 2017",
+        "UK Sanctions & Anti-Money Laundering framework"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Validate payment message",
+      "ownerPersonId": "person-savings-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-savings-ops-manager",
+      "links": [],
+      "systems": [
+        "Payments Gateway",
+        "Temenos Transact (T24)"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Payment Services Regulations 2017",
+        "UK Sanctions & Anti-Money Laundering framework"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Screen or apply controls",
+      "ownerPersonId": "person-savings-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-savings-ops-manager",
+      "links": [],
+      "systems": [
+        "Payments Gateway",
+        "Temenos Transact (T24)"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Payment Services Regulations 2017",
+        "UK Sanctions & Anti-Money Laundering framework"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Post to customer account",
+      "ownerPersonId": "person-savings-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-savings-ops-manager",
+      "links": [],
+      "systems": [
+        "Payments Gateway",
+        "Temenos Transact (T24)"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Payment Services Regulations 2017",
+        "UK Sanctions & Anti-Money Laundering framework"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Return or repair exceptions",
+      "ownerPersonId": "person-savings-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-savings-ops-manager",
+      "links": [],
+      "systems": [
+        "Payments Gateway",
+        "Temenos Transact (T24)"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Payment Services Regulations 2017",
+        "UK Sanctions & Anti-Money Laundering framework"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

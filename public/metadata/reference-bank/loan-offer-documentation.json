@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_LoanOfferDocumentation",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Generate offer and agreement",
+      "ownerPersonId": "person-loan-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-loan-ops-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Microsoft SharePoint Online",
+        "DocuSign"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Consumer Credit Act 1974",
+        "FCA Consumer Credit Sourcebook (CONC)"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Perform quality check",
+      "ownerPersonId": "person-loan-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-loan-ops-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Microsoft SharePoint Online",
+        "DocuSign"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Consumer Credit Act 1974",
+        "FCA Consumer Credit Sourcebook (CONC)"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Issue documents",
+      "ownerPersonId": "person-loan-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-loan-ops-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Microsoft SharePoint Online",
+        "DocuSign"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Consumer Credit Act 1974",
+        "FCA Consumer Credit Sourcebook (CONC)"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Obtain signature",
+      "ownerPersonId": "person-loan-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-loan-ops-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Microsoft SharePoint Online",
+        "DocuSign"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Consumer Credit Act 1974",
+        "FCA Consumer Credit Sourcebook (CONC)"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Store executed agreement",
+      "ownerPersonId": "person-loan-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-loan-ops-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Microsoft SharePoint Online",
+        "DocuSign"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Consumer Credit Act 1974",
+        "FCA Consumer Credit Sourcebook (CONC)"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

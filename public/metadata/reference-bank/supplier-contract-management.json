@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_SupplierContractManagement",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Maintain contract register",
+      "ownerPersonId": "person-procurement-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-procurement-manager",
+      "links": [],
+      "systems": [
+        "Microsoft SharePoint Online",
+        "IRIS Financials"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA/PRA Operational Resilience Requirements",
+        "UK GDPR & Data Protection Act 2018"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Track obligations and dates",
+      "ownerPersonId": "person-procurement-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-procurement-manager",
+      "links": [],
+      "systems": [
+        "Microsoft SharePoint Online",
+        "IRIS Financials"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA/PRA Operational Resilience Requirements",
+        "UK GDPR & Data Protection Act 2018"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Review supplier performance",
+      "ownerPersonId": "person-procurement-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-procurement-manager",
+      "links": [],
+      "systems": [
+        "Microsoft SharePoint Online",
+        "IRIS Financials"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA/PRA Operational Resilience Requirements",
+        "UK GDPR & Data Protection Act 2018"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Manage renewals and changes",
+      "ownerPersonId": "person-procurement-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-procurement-manager",
+      "links": [],
+      "systems": [
+        "Microsoft SharePoint Online",
+        "IRIS Financials"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA/PRA Operational Resilience Requirements",
+        "UK GDPR & Data Protection Act 2018"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Store executed contract",
+      "ownerPersonId": "person-procurement-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-procurement-manager",
+      "links": [],
+      "systems": [
+        "Microsoft SharePoint Online",
+        "IRIS Financials"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA/PRA Operational Resilience Requirements",
+        "UK GDPR & Data Protection Act 2018"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

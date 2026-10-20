@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_CustomerCommunications",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Define communication need",
+      "ownerPersonId": "person-head-customer-ops",
+      "responsibleType": "role",
+      "responsibleId": "role-head-customer-ops",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Microsoft 365",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Duty",
+        "UK GDPR & Data Protection Act 2018"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Prepare content",
+      "ownerPersonId": "person-head-customer-ops",
+      "responsibleType": "role",
+      "responsibleId": "role-head-customer-ops",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Microsoft 365",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Duty",
+        "UK GDPR & Data Protection Act 2018"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Review compliance and accessibility",
+      "ownerPersonId": "person-head-customer-ops",
+      "responsibleType": "role",
+      "responsibleId": "role-head-customer-ops",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Microsoft 365",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Duty",
+        "UK GDPR & Data Protection Act 2018"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Issue communication",
+      "ownerPersonId": "person-head-customer-ops",
+      "responsibleType": "role",
+      "responsibleId": "role-head-customer-ops",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Microsoft 365",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Duty",
+        "UK GDPR & Data Protection Act 2018"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Record delivery and outcome",
+      "ownerPersonId": "person-head-customer-ops",
+      "responsibleType": "role",
+      "responsibleId": "role-head-customer-ops",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Microsoft 365",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Duty",
+        "UK GDPR & Data Protection Act 2018"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

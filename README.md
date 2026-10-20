@@ -34,3 +34,10 @@ A relationship is stored once and can be navigated in either direction, enabling
 ## Status
 
 Initial V1 genericisation and data-model expansion is in progress.
+
+
+## Reference bank seed
+
+The repository includes a comprehensive simple-bank reference model covering savings, lending and supporting banking functions. See `docs/simple-bank-reference-model.md`.
+
+The seed is intentionally illustrative and channel-neutral. It contains sample people, systems, data, controls, risks and UK regulatory mappings so the Enterprise Relationship Explorer and Impact Analysis features can be exercised immediately.

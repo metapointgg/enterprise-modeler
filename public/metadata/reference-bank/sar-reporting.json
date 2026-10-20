@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_SarReporting",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Review suspicion referral",
+      "ownerPersonId": "person-mlro",
+      "responsibleType": "role",
+      "responsibleId": "role-mlro",
+      "links": [],
+      "systems": [
+        "AML Transaction Monitoring Platform",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [
+        "MLRO approval of SAR decisions"
+      ],
+      "risks": [],
+      "regulations": [
+        "Proceeds of Crime Act 2002 / SAR obligations",
+        "Money Laundering Regulations 2017"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "MLRO decision",
+      "ownerPersonId": "person-mlro",
+      "responsibleType": "role",
+      "responsibleId": "role-mlro",
+      "links": [],
+      "systems": [
+        "AML Transaction Monitoring Platform",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [
+        "MLRO approval of SAR decisions"
+      ],
+      "risks": [],
+      "regulations": [
+        "Proceeds of Crime Act 2002 / SAR obligations",
+        "Money Laundering Regulations 2017"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Prepare SAR",
+      "ownerPersonId": "person-mlro",
+      "responsibleType": "role",
+      "responsibleId": "role-mlro",
+      "links": [],
+      "systems": [
+        "AML Transaction Monitoring Platform",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [
+        "MLRO approval of SAR decisions"
+      ],
+      "risks": [],
+      "regulations": [
+        "Proceeds of Crime Act 2002 / SAR obligations",
+        "Money Laundering Regulations 2017"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Submit to NCA",
+      "ownerPersonId": "person-mlro",
+      "responsibleType": "role",
+      "responsibleId": "role-mlro",
+      "links": [],
+      "systems": [
+        "AML Transaction Monitoring Platform",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [
+        "MLRO approval of SAR decisions"
+      ],
+      "risks": [],
+      "regulations": [
+        "Proceeds of Crime Act 2002 / SAR obligations",
+        "Money Laundering Regulations 2017"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Record consent or moratorium actions",
+      "ownerPersonId": "person-mlro",
+      "responsibleType": "role",
+      "responsibleId": "role-mlro",
+      "links": [],
+      "systems": [
+        "AML Transaction Monitoring Platform",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [
+        "MLRO approval of SAR decisions"
+      ],
+      "risks": [],
+      "regulations": [
+        "Proceeds of Crime Act 2002 / SAR obligations",
+        "Money Laundering Regulations 2017"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_6": {
+      "status": "Draft",
+      "description": "Retain evidence",
+      "ownerPersonId": "person-mlro",
+      "responsibleType": "role",
+      "responsibleId": "role-mlro",
+      "links": [],
+      "systems": [
+        "AML Transaction Monitoring Platform",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [
+        "MLRO approval of SAR decisions"
+      ],
+      "risks": [],
+      "regulations": [
+        "Proceeds of Crime Act 2002 / SAR obligations",
+        "Money Laundering Regulations 2017"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

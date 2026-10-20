@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_LoanSettlementClosure",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Receive settlement request",
+      "ownerPersonId": "person-loan-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-loan-ops-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Payments Gateway",
+        "Salesforce CRM"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Credit Sourcebook (CONC)",
+        "Consumer Credit Act 1974"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Calculate settlement figure",
+      "ownerPersonId": "person-loan-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-loan-ops-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Payments Gateway",
+        "Salesforce CRM"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Credit Sourcebook (CONC)",
+        "Consumer Credit Act 1974"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Issue settlement quote",
+      "ownerPersonId": "person-loan-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-loan-ops-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Payments Gateway",
+        "Salesforce CRM"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Credit Sourcebook (CONC)",
+        "Consumer Credit Act 1974"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Receive settlement funds",
+      "ownerPersonId": "person-loan-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-loan-ops-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Payments Gateway",
+        "Salesforce CRM"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Credit Sourcebook (CONC)",
+        "Consumer Credit Act 1974"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Close loan",
+      "ownerPersonId": "person-loan-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-loan-ops-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Payments Gateway",
+        "Salesforce CRM"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Credit Sourcebook (CONC)",
+        "Consumer Credit Act 1974"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_6": {
+      "status": "Draft",
+      "description": "Issue closure confirmation",
+      "ownerPersonId": "person-loan-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-loan-ops-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Payments Gateway",
+        "Salesforce CRM"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Credit Sourcebook (CONC)",
+        "Consumer Credit Act 1974"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

@@ -1,4 +1,165 @@
 {
   "schemaVersion": 1,
-  "regulations": []
+  "regulations": [
+    {
+      "id": "reg-fsma",
+      "name": "Financial Services and Markets Act 2000",
+      "category": "Banking / conduct",
+      "jurisdiction": "United Kingdom",
+      "sourceReference": "FSMA 2000",
+      "ownerPositionId": "pos-compliance-manager",
+      "active": true,
+      "notes": "Illustrative UK regulatory seed for reference modelling; validate scope and current requirements before operational reliance."
+    },
+    {
+      "id": "reg-consumer-duty",
+      "name": "FCA Consumer Duty",
+      "category": "Conduct",
+      "jurisdiction": "United Kingdom",
+      "sourceReference": "PRIN 2A",
+      "ownerPositionId": "pos-compliance-manager",
+      "active": true,
+      "notes": "Illustrative UK regulatory seed for reference modelling; validate scope and current requirements before operational reliance."
+    },
+    {
+      "id": "reg-bcobs",
+      "name": "FCA Banking: Conduct of Business Sourcebook (BCOBS)",
+      "category": "Conduct / deposits",
+      "jurisdiction": "United Kingdom",
+      "sourceReference": "FCA BCOBS",
+      "ownerPositionId": "pos-compliance-manager",
+      "active": true,
+      "notes": "Illustrative UK regulatory seed for reference modelling; validate scope and current requirements before operational reliance."
+    },
+    {
+      "id": "reg-disp",
+      "name": "FCA Dispute Resolution: Complaints (DISP)",
+      "category": "Complaints",
+      "jurisdiction": "United Kingdom",
+      "sourceReference": "FCA DISP",
+      "ownerPositionId": "pos-compliance-manager",
+      "active": true,
+      "notes": "Illustrative UK regulatory seed for reference modelling; validate scope and current requirements before operational reliance."
+    },
+    {
+      "id": "reg-conc",
+      "name": "FCA Consumer Credit Sourcebook (CONC)",
+      "category": "Lending / consumer credit",
+      "jurisdiction": "United Kingdom",
+      "sourceReference": "FCA CONC",
+      "ownerPositionId": "pos-compliance-manager",
+      "active": true,
+      "notes": "Illustrative UK regulatory seed for reference modelling; validate scope and current requirements before operational reliance."
+    },
+    {
+      "id": "reg-cca",
+      "name": "Consumer Credit Act 1974",
+      "category": "Lending / consumer credit",
+      "jurisdiction": "United Kingdom",
+      "sourceReference": "CCA 1974",
+      "ownerPositionId": "pos-compliance-manager",
+      "active": true,
+      "notes": "Illustrative UK regulatory seed for reference modelling; validate scope and current requirements before operational reliance."
+    },
+    {
+      "id": "reg-pra",
+      "name": "PRA Rulebook",
+      "category": "Prudential",
+      "jurisdiction": "United Kingdom",
+      "sourceReference": "PRA Rulebook",
+      "ownerPositionId": "pos-risk-manager",
+      "active": true,
+      "notes": "Illustrative UK regulatory seed for reference modelling; validate scope and current requirements before operational reliance."
+    },
+    {
+      "id": "reg-prudential",
+      "name": "UK Prudential Capital & Liquidity Framework",
+      "category": "Prudential",
+      "jurisdiction": "United Kingdom",
+      "sourceReference": "PRA / UK CRR framework",
+      "ownerPositionId": "pos-risk-manager",
+      "active": true,
+      "notes": "Illustrative UK regulatory seed for reference modelling; validate scope and current requirements before operational reliance."
+    },
+    {
+      "id": "reg-mlr",
+      "name": "Money Laundering Regulations 2017",
+      "category": "Financial crime",
+      "jurisdiction": "United Kingdom",
+      "sourceReference": "MLR 2017",
+      "ownerPositionId": "pos-mlro",
+      "active": true,
+      "notes": "Illustrative UK regulatory seed for reference modelling; validate scope and current requirements before operational reliance."
+    },
+    {
+      "id": "reg-poca",
+      "name": "Proceeds of Crime Act 2002 / SAR obligations",
+      "category": "Financial crime",
+      "jurisdiction": "United Kingdom",
+      "sourceReference": "POCA 2002",
+      "ownerPositionId": "pos-mlro",
+      "active": true,
+      "notes": "Illustrative UK regulatory seed for reference modelling; validate scope and current requirements before operational reliance."
+    },
+    {
+      "id": "reg-sanctions",
+      "name": "UK Sanctions & Anti-Money Laundering framework",
+      "category": "Sanctions",
+      "jurisdiction": "United Kingdom",
+      "sourceReference": "SAMLA 2018 and applicable UK sanctions regulations",
+      "ownerPositionId": "pos-mlro",
+      "active": true,
+      "notes": "Illustrative UK regulatory seed for reference modelling; validate scope and current requirements before operational reliance."
+    },
+    {
+      "id": "reg-uk-gdpr",
+      "name": "UK GDPR & Data Protection Act 2018",
+      "category": "Data protection",
+      "jurisdiction": "United Kingdom",
+      "sourceReference": "UK GDPR / DPA 2018",
+      "ownerPositionId": "pos-dpo",
+      "active": true,
+      "notes": "Illustrative UK regulatory seed for reference modelling; validate scope and current requirements before operational reliance."
+    },
+    {
+      "id": "reg-psr",
+      "name": "Payment Services Regulations 2017",
+      "category": "Payments",
+      "jurisdiction": "United Kingdom",
+      "sourceReference": "PSRs 2017",
+      "ownerPositionId": "pos-compliance-manager",
+      "active": true,
+      "notes": "Illustrative UK regulatory seed for reference modelling; validate scope and current requirements before operational reliance."
+    },
+    {
+      "id": "reg-fscs",
+      "name": "FSCS Depositor Protection Requirements",
+      "category": "Depositor protection",
+      "jurisdiction": "United Kingdom",
+      "sourceReference": "PRA Depositor Protection / FSCS rules",
+      "ownerPositionId": "pos-head-savings",
+      "active": true,
+      "notes": "Illustrative UK regulatory seed for reference modelling; validate scope and current requirements before operational reliance."
+    },
+    {
+      "id": "reg-smcr",
+      "name": "Senior Managers & Certification Regime",
+      "category": "Governance / people",
+      "jurisdiction": "United Kingdom",
+      "sourceReference": "SM&CR",
+      "ownerPositionId": "pos-cro",
+      "active": true,
+      "notes": "Illustrative UK regulatory seed for reference modelling; validate scope and current requirements before operational reliance."
+    },
+    {
+      "id": "reg-opres",
+      "name": "FCA/PRA Operational Resilience Requirements",
+      "category": "Operational resilience",
+      "jurisdiction": "United Kingdom",
+      "sourceReference": "FCA SYSC 15A / PRA operational resilience",
+      "ownerPositionId": "pos-opres-manager",
+      "active": true,
+      "notes": "Illustrative UK regulatory seed for reference modelling; validate scope and current requirements before operational reliance."
+    }
+  ]
 }

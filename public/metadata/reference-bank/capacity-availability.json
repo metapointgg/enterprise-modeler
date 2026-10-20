@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_CapacityAvailability",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Monitor capacity and availability",
+      "ownerPersonId": "person-it-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-it-ops-manager",
+      "links": [],
+      "systems": [
+        "ServiceNow",
+        "Microsoft Sentinel"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA/PRA Operational Resilience Requirements"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Forecast demand",
+      "ownerPersonId": "person-it-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-it-ops-manager",
+      "links": [],
+      "systems": [
+        "ServiceNow",
+        "Microsoft Sentinel"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA/PRA Operational Resilience Requirements"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Identify constraints",
+      "ownerPersonId": "person-it-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-it-ops-manager",
+      "links": [],
+      "systems": [
+        "ServiceNow",
+        "Microsoft Sentinel"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA/PRA Operational Resilience Requirements"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Plan capacity change",
+      "ownerPersonId": "person-it-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-it-ops-manager",
+      "links": [],
+      "systems": [
+        "ServiceNow",
+        "Microsoft Sentinel"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA/PRA Operational Resilience Requirements"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Implement improvement",
+      "ownerPersonId": "person-it-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-it-ops-manager",
+      "links": [],
+      "systems": [
+        "ServiceNow",
+        "Microsoft Sentinel"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA/PRA Operational Resilience Requirements"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_6": {
+      "status": "Draft",
+      "description": "Report service health",
+      "ownerPersonId": "person-it-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-it-ops-manager",
+      "links": [],
+      "systems": [
+        "ServiceNow",
+        "Microsoft Sentinel"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA/PRA Operational Resilience Requirements"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

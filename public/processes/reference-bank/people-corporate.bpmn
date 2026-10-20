@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_PeopleCorporate" targetNamespace="https://enterprise-modeler.local/bpmn">
+<bpmn:process id="Process_PeopleCorporate" name="People &amp; Corporate Services" isExecutable="false">
+<bpmn:laneSet id="LaneSet_PeopleCorporate"><bpmn:lane id="Lane_PeopleCorporate" name="Simple Bank"><bpmn:flowNodeRef>Start_PeopleCorporate</bpmn:flowNodeRef><bpmn:flowNodeRef>Call_1_RecruitmentOnboarding</bpmn:flowNodeRef><bpmn:flowNodeRef>Call_2_LearningCompetence</bpmn:flowNodeRef><bpmn:flowNodeRef>Call_3_PerformanceManagement</bpmn:flowNodeRef><bpmn:flowNodeRef>Call_4_Procurement</bpmn:flowNodeRef><bpmn:flowNodeRef>Call_5_SupplierContractManagement</bpmn:flowNodeRef><bpmn:flowNodeRef>Call_6_RecordsDocumentManagement</bpmn:flowNodeRef><bpmn:flowNodeRef>End_PeopleCorporate</bpmn:flowNodeRef></bpmn:lane></bpmn:laneSet>
+<bpmn:startEvent id="Start_PeopleCorporate" name="Start"><bpmn:outgoing>Flow_1</bpmn:outgoing></bpmn:startEvent>
+<bpmn:callActivity id="Call_1_RecruitmentOnboarding" name="Recruitment &amp; Employee Onboarding" calledElement="Process_RecruitmentOnboarding"><bpmn:incoming>Flow_1</bpmn:incoming><bpmn:outgoing>Flow_2</bpmn:outgoing></bpmn:callActivity>
+<bpmn:callActivity id="Call_2_LearningCompetence" name="Learning, Training &amp; Competence" calledElement="Process_LearningCompetence"><bpmn:incoming>Flow_2</bpmn:incoming><bpmn:outgoing>Flow_3</bpmn:outgoing></bpmn:callActivity>
+<bpmn:callActivity id="Call_3_PerformanceManagement" name="Performance Management" calledElement="Process_PerformanceManagement"><bpmn:incoming>Flow_3</bpmn:incoming><bpmn:outgoing>Flow_4</bpmn:outgoing></bpmn:callActivity>
+<bpmn:callActivity id="Call_4_Procurement" name="Procurement &amp; Purchasing" calledElement="Process_Procurement"><bpmn:incoming>Flow_4</bpmn:incoming><bpmn:outgoing>Flow_5</bpmn:outgoing></bpmn:callActivity>
+<bpmn:callActivity id="Call_5_SupplierContractManagement" name="Supplier Contract Management" calledElement="Process_SupplierContractManagement"><bpmn:incoming>Flow_5</bpmn:incoming><bpmn:outgoing>Flow_6</bpmn:outgoing></bpmn:callActivity>
+<bpmn:callActivity id="Call_6_RecordsDocumentManagement" name="Records &amp; Document Management" calledElement="Process_RecordsDocumentManagement"><bpmn:incoming>Flow_6</bpmn:incoming><bpmn:outgoing>Flow_7</bpmn:outgoing></bpmn:callActivity>
+<bpmn:endEvent id="End_PeopleCorporate" name="Complete"><bpmn:incoming>Flow_7</bpmn:incoming></bpmn:endEvent>
+<bpmn:sequenceFlow id="Flow_1" sourceRef="Start_PeopleCorporate" targetRef="Call_1_RecruitmentOnboarding" />
+<bpmn:sequenceFlow id="Flow_2" sourceRef="Call_1_RecruitmentOnboarding" targetRef="Call_2_LearningCompetence" />
+<bpmn:sequenceFlow id="Flow_3" sourceRef="Call_2_LearningCompetence" targetRef="Call_3_PerformanceManagement" />
+<bpmn:sequenceFlow id="Flow_4" sourceRef="Call_3_PerformanceManagement" targetRef="Call_4_Procurement" />
+<bpmn:sequenceFlow id="Flow_5" sourceRef="Call_4_Procurement" targetRef="Call_5_SupplierContractManagement" />
+<bpmn:sequenceFlow id="Flow_6" sourceRef="Call_5_SupplierContractManagement" targetRef="Call_6_RecordsDocumentManagement" />
+<bpmn:sequenceFlow id="Flow_7" sourceRef="Call_6_RecordsDocumentManagement" targetRef="End_PeopleCorporate" />
+</bpmn:process>
+<bpmn:collaboration id="Collaboration_PeopleCorporate"><bpmn:participant id="Participant_PeopleCorporate" name="Simple Bank" processRef="Process_PeopleCorporate" /></bpmn:collaboration>
+<bpmndi:BPMNDiagram id="Diagram_PeopleCorporate"><bpmndi:BPMNPlane id="Plane_PeopleCorporate" bpmnElement="Collaboration_PeopleCorporate">
+<bpmndi:BPMNShape id="Participant_PeopleCorporate_di" bpmnElement="Participant_PeopleCorporate" isHorizontal="true"><dc:Bounds x="80" y="80" width="1980" height="260" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Lane_PeopleCorporate_di" bpmnElement="Lane_PeopleCorporate" isHorizontal="true"><dc:Bounds x="110" y="80" width="1950" height="260" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Start_PeopleCorporate_di" bpmnElement="Start_PeopleCorporate"><dc:Bounds x="150" y="192" width="36" height="36" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Call_1_RecruitmentOnboarding_di" bpmnElement="Call_1_RecruitmentOnboarding"><dc:Bounds x="200" y="170" width="190" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Call_2_LearningCompetence_di" bpmnElement="Call_2_LearningCompetence"><dc:Bounds x="460" y="170" width="190" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Call_3_PerformanceManagement_di" bpmnElement="Call_3_PerformanceManagement"><dc:Bounds x="720" y="170" width="190" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Call_4_Procurement_di" bpmnElement="Call_4_Procurement"><dc:Bounds x="980" y="170" width="190" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Call_5_SupplierContractManagement_di" bpmnElement="Call_5_SupplierContractManagement"><dc:Bounds x="1240" y="170" width="190" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Call_6_RecordsDocumentManagement_di" bpmnElement="Call_6_RecordsDocumentManagement"><dc:Bounds x="1500" y="170" width="190" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="End_PeopleCorporate_di" bpmnElement="End_PeopleCorporate"><dc:Bounds x="1780" y="192" width="36" height="36" /></bpmndi:BPMNShape>
+<bpmndi:BPMNEdge id="Flow_1_di" bpmnElement="Flow_1"><di:waypoint x="186" y="210" /><di:waypoint x="200" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="Flow_2_di" bpmnElement="Flow_2"><di:waypoint x="390" y="210" /><di:waypoint x="460" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="Flow_3_di" bpmnElement="Flow_3"><di:waypoint x="650" y="210" /><di:waypoint x="720" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="Flow_4_di" bpmnElement="Flow_4"><di:waypoint x="910" y="210" /><di:waypoint x="980" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="Flow_5_di" bpmnElement="Flow_5"><di:waypoint x="1170" y="210" /><di:waypoint x="1240" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="Flow_6_di" bpmnElement="Flow_6"><di:waypoint x="1430" y="210" /><di:waypoint x="1500" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="Flow_7_di" bpmnElement="Flow_7"><di:waypoint x="1690" y="210" /><di:waypoint x="1780" y="210" /></bpmndi:BPMNEdge>
+</bpmndi:BPMNPlane></bpmndi:BPMNDiagram></bpmn:definitions>

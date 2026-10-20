@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_MonthEndClose",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Close operational sub-ledgers",
+      "ownerPersonId": "person-finance-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-finance-manager",
+      "links": [],
+      "systems": [
+        "IRIS Financials",
+        "Temenos Transact (T24)",
+        "Bank Data Warehouse"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Financial Services and Markets Act 2000",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Post accruals and adjustments",
+      "ownerPersonId": "person-finance-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-finance-manager",
+      "links": [],
+      "systems": [
+        "IRIS Financials",
+        "Temenos Transact (T24)",
+        "Bank Data Warehouse"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Financial Services and Markets Act 2000",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Perform balance-sheet reconciliations",
+      "ownerPersonId": "person-finance-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-finance-manager",
+      "links": [],
+      "systems": [
+        "IRIS Financials",
+        "Temenos Transact (T24)",
+        "Bank Data Warehouse"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Financial Services and Markets Act 2000",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Review P&L and balance sheet",
+      "ownerPersonId": "person-finance-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-finance-manager",
+      "links": [],
+      "systems": [
+        "IRIS Financials",
+        "Temenos Transact (T24)",
+        "Bank Data Warehouse"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Financial Services and Markets Act 2000",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Approve period close",
+      "ownerPersonId": "person-finance-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-finance-manager",
+      "links": [],
+      "systems": [
+        "IRIS Financials",
+        "Temenos Transact (T24)",
+        "Bank Data Warehouse"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Financial Services and Markets Act 2000",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

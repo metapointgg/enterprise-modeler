@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_OutboundPaymentProcessing",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Receive payment instruction",
+      "ownerPersonId": "person-savings-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-savings-ops-manager",
+      "links": [],
+      "systems": [
+        "Digital Banking Portal",
+        "Temenos Transact (T24)",
+        "Payments Gateway",
+        "Fraud Monitoring Platform"
+      ],
+      "controls": [
+        "Payment authorisation and fraud controls",
+        "Sanctions/PEP screening before onboarding and on review"
+      ],
+      "risks": [
+        "Fraudulent or misdirected payment",
+        "Operational processing error"
+      ],
+      "regulations": [
+        "Payment Services Regulations 2017",
+        "UK Sanctions & Anti-Money Laundering framework",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Authenticate and authorise",
+      "ownerPersonId": "person-savings-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-savings-ops-manager",
+      "links": [],
+      "systems": [
+        "Digital Banking Portal",
+        "Temenos Transact (T24)",
+        "Payments Gateway",
+        "Fraud Monitoring Platform"
+      ],
+      "controls": [
+        "Payment authorisation and fraud controls",
+        "Sanctions/PEP screening before onboarding and on review"
+      ],
+      "risks": [
+        "Fraudulent or misdirected payment",
+        "Operational processing error"
+      ],
+      "regulations": [
+        "Payment Services Regulations 2017",
+        "UK Sanctions & Anti-Money Laundering framework",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Run fraud and sanctions controls",
+      "ownerPersonId": "person-savings-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-savings-ops-manager",
+      "links": [],
+      "systems": [
+        "Digital Banking Portal",
+        "Temenos Transact (T24)",
+        "Payments Gateway",
+        "Fraud Monitoring Platform"
+      ],
+      "controls": [
+        "Payment authorisation and fraud controls",
+        "Sanctions/PEP screening before onboarding and on review"
+      ],
+      "risks": [
+        "Fraudulent or misdirected payment",
+        "Operational processing error"
+      ],
+      "regulations": [
+        "Payment Services Regulations 2017",
+        "UK Sanctions & Anti-Money Laundering framework",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Post debit in T24",
+      "ownerPersonId": "person-savings-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-savings-ops-manager",
+      "links": [],
+      "systems": [
+        "Digital Banking Portal",
+        "Temenos Transact (T24)",
+        "Payments Gateway",
+        "Fraud Monitoring Platform"
+      ],
+      "controls": [
+        "Payment authorisation and fraud controls",
+        "Sanctions/PEP screening before onboarding and on review"
+      ],
+      "risks": [
+        "Fraudulent or misdirected payment",
+        "Operational processing error"
+      ],
+      "regulations": [
+        "Payment Services Regulations 2017",
+        "UK Sanctions & Anti-Money Laundering framework",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Send payment",
+      "ownerPersonId": "person-savings-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-savings-ops-manager",
+      "links": [],
+      "systems": [
+        "Digital Banking Portal",
+        "Temenos Transact (T24)",
+        "Payments Gateway",
+        "Fraud Monitoring Platform"
+      ],
+      "controls": [
+        "Payment authorisation and fraud controls",
+        "Sanctions/PEP screening before onboarding and on review"
+      ],
+      "risks": [
+        "Fraudulent or misdirected payment",
+        "Operational processing error"
+      ],
+      "regulations": [
+        "Payment Services Regulations 2017",
+        "UK Sanctions & Anti-Money Laundering framework",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_6": {
+      "status": "Draft",
+      "description": "Confirm status",
+      "ownerPersonId": "person-savings-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-savings-ops-manager",
+      "links": [],
+      "systems": [
+        "Digital Banking Portal",
+        "Temenos Transact (T24)",
+        "Payments Gateway",
+        "Fraud Monitoring Platform"
+      ],
+      "controls": [
+        "Payment authorisation and fraud controls",
+        "Sanctions/PEP screening before onboarding and on review"
+      ],
+      "risks": [
+        "Fraudulent or misdirected payment",
+        "Operational processing error"
+      ],
+      "regulations": [
+        "Payment Services Regulations 2017",
+        "UK Sanctions & Anti-Money Laundering framework",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

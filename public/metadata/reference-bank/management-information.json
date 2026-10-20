@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_ManagementInformation",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Define MI requirement",
+      "ownerPersonId": "person-data-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-data-manager",
+      "links": [],
+      "systems": [
+        "Bank Data Warehouse",
+        "Microsoft Power BI"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Duty",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Source and transform data",
+      "ownerPersonId": "person-data-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-data-manager",
+      "links": [],
+      "systems": [
+        "Bank Data Warehouse",
+        "Microsoft Power BI"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Duty",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Validate measures",
+      "ownerPersonId": "person-data-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-data-manager",
+      "links": [],
+      "systems": [
+        "Bank Data Warehouse",
+        "Microsoft Power BI"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Duty",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Publish dashboard or report",
+      "ownerPersonId": "person-data-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-data-manager",
+      "links": [],
+      "systems": [
+        "Bank Data Warehouse",
+        "Microsoft Power BI"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Duty",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Review outcomes and actions",
+      "ownerPersonId": "person-data-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-data-manager",
+      "links": [],
+      "systems": [
+        "Bank Data Warehouse",
+        "Microsoft Power BI"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Duty",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

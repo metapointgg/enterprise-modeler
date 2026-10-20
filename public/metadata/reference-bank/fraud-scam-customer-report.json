@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_FraudScamCustomerReport",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Receive fraud or scam report",
+      "ownerPersonId": "person-fincrime-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-fincrime-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Temenos Transact (T24)",
+        "Fraud Monitoring Platform"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Duty",
+        "Payment Services Regulations 2017"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Protect account and funds",
+      "ownerPersonId": "person-fincrime-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-fincrime-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Temenos Transact (T24)",
+        "Fraud Monitoring Platform"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Duty",
+        "Payment Services Regulations 2017"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Create fraud case",
+      "ownerPersonId": "person-fincrime-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-fincrime-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Temenos Transact (T24)",
+        "Fraud Monitoring Platform"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Duty",
+        "Payment Services Regulations 2017"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Investigate transactions",
+      "ownerPersonId": "person-fincrime-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-fincrime-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Temenos Transact (T24)",
+        "Fraud Monitoring Platform"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Duty",
+        "Payment Services Regulations 2017"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Determine reimbursement or recovery",
+      "ownerPersonId": "person-fincrime-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-fincrime-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Temenos Transact (T24)",
+        "Fraud Monitoring Platform"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Duty",
+        "Payment Services Regulations 2017"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_6": {
+      "status": "Draft",
+      "description": "Communicate outcome",
+      "ownerPersonId": "person-fincrime-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-fincrime-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Temenos Transact (T24)",
+        "Fraud Monitoring Platform"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Duty",
+        "Payment Services Regulations 2017"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

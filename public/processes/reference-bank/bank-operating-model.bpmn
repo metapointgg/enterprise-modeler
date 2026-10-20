@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_BankOperatingModel" targetNamespace="https://enterprise-modeler.local/bpmn">
+<bpmn:process id="Process_BankOperatingModel" name="Simple Bank Operating Model" isExecutable="false">
+<bpmn:laneSet id="LaneSet_BankOperatingModel"><bpmn:lane id="Lane_BankOperatingModel" name="Simple Bank"><bpmn:flowNodeRef>Start_BankOperatingModel</bpmn:flowNodeRef><bpmn:flowNodeRef>Call_1_CustomerOnboarding</bpmn:flowNodeRef><bpmn:flowNodeRef>Call_2_SavingsDeposits</bpmn:flowNodeRef><bpmn:flowNodeRef>Call_3_LendingCredit</bpmn:flowNodeRef><bpmn:flowNodeRef>Call_4_PaymentsOperations</bpmn:flowNodeRef><bpmn:flowNodeRef>Call_5_CustomerServicing</bpmn:flowNodeRef><bpmn:flowNodeRef>Call_6_FinancialCrime</bpmn:flowNodeRef><bpmn:flowNodeRef>Call_7_FinanceTreasury</bpmn:flowNodeRef><bpmn:flowNodeRef>Call_8_RiskCompliance</bpmn:flowNodeRef><bpmn:flowNodeRef>Call_9_ProductPartner</bpmn:flowNodeRef><bpmn:flowNodeRef>Call_10_TechnologyResilience</bpmn:flowNodeRef><bpmn:flowNodeRef>Call_11_DataMi</bpmn:flowNodeRef><bpmn:flowNodeRef>Call_12_PeopleCorporate</bpmn:flowNodeRef><bpmn:flowNodeRef>End_BankOperatingModel</bpmn:flowNodeRef></bpmn:lane></bpmn:laneSet>
+<bpmn:startEvent id="Start_BankOperatingModel" name="Start"><bpmn:outgoing>Flow_1</bpmn:outgoing></bpmn:startEvent>
+<bpmn:callActivity id="Call_1_CustomerOnboarding" name="Customer Acquisition &amp; Onboarding" calledElement="Process_CustomerOnboarding"><bpmn:incoming>Flow_1</bpmn:incoming><bpmn:outgoing>Flow_2</bpmn:outgoing></bpmn:callActivity>
+<bpmn:callActivity id="Call_2_SavingsDeposits" name="Savings &amp; Deposits" calledElement="Process_SavingsDeposits"><bpmn:incoming>Flow_2</bpmn:incoming><bpmn:outgoing>Flow_3</bpmn:outgoing></bpmn:callActivity>
+<bpmn:callActivity id="Call_3_LendingCredit" name="Lending &amp; Credit" calledElement="Process_LendingCredit"><bpmn:incoming>Flow_3</bpmn:incoming><bpmn:outgoing>Flow_4</bpmn:outgoing></bpmn:callActivity>
+<bpmn:callActivity id="Call_4_PaymentsOperations" name="Payments &amp; Account Operations" calledElement="Process_PaymentsOperations"><bpmn:incoming>Flow_4</bpmn:incoming><bpmn:outgoing>Flow_5</bpmn:outgoing></bpmn:callActivity>
+<bpmn:callActivity id="Call_5_CustomerServicing" name="Customer Servicing &amp; Conduct" calledElement="Process_CustomerServicing"><bpmn:incoming>Flow_5</bpmn:incoming><bpmn:outgoing>Flow_6</bpmn:outgoing></bpmn:callActivity>
+<bpmn:callActivity id="Call_6_FinancialCrime" name="Financial Crime &amp; Fraud" calledElement="Process_FinancialCrime"><bpmn:incoming>Flow_6</bpmn:incoming><bpmn:outgoing>Flow_7</bpmn:outgoing></bpmn:callActivity>
+<bpmn:callActivity id="Call_7_FinanceTreasury" name="Finance &amp; Treasury" calledElement="Process_FinanceTreasury"><bpmn:incoming>Flow_7</bpmn:incoming><bpmn:outgoing>Flow_8</bpmn:outgoing></bpmn:callActivity>
+<bpmn:callActivity id="Call_8_RiskCompliance" name="Risk, Compliance &amp; Governance" calledElement="Process_RiskCompliance"><bpmn:incoming>Flow_8</bpmn:incoming><bpmn:outgoing>Flow_9</bpmn:outgoing></bpmn:callActivity>
+<bpmn:callActivity id="Call_9_ProductPartner" name="Product &amp; Partner Management" calledElement="Process_ProductPartner"><bpmn:incoming>Flow_9</bpmn:incoming><bpmn:outgoing>Flow_10</bpmn:outgoing></bpmn:callActivity>
+<bpmn:callActivity id="Call_10_TechnologyResilience" name="Technology, Security &amp; Operational Resilience" calledElement="Process_TechnologyResilience"><bpmn:incoming>Flow_10</bpmn:incoming><bpmn:outgoing>Flow_11</bpmn:outgoing></bpmn:callActivity>
+<bpmn:callActivity id="Call_11_DataMi" name="Data &amp; Management Information" calledElement="Process_DataMi"><bpmn:incoming>Flow_11</bpmn:incoming><bpmn:outgoing>Flow_12</bpmn:outgoing></bpmn:callActivity>
+<bpmn:callActivity id="Call_12_PeopleCorporate" name="People &amp; Corporate Services" calledElement="Process_PeopleCorporate"><bpmn:incoming>Flow_12</bpmn:incoming><bpmn:outgoing>Flow_13</bpmn:outgoing></bpmn:callActivity>
+<bpmn:endEvent id="End_BankOperatingModel" name="Complete"><bpmn:incoming>Flow_13</bpmn:incoming></bpmn:endEvent>
+<bpmn:sequenceFlow id="Flow_1" sourceRef="Start_BankOperatingModel" targetRef="Call_1_CustomerOnboarding" />
+<bpmn:sequenceFlow id="Flow_2" sourceRef="Call_1_CustomerOnboarding" targetRef="Call_2_SavingsDeposits" />
+<bpmn:sequenceFlow id="Flow_3" sourceRef="Call_2_SavingsDeposits" targetRef="Call_3_LendingCredit" />
+<bpmn:sequenceFlow id="Flow_4" sourceRef="Call_3_LendingCredit" targetRef="Call_4_PaymentsOperations" />
+<bpmn:sequenceFlow id="Flow_5" sourceRef="Call_4_PaymentsOperations" targetRef="Call_5_CustomerServicing" />
+<bpmn:sequenceFlow id="Flow_6" sourceRef="Call_5_CustomerServicing" targetRef="Call_6_FinancialCrime" />
+<bpmn:sequenceFlow id="Flow_7" sourceRef="Call_6_FinancialCrime" targetRef="Call_7_FinanceTreasury" />
+<bpmn:sequenceFlow id="Flow_8" sourceRef="Call_7_FinanceTreasury" targetRef="Call_8_RiskCompliance" />
+<bpmn:sequenceFlow id="Flow_9" sourceRef="Call_8_RiskCompliance" targetRef="Call_9_ProductPartner" />
+<bpmn:sequenceFlow id="Flow_10" sourceRef="Call_9_ProductPartner" targetRef="Call_10_TechnologyResilience" />
+<bpmn:sequenceFlow id="Flow_11" sourceRef="Call_10_TechnologyResilience" targetRef="Call_11_DataMi" />
+<bpmn:sequenceFlow id="Flow_12" sourceRef="Call_11_DataMi" targetRef="Call_12_PeopleCorporate" />
+<bpmn:sequenceFlow id="Flow_13" sourceRef="Call_12_PeopleCorporate" targetRef="End_BankOperatingModel" />
+</bpmn:process>
+<bpmn:collaboration id="Collaboration_BankOperatingModel"><bpmn:participant id="Participant_BankOperatingModel" name="Simple Bank" processRef="Process_BankOperatingModel" /></bpmn:collaboration>
+<bpmndi:BPMNDiagram id="Diagram_BankOperatingModel"><bpmndi:BPMNPlane id="Plane_BankOperatingModel" bpmnElement="Collaboration_BankOperatingModel">
+<bpmndi:BPMNShape id="Participant_BankOperatingModel_di" bpmnElement="Participant_BankOperatingModel" isHorizontal="true"><dc:Bounds x="80" y="80" width="3540" height="260" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Lane_BankOperatingModel_di" bpmnElement="Lane_BankOperatingModel" isHorizontal="true"><dc:Bounds x="110" y="80" width="3510" height="260" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Start_BankOperatingModel_di" bpmnElement="Start_BankOperatingModel"><dc:Bounds x="150" y="192" width="36" height="36" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Call_1_CustomerOnboarding_di" bpmnElement="Call_1_CustomerOnboarding"><dc:Bounds x="200" y="170" width="190" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Call_2_SavingsDeposits_di" bpmnElement="Call_2_SavingsDeposits"><dc:Bounds x="460" y="170" width="190" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Call_3_LendingCredit_di" bpmnElement="Call_3_LendingCredit"><dc:Bounds x="720" y="170" width="190" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Call_4_PaymentsOperations_di" bpmnElement="Call_4_PaymentsOperations"><dc:Bounds x="980" y="170" width="190" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Call_5_CustomerServicing_di" bpmnElement="Call_5_CustomerServicing"><dc:Bounds x="1240" y="170" width="190" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Call_6_FinancialCrime_di" bpmnElement="Call_6_FinancialCrime"><dc:Bounds x="1500" y="170" width="190" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Call_7_FinanceTreasury_di" bpmnElement="Call_7_FinanceTreasury"><dc:Bounds x="1760" y="170" width="190" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Call_8_RiskCompliance_di" bpmnElement="Call_8_RiskCompliance"><dc:Bounds x="2020" y="170" width="190" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Call_9_ProductPartner_di" bpmnElement="Call_9_ProductPartner"><dc:Bounds x="2280" y="170" width="190" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Call_10_TechnologyResilience_di" bpmnElement="Call_10_TechnologyResilience"><dc:Bounds x="2540" y="170" width="190" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Call_11_DataMi_di" bpmnElement="Call_11_DataMi"><dc:Bounds x="2800" y="170" width="190" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Call_12_PeopleCorporate_di" bpmnElement="Call_12_PeopleCorporate"><dc:Bounds x="3060" y="170" width="190" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="End_BankOperatingModel_di" bpmnElement="End_BankOperatingModel"><dc:Bounds x="3340" y="192" width="36" height="36" /></bpmndi:BPMNShape>
+<bpmndi:BPMNEdge id="Flow_1_di" bpmnElement="Flow_1"><di:waypoint x="186" y="210" /><di:waypoint x="200" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="Flow_2_di" bpmnElement="Flow_2"><di:waypoint x="390" y="210" /><di:waypoint x="460" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="Flow_3_di" bpmnElement="Flow_3"><di:waypoint x="650" y="210" /><di:waypoint x="720" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="Flow_4_di" bpmnElement="Flow_4"><di:waypoint x="910" y="210" /><di:waypoint x="980" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="Flow_5_di" bpmnElement="Flow_5"><di:waypoint x="1170" y="210" /><di:waypoint x="1240" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="Flow_6_di" bpmnElement="Flow_6"><di:waypoint x="1430" y="210" /><di:waypoint x="1500" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="Flow_7_di" bpmnElement="Flow_7"><di:waypoint x="1690" y="210" /><di:waypoint x="1760" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="Flow_8_di" bpmnElement="Flow_8"><di:waypoint x="1950" y="210" /><di:waypoint x="2020" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="Flow_9_di" bpmnElement="Flow_9"><di:waypoint x="2210" y="210" /><di:waypoint x="2280" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="Flow_10_di" bpmnElement="Flow_10"><di:waypoint x="2470" y="210" /><di:waypoint x="2540" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="Flow_11_di" bpmnElement="Flow_11"><di:waypoint x="2730" y="210" /><di:waypoint x="2800" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="Flow_12_di" bpmnElement="Flow_12"><di:waypoint x="2990" y="210" /><di:waypoint x="3060" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="Flow_13_di" bpmnElement="Flow_13"><di:waypoint x="3250" y="210" /><di:waypoint x="3340" y="210" /></bpmndi:BPMNEdge>
+</bpmndi:BPMNPlane></bpmndi:BPMNDiagram></bpmn:definitions>

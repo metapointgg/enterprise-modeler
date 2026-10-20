@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_ComplianceMonitoring",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Set monitoring plan",
+      "ownerPersonId": "person-compliance-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-compliance-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Microsoft SharePoint Online",
+        "Microsoft Power BI"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Financial Services and Markets Act 2000",
+        "FCA Consumer Duty",
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)",
+        "FCA Consumer Credit Sourcebook (CONC)"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Select sample and evidence",
+      "ownerPersonId": "person-compliance-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-compliance-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Microsoft SharePoint Online",
+        "Microsoft Power BI"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Financial Services and Markets Act 2000",
+        "FCA Consumer Duty",
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)",
+        "FCA Consumer Credit Sourcebook (CONC)"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Test compliance",
+      "ownerPersonId": "person-compliance-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-compliance-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Microsoft SharePoint Online",
+        "Microsoft Power BI"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Financial Services and Markets Act 2000",
+        "FCA Consumer Duty",
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)",
+        "FCA Consumer Credit Sourcebook (CONC)"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Record findings",
+      "ownerPersonId": "person-compliance-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-compliance-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Microsoft SharePoint Online",
+        "Microsoft Power BI"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Financial Services and Markets Act 2000",
+        "FCA Consumer Duty",
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)",
+        "FCA Consumer Credit Sourcebook (CONC)"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Agree remediation",
+      "ownerPersonId": "person-compliance-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-compliance-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Microsoft SharePoint Online",
+        "Microsoft Power BI"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Financial Services and Markets Act 2000",
+        "FCA Consumer Duty",
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)",
+        "FCA Consumer Credit Sourcebook (CONC)"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_6": {
+      "status": "Draft",
+      "description": "Report results",
+      "ownerPersonId": "person-compliance-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-compliance-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Microsoft SharePoint Online",
+        "Microsoft Power BI"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Financial Services and Markets Act 2000",
+        "FCA Consumer Duty",
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)",
+        "FCA Consumer Credit Sourcebook (CONC)"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

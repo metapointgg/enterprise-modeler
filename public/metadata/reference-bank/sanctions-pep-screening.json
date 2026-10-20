@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_SanctionsPepScreening",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Submit customer for screening",
+      "ownerPersonId": "person-mlro",
+      "responsibleType": "role",
+      "responsibleId": "role-mlro",
+      "links": [],
+      "systems": [
+        "LSEG World-Check One",
+        "Salesforce CRM",
+        "Temenos Transact (T24)"
+      ],
+      "controls": [
+        "Sanctions/PEP screening before onboarding and on review"
+      ],
+      "risks": [
+        "Sanctions breach or prohibited customer relationship"
+      ],
+      "regulations": [
+        "UK Sanctions & Anti-Money Laundering framework",
+        "Money Laundering Regulations 2017"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Review potential matches",
+      "ownerPersonId": "person-mlro",
+      "responsibleType": "role",
+      "responsibleId": "role-mlro",
+      "links": [],
+      "systems": [
+        "LSEG World-Check One",
+        "Salesforce CRM",
+        "Temenos Transact (T24)"
+      ],
+      "controls": [
+        "Sanctions/PEP screening before onboarding and on review"
+      ],
+      "risks": [
+        "Sanctions breach or prohibited customer relationship"
+      ],
+      "regulations": [
+        "UK Sanctions & Anti-Money Laundering framework",
+        "Money Laundering Regulations 2017"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Disposition false positives",
+      "ownerPersonId": "person-mlro",
+      "responsibleType": "role",
+      "responsibleId": "role-mlro",
+      "links": [],
+      "systems": [
+        "LSEG World-Check One",
+        "Salesforce CRM",
+        "Temenos Transact (T24)"
+      ],
+      "controls": [
+        "Sanctions/PEP screening before onboarding and on review"
+      ],
+      "risks": [
+        "Sanctions breach or prohibited customer relationship"
+      ],
+      "regulations": [
+        "UK Sanctions & Anti-Money Laundering framework",
+        "Money Laundering Regulations 2017"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Escalate true or uncertain matches",
+      "ownerPersonId": "person-mlro",
+      "responsibleType": "role",
+      "responsibleId": "role-mlro",
+      "links": [],
+      "systems": [
+        "LSEG World-Check One",
+        "Salesforce CRM",
+        "Temenos Transact (T24)"
+      ],
+      "controls": [
+        "Sanctions/PEP screening before onboarding and on review"
+      ],
+      "risks": [
+        "Sanctions breach or prohibited customer relationship"
+      ],
+      "regulations": [
+        "UK Sanctions & Anti-Money Laundering framework",
+        "Money Laundering Regulations 2017"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Apply restrictions and record decision",
+      "ownerPersonId": "person-mlro",
+      "responsibleType": "role",
+      "responsibleId": "role-mlro",
+      "links": [],
+      "systems": [
+        "LSEG World-Check One",
+        "Salesforce CRM",
+        "Temenos Transact (T24)"
+      ],
+      "controls": [
+        "Sanctions/PEP screening before onboarding and on review"
+      ],
+      "risks": [
+        "Sanctions breach or prohibited customer relationship"
+      ],
+      "regulations": [
+        "UK Sanctions & Anti-Money Laundering framework",
+        "Money Laundering Regulations 2017"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

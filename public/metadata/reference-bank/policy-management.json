@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_PolicyManagement",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Identify policy need",
+      "ownerPersonId": "person-compliance-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-compliance-manager",
+      "links": [],
+      "systems": [
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Financial Services and Markets Act 2000",
+        "Senior Managers & Certification Regime"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Draft or update policy",
+      "ownerPersonId": "person-compliance-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-compliance-manager",
+      "links": [],
+      "systems": [
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Financial Services and Markets Act 2000",
+        "Senior Managers & Certification Regime"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Review stakeholders",
+      "ownerPersonId": "person-compliance-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-compliance-manager",
+      "links": [],
+      "systems": [
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Financial Services and Markets Act 2000",
+        "Senior Managers & Certification Regime"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Approve policy",
+      "ownerPersonId": "person-compliance-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-compliance-manager",
+      "links": [],
+      "systems": [
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Financial Services and Markets Act 2000",
+        "Senior Managers & Certification Regime"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Publish and communicate",
+      "ownerPersonId": "person-compliance-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-compliance-manager",
+      "links": [],
+      "systems": [
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Financial Services and Markets Act 2000",
+        "Senior Managers & Certification Regime"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_6": {
+      "status": "Draft",
+      "description": "Schedule review",
+      "ownerPersonId": "person-compliance-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-compliance-manager",
+      "links": [],
+      "systems": [
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Financial Services and Markets Act 2000",
+        "Senior Managers & Certification Regime"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_InterestAccrualPayment",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Calculate daily interest",
+      "ownerPersonId": "person-savings-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-savings-ops-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "IRIS Financials"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)",
+        "FSCS Depositor Protection Requirements"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Validate rate and balance",
+      "ownerPersonId": "person-savings-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-savings-ops-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "IRIS Financials"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)",
+        "FSCS Depositor Protection Requirements"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Accrue interest",
+      "ownerPersonId": "person-savings-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-savings-ops-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "IRIS Financials"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)",
+        "FSCS Depositor Protection Requirements"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Post interest payment",
+      "ownerPersonId": "person-savings-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-savings-ops-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "IRIS Financials"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)",
+        "FSCS Depositor Protection Requirements"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Reconcile interest postings",
+      "ownerPersonId": "person-savings-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-savings-ops-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "IRIS Financials"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)",
+        "FSCS Depositor Protection Requirements"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_ForbearanceSupport",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Identify financial difficulty",
+      "ownerPersonId": "person-collections-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-collections-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Temenos Transact (T24)",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Credit Sourcebook (CONC)",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Assess affordability and vulnerability",
+      "ownerPersonId": "person-collections-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-collections-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Temenos Transact (T24)",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Credit Sourcebook (CONC)",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Consider forbearance options",
+      "ownerPersonId": "person-collections-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-collections-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Temenos Transact (T24)",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Credit Sourcebook (CONC)",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Approve arrangement",
+      "ownerPersonId": "person-collections-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-collections-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Temenos Transact (T24)",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Credit Sourcebook (CONC)",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Update T24 and CRM",
+      "ownerPersonId": "person-collections-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-collections-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Temenos Transact (T24)",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Credit Sourcebook (CONC)",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_6": {
+      "status": "Draft",
+      "description": "Review arrangement",
+      "ownerPersonId": "person-collections-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-collections-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Temenos Transact (T24)",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Credit Sourcebook (CONC)",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

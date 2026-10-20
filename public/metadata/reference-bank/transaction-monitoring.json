@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_TransactionMonitoring",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Ingest transactions",
+      "ownerPersonId": "person-fincrime-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-fincrime-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "AML Transaction Monitoring Platform"
+      ],
+      "controls": [
+        "AML transaction monitoring scenarios and alert review"
+      ],
+      "risks": [
+        "Money laundering or terrorist financing"
+      ],
+      "regulations": [
+        "Money Laundering Regulations 2017",
+        "Proceeds of Crime Act 2002 / SAR obligations"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Run monitoring scenarios",
+      "ownerPersonId": "person-fincrime-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-fincrime-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "AML Transaction Monitoring Platform"
+      ],
+      "controls": [
+        "AML transaction monitoring scenarios and alert review"
+      ],
+      "risks": [
+        "Money laundering or terrorist financing"
+      ],
+      "regulations": [
+        "Money Laundering Regulations 2017",
+        "Proceeds of Crime Act 2002 / SAR obligations"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Generate alerts",
+      "ownerPersonId": "person-fincrime-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-fincrime-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "AML Transaction Monitoring Platform"
+      ],
+      "controls": [
+        "AML transaction monitoring scenarios and alert review"
+      ],
+      "risks": [
+        "Money laundering or terrorist financing"
+      ],
+      "regulations": [
+        "Money Laundering Regulations 2017",
+        "Proceeds of Crime Act 2002 / SAR obligations"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Triage alerts",
+      "ownerPersonId": "person-fincrime-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-fincrime-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "AML Transaction Monitoring Platform"
+      ],
+      "controls": [
+        "AML transaction monitoring scenarios and alert review"
+      ],
+      "risks": [
+        "Money laundering or terrorist financing"
+      ],
+      "regulations": [
+        "Money Laundering Regulations 2017",
+        "Proceeds of Crime Act 2002 / SAR obligations"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Escalate suspicious activity",
+      "ownerPersonId": "person-fincrime-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-fincrime-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "AML Transaction Monitoring Platform"
+      ],
+      "controls": [
+        "AML transaction monitoring scenarios and alert review"
+      ],
+      "risks": [
+        "Money laundering or terrorist financing"
+      ],
+      "regulations": [
+        "Money Laundering Regulations 2017",
+        "Proceeds of Crime Act 2002 / SAR obligations"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

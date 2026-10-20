@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_OperationalResilience",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Identify important business services",
+      "ownerPersonId": "person-opres-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-opres-manager",
+      "links": [],
+      "systems": [
+        "ServiceNow",
+        "Microsoft SharePoint Online",
+        "Microsoft Power BI"
+      ],
+      "controls": [
+        "Impact tolerance testing for important business services"
+      ],
+      "risks": [],
+      "regulations": [
+        "FCA/PRA Operational Resilience Requirements"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Map resources and dependencies",
+      "ownerPersonId": "person-opres-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-opres-manager",
+      "links": [],
+      "systems": [
+        "ServiceNow",
+        "Microsoft SharePoint Online",
+        "Microsoft Power BI"
+      ],
+      "controls": [
+        "Impact tolerance testing for important business services"
+      ],
+      "risks": [],
+      "regulations": [
+        "FCA/PRA Operational Resilience Requirements"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Set impact tolerances",
+      "ownerPersonId": "person-opres-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-opres-manager",
+      "links": [],
+      "systems": [
+        "ServiceNow",
+        "Microsoft SharePoint Online",
+        "Microsoft Power BI"
+      ],
+      "controls": [
+        "Impact tolerance testing for important business services"
+      ],
+      "risks": [],
+      "regulations": [
+        "FCA/PRA Operational Resilience Requirements"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Test severe scenarios",
+      "ownerPersonId": "person-opres-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-opres-manager",
+      "links": [],
+      "systems": [
+        "ServiceNow",
+        "Microsoft SharePoint Online",
+        "Microsoft Power BI"
+      ],
+      "controls": [
+        "Impact tolerance testing for important business services"
+      ],
+      "risks": [],
+      "regulations": [
+        "FCA/PRA Operational Resilience Requirements"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Remediate vulnerabilities",
+      "ownerPersonId": "person-opres-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-opres-manager",
+      "links": [],
+      "systems": [
+        "ServiceNow",
+        "Microsoft SharePoint Online",
+        "Microsoft Power BI"
+      ],
+      "controls": [
+        "Impact tolerance testing for important business services"
+      ],
+      "risks": [],
+      "regulations": [
+        "FCA/PRA Operational Resilience Requirements"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_6": {
+      "status": "Draft",
+      "description": "Report resilience",
+      "ownerPersonId": "person-opres-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-opres-manager",
+      "links": [],
+      "systems": [
+        "ServiceNow",
+        "Microsoft SharePoint Online",
+        "Microsoft Power BI"
+      ],
+      "controls": [
+        "Impact tolerance testing for important business services"
+      ],
+      "risks": [],
+      "regulations": [
+        "FCA/PRA Operational Resilience Requirements"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

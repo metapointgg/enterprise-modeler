@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_SavingsAccountOpening",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Receive account request",
+      "ownerPersonId": "person-savings-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-savings-ops-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Temenos Transact (T24)",
+        "LSEG World-Check One",
+        "Digital Banking Portal"
+      ],
+      "controls": [
+        "CDD complete before relationship activation",
+        "Sanctions/PEP screening before onboarding and on review"
+      ],
+      "risks": [],
+      "regulations": [
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)",
+        "Money Laundering Regulations 2017",
+        "UK Sanctions & Anti-Money Laundering framework",
+        "FSCS Depositor Protection Requirements"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Confirm customer eligibility",
+      "ownerPersonId": "person-savings-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-savings-ops-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Temenos Transact (T24)",
+        "LSEG World-Check One",
+        "Digital Banking Portal"
+      ],
+      "controls": [
+        "CDD complete before relationship activation",
+        "Sanctions/PEP screening before onboarding and on review"
+      ],
+      "risks": [],
+      "regulations": [
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)",
+        "Money Laundering Regulations 2017",
+        "UK Sanctions & Anti-Money Laundering framework",
+        "FSCS Depositor Protection Requirements"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Run required screening",
+      "ownerPersonId": "person-savings-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-savings-ops-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Temenos Transact (T24)",
+        "LSEG World-Check One",
+        "Digital Banking Portal"
+      ],
+      "controls": [
+        "CDD complete before relationship activation",
+        "Sanctions/PEP screening before onboarding and on review"
+      ],
+      "risks": [],
+      "regulations": [
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)",
+        "Money Laundering Regulations 2017",
+        "UK Sanctions & Anti-Money Laundering framework",
+        "FSCS Depositor Protection Requirements"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Open savings account in T24",
+      "ownerPersonId": "person-savings-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-savings-ops-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Temenos Transact (T24)",
+        "LSEG World-Check One",
+        "Digital Banking Portal"
+      ],
+      "controls": [
+        "CDD complete before relationship activation",
+        "Sanctions/PEP screening before onboarding and on review"
+      ],
+      "risks": [],
+      "regulations": [
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)",
+        "Money Laundering Regulations 2017",
+        "UK Sanctions & Anti-Money Laundering framework",
+        "FSCS Depositor Protection Requirements"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Set digital access",
+      "ownerPersonId": "person-savings-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-savings-ops-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Temenos Transact (T24)",
+        "LSEG World-Check One",
+        "Digital Banking Portal"
+      ],
+      "controls": [
+        "CDD complete before relationship activation",
+        "Sanctions/PEP screening before onboarding and on review"
+      ],
+      "risks": [],
+      "regulations": [
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)",
+        "Money Laundering Regulations 2017",
+        "UK Sanctions & Anti-Money Laundering framework",
+        "FSCS Depositor Protection Requirements"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_6": {
+      "status": "Draft",
+      "description": "Confirm account details",
+      "ownerPersonId": "person-savings-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-savings-ops-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Temenos Transact (T24)",
+        "LSEG World-Check One",
+        "Digital Banking Portal"
+      ],
+      "controls": [
+        "CDD complete before relationship activation",
+        "Sanctions/PEP screening before onboarding and on review"
+      ],
+      "risks": [],
+      "regulations": [
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)",
+        "Money Laundering Regulations 2017",
+        "UK Sanctions & Anti-Money Laundering framework",
+        "FSCS Depositor Protection Requirements"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_SavingsWithdrawalClosure",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Receive withdrawal or closure request",
+      "ownerPersonId": "person-savings-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-savings-ops-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Payments Gateway",
+        "Digital Banking Portal"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Payment Services Regulations 2017",
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Authenticate and validate request",
+      "ownerPersonId": "person-savings-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-savings-ops-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Payments Gateway",
+        "Digital Banking Portal"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Payment Services Regulations 2017",
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Check restrictions and notice",
+      "ownerPersonId": "person-savings-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-savings-ops-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Payments Gateway",
+        "Digital Banking Portal"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Payment Services Regulations 2017",
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Send payment",
+      "ownerPersonId": "person-savings-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-savings-ops-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Payments Gateway",
+        "Digital Banking Portal"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Payment Services Regulations 2017",
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Close account if requested",
+      "ownerPersonId": "person-savings-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-savings-ops-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Payments Gateway",
+        "Digital Banking Portal"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Payment Services Regulations 2017",
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_6": {
+      "status": "Draft",
+      "description": "Issue confirmation",
+      "ownerPersonId": "person-savings-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-savings-ops-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Payments Gateway",
+        "Digital Banking Portal"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Payment Services Regulations 2017",
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

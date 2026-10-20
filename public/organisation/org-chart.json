@@ -2,71 +2,1419 @@
   "schemaVersion": 2,
   "departments": [
     {
-      "id": "dept-operations",
-      "name": "Operations"
+      "id": "dept-executive",
+      "name": "Executive & Board"
+    },
+    {
+      "id": "dept-customer-operations",
+      "name": "Customer Operations"
+    },
+    {
+      "id": "dept-savings",
+      "name": "Savings"
+    },
+    {
+      "id": "dept-lending",
+      "name": "Lending"
+    },
+    {
+      "id": "dept-fincrime",
+      "name": "Financial Crime & Fraud"
+    },
+    {
+      "id": "dept-finance",
+      "name": "Finance & Treasury"
+    },
+    {
+      "id": "dept-risk",
+      "name": "Risk & Compliance"
+    },
+    {
+      "id": "dept-product",
+      "name": "Product & Partnerships"
     },
     {
       "id": "dept-technology",
-      "name": "Technology"
+      "name": "Technology & Security"
     },
     {
-      "id": "dept-governance",
-      "name": "Governance"
+      "id": "dept-data",
+      "name": "Data & MI"
+    },
+    {
+      "id": "dept-people",
+      "name": "People & Corporate Services"
+    },
+    {
+      "id": "dept-audit",
+      "name": "Internal Audit"
     }
   ],
   "teams": [
     {
-      "id": "team-operations",
-      "name": "Operations Team",
-      "departmentId": "dept-operations"
+      "id": "team-executive",
+      "name": "Executive Leadership",
+      "departmentId": "dept-executive"
+    },
+    {
+      "id": "team-onboarding",
+      "name": "Onboarding & KYC",
+      "departmentId": "dept-customer-operations"
+    },
+    {
+      "id": "team-customer-service",
+      "name": "Customer Service",
+      "departmentId": "dept-customer-operations"
+    },
+    {
+      "id": "team-savings-ops",
+      "name": "Savings Operations",
+      "departmentId": "dept-savings"
+    },
+    {
+      "id": "team-credit",
+      "name": "Credit & Underwriting",
+      "departmentId": "dept-lending"
+    },
+    {
+      "id": "team-loan-ops",
+      "name": "Loan Operations",
+      "departmentId": "dept-lending"
+    },
+    {
+      "id": "team-collections",
+      "name": "Collections & Recoveries",
+      "departmentId": "dept-lending"
+    },
+    {
+      "id": "team-fincrime",
+      "name": "AML, Sanctions & Fraud",
+      "departmentId": "dept-fincrime"
+    },
+    {
+      "id": "team-finance",
+      "name": "Financial Control",
+      "departmentId": "dept-finance"
+    },
+    {
+      "id": "team-treasury",
+      "name": "Treasury & ALM",
+      "departmentId": "dept-finance"
+    },
+    {
+      "id": "team-compliance",
+      "name": "Compliance",
+      "departmentId": "dept-risk"
+    },
+    {
+      "id": "team-risk",
+      "name": "Enterprise Risk",
+      "departmentId": "dept-risk"
+    },
+    {
+      "id": "team-product",
+      "name": "Product Management",
+      "departmentId": "dept-product"
+    },
+    {
+      "id": "team-vendor",
+      "name": "Third-Party Management",
+      "departmentId": "dept-product"
+    },
+    {
+      "id": "team-it-ops",
+      "name": "IT Operations",
+      "departmentId": "dept-technology"
+    },
+    {
+      "id": "team-security",
+      "name": "Cyber Security",
+      "departmentId": "dept-technology"
+    },
+    {
+      "id": "team-data",
+      "name": "Data & MI",
+      "departmentId": "dept-data"
+    },
+    {
+      "id": "team-people",
+      "name": "People",
+      "departmentId": "dept-people"
+    },
+    {
+      "id": "team-procurement",
+      "name": "Procurement & Corporate Services",
+      "departmentId": "dept-people"
+    },
+    {
+      "id": "team-audit",
+      "name": "Internal Audit",
+      "departmentId": "dept-audit"
     }
   ],
   "roles": [
     {
-      "id": "role-process-owner",
-      "name": "Process Owner",
-      "departmentId": "dept-operations"
+      "id": "role-ceo",
+      "name": "Chief Executive Officer",
+      "departmentId": "dept-executive"
     },
     {
-      "id": "role-process-analyst",
-      "name": "Process Analyst",
-      "departmentId": "dept-operations"
+      "id": "role-coo",
+      "name": "Chief Operating Officer",
+      "departmentId": "dept-executive"
+    },
+    {
+      "id": "role-cfo",
+      "name": "Chief Financial Officer",
+      "departmentId": "dept-executive"
+    },
+    {
+      "id": "role-cro",
+      "name": "Chief Risk Officer",
+      "departmentId": "dept-executive"
+    },
+    {
+      "id": "role-cto",
+      "name": "Chief Technology Officer",
+      "departmentId": "dept-executive"
+    },
+    {
+      "id": "role-head-customer-ops",
+      "name": "Head of Customer Operations",
+      "departmentId": "dept-customer-operations"
+    },
+    {
+      "id": "role-onboarding-manager",
+      "name": "Onboarding & KYC Manager",
+      "departmentId": "dept-customer-operations"
+    },
+    {
+      "id": "role-kyc-analyst",
+      "name": "KYC Analyst",
+      "departmentId": "dept-customer-operations"
+    },
+    {
+      "id": "role-customer-service-manager",
+      "name": "Customer Service Manager",
+      "departmentId": "dept-customer-operations"
+    },
+    {
+      "id": "role-customer-adviser",
+      "name": "Customer Service Adviser",
+      "departmentId": "dept-customer-operations"
+    },
+    {
+      "id": "role-head-savings",
+      "name": "Head of Savings",
+      "departmentId": "dept-savings"
+    },
+    {
+      "id": "role-savings-ops-manager",
+      "name": "Savings Operations Manager",
+      "departmentId": "dept-savings"
+    },
+    {
+      "id": "role-savings-analyst",
+      "name": "Savings Operations Analyst",
+      "departmentId": "dept-savings"
+    },
+    {
+      "id": "role-head-lending",
+      "name": "Head of Lending",
+      "departmentId": "dept-lending"
+    },
+    {
+      "id": "role-credit-manager",
+      "name": "Credit Manager",
+      "departmentId": "dept-lending"
+    },
+    {
+      "id": "role-underwriter",
+      "name": "Credit Underwriter",
+      "departmentId": "dept-lending"
+    },
+    {
+      "id": "role-loan-ops-manager",
+      "name": "Loan Operations Manager",
+      "departmentId": "dept-lending"
+    },
+    {
+      "id": "role-loan-ops-officer",
+      "name": "Loan Operations Officer",
+      "departmentId": "dept-lending"
+    },
+    {
+      "id": "role-collections-manager",
+      "name": "Collections Manager",
+      "departmentId": "dept-lending"
+    },
+    {
+      "id": "role-collections-officer",
+      "name": "Collections Officer",
+      "departmentId": "dept-lending"
+    },
+    {
+      "id": "role-mlro",
+      "name": "Money Laundering Reporting Officer",
+      "departmentId": "dept-fincrime"
+    },
+    {
+      "id": "role-fincrime-manager",
+      "name": "Financial Crime Manager",
+      "departmentId": "dept-fincrime"
+    },
+    {
+      "id": "role-fincrime-analyst",
+      "name": "Financial Crime Analyst",
+      "departmentId": "dept-fincrime"
+    },
+    {
+      "id": "role-fraud-analyst",
+      "name": "Fraud Analyst",
+      "departmentId": "dept-fincrime"
+    },
+    {
+      "id": "role-finance-manager",
+      "name": "Finance Manager",
+      "departmentId": "dept-finance"
+    },
+    {
+      "id": "role-financial-accountant",
+      "name": "Financial Accountant",
+      "departmentId": "dept-finance"
+    },
+    {
+      "id": "role-reconciliation-analyst",
+      "name": "Reconciliation Analyst",
+      "departmentId": "dept-finance"
+    },
+    {
+      "id": "role-treasury-manager",
+      "name": "Treasury & ALM Manager",
+      "departmentId": "dept-finance"
+    },
+    {
+      "id": "role-compliance-manager",
+      "name": "Compliance Manager",
+      "departmentId": "dept-risk"
+    },
+    {
+      "id": "role-risk-manager",
+      "name": "Enterprise Risk Manager",
+      "departmentId": "dept-risk"
+    },
+    {
+      "id": "role-dpo",
+      "name": "Data Protection Officer",
+      "departmentId": "dept-risk"
+    },
+    {
+      "id": "role-opres-manager",
+      "name": "Operational Resilience Manager",
+      "departmentId": "dept-risk"
+    },
+    {
+      "id": "role-head-product",
+      "name": "Head of Product & Partnerships",
+      "departmentId": "dept-product"
+    },
+    {
+      "id": "role-product-manager",
+      "name": "Product Manager",
+      "departmentId": "dept-product"
+    },
+    {
+      "id": "role-vendor-manager",
+      "name": "Third-Party & Vendor Manager",
+      "departmentId": "dept-product"
+    },
+    {
+      "id": "role-it-ops-manager",
+      "name": "IT Operations Manager",
+      "departmentId": "dept-technology"
+    },
+    {
+      "id": "role-app-support",
+      "name": "Application Support Analyst",
+      "departmentId": "dept-technology"
+    },
+    {
+      "id": "role-infrastructure-engineer",
+      "name": "Infrastructure Engineer",
+      "departmentId": "dept-technology"
+    },
+    {
+      "id": "role-security-manager",
+      "name": "Information Security Manager",
+      "departmentId": "dept-technology"
+    },
+    {
+      "id": "role-security-analyst",
+      "name": "Security Analyst",
+      "departmentId": "dept-technology"
+    },
+    {
+      "id": "role-data-manager",
+      "name": "Head of Data & MI",
+      "departmentId": "dept-data"
+    },
+    {
+      "id": "role-data-analyst",
+      "name": "Data & MI Analyst",
+      "departmentId": "dept-data"
+    },
+    {
+      "id": "role-hr-manager",
+      "name": "People & HR Manager",
+      "departmentId": "dept-people"
+    },
+    {
+      "id": "role-procurement-manager",
+      "name": "Procurement & Corporate Services Manager",
+      "departmentId": "dept-people"
+    },
+    {
+      "id": "role-head-internal-audit",
+      "name": "Head of Internal Audit",
+      "departmentId": "dept-audit"
     }
   ],
   "positions": [
     {
-      "id": "pos-process-owner",
-      "name": "Process Owner",
-      "roleId": "role-process-owner",
-      "departmentId": "dept-operations",
+      "id": "pos-ceo",
+      "name": "Chief Executive Officer",
+      "roleId": "role-ceo",
+      "departmentId": "dept-executive",
       "teamIds": [
-        "team-operations"
+        "team-executive"
       ],
       "active": true,
-      "notes": "Neutral example position."
+      "notes": "Illustrative simple-bank reference organisation."
     },
     {
-      "id": "pos-process-analyst",
-      "name": "Process Analyst",
-      "roleId": "role-process-analyst",
-      "departmentId": "dept-operations",
-      "managerPositionId": "pos-process-owner",
+      "id": "pos-coo",
+      "name": "Chief Operating Officer",
+      "roleId": "role-coo",
+      "departmentId": "dept-executive",
+      "managerPositionId": "pos-ceo",
       "teamIds": [
-        "team-operations"
+        "team-executive"
       ],
       "active": true,
-      "notes": "Neutral example position."
+      "notes": "Illustrative simple-bank reference organisation."
+    },
+    {
+      "id": "pos-cfo",
+      "name": "Chief Financial Officer",
+      "roleId": "role-cfo",
+      "departmentId": "dept-executive",
+      "managerPositionId": "pos-ceo",
+      "teamIds": [
+        "team-executive"
+      ],
+      "active": true,
+      "notes": "Illustrative simple-bank reference organisation."
+    },
+    {
+      "id": "pos-cro",
+      "name": "Chief Risk Officer",
+      "roleId": "role-cro",
+      "departmentId": "dept-executive",
+      "managerPositionId": "pos-ceo",
+      "teamIds": [
+        "team-executive"
+      ],
+      "active": true,
+      "notes": "Illustrative simple-bank reference organisation."
+    },
+    {
+      "id": "pos-cto",
+      "name": "Chief Technology Officer",
+      "roleId": "role-cto",
+      "departmentId": "dept-executive",
+      "managerPositionId": "pos-ceo",
+      "teamIds": [
+        "team-executive"
+      ],
+      "active": true,
+      "notes": "Illustrative simple-bank reference organisation."
+    },
+    {
+      "id": "pos-head-customer-ops",
+      "name": "Head of Customer Operations",
+      "roleId": "role-head-customer-ops",
+      "departmentId": "dept-customer-operations",
+      "managerPositionId": "pos-coo",
+      "teamIds": [
+        "team-customer-service"
+      ],
+      "active": true,
+      "notes": "Illustrative simple-bank reference organisation."
+    },
+    {
+      "id": "pos-onboarding-manager",
+      "name": "Onboarding & KYC Manager",
+      "roleId": "role-onboarding-manager",
+      "departmentId": "dept-customer-operations",
+      "managerPositionId": "pos-head-customer-ops",
+      "teamIds": [
+        "team-onboarding"
+      ],
+      "active": true,
+      "notes": "Illustrative simple-bank reference organisation."
+    },
+    {
+      "id": "pos-kyc-analyst",
+      "name": "KYC Analyst",
+      "roleId": "role-kyc-analyst",
+      "departmentId": "dept-customer-operations",
+      "managerPositionId": "pos-onboarding-manager",
+      "teamIds": [
+        "team-onboarding"
+      ],
+      "active": true,
+      "notes": "Illustrative simple-bank reference organisation."
+    },
+    {
+      "id": "pos-customer-service-manager",
+      "name": "Customer Service Manager",
+      "roleId": "role-customer-service-manager",
+      "departmentId": "dept-customer-operations",
+      "managerPositionId": "pos-head-customer-ops",
+      "teamIds": [
+        "team-customer-service"
+      ],
+      "active": true,
+      "notes": "Illustrative simple-bank reference organisation."
+    },
+    {
+      "id": "pos-customer-adviser",
+      "name": "Customer Service Adviser",
+      "roleId": "role-customer-adviser",
+      "departmentId": "dept-customer-operations",
+      "managerPositionId": "pos-customer-service-manager",
+      "teamIds": [
+        "team-customer-service"
+      ],
+      "active": true,
+      "notes": "Illustrative simple-bank reference organisation."
+    },
+    {
+      "id": "pos-head-savings",
+      "name": "Head of Savings",
+      "roleId": "role-head-savings",
+      "departmentId": "dept-savings",
+      "managerPositionId": "pos-coo",
+      "teamIds": [
+        "team-savings-ops"
+      ],
+      "active": true,
+      "notes": "Illustrative simple-bank reference organisation."
+    },
+    {
+      "id": "pos-savings-ops-manager",
+      "name": "Savings Operations Manager",
+      "roleId": "role-savings-ops-manager",
+      "departmentId": "dept-savings",
+      "managerPositionId": "pos-head-savings",
+      "teamIds": [
+        "team-savings-ops"
+      ],
+      "active": true,
+      "notes": "Illustrative simple-bank reference organisation."
+    },
+    {
+      "id": "pos-savings-analyst",
+      "name": "Savings Operations Analyst",
+      "roleId": "role-savings-analyst",
+      "departmentId": "dept-savings",
+      "managerPositionId": "pos-savings-ops-manager",
+      "teamIds": [
+        "team-savings-ops"
+      ],
+      "active": true,
+      "notes": "Illustrative simple-bank reference organisation."
+    },
+    {
+      "id": "pos-head-lending",
+      "name": "Head of Lending",
+      "roleId": "role-head-lending",
+      "departmentId": "dept-lending",
+      "managerPositionId": "pos-coo",
+      "teamIds": [
+        "team-credit"
+      ],
+      "active": true,
+      "notes": "Illustrative simple-bank reference organisation."
+    },
+    {
+      "id": "pos-credit-manager",
+      "name": "Credit Manager",
+      "roleId": "role-credit-manager",
+      "departmentId": "dept-lending",
+      "managerPositionId": "pos-head-lending",
+      "teamIds": [
+        "team-credit"
+      ],
+      "active": true,
+      "notes": "Illustrative simple-bank reference organisation."
+    },
+    {
+      "id": "pos-underwriter",
+      "name": "Credit Underwriter",
+      "roleId": "role-underwriter",
+      "departmentId": "dept-lending",
+      "managerPositionId": "pos-credit-manager",
+      "teamIds": [
+        "team-credit"
+      ],
+      "active": true,
+      "notes": "Illustrative simple-bank reference organisation."
+    },
+    {
+      "id": "pos-loan-ops-manager",
+      "name": "Loan Operations Manager",
+      "roleId": "role-loan-ops-manager",
+      "departmentId": "dept-lending",
+      "managerPositionId": "pos-head-lending",
+      "teamIds": [
+        "team-loan-ops"
+      ],
+      "active": true,
+      "notes": "Illustrative simple-bank reference organisation."
+    },
+    {
+      "id": "pos-loan-ops-officer",
+      "name": "Loan Operations Officer",
+      "roleId": "role-loan-ops-officer",
+      "departmentId": "dept-lending",
+      "managerPositionId": "pos-loan-ops-manager",
+      "teamIds": [
+        "team-loan-ops"
+      ],
+      "active": true,
+      "notes": "Illustrative simple-bank reference organisation."
+    },
+    {
+      "id": "pos-collections-manager",
+      "name": "Collections Manager",
+      "roleId": "role-collections-manager",
+      "departmentId": "dept-lending",
+      "managerPositionId": "pos-head-lending",
+      "teamIds": [
+        "team-collections"
+      ],
+      "active": true,
+      "notes": "Illustrative simple-bank reference organisation."
+    },
+    {
+      "id": "pos-collections-officer",
+      "name": "Collections Officer",
+      "roleId": "role-collections-officer",
+      "departmentId": "dept-lending",
+      "managerPositionId": "pos-collections-manager",
+      "teamIds": [
+        "team-collections"
+      ],
+      "active": true,
+      "notes": "Illustrative simple-bank reference organisation."
+    },
+    {
+      "id": "pos-mlro",
+      "name": "Money Laundering Reporting Officer",
+      "roleId": "role-mlro",
+      "departmentId": "dept-fincrime",
+      "managerPositionId": "pos-cro",
+      "teamIds": [
+        "team-fincrime"
+      ],
+      "active": true,
+      "notes": "Illustrative simple-bank reference organisation."
+    },
+    {
+      "id": "pos-fincrime-manager",
+      "name": "Financial Crime Manager",
+      "roleId": "role-fincrime-manager",
+      "departmentId": "dept-fincrime",
+      "managerPositionId": "pos-mlro",
+      "teamIds": [
+        "team-fincrime"
+      ],
+      "active": true,
+      "notes": "Illustrative simple-bank reference organisation."
+    },
+    {
+      "id": "pos-fincrime-analyst",
+      "name": "Financial Crime Analyst",
+      "roleId": "role-fincrime-analyst",
+      "departmentId": "dept-fincrime",
+      "managerPositionId": "pos-fincrime-manager",
+      "teamIds": [
+        "team-fincrime"
+      ],
+      "active": true,
+      "notes": "Illustrative simple-bank reference organisation."
+    },
+    {
+      "id": "pos-fraud-analyst",
+      "name": "Fraud Analyst",
+      "roleId": "role-fraud-analyst",
+      "departmentId": "dept-fincrime",
+      "managerPositionId": "pos-fincrime-manager",
+      "teamIds": [
+        "team-fincrime"
+      ],
+      "active": true,
+      "notes": "Illustrative simple-bank reference organisation."
+    },
+    {
+      "id": "pos-finance-manager",
+      "name": "Finance Manager",
+      "roleId": "role-finance-manager",
+      "departmentId": "dept-finance",
+      "managerPositionId": "pos-cfo",
+      "teamIds": [
+        "team-finance"
+      ],
+      "active": true,
+      "notes": "Illustrative simple-bank reference organisation."
+    },
+    {
+      "id": "pos-financial-accountant",
+      "name": "Financial Accountant",
+      "roleId": "role-financial-accountant",
+      "departmentId": "dept-finance",
+      "managerPositionId": "pos-finance-manager",
+      "teamIds": [
+        "team-finance"
+      ],
+      "active": true,
+      "notes": "Illustrative simple-bank reference organisation."
+    },
+    {
+      "id": "pos-reconciliation-analyst",
+      "name": "Reconciliation Analyst",
+      "roleId": "role-reconciliation-analyst",
+      "departmentId": "dept-finance",
+      "managerPositionId": "pos-finance-manager",
+      "teamIds": [
+        "team-finance"
+      ],
+      "active": true,
+      "notes": "Illustrative simple-bank reference organisation."
+    },
+    {
+      "id": "pos-treasury-manager",
+      "name": "Treasury & ALM Manager",
+      "roleId": "role-treasury-manager",
+      "departmentId": "dept-finance",
+      "managerPositionId": "pos-cfo",
+      "teamIds": [
+        "team-treasury"
+      ],
+      "active": true,
+      "notes": "Illustrative simple-bank reference organisation."
+    },
+    {
+      "id": "pos-compliance-manager",
+      "name": "Compliance Manager",
+      "roleId": "role-compliance-manager",
+      "departmentId": "dept-risk",
+      "managerPositionId": "pos-cro",
+      "teamIds": [
+        "team-compliance"
+      ],
+      "active": true,
+      "notes": "Illustrative simple-bank reference organisation."
+    },
+    {
+      "id": "pos-risk-manager",
+      "name": "Enterprise Risk Manager",
+      "roleId": "role-risk-manager",
+      "departmentId": "dept-risk",
+      "managerPositionId": "pos-cro",
+      "teamIds": [
+        "team-risk"
+      ],
+      "active": true,
+      "notes": "Illustrative simple-bank reference organisation."
+    },
+    {
+      "id": "pos-dpo",
+      "name": "Data Protection Officer",
+      "roleId": "role-dpo",
+      "departmentId": "dept-risk",
+      "managerPositionId": "pos-cro",
+      "teamIds": [
+        "team-compliance"
+      ],
+      "active": true,
+      "notes": "Illustrative simple-bank reference organisation."
+    },
+    {
+      "id": "pos-opres-manager",
+      "name": "Operational Resilience Manager",
+      "roleId": "role-opres-manager",
+      "departmentId": "dept-risk",
+      "managerPositionId": "pos-cro",
+      "teamIds": [
+        "team-risk"
+      ],
+      "active": true,
+      "notes": "Illustrative simple-bank reference organisation."
+    },
+    {
+      "id": "pos-head-product",
+      "name": "Head of Product & Partnerships",
+      "roleId": "role-head-product",
+      "departmentId": "dept-product",
+      "managerPositionId": "pos-coo",
+      "teamIds": [
+        "team-product"
+      ],
+      "active": true,
+      "notes": "Illustrative simple-bank reference organisation."
+    },
+    {
+      "id": "pos-product-manager",
+      "name": "Product Manager",
+      "roleId": "role-product-manager",
+      "departmentId": "dept-product",
+      "managerPositionId": "pos-head-product",
+      "teamIds": [
+        "team-product"
+      ],
+      "active": true,
+      "notes": "Illustrative simple-bank reference organisation."
+    },
+    {
+      "id": "pos-vendor-manager",
+      "name": "Third-Party & Vendor Manager",
+      "roleId": "role-vendor-manager",
+      "departmentId": "dept-product",
+      "managerPositionId": "pos-head-product",
+      "teamIds": [
+        "team-vendor"
+      ],
+      "active": true,
+      "notes": "Illustrative simple-bank reference organisation."
+    },
+    {
+      "id": "pos-it-ops-manager",
+      "name": "IT Operations Manager",
+      "roleId": "role-it-ops-manager",
+      "departmentId": "dept-technology",
+      "managerPositionId": "pos-cto",
+      "teamIds": [
+        "team-it-ops"
+      ],
+      "active": true,
+      "notes": "Illustrative simple-bank reference organisation."
+    },
+    {
+      "id": "pos-app-support",
+      "name": "Application Support Analyst",
+      "roleId": "role-app-support",
+      "departmentId": "dept-technology",
+      "managerPositionId": "pos-it-ops-manager",
+      "teamIds": [
+        "team-it-ops"
+      ],
+      "active": true,
+      "notes": "Illustrative simple-bank reference organisation."
+    },
+    {
+      "id": "pos-infrastructure-engineer",
+      "name": "Infrastructure Engineer",
+      "roleId": "role-infrastructure-engineer",
+      "departmentId": "dept-technology",
+      "managerPositionId": "pos-it-ops-manager",
+      "teamIds": [
+        "team-it-ops"
+      ],
+      "active": true,
+      "notes": "Illustrative simple-bank reference organisation."
+    },
+    {
+      "id": "pos-security-manager",
+      "name": "Information Security Manager",
+      "roleId": "role-security-manager",
+      "departmentId": "dept-technology",
+      "managerPositionId": "pos-cto",
+      "teamIds": [
+        "team-security"
+      ],
+      "active": true,
+      "notes": "Illustrative simple-bank reference organisation."
+    },
+    {
+      "id": "pos-security-analyst",
+      "name": "Security Analyst",
+      "roleId": "role-security-analyst",
+      "departmentId": "dept-technology",
+      "managerPositionId": "pos-security-manager",
+      "teamIds": [
+        "team-security"
+      ],
+      "active": true,
+      "notes": "Illustrative simple-bank reference organisation."
+    },
+    {
+      "id": "pos-data-manager",
+      "name": "Head of Data & MI",
+      "roleId": "role-data-manager",
+      "departmentId": "dept-data",
+      "managerPositionId": "pos-cfo",
+      "teamIds": [
+        "team-data"
+      ],
+      "active": true,
+      "notes": "Illustrative simple-bank reference organisation."
+    },
+    {
+      "id": "pos-data-analyst",
+      "name": "Data & MI Analyst",
+      "roleId": "role-data-analyst",
+      "departmentId": "dept-data",
+      "managerPositionId": "pos-data-manager",
+      "teamIds": [
+        "team-data"
+      ],
+      "active": true,
+      "notes": "Illustrative simple-bank reference organisation."
+    },
+    {
+      "id": "pos-hr-manager",
+      "name": "People & HR Manager",
+      "roleId": "role-hr-manager",
+      "departmentId": "dept-people",
+      "managerPositionId": "pos-coo",
+      "teamIds": [
+        "team-people"
+      ],
+      "active": true,
+      "notes": "Illustrative simple-bank reference organisation."
+    },
+    {
+      "id": "pos-procurement-manager",
+      "name": "Procurement & Corporate Services Manager",
+      "roleId": "role-procurement-manager",
+      "departmentId": "dept-people",
+      "managerPositionId": "pos-coo",
+      "teamIds": [
+        "team-procurement"
+      ],
+      "active": true,
+      "notes": "Illustrative simple-bank reference organisation."
+    },
+    {
+      "id": "pos-head-internal-audit",
+      "name": "Head of Internal Audit",
+      "roleId": "role-head-internal-audit",
+      "departmentId": "dept-audit",
+      "managerPositionId": "pos-ceo",
+      "teamIds": [
+        "team-audit"
+      ],
+      "active": true,
+      "notes": "Illustrative simple-bank reference organisation."
     }
   ],
   "people": [
     {
-      "id": "person-example-owner",
-      "name": "Example Process Owner",
+      "id": "person-ceo",
+      "name": "Emma Carter",
       "email": "",
-      "positionId": "pos-process-owner",
-      "teamIds": [],
+      "positionId": "pos-ceo",
+      "teamIds": [
+        "team-executive"
+      ],
       "active": true,
-      "notes": "Replace with client data."
+      "notes": "Sample person occupying the Chief Executive Officer position."
+    },
+    {
+      "id": "person-coo",
+      "name": "Daniel Reed",
+      "email": "",
+      "positionId": "pos-coo",
+      "teamIds": [
+        "team-executive"
+      ],
+      "active": true,
+      "notes": "Sample person occupying the Chief Operating Officer position."
+    },
+    {
+      "id": "person-cfo",
+      "name": "Priya Shah",
+      "email": "",
+      "positionId": "pos-cfo",
+      "teamIds": [
+        "team-executive"
+      ],
+      "active": true,
+      "notes": "Sample person occupying the Chief Financial Officer position."
+    },
+    {
+      "id": "person-cro",
+      "name": "Thomas Greene",
+      "email": "",
+      "positionId": "pos-cro",
+      "teamIds": [
+        "team-executive"
+      ],
+      "active": true,
+      "notes": "Sample person occupying the Chief Risk Officer position."
+    },
+    {
+      "id": "person-cto",
+      "name": "Sophie Martin",
+      "email": "",
+      "positionId": "pos-cto",
+      "teamIds": [
+        "team-executive"
+      ],
+      "active": true,
+      "notes": "Sample person occupying the Chief Technology Officer position."
+    },
+    {
+      "id": "person-head-customer-ops",
+      "name": "Rachel Lewis",
+      "email": "",
+      "positionId": "pos-head-customer-ops",
+      "teamIds": [
+        "team-customer-service"
+      ],
+      "active": true,
+      "notes": "Sample person occupying the Head of Customer Operations position."
+    },
+    {
+      "id": "person-onboarding-manager",
+      "name": "James Walker",
+      "email": "",
+      "positionId": "pos-onboarding-manager",
+      "teamIds": [
+        "team-onboarding"
+      ],
+      "active": true,
+      "notes": "Sample person occupying the Onboarding & KYC Manager position."
+    },
+    {
+      "id": "person-kyc-analyst",
+      "name": "Aisha Khan",
+      "email": "",
+      "positionId": "pos-kyc-analyst",
+      "teamIds": [
+        "team-onboarding"
+      ],
+      "active": true,
+      "notes": "Sample person occupying the KYC Analyst position."
+    },
+    {
+      "id": "person-customer-service-manager",
+      "name": "Olivia Bennett",
+      "email": "",
+      "positionId": "pos-customer-service-manager",
+      "teamIds": [
+        "team-customer-service"
+      ],
+      "active": true,
+      "notes": "Sample person occupying the Customer Service Manager position."
+    },
+    {
+      "id": "person-customer-adviser",
+      "name": "Noah Wilson",
+      "email": "",
+      "positionId": "pos-customer-adviser",
+      "teamIds": [
+        "team-customer-service"
+      ],
+      "active": true,
+      "notes": "Sample person occupying the Customer Service Adviser position."
+    },
+    {
+      "id": "person-head-savings",
+      "name": "Grace Hughes",
+      "email": "",
+      "positionId": "pos-head-savings",
+      "teamIds": [
+        "team-savings-ops"
+      ],
+      "active": true,
+      "notes": "Sample person occupying the Head of Savings position."
+    },
+    {
+      "id": "person-savings-ops-manager",
+      "name": "Harry Evans",
+      "email": "",
+      "positionId": "pos-savings-ops-manager",
+      "teamIds": [
+        "team-savings-ops"
+      ],
+      "active": true,
+      "notes": "Sample person occupying the Savings Operations Manager position."
+    },
+    {
+      "id": "person-savings-analyst",
+      "name": "Mia Roberts",
+      "email": "",
+      "positionId": "pos-savings-analyst",
+      "teamIds": [
+        "team-savings-ops"
+      ],
+      "active": true,
+      "notes": "Sample person occupying the Savings Operations Analyst position."
+    },
+    {
+      "id": "person-head-lending",
+      "name": "Ethan Clarke",
+      "email": "",
+      "positionId": "pos-head-lending",
+      "teamIds": [
+        "team-credit"
+      ],
+      "active": true,
+      "notes": "Sample person occupying the Head of Lending position."
+    },
+    {
+      "id": "person-credit-manager",
+      "name": "Charlotte Wright",
+      "email": "",
+      "positionId": "pos-credit-manager",
+      "teamIds": [
+        "team-credit"
+      ],
+      "active": true,
+      "notes": "Sample person occupying the Credit Manager position."
+    },
+    {
+      "id": "person-underwriter",
+      "name": "Leo Turner",
+      "email": "",
+      "positionId": "pos-underwriter",
+      "teamIds": [
+        "team-credit"
+      ],
+      "active": true,
+      "notes": "Sample person occupying the Credit Underwriter position."
+    },
+    {
+      "id": "person-loan-ops-manager",
+      "name": "Amelia Scott",
+      "email": "",
+      "positionId": "pos-loan-ops-manager",
+      "teamIds": [
+        "team-loan-ops"
+      ],
+      "active": true,
+      "notes": "Sample person occupying the Loan Operations Manager position."
+    },
+    {
+      "id": "person-loan-ops-officer",
+      "name": "Oscar Hill",
+      "email": "",
+      "positionId": "pos-loan-ops-officer",
+      "teamIds": [
+        "team-loan-ops"
+      ],
+      "active": true,
+      "notes": "Sample person occupying the Loan Operations Officer position."
+    },
+    {
+      "id": "person-collections-manager",
+      "name": "Isla Green",
+      "email": "",
+      "positionId": "pos-collections-manager",
+      "teamIds": [
+        "team-collections"
+      ],
+      "active": true,
+      "notes": "Sample person occupying the Collections Manager position."
+    },
+    {
+      "id": "person-collections-officer",
+      "name": "George Adams",
+      "email": "",
+      "positionId": "pos-collections-officer",
+      "teamIds": [
+        "team-collections"
+      ],
+      "active": true,
+      "notes": "Sample person occupying the Collections Officer position."
+    },
+    {
+      "id": "person-mlro",
+      "name": "Freya Baker",
+      "email": "",
+      "positionId": "pos-mlro",
+      "teamIds": [
+        "team-fincrime"
+      ],
+      "active": true,
+      "notes": "Sample person occupying the Money Laundering Reporting Officer position."
+    },
+    {
+      "id": "person-fincrime-manager",
+      "name": "Arthur Collins",
+      "email": "",
+      "positionId": "pos-fincrime-manager",
+      "teamIds": [
+        "team-fincrime"
+      ],
+      "active": true,
+      "notes": "Sample person occupying the Financial Crime Manager position."
+    },
+    {
+      "id": "person-fincrime-analyst",
+      "name": "Lily Morris",
+      "email": "",
+      "positionId": "pos-fincrime-analyst",
+      "teamIds": [
+        "team-fincrime"
+      ],
+      "active": true,
+      "notes": "Sample person occupying the Financial Crime Analyst position."
+    },
+    {
+      "id": "person-fraud-analyst",
+      "name": "Henry Ward",
+      "email": "",
+      "positionId": "pos-fraud-analyst",
+      "teamIds": [
+        "team-fincrime"
+      ],
+      "active": true,
+      "notes": "Sample person occupying the Fraud Analyst position."
+    },
+    {
+      "id": "person-finance-manager",
+      "name": "Emily Cooper",
+      "email": "",
+      "positionId": "pos-finance-manager",
+      "teamIds": [
+        "team-finance"
+      ],
+      "active": true,
+      "notes": "Sample person occupying the Finance Manager position."
+    },
+    {
+      "id": "person-financial-accountant",
+      "name": "Jack Bailey",
+      "email": "",
+      "positionId": "pos-financial-accountant",
+      "teamIds": [
+        "team-finance"
+      ],
+      "active": true,
+      "notes": "Sample person occupying the Financial Accountant position."
+    },
+    {
+      "id": "person-reconciliation-analyst",
+      "name": "Ella Richardson",
+      "email": "",
+      "positionId": "pos-reconciliation-analyst",
+      "teamIds": [
+        "team-finance"
+      ],
+      "active": true,
+      "notes": "Sample person occupying the Reconciliation Analyst position."
+    },
+    {
+      "id": "person-treasury-manager",
+      "name": "William Cox",
+      "email": "",
+      "positionId": "pos-treasury-manager",
+      "teamIds": [
+        "team-treasury"
+      ],
+      "active": true,
+      "notes": "Sample person occupying the Treasury & ALM Manager position."
+    },
+    {
+      "id": "person-compliance-manager",
+      "name": "Chloe Howard",
+      "email": "",
+      "positionId": "pos-compliance-manager",
+      "teamIds": [
+        "team-compliance"
+      ],
+      "active": true,
+      "notes": "Sample person occupying the Compliance Manager position."
+    },
+    {
+      "id": "person-risk-manager",
+      "name": "Alfie Brooks",
+      "email": "",
+      "positionId": "pos-risk-manager",
+      "teamIds": [
+        "team-risk"
+      ],
+      "active": true,
+      "notes": "Sample person occupying the Enterprise Risk Manager position."
+    },
+    {
+      "id": "person-dpo",
+      "name": "Jessica Price",
+      "email": "",
+      "positionId": "pos-dpo",
+      "teamIds": [
+        "team-compliance"
+      ],
+      "active": true,
+      "notes": "Sample person occupying the Data Protection Officer position."
+    },
+    {
+      "id": "person-opres-manager",
+      "name": "Lucas Foster",
+      "email": "",
+      "positionId": "pos-opres-manager",
+      "teamIds": [
+        "team-risk"
+      ],
+      "active": true,
+      "notes": "Sample person occupying the Operational Resilience Manager position."
+    },
+    {
+      "id": "person-head-product",
+      "name": "Poppy Kelly",
+      "email": "",
+      "positionId": "pos-head-product",
+      "teamIds": [
+        "team-product"
+      ],
+      "active": true,
+      "notes": "Sample person occupying the Head of Product & Partnerships position."
+    },
+    {
+      "id": "person-product-manager",
+      "name": "Charlie Bell",
+      "email": "",
+      "positionId": "pos-product-manager",
+      "teamIds": [
+        "team-product"
+      ],
+      "active": true,
+      "notes": "Sample person occupying the Product Manager position."
+    },
+    {
+      "id": "person-vendor-manager",
+      "name": "Ruby Murphy",
+      "email": "",
+      "positionId": "pos-vendor-manager",
+      "teamIds": [
+        "team-vendor"
+      ],
+      "active": true,
+      "notes": "Sample person occupying the Third-Party & Vendor Manager position."
+    },
+    {
+      "id": "person-it-ops-manager",
+      "name": "Max King",
+      "email": "",
+      "positionId": "pos-it-ops-manager",
+      "teamIds": [
+        "team-it-ops"
+      ],
+      "active": true,
+      "notes": "Sample person occupying the IT Operations Manager position."
+    },
+    {
+      "id": "person-app-support",
+      "name": "Evie Edwards",
+      "email": "",
+      "positionId": "pos-app-support",
+      "teamIds": [
+        "team-it-ops"
+      ],
+      "active": true,
+      "notes": "Sample person occupying the Application Support Analyst position."
+    },
+    {
+      "id": "person-infrastructure-engineer",
+      "name": "Archie Wood",
+      "email": "",
+      "positionId": "pos-infrastructure-engineer",
+      "teamIds": [
+        "team-it-ops"
+      ],
+      "active": true,
+      "notes": "Sample person occupying the Infrastructure Engineer position."
+    },
+    {
+      "id": "person-security-manager",
+      "name": "Sienna Watson",
+      "email": "",
+      "positionId": "pos-security-manager",
+      "teamIds": [
+        "team-security"
+      ],
+      "active": true,
+      "notes": "Sample person occupying the Information Security Manager position."
+    },
+    {
+      "id": "person-security-analyst",
+      "name": "Theo Barnes",
+      "email": "",
+      "positionId": "pos-security-analyst",
+      "teamIds": [
+        "team-security"
+      ],
+      "active": true,
+      "notes": "Sample person occupying the Security Analyst position."
+    },
+    {
+      "id": "person-data-manager",
+      "name": "Matilda Gray",
+      "email": "",
+      "positionId": "pos-data-manager",
+      "teamIds": [
+        "team-data"
+      ],
+      "active": true,
+      "notes": "Sample person occupying the Head of Data & MI position."
+    },
+    {
+      "id": "person-data-analyst",
+      "name": "Finley Ross",
+      "email": "",
+      "positionId": "pos-data-analyst",
+      "teamIds": [
+        "team-data"
+      ],
+      "active": true,
+      "notes": "Sample person occupying the Data & MI Analyst position."
+    },
+    {
+      "id": "person-hr-manager",
+      "name": "Alice Powell",
+      "email": "",
+      "positionId": "pos-hr-manager",
+      "teamIds": [
+        "team-people"
+      ],
+      "active": true,
+      "notes": "Sample person occupying the People & HR Manager position."
+    },
+    {
+      "id": "person-procurement-manager",
+      "name": "Benjamin Russell",
+      "email": "",
+      "positionId": "pos-procurement-manager",
+      "teamIds": [
+        "team-procurement"
+      ],
+      "active": true,
+      "notes": "Sample person occupying the Procurement & Corporate Services Manager position."
+    },
+    {
+      "id": "person-head-internal-audit",
+      "name": "Sophia Jenkins",
+      "email": "",
+      "positionId": "pos-head-internal-audit",
+      "teamIds": [
+        "team-audit"
+      ],
+      "active": true,
+      "notes": "Sample person occupying the Head of Internal Audit position."
     }
   ]
 }

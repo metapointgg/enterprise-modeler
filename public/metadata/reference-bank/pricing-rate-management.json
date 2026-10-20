@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_PricingRateManagement",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Assess funding and margin",
+      "ownerPersonId": "person-product-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-product-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Treasury & ALM Tool",
+        "Microsoft Power BI"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Duty",
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)",
+        "FCA Consumer Credit Sourcebook (CONC)"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Propose product rate",
+      "ownerPersonId": "person-product-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-product-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Treasury & ALM Tool",
+        "Microsoft Power BI"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Duty",
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)",
+        "FCA Consumer Credit Sourcebook (CONC)"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Review customer value",
+      "ownerPersonId": "person-product-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-product-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Treasury & ALM Tool",
+        "Microsoft Power BI"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Duty",
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)",
+        "FCA Consumer Credit Sourcebook (CONC)"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Approve pricing change",
+      "ownerPersonId": "person-product-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-product-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Treasury & ALM Tool",
+        "Microsoft Power BI"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Duty",
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)",
+        "FCA Consumer Credit Sourcebook (CONC)"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Configure T24",
+      "ownerPersonId": "person-product-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-product-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Treasury & ALM Tool",
+        "Microsoft Power BI"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Duty",
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)",
+        "FCA Consumer Credit Sourcebook (CONC)"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_6": {
+      "status": "Draft",
+      "description": "Monitor performance",
+      "ownerPersonId": "person-product-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-product-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Treasury & ALM Tool",
+        "Microsoft Power BI"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Duty",
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)",
+        "FCA Consumer Credit Sourcebook (CONC)"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

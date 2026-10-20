@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_LearningCompetence",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Identify competence requirement",
+      "ownerPersonId": "person-hr-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-hr-manager",
+      "links": [],
+      "systems": [
+        "HR Information System",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Senior Managers & Certification Regime"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Assign training",
+      "ownerPersonId": "person-hr-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-hr-manager",
+      "links": [],
+      "systems": [
+        "HR Information System",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Senior Managers & Certification Regime"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Complete training",
+      "ownerPersonId": "person-hr-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-hr-manager",
+      "links": [],
+      "systems": [
+        "HR Information System",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Senior Managers & Certification Regime"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Assess competence",
+      "ownerPersonId": "person-hr-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-hr-manager",
+      "links": [],
+      "systems": [
+        "HR Information System",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Senior Managers & Certification Regime"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Record evidence",
+      "ownerPersonId": "person-hr-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-hr-manager",
+      "links": [],
+      "systems": [
+        "HR Information System",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Senior Managers & Certification Regime"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_6": {
+      "status": "Draft",
+      "description": "Monitor renewal",
+      "ownerPersonId": "person-hr-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-hr-manager",
+      "links": [],
+      "systems": [
+        "HR Information System",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Senior Managers & Certification Regime"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}
