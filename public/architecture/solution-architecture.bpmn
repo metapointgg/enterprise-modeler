@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions
+  xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+  xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+  xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+  xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+  id="Definitions_EnterpriseSolutionArchitecture"
+  targetNamespace="https://enterprise-modeler.local/architecture">
+
+  <bpmn:process id="ArchitectureProcess_channel" name="Channels &amp; Experience" isExecutable="false" />
+  <bpmn:process id="ArchitectureProcess_integration" name="API &amp; Integration" isExecutable="false" />
+
+  <bpmn:process id="ArchitectureProcess_platform" name="Core Platforms &amp; Data" isExecutable="false">
+    <bpmn:task id="system-example-workflow" name="Example Workflow System" />
+  </bpmn:process>
+
+  <bpmn:process id="ArchitectureProcess_security" name="Identity, Security &amp; Control" isExecutable="false" />
+  <bpmn:process id="ArchitectureProcess_partner" name="External Providers" isExecutable="false" />
+  <bpmn:process id="ArchitectureProcess_other" name="Other / TBC" isExecutable="false" />
+
+  <bpmn:collaboration id="Collaboration_EnterpriseSolutionArchitecture">
+    <bpmn:participant id="ArchitectureLayer_channel" name="Channels &amp; Experience" processRef="ArchitectureProcess_channel" />
+    <bpmn:participant id="ArchitectureLayer_integration" name="API &amp; Integration" processRef="ArchitectureProcess_integration" />
+    <bpmn:participant id="ArchitectureLayer_platform" name="Core Platforms &amp; Data" processRef="ArchitectureProcess_platform" />
+    <bpmn:participant id="ArchitectureLayer_security" name="Identity, Security &amp; Control" processRef="ArchitectureProcess_security" />
+    <bpmn:participant id="ArchitectureLayer_partner" name="External Providers" processRef="ArchitectureProcess_partner" />
+    <bpmn:participant id="ArchitectureLayer_other" name="Other / TBC" processRef="ArchitectureProcess_other" />
+  </bpmn:collaboration>
+
+  <bpmndi:BPMNDiagram id="BPMNDiagram_EnterpriseSolutionArchitecture">
+    <bpmndi:BPMNPlane id="BPMNPlane_EnterpriseSolutionArchitecture" bpmnElement="Collaboration_EnterpriseSolutionArchitecture">
+
+      <bpmndi:BPMNShape id="ArchitectureLayer_channel_di" bpmnElement="ArchitectureLayer_channel" isHorizontal="true">
+        <dc:Bounds x="100" y="80" width="1200" height="120" />
+      </bpmndi:BPMNShape>
+
+      <bpmndi:BPMNShape id="ArchitectureLayer_integration_di" bpmnElement="ArchitectureLayer_integration" isHorizontal="true">
+        <dc:Bounds x="100" y="220" width="1200" height="120" />
+      </bpmndi:BPMNShape>
+
+      <bpmndi:BPMNShape id="ArchitectureLayer_platform_di" bpmnElement="ArchitectureLayer_platform" isHorizontal="true">
+        <dc:Bounds x="100" y="360" width="1200" height="160" />
+      </bpmndi:BPMNShape>
+
+      <bpmndi:BPMNShape id="system-example-workflow_di" bpmnElement="system-example-workflow">
+        <dc:Bounds x="420" y="400" width="190" height="80" />
+      </bpmndi:BPMNShape>
+
+      <bpmndi:BPMNShape id="ArchitectureLayer_security_di" bpmnElement="ArchitectureLayer_security" isHorizontal="true">
+        <dc:Bounds x="100" y="540" width="1200" height="120" />
+      </bpmndi:BPMNShape>
+
+      <bpmndi:BPMNShape id="ArchitectureLayer_partner_di" bpmnElement="ArchitectureLayer_partner" isHorizontal="true">
+        <dc:Bounds x="100" y="680" width="1200" height="120" />
+      </bpmndi:BPMNShape>
+
+      <bpmndi:BPMNShape id="ArchitectureLayer_other_di" bpmnElement="ArchitectureLayer_other" isHorizontal="true">
+        <dc:Bounds x="100" y="820" width="1200" height="120" />
+      </bpmndi:BPMNShape>
+
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
