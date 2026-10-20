@@ -74,14 +74,6 @@ const sidebarSections: SidebarSection[] = [
       { label: 'Org Chart', targetButtonId: 'org-chart-button' },
     ],
   },
-  {
-    id: 'units',
-    label: 'Operating Units',
-    icon: '▤',
-    actions: [
-      { label: 'Operating Units', targetButtonId: 'operating-units-button' },
-    ],
-  },
 ];
 
 const shell = document.querySelector<HTMLElement>('.modeler-shell');
