@@ -57,7 +57,7 @@ class RegulationManager {
   }
 
   private renderForm(record: RegulationRecord | null): string {
-    return `<form id="regulation-form" class="regulation-form"><h3>${record?'Edit obligation':'Add obligation'}</h3>${record?`<small>${escapeHtml(record.id)}</small>`:''}<label class="metadata-field"><span>Name</span><input id="regulation-name" required value="${escapeHtml(record?.name??'')}" /></label><label class="metadata-field"><span>Category</span><input id="regulation-category" value="${escapeHtml(record?.category??'')}" placeholder="e.g. Data Protection, Health & Safety" /></label><label class="metadata-field"><span>Jurisdiction</span><input id="regulation-jurisdiction" value="${escapeHtml(record?.jurisdiction??'')}" placeholder="TBC until confirmed" /></label><label class="metadata-field"><span>Source reference</span><input id="regulation-source" value="${escapeHtml(record?.sourceReference??'')}" placeholder="Rulebook, law, policy or source reference" /></label><label class="metadata-field"><span>Owner position</span><select id="regulation-owner"><option value="">Unassigned</option>${this.positionOptions(record?.ownerPositionId??'')}</select></label><label class="organisation-checkbox-row"><input id="regulation-active" type="checkbox"${record?.active!==false?' checked':''}/><span>Active</span></label><label class="metadata-field"><span>Notes</span><textarea id="regulation-notes" rows="6">${escapeHtml(record?.notes??'')}</textarea></label><div class="metadata-actions"><button class="toolbar-button toolbar-button-primary" type="submit">${record?'Save Obligation':'Add Obligation'}</button>${record?'<button id="regulation-delete" class="toolbar-button toolbar-button-danger" type="button">Delete</button>':''}</div></form>`;
+    return `<form id="regulation-form" class="regulation-form"><h3>${record?'Edit obligation':'Add obligation'}</h3>${record?`<small>${escapeHtml(record.id)}</small>`:''}<label class="metadata-field"><span>Name</span><input id="regulation-name" required value="${escapeHtml(record?.name??'')}" /></label><label class="metadata-field"><span>Category</span><input id="regulation-category" value="${escapeHtml(record?.category??'')}" placeholder="e.g. Data Protection, Health & Safety" /></label><label class="metadata-field"><span>Jurisdiction</span><input id="regulation-jurisdiction" value="${escapeHtml(record?.jurisdiction??'')}" placeholder="TBC until confirmed" /></label><label class="metadata-field"><span>Source reference</span><input id="regulation-source" value="${escapeHtml(record?.sourceReference??'')}" placeholder="Rulebook, law, policy or source reference" /></label><label class="metadata-field"><span>Owner position</span><select id="regulation-owner"><option value="">Unassigned</option>${this.positionOptions(record?.ownerPositionId??'')}</select></label><label class="organisation-checkbox-row"><input id="regulation-active" type="checkbox"${record?.active!==false?' checked':''}/><span>Active</span></label><label class="metadata-field"><span>Notes</span><textarea id="regulation-notes" rows="6">${escapeHtml(record?.notes??'')}</textarea></label><div class="metadata-actions"><button class="toolbar-button toolbar-button-primary" type="submit">${record?'Save Obligation':'Add Obligation'}</button>${record?'<button id="regulation-explore" class="toolbar-button" type="button">Explore Relationships</button><button id="regulation-impact" class="toolbar-button" type="button">Impact Analysis</button><button id="regulation-delete" class="toolbar-button toolbar-button-danger" type="button">Delete</button>':''}</div></form>`;
   }
 
   private bindEvents(): void {
@@ -67,6 +67,16 @@ class RegulationManager {
     this.root.querySelectorAll<HTMLButtonElement>('[data-regulation-id]').forEach((button)=>button.addEventListener('click',()=>{this.selectedId=button.dataset.regulationId??'';this.render();}));
     this.root.querySelector<HTMLFormElement>('#regulation-form')?.addEventListener('submit',(event)=>{event.preventDefault();this.save();});
     this.root.querySelector<HTMLButtonElement>('#regulation-delete')?.addEventListener('click',()=>void this.delete());
+    this.root.querySelector<HTMLButtonElement>('#regulation-explore')?.addEventListener('click',()=>this.openExplorer('relationships'));
+    this.root.querySelector<HTMLButtonElement>('#regulation-impact')?.addEventListener('click',()=>this.openExplorer('impact'));
+  }
+
+  private openExplorer(mode:'relationships'|'impact'):void{
+    if(!this.selectedId)return;
+    this.dialog.close();
+    document.dispatchEvent(new CustomEvent('enterprise-modeler:open-enterprise-explorer',{
+      detail:{type:'regulation',id:this.selectedId,mode},
+    }));
   }
 
   private save(): void {
