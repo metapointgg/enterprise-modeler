@@ -18,21 +18,39 @@ interface NavigationSectionDefinition {
 
 const EXTRA_SECTIONS: NavigationSectionDefinition[] = [
   {
-    id: 'architecture',
-    label: 'Architecture',
+    id: 'technology',
+    label: 'Technology',
     icon: '▦',
     actions: [
       { label: 'Systems Catalogue', eventName: 'enterprise-modeler:open-systems-catalog' },
-      { label: 'Solution Architecture Map', eventName: 'enterprise-modeler:open-solution-architecture-map' },
+      { label: 'Solution Architecture', eventName: 'enterprise-modeler:open-solution-architecture-map' },
       { label: 'Integration Catalogue', eventName: 'enterprise-modeler:open-integration-catalog' },
     ],
   },
   {
-    id: 'regulatory',
-    label: 'Regulatory',
+    id: 'data',
+    label: 'Data',
+    icon: '◫',
+    actions: [
+      { label: 'Data Catalogue & Flows', eventName: 'enterprise-modeler:open-data-catalogue' },
+    ],
+  },
+  {
+    id: 'governance',
+    label: 'Governance',
     icon: '§',
     actions: [
       { label: 'Regulatory Catalogue', eventName: 'enterprise-modeler:open-regulatory-catalog' },
+      { label: 'Rules, Controls & Risks', eventName: 'enterprise-modeler:open-governance-catalogue' },
+    ],
+  },
+  {
+    id: 'analysis',
+    label: 'Analysis',
+    icon: '⌘',
+    actions: [
+      { label: 'Relationship Explorer', eventName: 'enterprise-modeler:open-enterprise-explorer' },
+      { label: 'Impact Analysis', eventName: 'enterprise-modeler:open-impact-analysis' },
     ],
   },
 ];
@@ -107,11 +125,14 @@ function ensureExtraSections(): void {
   const nav = document.querySelector<HTMLElement>('.enterprise-modeler-sidebar-nav');
   if (!nav) return;
 
+  const unitsSection = nav.querySelector<HTMLElement>(
+    '.enterprise-modeler-sidebar-section[data-section-id="units"]',
+  );
   const processSection = nav.querySelector<HTMLElement>(
     '.enterprise-modeler-sidebar-section[data-section-id="process"]',
   );
 
-  let insertionPoint: Element | null = processSection;
+  let insertionPoint: Element | null = unitsSection ?? processSection;
   EXTRA_SECTIONS.forEach((definition) => {
     let section = nav.querySelector<HTMLElement>(
       `.enterprise-modeler-sidebar-section[data-section-id="${definition.id}"]`,

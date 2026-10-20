@@ -1461,6 +1461,18 @@ function handleElementDoubleClick(event: ElementDoubleClickEvent): void {
 function handleSelectionChanged(event: SelectionChangedEvent): void {
   selectedElement = event.newSelection?.[0] ?? null;
   renderMetadataPanel();
+
+  const businessObject = selectedElement?.businessObject;
+  document.dispatchEvent(new CustomEvent('enterprise-modeler:process-node-selection-changed', {
+    detail: selectedElement
+      ? {
+          processId: currentProcessId ?? '',
+          elementId: selectedElement.id,
+          name: businessObject?.name || selectedElement.id,
+          bpmnType: businessObject?.$type || '',
+        }
+      : null,
+  }));
 }
 
 function openOrganisationManager(): void {

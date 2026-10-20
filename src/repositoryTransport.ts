@@ -8,6 +8,8 @@ const PROTECTED_PREFIXES = [
   '/organisation/',
   '/architecture/',
   '/governance/',
+  '/data/',
+  '/model/',
 ];
 
 const revisionByKey = new Map<string, string | null>();

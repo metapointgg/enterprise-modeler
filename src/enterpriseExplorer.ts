@@ -51,6 +51,9 @@ class EnterpriseExplorer {
     document.addEventListener('enterprise-modeler:open-enterprise-explorer', (event) => {
       void this.open((event as CustomEvent<OpenExplorerDetail>).detail ?? {});
     });
+    document.addEventListener('enterprise-modeler:open-impact-analysis', () => {
+      void this.open({ mode: 'impact' });
+    });
   }
 
   private async open(detail: OpenExplorerDetail): Promise<void> {

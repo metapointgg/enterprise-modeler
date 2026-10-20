@@ -19,6 +19,9 @@ const GOVERNANCE_KEY = 'enterprise-modeler.process-governance.v1';
 const INTEGRATIONS_KEY = 'enterprise-modeler.integrations.v1';
 const REGULATIONS_KEY = 'enterprise-modeler.regulations.v1';
 const ARCHITECTURE_BPMN_KEY = 'enterprise-modeler.solution-architecture-bpmn.v1';
+const DATA_CATALOGUE_KEY = 'enterprise-modeler.data-catalogue.v1';
+const RELATIONSHIPS_KEY = 'enterprise-modeler.relationships.v1';
+const GOVERNANCE_CATALOGUE_KEY = 'enterprise-modeler.governance-catalogue.v1';
 const SYNC_DELAY_MS = 650;
 
 const exactRepositoryKeys = new Map<string, string>([
@@ -29,7 +32,10 @@ const exactRepositoryKeys = new Map<string, string>([
   [GOVERNANCE_KEY, 'governance/process-governance.json'],
   [INTEGRATIONS_KEY, 'architecture/integrations.json'],
   [REGULATIONS_KEY, 'governance/regulations.json'],
+  [GOVERNANCE_CATALOGUE_KEY, 'governance/governance-catalogue.json'],
   [ARCHITECTURE_BPMN_KEY, 'architecture/solution-architecture.bpmn'],
+  [DATA_CATALOGUE_KEY, 'data/data-catalogue.json'],
+  [RELATIONSHIPS_KEY, 'model/relationships.json'],
 ]);
 
 const sessionDraftKeys = new Set<string>();

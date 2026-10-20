@@ -44,6 +44,10 @@ async function bootstrap(): Promise<void> {
   await import('./solutionArchitectureZoomControls');
   await import('./integrationManager');
   await import('./regulationManager');
+  await import('./dataCatalogueManager');
+  await import('./governanceCatalogueManager');
+  await import('./enterpriseExplorer');
+  await import('./processEnterpriseContext');
   await import('./globalSearch');
   await import('./processDrillDownPicker');
   await import('./processVersions');

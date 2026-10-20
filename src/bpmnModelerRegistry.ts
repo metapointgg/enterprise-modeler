@@ -9,19 +9,19 @@ interface RegisteredModeler extends BpmnModeler {
 }
 
 type ModelerContainer = HTMLElement & {
-  __banxlocalBpmnModeler?: RegisteredModeler;
+  __enterpriseModelerBpmnModeler?: RegisteredModeler;
 };
 
 type ModelerPrototype = {
   importXML: (xml: string, bpmnDiagram?: unknown) => Promise<unknown>;
   destroy: () => void;
-  __banxlocalRegistryPatched?: boolean;
+  __enterpriseModelerRegistryPatched?: boolean;
 };
 
 const prototype = BpmnModeler.prototype as unknown as ModelerPrototype;
 
-if (!prototype.__banxlocalRegistryPatched) {
-  prototype.__banxlocalRegistryPatched = true;
+if (!prototype.__enterpriseModelerRegistryPatched) {
+  prototype.__enterpriseModelerRegistryPatched = true;
 
   const nativeImportXML = prototype.importXML;
   const nativeDestroy = prototype.destroy;
@@ -46,7 +46,7 @@ function registerModeler(modeler: RegisteredModeler): void {
   try {
     const canvas = modeler.get<RegisteredCanvasService>('canvas');
     const container = canvas.getContainer() as ModelerContainer;
-    container.__banxlocalBpmnModeler = modeler;
+    container.__enterpriseModelerBpmnModeler = modeler;
     container.dispatchEvent(new CustomEvent('enterprise-modeler:bpmn-modeler-registered', {
       bubbles: true,
     }));
@@ -59,8 +59,8 @@ function unregisterModeler(modeler: RegisteredModeler): void {
   try {
     const canvas = modeler.get<RegisteredCanvasService>('canvas');
     const container = canvas.getContainer() as ModelerContainer;
-    if (container.__banxlocalBpmnModeler === modeler) {
-      delete container.__banxlocalBpmnModeler;
+    if (container.__enterpriseModelerBpmnModeler === modeler) {
+      delete container.__enterpriseModelerBpmnModeler;
     }
   } catch {
     // The modeler may already be partly destroyed. Nothing remains to unregister.
@@ -74,7 +74,7 @@ export function getBpmnModelerForCanvas(canvasHost: HTMLElement): RegisteredMode
   ];
 
   for (const candidate of candidates) {
-    if (candidate.__banxlocalBpmnModeler) return candidate.__banxlocalBpmnModeler;
+    if (candidate.__enterpriseModelerBpmnModeler) return candidate.__enterpriseModelerBpmnModeler;
   }
 
   return null;
