@@ -7,15 +7,39 @@
   id="Definitions_EnterpriseSolutionArchitecture"
   targetNamespace="https://enterprise-modeler.local/architecture">
 
-  <bpmn:process id="ArchitectureProcess_channel" name="Channels &amp; Experience" isExecutable="false" />
-  <bpmn:process id="ArchitectureProcess_integration" name="API &amp; Integration" isExecutable="false" />
-
-  <bpmn:process id="ArchitectureProcess_platform" name="Core Platforms &amp; Data" isExecutable="false">
-    <bpmn:task id="system-example-workflow" name="Example Workflow System" />
+  <bpmn:process id="ArchitectureProcess_channel" name="Channels &amp; Experience" isExecutable="false">
+    <bpmn:task id="system-customer-portal" name="Customer / User Portal" />
   </bpmn:process>
 
-  <bpmn:process id="ArchitectureProcess_security" name="Identity, Security &amp; Control" isExecutable="false" />
-  <bpmn:process id="ArchitectureProcess_partner" name="External Providers" isExecutable="false" />
+  <bpmn:process id="ArchitectureProcess_integration" name="API &amp; Integration" isExecutable="false">
+    <bpmn:task id="system-integration-platform" name="Integration &amp; API Platform" />
+  </bpmn:process>
+
+  <bpmn:process id="ArchitectureProcess_platform" name="Core Platforms &amp; Data" isExecutable="false">
+    <bpmn:task id="system-crm" name="CRM Platform" />
+    <bpmn:task id="system-example-workflow" name="Example Workflow System" />
+    <bpmn:task id="system-erp" name="ERP / Finance Platform" />
+    <bpmn:task id="system-document-management" name="Document Management" />
+    <bpmn:task id="system-data-platform" name="Enterprise Data Platform" />
+    <bpmn:task id="system-bi" name="BI &amp; Reporting" />
+
+    <bpmn:sequenceFlow id="if-workflow-erp" name="Workflow → ERP" sourceRef="system-example-workflow" targetRef="system-erp" />
+    <bpmn:sequenceFlow id="if-crm-documents" name="CRM ↔ Document Management" sourceRef="system-crm" targetRef="system-document-management" />
+    <bpmn:sequenceFlow id="if-crm-data" name="CRM → Data Platform" sourceRef="system-crm" targetRef="system-data-platform" />
+    <bpmn:sequenceFlow id="if-erp-data" name="ERP → Data Platform" sourceRef="system-erp" targetRef="system-data-platform" />
+    <bpmn:sequenceFlow id="if-data-bi" name="Data Platform → BI" sourceRef="system-data-platform" targetRef="system-bi" />
+  </bpmn:process>
+
+  <bpmn:process id="ArchitectureProcess_security" name="Identity, Security &amp; Control" isExecutable="false">
+    <bpmn:task id="system-iam" name="Identity &amp; Access Management" />
+    <bpmn:task id="system-siem" name="Security Monitoring / SIEM" />
+    <bpmn:sequenceFlow id="if-iam-siem" name="IAM → SIEM Events" sourceRef="system-iam" targetRef="system-siem" />
+  </bpmn:process>
+
+  <bpmn:process id="ArchitectureProcess_partner" name="External Providers" isExecutable="false">
+    <bpmn:task id="system-external-idv" name="External Verification Service" />
+  </bpmn:process>
+
   <bpmn:process id="ArchitectureProcess_other" name="Other / TBC" isExecutable="false" />
 
   <bpmn:collaboration id="Collaboration_EnterpriseSolutionArchitecture">
@@ -25,38 +49,146 @@
     <bpmn:participant id="ArchitectureLayer_security" name="Identity, Security &amp; Control" processRef="ArchitectureProcess_security" />
     <bpmn:participant id="ArchitectureLayer_partner" name="External Providers" processRef="ArchitectureProcess_partner" />
     <bpmn:participant id="ArchitectureLayer_other" name="Other / TBC" processRef="ArchitectureProcess_other" />
+
+    <bpmn:messageFlow id="if-portal-integration" name="Portal → Integration API" sourceRef="system-customer-portal" targetRef="system-integration-platform" />
+    <bpmn:messageFlow id="if-integration-crm" name="Integration Platform ↔ CRM" sourceRef="system-integration-platform" targetRef="system-crm" />
+    <bpmn:messageFlow id="if-integration-workflow" name="Integration Platform ↔ Workflow" sourceRef="system-integration-platform" targetRef="system-example-workflow" />
+    <bpmn:messageFlow id="if-crm-external-verification" name="CRM ↔ External Verification" sourceRef="system-crm" targetRef="system-external-idv" />
+    <bpmn:messageFlow id="if-iam-portal" name="IAM ↔ Portal Authentication" sourceRef="system-iam" targetRef="system-customer-portal" />
   </bpmn:collaboration>
 
   <bpmndi:BPMNDiagram id="BPMNDiagram_EnterpriseSolutionArchitecture">
     <bpmndi:BPMNPlane id="BPMNPlane_EnterpriseSolutionArchitecture" bpmnElement="Collaboration_EnterpriseSolutionArchitecture">
 
       <bpmndi:BPMNShape id="ArchitectureLayer_channel_di" bpmnElement="ArchitectureLayer_channel" isHorizontal="true">
-        <dc:Bounds x="100" y="80" width="1200" height="120" />
+        <dc:Bounds x="80" y="80" width="1900" height="130" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="system-customer-portal_di" bpmnElement="system-customer-portal">
+        <dc:Bounds x="260" y="107" width="180" height="75" />
       </bpmndi:BPMNShape>
 
       <bpmndi:BPMNShape id="ArchitectureLayer_integration_di" bpmnElement="ArchitectureLayer_integration" isHorizontal="true">
-        <dc:Bounds x="100" y="220" width="1200" height="120" />
+        <dc:Bounds x="80" y="230" width="1900" height="130" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="system-integration-platform_di" bpmnElement="system-integration-platform">
+        <dc:Bounds x="600" y="257" width="190" height="75" />
       </bpmndi:BPMNShape>
 
       <bpmndi:BPMNShape id="ArchitectureLayer_platform_di" bpmnElement="ArchitectureLayer_platform" isHorizontal="true">
-        <dc:Bounds x="100" y="360" width="1200" height="160" />
+        <dc:Bounds x="80" y="380" width="1900" height="220" />
       </bpmndi:BPMNShape>
-
+      <bpmndi:BPMNShape id="system-crm_di" bpmnElement="system-crm">
+        <dc:Bounds x="180" y="420" width="180" height="75" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="system-example-workflow_di" bpmnElement="system-example-workflow">
-        <dc:Bounds x="420" y="400" width="190" height="80" />
+        <dc:Bounds x="450" y="420" width="180" height="75" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="system-erp_di" bpmnElement="system-erp">
+        <dc:Bounds x="720" y="420" width="180" height="75" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="system-document-management_di" bpmnElement="system-document-management">
+        <dc:Bounds x="990" y="420" width="180" height="75" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="system-data-platform_di" bpmnElement="system-data-platform">
+        <dc:Bounds x="1260" y="420" width="180" height="75" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="system-bi_di" bpmnElement="system-bi">
+        <dc:Bounds x="1530" y="420" width="180" height="75" />
       </bpmndi:BPMNShape>
 
       <bpmndi:BPMNShape id="ArchitectureLayer_security_di" bpmnElement="ArchitectureLayer_security" isHorizontal="true">
-        <dc:Bounds x="100" y="540" width="1200" height="120" />
+        <dc:Bounds x="80" y="620" width="1900" height="130" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="system-iam_di" bpmnElement="system-iam">
+        <dc:Bounds x="400" y="647" width="180" height="75" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="system-siem_di" bpmnElement="system-siem">
+        <dc:Bounds x="800" y="647" width="180" height="75" />
       </bpmndi:BPMNShape>
 
       <bpmndi:BPMNShape id="ArchitectureLayer_partner_di" bpmnElement="ArchitectureLayer_partner" isHorizontal="true">
-        <dc:Bounds x="100" y="680" width="1200" height="120" />
+        <dc:Bounds x="80" y="770" width="1900" height="130" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="system-external-idv_di" bpmnElement="system-external-idv">
+        <dc:Bounds x="1040" y="797" width="190" height="75" />
       </bpmndi:BPMNShape>
 
       <bpmndi:BPMNShape id="ArchitectureLayer_other_di" bpmnElement="ArchitectureLayer_other" isHorizontal="true">
-        <dc:Bounds x="100" y="820" width="1200" height="120" />
+        <dc:Bounds x="80" y="920" width="1900" height="120" />
       </bpmndi:BPMNShape>
+
+      <bpmndi:BPMNEdge id="if-portal-integration_di" bpmnElement="if-portal-integration">
+        <di:waypoint x="440" y="145" />
+        <di:waypoint x="520" y="145" />
+        <di:waypoint x="520" y="295" />
+        <di:waypoint x="600" y="295" />
+      </bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNEdge id="if-integration-crm_di" bpmnElement="if-integration-crm">
+        <di:waypoint x="650" y="332" />
+        <di:waypoint x="650" y="365" />
+        <di:waypoint x="270" y="365" />
+        <di:waypoint x="270" y="420" />
+      </bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNEdge id="if-integration-workflow_di" bpmnElement="if-integration-workflow">
+        <di:waypoint x="695" y="332" />
+        <di:waypoint x="695" y="375" />
+        <di:waypoint x="540" y="375" />
+        <di:waypoint x="540" y="420" />
+      </bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNEdge id="if-workflow-erp_di" bpmnElement="if-workflow-erp">
+        <di:waypoint x="630" y="458" />
+        <di:waypoint x="720" y="458" />
+      </bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNEdge id="if-crm-documents_di" bpmnElement="if-crm-documents">
+        <di:waypoint x="360" y="450" />
+        <di:waypoint x="390" y="450" />
+        <di:waypoint x="390" y="525" />
+        <di:waypoint x="1080" y="525" />
+        <di:waypoint x="1080" y="495" />
+      </bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNEdge id="if-crm-data_di" bpmnElement="if-crm-data">
+        <di:waypoint x="360" y="470" />
+        <di:waypoint x="410" y="470" />
+        <di:waypoint x="410" y="565" />
+        <di:waypoint x="1350" y="565" />
+        <di:waypoint x="1350" y="495" />
+      </bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNEdge id="if-erp-data_di" bpmnElement="if-erp-data">
+        <di:waypoint x="900" y="470" />
+        <di:waypoint x="940" y="470" />
+        <di:waypoint x="940" y="540" />
+        <di:waypoint x="1350" y="540" />
+        <di:waypoint x="1350" y="495" />
+      </bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNEdge id="if-data-bi_di" bpmnElement="if-data-bi">
+        <di:waypoint x="1440" y="458" />
+        <di:waypoint x="1530" y="458" />
+      </bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNEdge id="if-crm-external-verification_di" bpmnElement="if-crm-external-verification">
+        <di:waypoint x="270" y="495" />
+        <di:waypoint x="270" y="835" />
+        <di:waypoint x="1040" y="835" />
+      </bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNEdge id="if-iam-portal_di" bpmnElement="if-iam-portal">
+        <di:waypoint x="400" y="685" />
+        <di:waypoint x="140" y="685" />
+        <di:waypoint x="140" y="145" />
+        <di:waypoint x="260" y="145" />
+      </bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNEdge id="if-iam-siem_di" bpmnElement="if-iam-siem">
+        <di:waypoint x="580" y="685" />
+        <di:waypoint x="800" y="685" />
+      </bpmndi:BPMNEdge>
 
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
