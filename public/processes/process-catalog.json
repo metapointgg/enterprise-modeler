@@ -13,13 +13,13 @@
       "active": true
     },
     {
-      "id": "customer-onboarding",
-      "bpmnProcessId": "Process_CustomerOnboarding",
+      "id": "customer-acquisition-onboarding",
+      "bpmnProcessId": "Process_CustomerAcquisitionOnboarding",
       "name": "Customer Acquisition & Onboarding",
       "layerId": "layer-l1",
-      "filename": "customer-onboarding.bpmn",
-      "url": "/processes/reference-bank/customer-onboarding.bpmn",
-      "metadataUrl": "/metadata/reference-bank/customer-onboarding.json",
+      "filename": "customer-acquisition-onboarding.bpmn",
+      "url": "/processes/reference-bank/customer-acquisition-onboarding.bpmn",
+      "metadataUrl": "/metadata/reference-bank/customer-acquisition-onboarding.json",
       "parentId": "bank-operating-model",
       "active": true
     },
@@ -152,7 +152,7 @@
       "filename": "marketing-lead-management.bpmn",
       "url": "/processes/reference-bank/marketing-lead-management.bpmn",
       "metadataUrl": "/metadata/reference-bank/marketing-lead-management.json",
-      "parentId": "customer-onboarding",
+      "parentId": "customer-acquisition-onboarding",
       "active": true
     },
     {
@@ -163,7 +163,7 @@
       "filename": "customer-onboarding.bpmn",
       "url": "/processes/reference-bank/customer-onboarding.bpmn",
       "metadataUrl": "/metadata/reference-bank/customer-onboarding.json",
-      "parentId": "customer-onboarding",
+      "parentId": "customer-acquisition-onboarding",
       "active": true
     },
     {
@@ -174,7 +174,7 @@
       "filename": "identity-verification.bpmn",
       "url": "/processes/reference-bank/identity-verification.bpmn",
       "metadataUrl": "/metadata/reference-bank/identity-verification.json",
-      "parentId": "customer-onboarding",
+      "parentId": "customer-acquisition-onboarding",
       "active": true
     },
     {
@@ -185,7 +185,7 @@
       "filename": "customer-profile-maintenance.bpmn",
       "url": "/processes/reference-bank/customer-profile-maintenance.bpmn",
       "metadataUrl": "/metadata/reference-bank/customer-profile-maintenance.json",
-      "parentId": "customer-onboarding",
+      "parentId": "customer-acquisition-onboarding",
       "active": true
     },
     {

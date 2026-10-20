@@ -1438,8 +1438,20 @@ async function openSelectedFile(file: File): Promise<void> {
 
 function navigateBack(): void {
   const currentProcess = getCurrentProcess();
-  if (currentProcess?.parentId) {
-    void loadCatalogProcess(currentProcess.parentId);
+  const parentId = currentProcess?.parentId;
+
+  if (
+    parentId
+    && parentId !== currentProcess.id
+    && getProcessById(parentId)
+  ) {
+    void loadCatalogProcess(parentId);
+    return;
+  }
+
+  const rootProcess = getProcessById(ROOT_PROCESS_ID);
+  if (rootProcess && rootProcess.id !== currentProcess?.id) {
+    void loadCatalogProcess(rootProcess.id);
   }
 }
 

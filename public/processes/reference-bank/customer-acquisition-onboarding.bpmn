@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_CustomerAcquisitionOnboarding" targetNamespace="https://enterprise-modeler.local/bpmn">
+  <bpmn:process id="Process_CustomerAcquisitionOnboarding" name="Customer Acquisition &amp; Onboarding" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_CustomerAcquisitionOnboarding">
+      <bpmn:lane id="Lane_CustomerAcquisitionOnboarding_External" name="Customer / External Party">
+        <bpmn:flowNodeRef>Start_CustomerAcquisitionOnboarding</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_CustomerAcquisitionOnboarding_Organisation" name="Customer Operations">
+        <bpmn:flowNodeRef>Call_MarketingLeadManagement</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Call_CustomerOnboarding</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Call_IdentityVerification</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Call_CustomerProfileMaintenance</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>End_CustomerAcquisitionOnboarding</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="Start_CustomerAcquisitionOnboarding" name="Prospect / customer need identified">
+      <bpmn:outgoing>Flow_1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:callActivity id="Call_MarketingLeadManagement" name="Marketing, Lead &amp; Prospect Management" calledElement="Process_MarketingLeadManagement">
+      <bpmn:incoming>Flow_1</bpmn:incoming><bpmn:outgoing>Flow_2</bpmn:outgoing>
+    </bpmn:callActivity>
+    <bpmn:callActivity id="Call_CustomerOnboarding" name="Customer Onboarding" calledElement="Process_CustomerOnboarding">
+      <bpmn:incoming>Flow_2</bpmn:incoming><bpmn:outgoing>Flow_3</bpmn:outgoing>
+    </bpmn:callActivity>
+    <bpmn:callActivity id="Call_IdentityVerification" name="Identity Verification &amp; eKYC" calledElement="Process_IdentityVerification">
+      <bpmn:incoming>Flow_3</bpmn:incoming><bpmn:outgoing>Flow_4</bpmn:outgoing>
+    </bpmn:callActivity>
+    <bpmn:callActivity id="Call_CustomerProfileMaintenance" name="Customer Profile &amp; Consent Maintenance" calledElement="Process_CustomerProfileMaintenance">
+      <bpmn:incoming>Flow_4</bpmn:incoming><bpmn:outgoing>Flow_5</bpmn:outgoing>
+    </bpmn:callActivity>
+    <bpmn:endEvent id="End_CustomerAcquisitionOnboarding" name="Customer relationship established">
+      <bpmn:incoming>Flow_5</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1" sourceRef="Start_CustomerAcquisitionOnboarding" targetRef="Call_MarketingLeadManagement" />
+    <bpmn:sequenceFlow id="Flow_2" sourceRef="Call_MarketingLeadManagement" targetRef="Call_CustomerOnboarding" />
+    <bpmn:sequenceFlow id="Flow_3" sourceRef="Call_CustomerOnboarding" targetRef="Call_IdentityVerification" />
+    <bpmn:sequenceFlow id="Flow_4" sourceRef="Call_IdentityVerification" targetRef="Call_CustomerProfileMaintenance" />
+    <bpmn:sequenceFlow id="Flow_5" sourceRef="Call_CustomerProfileMaintenance" targetRef="End_CustomerAcquisitionOnboarding" />
+  </bpmn:process>
+  <bpmn:collaboration id="Collaboration_CustomerAcquisitionOnboarding">
+    <bpmn:participant id="Participant_CustomerAcquisitionOnboarding" name="Reference Organisation" processRef="Process_CustomerAcquisitionOnboarding" />
+  </bpmn:collaboration>
+  <bpmndi:BPMNDiagram id="Diagram_CustomerAcquisitionOnboarding">
+    <bpmndi:BPMNPlane id="Plane_CustomerAcquisitionOnboarding" bpmnElement="Collaboration_CustomerAcquisitionOnboarding">
+      <bpmndi:BPMNShape id="Participant_CustomerAcquisitionOnboarding_di" bpmnElement="Participant_CustomerAcquisitionOnboarding" isHorizontal="true"><dc:Bounds x="80" y="80" width="1610" height="360" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_CustomerAcquisitionOnboarding_External_di" bpmnElement="Lane_CustomerAcquisitionOnboarding_External" isHorizontal="true"><dc:Bounds x="110" y="80" width="1580" height="130" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_CustomerAcquisitionOnboarding_Organisation_di" bpmnElement="Lane_CustomerAcquisitionOnboarding_Organisation" isHorizontal="true"><dc:Bounds x="110" y="210" width="1580" height="230" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Start_CustomerAcquisitionOnboarding_di" bpmnElement="Start_CustomerAcquisitionOnboarding"><dc:Bounds x="160" y="127" width="36" height="36" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Call_MarketingLeadManagement_di" bpmnElement="Call_MarketingLeadManagement"><dc:Bounds x="300" y="275" width="210" height="90" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Call_CustomerOnboarding_di" bpmnElement="Call_CustomerOnboarding"><dc:Bounds x="590" y="275" width="190" height="90" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Call_IdentityVerification_di" bpmnElement="Call_IdentityVerification"><dc:Bounds x="860" y="275" width="190" height="90" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Call_CustomerProfileMaintenance_di" bpmnElement="Call_CustomerProfileMaintenance"><dc:Bounds x="1130" y="275" width="220" height="90" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="End_CustomerAcquisitionOnboarding_di" bpmnElement="End_CustomerAcquisitionOnboarding"><dc:Bounds x="1480" y="302" width="36" height="36" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1_di" bpmnElement="Flow_1"><di:waypoint x="196" y="145" /><di:waypoint x="240" y="145" /><di:waypoint x="240" y="320" /><di:waypoint x="300" y="320" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_2_di" bpmnElement="Flow_2"><di:waypoint x="510" y="320" /><di:waypoint x="590" y="320" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_3_di" bpmnElement="Flow_3"><di:waypoint x="780" y="320" /><di:waypoint x="860" y="320" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_4_di" bpmnElement="Flow_4"><di:waypoint x="1050" y="320" /><di:waypoint x="1130" y="320" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_5_di" bpmnElement="Flow_5"><di:waypoint x="1350" y="320" /><di:waypoint x="1480" y="320" /></bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

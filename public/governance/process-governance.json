@@ -25,7 +25,7 @@
       "updatedAt": ""
     },
     {
-      "processId": "customer-onboarding",
+      "processId": "customer-acquisition-onboarding",
       "status": "draft",
       "ownerPositionId": "pos-head-customer-ops",
       "approverPositionId": "pos-coo",
