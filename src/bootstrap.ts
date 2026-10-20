@@ -31,7 +31,6 @@ async function bootstrap(): Promise<void> {
   await import('./orgChartView');
   await import('./orgChartDiagram');
   await import('./orgChartUiRefinements');
-  await import('./operatingUnitsManager');
   await import('./orgChartNavigation');
   await import('./workspaceUi');
   await import('./uiRefinements');
