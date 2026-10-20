@@ -2,7 +2,7 @@
 
 Enterprise Modeler is a generic enterprise operating-model and architecture repository built around BPMN 2.0.
 
-It is derived from the proven Banxlocal Process Modeler application framework, but contains no Banxlocal process, organisation, branch, partner, or regulatory seed data.
+It is a vendor-neutral modeler with a neutral seed repository and no client-specific process, organisation, technology or regulatory data.
 
 ## V1 scope
 
