@@ -1,0 +1,59 @@
+.djs-context-pad {
+  padding: 4px !important;
+  border: 1px solid #cfd4da !important;
+  border-radius: 5px !important;
+  background: #f3f4f6 !important;
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.12) !important;
+}
+
+.djs-context-pad .entry {
+  border-radius: 4px !important;
+  color: #37404a;
+}
+
+.djs-context-pad .entry:hover {
+  background: #e7eaee !important;
+}
+
+.djs-context-pad .entry.enterprise-modeler-link-process-entry {
+  position: relative;
+  color: #234f8c;
+  cursor: pointer;
+}
+
+.djs-context-pad .entry.enterprise-modeler-link-process-entry::after {
+  content: '↘';
+  position: absolute;
+  right: -2px;
+  bottom: -3px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 13px;
+  height: 13px;
+  border: 1px solid #9fb6d7;
+  border-radius: 50%;
+  color: #234f8c;
+  background: #ffffff;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.djs-context-pad .entry.enterprise-modeler-metadata-entry {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #485463;
+  font-family: Georgia, serif;
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.djs-context-pad .entry.enterprise-modeler-metadata-entry:hover,
+.djs-context-pad .entry.enterprise-modeler-link-process-entry:hover {
+  color: #234f8c;
+  background: #dde6f2 !important;
+}
