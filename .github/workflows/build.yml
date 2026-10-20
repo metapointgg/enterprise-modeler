@@ -1,0 +1,44 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build secure SPA
+        run: npm run build:aws
+
+      - name: Verify protected model data is excluded
+        shell: bash
+        run: |
+          set -euo pipefail
+          for directory in processes metadata organisation architecture governance data model; do
+            if [ -e "dist/$directory" ]; then
+              echo "Protected repository data leaked into dist/$directory"
+              exit 1
+            fi
+          done
+          echo "Protected repository data is absent from the production bundle."
