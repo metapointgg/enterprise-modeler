@@ -13,11 +13,6 @@ import {
   type OrganisationData,
   type Position,
 } from './organisation';
-import {
-  loadOperatingUnits,
-  type OperatingUnitsData,
-} from './operatingUnits';
-
 interface Point {
   x: number;
   y: number;
@@ -84,7 +79,6 @@ interface OrgChartLayoutData {
 
 const POSITION_PREFIX = 'org-position-';
 const REPORTING_PREFIX = 'org-reporting-';
-const UNASSIGNED_SCOPE = '__unassigned__';
 const LAYOUT_KEY_PREFIX = 'enterprise-modeler.org-chart-layout.v2.';
 const NODE_WIDTH = 220;
 const NODE_HEIGHT = 100;
@@ -102,9 +96,7 @@ class OrgChartDiagramController {
   private root: HTMLElement | null = null;
   private rootObserver: MutationObserver | null = null;
   private data: OrganisationData | null = null;
-  private operatingUnits: OperatingUnitsData = { schemaVersion: 1, units: [] };
   private scopedPositions: Position[] = [];
-  private scopeId = '';
   private selectedElement: DiagramElement | null = null;
   private pendingChildPositionId = '';
   private scheduled = false;
@@ -171,10 +163,7 @@ class OrgChartDiagramController {
 
     if (this.root === root && this.host?.isConnected && this.modeler) return;
 
-    const [data, operatingUnits] = await Promise.all([
-      loadOrganisation(true),
-      loadOperatingUnits(true),
-    ]);
+    const data = await loadOrganisation(true);
 
     if (generation !== this.enhancementGeneration) return;
 
@@ -193,9 +182,7 @@ class OrgChartDiagramController {
     this.destroyCurrentDiagram();
     this.root = currentRoot;
     this.data = data;
-    this.operatingUnits = operatingUnits;
-    this.scopeId = currentRoot.querySelector<HTMLSelectElement>('#org-chart-scope')?.value ?? '';
-    this.scopedPositions = this.getScopedPositions(data);
+    this.scopedPositions = data.positions.filter((position) => position.active);
 
     currentScroll.replaceChildren();
     currentScroll.classList.add('org-chart-native-diagram-active');
@@ -342,21 +329,6 @@ class OrgChartDiagramController {
       this.syncTimer = undefined;
       void this.synchroniseReportingLines();
     }, 220);
-  }
-
-  private getScopedPositions(data: OrganisationData): Position[] {
-    const active = data.positions.filter((position) => position.active);
-    if (!this.scopeId) return active;
-
-    const allAssignedIds = new Set(this.operatingUnits.units.flatMap((unit) => unit.positionIds));
-    if (this.scopeId === UNASSIGNED_SCOPE) {
-      return active.filter((position) => !allAssignedIds.has(position.id));
-    }
-
-    const unit = this.operatingUnits.units.find((candidate) => candidate.id === this.scopeId && candidate.active);
-    if (!unit) return active;
-    const ids = new Set(unit.positionIds);
-    return active.filter((position) => ids.has(position.id));
   }
 
   private getMergedLayout(positions: Position[]): OrgChartLayoutData {
@@ -906,7 +878,7 @@ ${edgeXml}
   }
 
   private layoutStorageKey(): string {
-    return `${LAYOUT_KEY_PREFIX}${this.scopeId || 'whole-organisation'}`;
+    return `${LAYOUT_KEY_PREFIX}whole-organisation`;
   }
 
   private positionIdFromElement(element: DiagramElement | undefined): string {
