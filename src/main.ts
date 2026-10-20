@@ -36,13 +36,13 @@ const EMPTY_BPMN_XML = `<?xml version="1.0" encoding="UTF-8"?>
   xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
   xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
   xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
-  id="Definitions_Enterprise Modeler"
+  id="Definitions_EnterpriseModeler"
   targetNamespace="https://enterprise-modeler.local/bpmn">
-  <bpmn:process id="Process_Enterprise Modeler" name="New Enterprise Modeler Process" isExecutable="false">
+  <bpmn:process id="Process_EnterpriseModeler" name="New Process" isExecutable="false">
     <bpmn:startEvent id="StartEvent_1" name="Start" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_Enterprise Modeler">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_EnterpriseModeler">
       <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1">
         <dc:Bounds x="180" y="180" width="36" height="36" />
       </bpmndi:BPMNShape>
