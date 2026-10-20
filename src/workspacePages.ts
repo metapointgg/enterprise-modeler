@@ -4,7 +4,6 @@ const PAGE_DIALOG_CLASSES = new Set([
   'organisation-dialog',
   'process-manager-dialog',
   'org-chart-dialog',
-  'operating-units-dialog',
   'process-dashboard-dialog',
   'systems-catalog-dialog',
   'process-relationship-dialog',
