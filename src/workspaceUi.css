@@ -1,0 +1,429 @@
+:root {
+  --enterprise-modeler-sidebar-width: 232px;
+}
+
+body.enterprise-modeler-sidebar-collapsed {
+  --enterprise-modeler-sidebar-width: 58px;
+}
+
+.modeler-shell.enterprise-modeler-shell-with-sidebar {
+  width: 100%;
+  padding-left: var(--enterprise-modeler-sidebar-width);
+  transition: padding-left 160ms ease;
+}
+
+.toolbar {
+  display: none !important;
+}
+
+.enterprise-modeler-sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  width: var(--enterprise-modeler-sidebar-width);
+  border-right: 1px solid #d9dde3;
+  background: #ffffff;
+  box-shadow: 1px 0 5px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+  transition: width 160ms ease;
+}
+
+.enterprise-modeler-sidebar-header {
+  display: flex;
+  flex: 0 0 68px;
+  align-items: center;
+  gap: 10px;
+  padding: 0 12px;
+  border-bottom: 1px solid #e2e5e9;
+}
+
+.enterprise-modeler-sidebar-toggle {
+  display: inline-flex;
+  flex: 0 0 34px;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  color: #3c4654;
+  background: transparent;
+  cursor: pointer;
+}
+
+.enterprise-modeler-sidebar-toggle:hover {
+  background: #f1f4f7;
+}
+
+.enterprise-modeler-sidebar-toggle-icon {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.enterprise-modeler-sidebar-brand {
+  overflow: hidden;
+  color: #20252c;
+  font-size: 16px;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: opacity 120ms ease;
+}
+
+.enterprise-modeler-sidebar-nav {
+  flex: 1 1 auto;
+  padding: 8px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.enterprise-modeler-sidebar-section {
+  margin-bottom: 4px;
+}
+
+.enterprise-modeler-sidebar-section-button {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr) 20px;
+  align-items: center;
+  width: 100%;
+  min-height: 42px;
+  padding: 4px 7px;
+  border: 0;
+  border-radius: 7px;
+  color: #343b45;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+
+.enterprise-modeler-sidebar-section-button:hover,
+.enterprise-modeler-sidebar-section-open > .enterprise-modeler-sidebar-section-button {
+  background: #f1f5fa;
+}
+
+.enterprise-modeler-sidebar-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  font-size: 19px;
+  line-height: 1;
+}
+
+.enterprise-modeler-sidebar-label {
+  overflow: hidden;
+  font-size: 13px;
+  font-weight: 650;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.enterprise-modeler-sidebar-chevron {
+  color: #8a929d;
+  font-size: 18px;
+  text-align: center;
+  transition: transform 120ms ease;
+}
+
+.enterprise-modeler-sidebar-section-open .enterprise-modeler-sidebar-chevron {
+  transform: rotate(90deg);
+}
+
+.enterprise-modeler-sidebar-submenu {
+  display: none;
+  padding: 3px 4px 5px 41px;
+}
+
+.enterprise-modeler-sidebar-section-open .enterprise-modeler-sidebar-submenu {
+  display: block;
+}
+
+.enterprise-modeler-sidebar-submenu-button {
+  display: block;
+  width: 100%;
+  min-height: 32px;
+  margin: 1px 0;
+  padding: 5px 8px;
+  border: 0;
+  border-radius: 5px;
+  color: #505863;
+  background: transparent;
+  font-size: 12px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.enterprise-modeler-sidebar-submenu-button:hover {
+  color: #234f8c;
+  background: #edf3fb;
+}
+
+body.enterprise-modeler-sidebar-collapsed .enterprise-modeler-sidebar {
+  width: 58px;
+}
+
+body.enterprise-modeler-sidebar-collapsed .enterprise-modeler-sidebar-header {
+  padding: 0 12px;
+}
+
+body.enterprise-modeler-sidebar-collapsed .enterprise-modeler-sidebar-brand,
+body.enterprise-modeler-sidebar-collapsed .enterprise-modeler-sidebar-label,
+body.enterprise-modeler-sidebar-collapsed .enterprise-modeler-sidebar-chevron,
+body.enterprise-modeler-sidebar-collapsed .enterprise-modeler-sidebar-submenu {
+  display: none;
+}
+
+body.enterprise-modeler-sidebar-collapsed .enterprise-modeler-sidebar-section-button {
+  display: flex;
+  justify-content: center;
+  padding: 4px;
+}
+
+.application-header {
+  min-height: 58px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+.application-subtitle {
+  display: none;
+}
+
+.document-information {
+  max-width: 68%;
+}
+
+.enterprise-modeler-header-status {
+  min-width: 0;
+  max-width: 230px;
+  margin-left: 10px;
+  padding-left: 12px;
+  border-left: 1px solid #e0e3e8;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.process-navigation {
+  min-height: 38px;
+}
+
+.application-footer {
+  min-height: 25px;
+}
+
+.enterprise-modeler-zoom-controls {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  z-index: 25;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #cfd4da;
+  border-radius: 6px;
+  background: #ffffff;
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.12);
+}
+
+.enterprise-modeler-zoom-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: 0;
+  border-bottom: 1px solid #e0e3e7;
+  color: #333b45;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.enterprise-modeler-zoom-button:last-child {
+  border-bottom: 0;
+}
+
+.enterprise-modeler-zoom-button:hover {
+  background: #f2f4f7;
+}
+
+.enterprise-modeler-zoom-button svg {
+  width: 19px;
+  height: 19px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.7;
+}
+
+.enterprise-modeler-zoom-symbol {
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+#canvas .djs-palette.enterprise-modeler-palette {
+  width: 48px !important;
+  max-width: 48px !important;
+  padding: 4px !important;
+  border-radius: 5px;
+}
+
+#canvas .djs-palette.enterprise-modeler-palette .djs-palette-entries,
+#canvas .djs-palette.enterprise-modeler-palette .group {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  width: 38px !important;
+}
+
+#canvas .djs-palette.enterprise-modeler-palette .group {
+  padding: 0 !important;
+}
+
+#canvas .djs-palette.enterprise-modeler-palette .entry {
+  float: none !important;
+  flex: 0 0 38px;
+  width: 38px !important;
+  height: 38px !important;
+  margin: 0 !important;
+}
+
+#canvas .djs-palette.enterprise-modeler-palette .separator {
+  width: 30px !important;
+  margin: 4px auto !important;
+}
+
+#canvas .djs-palette.enterprise-modeler-palette:not(.enterprise-modeler-palette-expanded) .enterprise-modeler-palette-secondary {
+  display: none !important;
+}
+
+#canvas .djs-palette.enterprise-modeler-palette .enterprise-modeler-palette-more {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 38px !important;
+  height: 32px !important;
+  margin-top: 3px !important;
+  color: #444c56;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.enterprise-modeler-process-loader {
+  position: absolute;
+  inset: 0;
+  z-index: 35;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.56);
+  backdrop-filter: blur(1px);
+}
+
+.enterprise-modeler-process-loader[hidden] {
+  display: none !important;
+}
+
+.enterprise-modeler-process-loader-card {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  min-width: 250px;
+  padding: 15px 18px;
+  border: 1px solid #d4d9df;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 7px 24px rgba(0, 0, 0, 0.13);
+}
+
+.enterprise-modeler-process-spinner {
+  width: 28px;
+  height: 28px;
+  border: 3px solid #dce5f1;
+  border-top-color: #315d9b;
+  border-radius: 50%;
+  animation: enterprise-modeler-spin 700ms linear infinite;
+}
+
+@keyframes enterprise-modeler-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.enterprise-modeler-process-loader-title {
+  color: #252b33;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.enterprise-modeler-process-loader-subtitle {
+  margin-top: 3px;
+  color: #737b86;
+  font-size: 11px;
+}
+
+.enterprise-modeler-metadata-tooltip {
+  position: fixed;
+  z-index: 120;
+  width: min(330px, calc(100vw - 24px));
+  padding: 11px 12px;
+  border: 1px solid #cad1d9;
+  border-radius: 7px;
+  color: #343a43;
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 5px 17px rgba(0, 0, 0, 0.14);
+  font-size: 11px;
+  line-height: 1.4;
+  pointer-events: none;
+}
+
+.enterprise-modeler-metadata-tooltip-title {
+  margin-bottom: 7px;
+  color: #20252c;
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.enterprise-modeler-metadata-tooltip-grid {
+  display: grid;
+  grid-template-columns: 74px minmax(0, 1fr);
+  gap: 3px 7px;
+}
+
+.enterprise-modeler-metadata-tooltip-key {
+  color: #7b838d;
+}
+
+.enterprise-modeler-metadata-tooltip-links-title {
+  margin-top: 8px;
+  padding-top: 7px;
+  border-top: 1px solid #e6e9ed;
+  color: #5c6570;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.enterprise-modeler-metadata-tooltip-links {
+  margin-top: 4px;
+  color: #315d9b;
+}
+
+.enterprise-modeler-metadata-tooltip-links > div + div {
+  margin-top: 2px;
+}
+
+.enterprise-modeler-metadata-tooltip-empty {
+  color: #8a919a;
+  font-style: italic;
+}

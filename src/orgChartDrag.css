@@ -1,0 +1,125 @@
+.org-chart-scroll {
+  cursor: grab;
+  user-select: none;
+}
+
+.org-chart-scroll-panning {
+  cursor: grabbing;
+}
+
+.org-chart-card-draggable {
+  cursor: grab;
+  touch-action: none;
+}
+
+.org-chart-card-draggable:active {
+  cursor: grabbing;
+}
+
+.org-chart-card-drag-source {
+  opacity: 0.48;
+  transform: scale(0.985);
+}
+
+.org-chart-card-drop-target {
+  border-color: #2563eb !important;
+  background: #eff6ff !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.16), 0 8px 22px rgba(15, 23, 42, 0.12) !important;
+}
+
+.org-chart-card-drop-invalid {
+  border-color: #dc2626 !important;
+  background: #fef2f2 !important;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.12) !important;
+  cursor: not-allowed !important;
+}
+
+.org-chart-root-drop-zone {
+  position: sticky;
+  top: -18px;
+  z-index: 8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: min(520px, calc(100% - 40px));
+  min-height: 0;
+  max-height: 0;
+  margin: 0 auto;
+  padding: 0 16px;
+  overflow: hidden;
+  border: 1px dashed transparent;
+  border-radius: 8px;
+  color: transparent;
+  background: transparent;
+  font-size: 11px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 120ms ease, max-height 120ms ease, min-height 120ms ease, padding 120ms ease;
+}
+
+.org-chart-root-drop-zone strong {
+  font-size: 11px;
+}
+
+.org-chart-root-drop-zone span {
+  font-size: 10px;
+}
+
+.org-chart-position-dragging .org-chart-root-drop-zone {
+  min-height: 42px;
+  max-height: 42px;
+  margin-bottom: 14px;
+  padding: 8px 16px;
+  border-color: #94a3b8;
+  color: #475569;
+  background: rgba(255, 255, 255, 0.96);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.org-chart-root-drop-zone-active {
+  border-color: #2563eb !important;
+  color: #1d4ed8 !important;
+  background: #eff6ff !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.org-chart-drag-help {
+  color: #475569;
+  font-weight: 600;
+}
+
+.org-chart-drag-toast {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 10050;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: min(520px, calc(100vw - 48px));
+  padding: 11px 13px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  color: #1e293b;
+  background: #ffffff;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.18);
+  font-size: 12px;
+}
+
+.org-chart-drag-toast button {
+  min-height: 28px;
+  padding: 4px 9px;
+  border: 1px solid #94a3b8;
+  border-radius: 5px;
+  color: #1d4ed8;
+  background: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.org-chart-drag-toast button:hover {
+  background: #eff6ff;
+}

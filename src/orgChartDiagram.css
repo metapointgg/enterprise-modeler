@@ -1,0 +1,230 @@
+.org-chart-scroll.org-chart-native-diagram-active {
+  overflow: hidden;
+  padding: 0 !important;
+  background: #f8fafc;
+}
+
+.org-chart-scroll.org-chart-native-diagram-active > .org-chart-roots,
+.org-chart-scroll.org-chart-native-diagram-active > .org-chart-empty {
+  display: none !important;
+}
+
+.org-chart-diagram-shell {
+  position: relative;
+  display: block;
+  height: 100%;
+  min-height: 620px;
+  background: #fff;
+  border-top: 1px solid #e2e8f0;
+}
+
+.org-chart-diagram-canvas {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 620px;
+  background-image:
+    linear-gradient(#f1f5f9 1px, transparent 1px),
+    linear-gradient(90deg, #f1f5f9 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.org-chart-diagram-context {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 45;
+  width: 320px;
+  min-width: 0;
+  overflow: auto;
+  border-left: 1px solid #e2e8f0;
+  background: #f8fafc;
+  box-shadow: -5px 0 16px rgba(15, 23, 42, 0.08);
+}
+
+.org-chart-diagram-context[hidden] {
+  display: none !important;
+}
+
+.org-chart-diagram-canvas .djs-palette,
+.org-chart-diagram-canvas .djs-context-pad {
+  display: none !important;
+}
+
+.org-chart-diagram-canvas .djs-connection[data-element-id^="org-reporting-"] .djs-visual > path {
+  stroke: #475569 !important;
+  stroke-width: 2px !important;
+  stroke-dasharray: none !important;
+  marker-end: none !important;
+}
+
+.org-chart-diagram-canvas .djs-connection[data-element-id^="org-reporting-"]:hover .djs-visual > path,
+.org-chart-diagram-canvas .djs-connection.selected[data-element-id^="org-reporting-"] .djs-visual > path {
+  stroke: #2563eb !important;
+  stroke-width: 3px !important;
+}
+
+.org-chart-diagram-canvas .djs-element[data-element-id^="org-position-"] .djs-visual > rect {
+  fill: #fff !important;
+  stroke: #94a3b8 !important;
+  stroke-width: 1.4px !important;
+  rx: 7px;
+  ry: 7px;
+}
+
+.org-chart-diagram-canvas .djs-element[data-element-id^="org-position-"]:hover .djs-visual > rect,
+.org-chart-diagram-canvas .djs-element.selected[data-element-id^="org-position-"] .djs-visual > rect {
+  stroke: #2563eb !important;
+  stroke-width: 2px !important;
+}
+
+.org-chart-diagram-canvas .djs-element.org-chart-link-source .djs-visual > rect {
+  stroke: #2563eb !important;
+  stroke-width: 3px !important;
+  fill: #eff6ff !important;
+}
+
+.org-chart-diagram-canvas .djs-element.org-chart-vacant-position .djs-visual > rect {
+  stroke-dasharray: 6 4 !important;
+}
+
+.org-chart-diagram-canvas .djs-label {
+  font-family: Arial, sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  fill: #0f172a !important;
+}
+
+.org-chart-native-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.org-chart-native-action-active {
+  background: #dbeafe !important;
+  border-color: #60a5fa !important;
+  color: #1d4ed8 !important;
+}
+
+.org-chart-native-help,
+.org-chart-native-vacancy-note {
+  color: #475569;
+}
+
+.org-chart-native-help {
+  margin-left: 6px;
+}
+
+.org-chart-native-vacancy-note {
+  display: inline-block;
+  margin-left: 6px;
+}
+
+.org-chart-diagram-context-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px;
+  border-bottom: 1px solid #e2e8f0;
+  background: #fff;
+}
+
+.org-chart-diagram-context-header strong {
+  display: block;
+  font-size: 15px;
+  color: #0f172a;
+}
+
+.org-chart-diagram-context-header small {
+  display: block;
+  margin-top: 4px;
+  color: #64748b;
+  font-size: 11px;
+}
+
+.org-chart-diagram-context-header button {
+  border: 0;
+  background: transparent;
+  font-size: 20px;
+  color: #64748b;
+  cursor: pointer;
+}
+
+.org-chart-diagram-context-body {
+  padding: 16px 18px;
+  font-size: 12px;
+  color: #475569;
+}
+
+.org-chart-diagram-context-body p {
+  margin: 0 0 12px;
+  line-height: 1.5;
+}
+
+.org-chart-diagram-context-grid {
+  display: grid;
+  grid-template-columns: 110px minmax(0, 1fr);
+  gap: 8px 12px;
+  margin: 0 0 18px;
+}
+
+.org-chart-diagram-context-grid dt {
+  color: #64748b;
+}
+
+.org-chart-diagram-context-grid dd {
+  margin: 0;
+  color: #0f172a;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.org-chart-diagram-context-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.org-chart-diagram-link-instruction {
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  border: 1px solid #93c5fd;
+  border-radius: 8px;
+  background: #eff6ff;
+  color: #1e40af;
+  line-height: 1.45;
+}
+
+.org-chart-diagram-warning {
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  border: 1px solid #fed7aa;
+  border-radius: 7px;
+  background: #fff7ed;
+  color: #9a3412;
+}
+
+.org-chart-department-colour-0 .djs-visual > rect { fill: #eff6ff !important; }
+.org-chart-department-colour-1 .djs-visual > rect { fill: #f0fdf4 !important; }
+.org-chart-department-colour-2 .djs-visual > rect { fill: #fff7ed !important; }
+.org-chart-department-colour-3 .djs-visual > rect { fill: #faf5ff !important; }
+.org-chart-department-colour-4 .djs-visual > rect { fill: #fefce8 !important; }
+.org-chart-department-colour-5 .djs-visual > rect { fill: #f0fdfa !important; }
+.org-chart-department-colour-6 .djs-visual > rect { fill: #fdf2f8 !important; }
+.org-chart-department-colour-7 .djs-visual > rect { fill: #f8fafc !important; }
+
+@media (max-width: 1050px) {
+  .org-chart-diagram-canvas,
+  .org-chart-diagram-shell {
+    min-height: 520px;
+  }
+
+  .org-chart-diagram-context {
+    width: min(320px, 88%);
+  }
+}
