@@ -265,7 +265,7 @@ class SystemsCatalog {
         </div>
 
         <label class="metadata-field"><span>Name</span><input id="systems-name" required value="${escapeHtml(system?.name ?? '')}" /></label>
-        <label class="metadata-field"><span>Type</span><input id="systems-type" value="${escapeHtml(system?.type ?? '')}" placeholder="e.g. CRM, ledger, customer channel" /></label>
+        <label class="metadata-field"><span>Type</span><input id="systems-type" value="${escapeHtml(system?.type ?? '')}" placeholder="e.g. CRM, ERP, workflow platform" /></label>
         <label class="metadata-field"><span>Architecture layer</span><select id="systems-layer">${this.architectureLayerOptions(system?.architectureLayer ?? 'other')}</select></label>
 
         <div class="systems-two-col">
