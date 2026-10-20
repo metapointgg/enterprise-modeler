@@ -23,10 +23,11 @@ interface OpenExplorerDetail {
 }
 
 const RELATIONSHIP_TYPES: RelationshipType[] = [
-  'owns','supports','performs','manages','reports-to','uses','depends-on',
-  'reads','creates','updates','deletes','stores','transmits','contains',
-  'integrates-with','governed-by','subject-to','implements','implemented-by',
-  'controls','mitigates','impacts','located-at','related-to',
+  'owns','stewards','approves','supports','occupies','member-of','part-of',
+  'performs','manages','reports-to','uses','depends-on','reads','creates',
+  'updates','deletes','stores','transmits','contains','integrates-with',
+  'governed-by','subject-to','implements','implemented-by','controls',
+  'mitigates','impacts','located-at','related-to',
 ];
 
 class EnterpriseExplorer {
