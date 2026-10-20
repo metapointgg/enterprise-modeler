@@ -14,7 +14,6 @@ const PROCESS_LAYERS_KEY = 'enterprise-modeler.process-layers.v1';
 const PROCESS_CATALOG_KEY = 'enterprise-modeler.process-catalog.v1';
 const ORGANISATION_KEY = 'enterprise-modeler.organisation.v2';
 const LEGACY_ORGANISATION_KEY = 'enterprise-modeler.organisation.v1';
-const OPERATING_UNITS_KEY = 'enterprise-modeler.operating-units.v1';
 const GOVERNANCE_KEY = 'enterprise-modeler.process-governance.v1';
 const INTEGRATIONS_KEY = 'enterprise-modeler.integrations.v1';
 const REGULATIONS_KEY = 'enterprise-modeler.regulations.v1';
@@ -28,7 +27,6 @@ const exactRepositoryKeys = new Map<string, string>([
   [PROCESS_LAYERS_KEY, 'processes/process-layers.json'],
   [PROCESS_CATALOG_KEY, 'processes/process-catalog.json'],
   [ORGANISATION_KEY, 'organisation/org-chart.json'],
-  [OPERATING_UNITS_KEY, 'organisation/operating-units.json'],
   [GOVERNANCE_KEY, 'governance/process-governance.json'],
   [INTEGRATIONS_KEY, 'architecture/integrations.json'],
   [REGULATIONS_KEY, 'governance/regulations.json'],
