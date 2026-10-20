@@ -1,5 +1,4 @@
 import './orgChartView.css';
-import './orgChartUnits.css';
 
 import {
   getDepartmentName,
@@ -13,13 +12,6 @@ import {
   type Position,
   type Role,
 } from './organisation';
-import {
-  getUnitForPosition,
-  loadOperatingUnits,
-  type OperatingUnit,
-  type OperatingUnitsData,
-} from './operatingUnits';
-
 interface PersonNode {
   person: Person;
   children: PersonNode[];
@@ -31,8 +23,6 @@ interface PositionNode {
 }
 
 type OrgChartMode = 'hierarchy' | 'department';
-
-const UNASSIGNED_SCOPE = '__unassigned__';
 
 function escapeHtml(value: string): string {
   return value
@@ -54,11 +44,9 @@ class OrgChartView {
   private readonly root: HTMLDivElement;
 
   private data: OrganisationData | null = null;
-  private operatingUnits: OperatingUnitsData = { schemaVersion: 1, units: [] };
   private viewMode: OrgChartMode = 'hierarchy';
   private colourByDepartment = false;
   private showVacancies = false;
-  private scopeUnitId = '';
 
   constructor(organisationButton: HTMLButtonElement) {
     this.organisationButton = organisationButton;
@@ -86,26 +74,11 @@ class OrgChartView {
   }
 
   private async open(): Promise<void> {
-    [this.data, this.operatingUnits] = await Promise.all([
-      loadOrganisation(true),
-      loadOperatingUnits(true),
-    ]);
-
-    this.ensureScopeExists();
+    this.data = await loadOrganisation(true);
     this.render();
 
     if (!this.dialog.open) {
       this.dialog.showModal();
-    }
-  }
-
-  private ensureScopeExists(): void {
-    if (!this.scopeUnitId || this.scopeUnitId === UNASSIGNED_SCOPE) {
-      return;
-    }
-
-    if (!this.operatingUnits.units.some((unit) => unit.id === this.scopeUnitId && unit.active)) {
-      this.scopeUnitId = '';
     }
   }
 
@@ -116,7 +89,6 @@ class OrgChartView {
     }
 
     const hasPositions = data.positions.some((position) => position.active);
-    const scopeLabel = this.getScopeLabel();
 
     this.root.innerHTML = `
       <div class="org-chart-view">
@@ -125,8 +97,8 @@ class OrgChartView {
             <div class="org-chart-title">Organisation Chart</div>
             <div class="org-chart-subtitle">
               ${hasPositions
-                ? `Establishment hierarchy: Role → Position → Person · Scope: ${escapeHtml(scopeLabel)}`
-                : 'Legacy people hierarchy — add Positions to activate establishment-based operating-unit views'}
+                ? 'Establishment hierarchy: Role → Position → Person'
+                : 'Legacy people hierarchy — add Positions to activate establishment-based views'}
             </div>
           </div>
 
@@ -154,14 +126,6 @@ class OrgChartView {
             </button>
           </div>
 
-          ${hasPositions ? `
-            <label class="org-chart-scope-control">
-              <span>Scope</span>
-              <select id="org-chart-scope">
-                ${this.renderScopeOptions()}
-              </select>
-            </label>
-          ` : ''}
 
           <label class="org-chart-option">
             <input id="org-chart-colour-departments" type="checkbox"${this.colourByDepartment ? ' checked' : ''} />
@@ -207,37 +171,9 @@ class OrgChartView {
         : 'Legacy people and unfilled roles are grouped by Department.';
     }
 
-    if (this.scopeUnitId) {
-      if (this.viewMode === 'hierarchy') {
-        return `Showing the ${escapeHtml(this.getScopeLabel())} hierarchy. Positions whose manager sits outside this scope are treated as local roots and retain an external-reporting note.`;
-      }
-
-      return `Showing positions in ${escapeHtml(this.getScopeLabel())}, grouped by Department.`;
-    }
-
     return this.viewMode === 'hierarchy'
-      ? 'Whole-organisation reporting lines are derived from Position → Reports to Position. Office / Site and Business Unit boundaries do not prevent cross-unit reporting.'
-      : 'Whole-organisation Positions are grouped by Department; operating-unit membership is shown on each card.';
-  }
-
-  private renderScopeOptions(): string {
-    const activeUnits = sortedByName(this.operatingUnits.units.filter((unit) => unit.active));
-    const businessUnits = activeUnits.filter((unit) => unit.type === 'business-unit');
-    const officeSites = activeUnits.filter((unit) => unit.type === 'office-site');
-
-    const option = (value: string, label: string): string =>
-      `<option value="${escapeHtml(value)}"${value === this.scopeUnitId ? ' selected' : ''}>${escapeHtml(label)}</option>`;
-
-    return `
-      ${option('', 'Whole Organisation')}
-      ${option(UNASSIGNED_SCOPE, 'Unassigned Positions')}
-      ${businessUnits.length > 0
-        ? `<optgroup label="Business Units">${businessUnits.map((unit) => option(unit.id, unit.name)).join('')}</optgroup>`
-        : ''}
-      ${officeSites.length > 0
-        ? `<optgroup label="Offices / Sites">${officeSites.map((unit) => option(unit.id, unit.name)).join('')}</optgroup>`
-        : ''}
-    `;
+      ? 'Whole-organisation reporting lines are derived from Position → Reports to Position.'
+      : 'Whole-organisation Positions are grouped by Department.';
   }
 
   private bindEvents(): void {
@@ -254,11 +190,6 @@ class OrgChartView {
         this.viewMode = mode;
         this.render();
       });
-    });
-
-    this.root.querySelector<HTMLSelectElement>('#org-chart-scope')?.addEventListener('change', (event) => {
-      this.scopeUnitId = (event.currentTarget as HTMLSelectElement).value;
-      this.render();
     });
 
     this.root.querySelector<HTMLInputElement>('#org-chart-colour-departments')?.addEventListener('change', (event) => {
@@ -280,62 +211,20 @@ class OrgChartView {
   }
 
   private async refresh(): Promise<void> {
-    [this.data, this.operatingUnits] = await Promise.all([
-      loadOrganisation(true),
-      loadOperatingUnits(true),
-    ]);
-    this.ensureScopeExists();
+    this.data = await loadOrganisation(true);
     this.render();
   }
 
-  private getScopeLabel(): string {
-    if (!this.scopeUnitId) {
-      return 'Whole Organisation';
-    }
-
-    if (this.scopeUnitId === UNASSIGNED_SCOPE) {
-      return 'Unassigned Positions';
-    }
-
-    const unit: OperatingUnit | undefined = this.operatingUnits.units.find(
-      (candidate) => candidate.id === this.scopeUnitId,
-    );
-
-    return unit?.name ?? 'Whole Organisation';
-  }
-
-  private getScopedPositions(data: OrganisationData): Position[] {
-    const activePositions = data.positions.filter((position) => position.active);
-
-    if (!this.scopeUnitId) {
-      return activePositions;
-    }
-
-    const assignedIds = new Set(
-      this.operatingUnits.units.flatMap((unit) => unit.positionIds),
-    );
-
-    if (this.scopeUnitId === UNASSIGNED_SCOPE) {
-      return activePositions.filter((position) => !assignedIds.has(position.id));
-    }
-
-    const unit: OperatingUnit | undefined = this.operatingUnits.units.find(
-      (candidate) => candidate.id === this.scopeUnitId,
-    );
-    if (!unit) {
-      return activePositions;
-    }
-
-    const positionIds = new Set(unit.positionIds);
-    return activePositions.filter((position) => positionIds.has(position.id));
+  private getActivePositions(data: OrganisationData): Position[] {
+    return data.positions.filter((position) => position.active);
   }
 
   private renderPositionHierarchyView(data: OrganisationData): string {
-    const scopedPositions = this.getScopedPositions(data);
+    const scopedPositions = this.getActivePositions(data);
     const roots = this.buildPositionRoots(scopedPositions);
 
     if (roots.length === 0) {
-      return `<div class="org-chart-empty">No active positions are available in ${escapeHtml(this.getScopeLabel())}.</div>`;
+      return '<div class="org-chart-empty">No active positions are available.</div>';
     }
 
     const scopedPositionIds = new Set(scopedPositions.map((position) => position.id));
@@ -352,7 +241,7 @@ class OrgChartView {
   }
 
   private renderPositionDepartmentView(data: OrganisationData): string {
-    const scopedPositions = this.getScopedPositions(data);
+    const scopedPositions = this.getActivePositions(data);
     const knownDepartmentIds = new Set(data.departments.map((department) => department.id));
     const sections: string[] = [];
 
@@ -374,28 +263,26 @@ class OrgChartView {
       sections.push(this.renderPositionDepartmentSection('', 'Unassigned Department', unassigned));
     }
 
-    if (!this.scopeUnitId) {
-      const unpositionedPeople = sortedByName(data.people.filter((person) => person.active && !person.positionId));
-      if (unpositionedPeople.length > 0) {
-        sections.push(`
-          <section class="org-chart-department-section">
-            <header class="org-chart-department-header org-chart-department-colour-unassigned">
-              <div>
-                <div class="org-chart-department-name">Unpositioned people</div>
-                <div class="org-chart-department-summary">${unpositionedPeople.length} active person${unpositionedPeople.length === 1 ? '' : 's'} still using legacy organisation fields</div>
-              </div>
-            </header>
-            <div class="org-chart-department-grid">
-              ${unpositionedPeople.map((person) => this.renderLegacyDepartmentPersonCard(person)).join('')}
+    const unpositionedPeople = sortedByName(data.people.filter((person) => person.active && !person.positionId));
+    if (unpositionedPeople.length > 0) {
+      sections.push(`
+        <section class="org-chart-department-section">
+          <header class="org-chart-department-header org-chart-department-colour-unassigned">
+            <div>
+              <div class="org-chart-department-name">Unpositioned people</div>
+              <div class="org-chart-department-summary">${unpositionedPeople.length} active person${unpositionedPeople.length === 1 ? '' : 's'} still using legacy organisation fields</div>
             </div>
-          </section>
-        `);
-      }
+          </header>
+          <div class="org-chart-department-grid">
+            ${unpositionedPeople.map((person) => this.renderLegacyDepartmentPersonCard(person)).join('')}
+          </div>
+        </section>
+      `);
     }
 
     return sections.length > 0
       ? `<div class="org-chart-department-view">${sections.join('')}</div>`
-      : `<div class="org-chart-empty">No occupied positions are available in ${escapeHtml(this.getScopeLabel())}. Enable Show vacant positions to display vacant establishment slots.</div>`;
+      : '<div class="org-chart-empty">No occupied positions are available. Enable Show vacant positions to display vacant establishment slots.</div>';
   }
 
   private renderPositionDepartmentSection(
@@ -522,7 +409,6 @@ class OrgChartView {
     const role = getRoleName(data, position.roleId);
     const department = getDepartmentName(data, position.departmentId);
     const colourClass = this.getDepartmentColourClass(position.departmentId);
-    const unit = getUnitForPosition(this.operatingUnits, position.id);
 
     const directReports = data.positions.filter((candidate) =>
       candidate.active
@@ -530,10 +416,6 @@ class OrgChartView {
       && (!scopedPositionIds || scopedPositionIds.has(candidate.id)),
     ).length;
 
-    const externalManager = this.scopeUnitId && position.managerPositionId && scopedPositionIds
-      && !scopedPositionIds.has(position.managerPositionId)
-      ? data.positions.find((candidate) => candidate.id === position.managerPositionId)
-      : undefined;
 
     return `
       <button
@@ -542,12 +424,10 @@ class OrgChartView {
         ${occupant ? `data-org-person="${escapeHtml(occupant.id)}"` : `data-org-position="${escapeHtml(position.id)}"`}
       >
         ${isVacant ? '<div class="org-chart-vacancy-label">VACANT POSITION</div>' : ''}
-        ${unit ? `<div class="org-chart-unit-badge org-chart-unit-${unit.type}">${escapeHtml(unit.name)}</div>` : '<div class="org-chart-unit-badge org-chart-unit-unassigned">No operating unit</div>'}
         <div class="org-chart-person-name">${escapeHtml(occupant?.name ?? position.name)}</div>
         ${occupant ? `<div class="org-chart-person-meta">${escapeHtml(position.name)}</div>` : ''}
         <div class="org-chart-person-meta">${escapeHtml([role, department].filter(Boolean).join(' · ') || 'No role / department')}</div>
         ${occupant?.email ? `<div class="org-chart-person-meta">${escapeHtml(occupant.email)}</div>` : ''}
-        ${externalManager ? `<div class="org-chart-external-report">Reports outside scope to: ${escapeHtml(externalManager.name)}</div>` : ''}
         ${occupants.length > 1 ? `<div class="org-chart-warning">${occupants.length} active occupants assigned — review Position data</div>` : ''}
         ${showDirectReports ? `<div class="org-chart-card-footer">${directReports} reporting position${directReports === 1 ? '' : 's'} in scope</div>` : ''}
       </button>
