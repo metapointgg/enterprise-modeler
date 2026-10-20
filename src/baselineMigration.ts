@@ -57,3 +57,23 @@ if (!localStorage.getItem(GENERIC_ARCHITECTURE_MIGRATION_KEY)) {
 
   localStorage.setItem(GENERIC_ARCHITECTURE_MIGRATION_KEY, new Date().toISOString());
 }
+
+
+const ONBOARDING_HIERARCHY_MIGRATION_KEY = 'enterprise-modeler.onboarding-hierarchy.2026-10-20';
+
+if (!localStorage.getItem(ONBOARDING_HIERARCHY_MIGRATION_KEY)) {
+  const resetKeys = [
+    'enterprise-modeler.process-catalog.v1',
+    'enterprise-modeler.process-governance.v1',
+  ];
+
+  resetKeys.forEach((key) => {
+    const value = localStorage.getItem(key);
+    if (value !== null) {
+      localStorage.setItem(`${key}.pre-onboarding-hierarchy-20261020`, value);
+      localStorage.removeItem(key);
+    }
+  });
+
+  localStorage.setItem(ONBOARDING_HIERARCHY_MIGRATION_KEY, new Date().toISOString());
+}
