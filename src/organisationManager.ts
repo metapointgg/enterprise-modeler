@@ -92,6 +92,8 @@ export class OrganisationManager {
   }
 
   private render(): void {
+    const selectedEntity = this.selectedEntityReference();
+
     this.root.innerHTML = `
       <div class="organisation-manager">
         <div class="organisation-header">
@@ -100,6 +102,7 @@ export class OrganisationManager {
             <div class="organisation-subtitle">Repository-backed people, positions, roles, teams and departments</div>
           </div>
           <div class="organisation-header-actions">
+            ${selectedEntity ? '<button id="organisation-explore" class="toolbar-button" type="button">Explore Relationships</button><button id="organisation-impact" class="toolbar-button" type="button">Impact Analysis</button>' : ''}
             <button id="organisation-export" class="toolbar-button" type="button">Export JSON</button>
             <button id="organisation-reset" class="toolbar-button" type="button">Reset</button>
             <button id="organisation-close" class="metadata-close-button" type="button" title="Close organisation manager">×</button>
@@ -576,6 +579,32 @@ export class OrganisationManager {
     `;
   }
 
+  private selectedEntityReference(): { type: string; id: string } | null {
+    switch (this.activeTab) {
+      case 'people':
+        return this.selectedPersonId ? { type: 'person', id: this.selectedPersonId } : null;
+      case 'positions':
+        return this.selectedPositionId ? { type: 'position', id: this.selectedPositionId } : null;
+      case 'roles':
+        return this.selectedRoleId ? { type: 'role', id: this.selectedRoleId } : null;
+      case 'departments':
+        return this.selectedDepartmentId ? { type: 'department', id: this.selectedDepartmentId } : null;
+      case 'teams':
+        return this.selectedTeamId ? { type: 'team', id: this.selectedTeamId } : null;
+      default:
+        return null;
+    }
+  }
+
+  private openSelectedInExplorer(mode: 'relationships' | 'impact'): void {
+    const selected = this.selectedEntityReference();
+    if (!selected) return;
+    this.options.onClose();
+    document.dispatchEvent(new CustomEvent('enterprise-modeler:open-enterprise-explorer', {
+      detail: { ...selected, mode },
+    }));
+  }
+
   private bindCommonEvents(): void {
     this.root.querySelectorAll<HTMLButtonElement>('[data-tab]').forEach((button) => {
       button.addEventListener('click', () => {
@@ -588,6 +617,8 @@ export class OrganisationManager {
     });
 
     this.root.querySelector<HTMLButtonElement>('#organisation-close')?.addEventListener('click', this.options.onClose);
+    this.root.querySelector<HTMLButtonElement>('#organisation-explore')?.addEventListener('click', () => this.openSelectedInExplorer('relationships'));
+    this.root.querySelector<HTMLButtonElement>('#organisation-impact')?.addEventListener('click', () => this.openSelectedInExplorer('impact'));
     this.root.querySelector<HTMLButtonElement>('#organisation-export')?.addEventListener('click', () => this.options.onExport(this.getData()));
     this.root.querySelector<HTMLButtonElement>('#organisation-reset')?.addEventListener('click', () => void this.resetFromRepository());
   }
