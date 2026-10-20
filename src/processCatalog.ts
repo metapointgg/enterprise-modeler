@@ -306,10 +306,10 @@ export function createStarterBpmnXml(process: ProcessDefinitionRecord): string {
   const safeId = process.id.replace(/[^a-zA-Z0-9]/g, '_');
   const startId = `StartEvent_${safeId}`;
   const laneId = `Lane_${safeId}_Internal`;
-  const laneSetId = `LaneSet_${safeId}_Enterprise Modeler`;
+  const laneSetId = `LaneSet_${safeId}_Organisation`;
   const collaborationId = `Collaboration_${safeId}`;
-  const customerParticipantId = `Participant_${safeId}_Customer`;
-  const organisationParticipantId = `Participant_${safeId}_Enterprise Modeler`;
+  const externalActorParticipantId = `Participant_${safeId}_ExternalActor`;
+  const organisationParticipantId = `Participant_${safeId}_Organisation`;
   const externalParticipantId = `Participant_${safeId}_ExternalPartner`;
 
   return `<?xml version="1.0" encoding="UTF-8"?>
@@ -328,13 +328,13 @@ export function createStarterBpmnXml(process: ProcessDefinitionRecord): string {
     <bpmn:startEvent id="${startId}" name="Start" />
   </bpmn:process>
   <bpmn:collaboration id="${collaborationId}">
-    <bpmn:participant id="${customerParticipantId}" name="Customer" />
+    <bpmn:participant id="${externalActorParticipantId}" name="External Actor" />
     <bpmn:participant id="${organisationParticipantId}" name="Organisation" processRef="${process.bpmnProcessId}" />
     <bpmn:participant id="${externalParticipantId}" name="External Party / Service Provider" />
   </bpmn:collaboration>
   <bpmndi:BPMNDiagram id="BPMNDiagram_${process.bpmnProcessId}">
     <bpmndi:BPMNPlane id="BPMNPlane_${process.bpmnProcessId}" bpmnElement="${collaborationId}">
-      <bpmndi:BPMNShape id="${customerParticipantId}_di" bpmnElement="${customerParticipantId}" isHorizontal="true">
+      <bpmndi:BPMNShape id="${externalActorParticipantId}_di" bpmnElement="${externalActorParticipantId}" isHorizontal="true">
         <dc:Bounds x="80" y="70" width="1000" height="110" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="${organisationParticipantId}_di" bpmnElement="${organisationParticipantId}" isHorizontal="true">
