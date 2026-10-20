@@ -74,7 +74,7 @@ interface SaveXmlResult {
 }
 
 const ARCHITECTURE_BPMN_URL = '/architecture/solution-architecture.bpmn';
-const ARCHITECTURE_AUTOSAVE_KEY = 'enterprise-modeler.solution-architecture-bpmn.v1';
+const ARCHITECTURE_AUTOSAVE_KEY = 'enterprise-modeler.solution-architecture-bpmn.v2';
 const ARCHITECTURE_LAYER_PREFIX = 'ArchitectureLayer_';
 const ARCHITECTURE_PROCESS_PREFIX = 'ArchitectureProcess_';
 const FADED_MARKER = 'architecture-bpmn-faded';
