@@ -95,6 +95,7 @@ function initialiseWorkspaceUi(
 ): void {
   createSidebar(shellElement);
   moveStatusToHeader(status);
+  initialiseHeaderContext(status);
   createZoomControls(workspaceElement);
   initialisePaletteEnhancer(canvasElement);
   initialiseProcessLoader(workspaceElement, status);
@@ -194,6 +195,28 @@ function moveStatusToHeader(status: HTMLElement): void {
 
   status.classList.add('enterprise-modeler-header-status');
   documentInformation.appendChild(status);
+}
+
+function initialiseHeaderContext(status: HTMLElement): void {
+  const processLevel = document.querySelector<HTMLElement>('#process-level');
+  const documentName = document.querySelector<HTMLElement>('#document-name');
+
+  if (!processLevel || !documentName) {
+    return;
+  }
+
+  const setProcessContextVisible = (visible: boolean): void => {
+    processLevel.hidden = !visible;
+    documentName.hidden = !visible;
+    status.hidden = !visible;
+  };
+
+  document.addEventListener('enterprise-modeler:workspace-page-changed', (event) => {
+    const page = (event as CustomEvent<{ page?: string }>).detail?.page ?? 'process';
+    setProcessContextVisible(page === 'process');
+  });
+
+  setProcessContextVisible(true);
 }
 
 function createZoomControls(workspaceElement: HTMLElement): void {
