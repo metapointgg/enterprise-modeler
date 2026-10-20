@@ -27,7 +27,12 @@ export interface EntityReference {
 
 export type RelationshipType =
   | 'owns'
+  | 'stewards'
+  | 'approves'
   | 'supports'
+  | 'occupies'
+  | 'member-of'
+  | 'part-of'
   | 'performs'
   | 'manages'
   | 'reports-to'
