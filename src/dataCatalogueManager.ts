@@ -131,7 +131,7 @@ class DataCatalogueManager {
         ${textareaField('Notes', 'data-notes', record?.notes ?? '')}
         <div class="metadata-actions">
           <button class="toolbar-button toolbar-button-primary" type="submit">Save</button>
-          ${record ? '<button class="toolbar-button toolbar-button-danger" id="data-delete" type="button">Delete</button>' : ''}
+          ${record ? '<button class="toolbar-button" id="data-explore" type="button">Explore Relationships</button><button class="toolbar-button" id="data-impact" type="button">Impact Analysis</button><button class="toolbar-button toolbar-button-danger" id="data-delete" type="button">Delete</button>' : ''}
         </div>
       </form>
     `;
@@ -170,7 +170,7 @@ class DataCatalogueManager {
         ${textareaField('Notes', 'flow-notes', record?.notes ?? '')}
         <div class="metadata-actions">
           <button class="toolbar-button toolbar-button-primary" type="submit">Save</button>
-          ${record ? '<button class="toolbar-button toolbar-button-danger" id="data-delete" type="button">Delete</button>' : ''}
+          ${record ? '<button class="toolbar-button" id="data-explore" type="button">Explore Relationships</button><button class="toolbar-button" id="data-impact" type="button">Impact Analysis</button><button class="toolbar-button toolbar-button-danger" id="data-delete" type="button">Delete</button>' : ''}
         </div>
       </form>
     `;
@@ -206,6 +206,17 @@ class DataCatalogueManager {
       this.saveFlow();
     });
     this.root.querySelector<HTMLButtonElement>('#data-delete')?.addEventListener('click', () => this.deleteSelected());
+    this.root.querySelector<HTMLButtonElement>('#data-explore')?.addEventListener('click', () => this.openSelectedInExplorer('relationships'));
+    this.root.querySelector<HTMLButtonElement>('#data-impact')?.addEventListener('click', () => this.openSelectedInExplorer('impact'));
+  }
+
+  private openSelectedInExplorer(mode: 'relationships' | 'impact'): void {
+    if (!this.selectedId) return;
+    const type = this.tab === 'flows' ? 'data-flow' : 'data-object';
+    this.dialog.close();
+    document.dispatchEvent(new CustomEvent('enterprise-modeler:open-enterprise-explorer', {
+      detail: { type, id: this.selectedId, mode },
+    }));
   }
 
   private value(id: string): string {
