@@ -387,7 +387,7 @@ export class OrganisationManager {
 
         <label class="metadata-field">
           <span>Position name</span>
-          <input id="organisation-position-name" type="text" required value="${escapeHtml(position?.name ?? '')}" placeholder="e.g. Customer Adviser 01" />
+          <input id="organisation-position-name" type="text" required value="${escapeHtml(position?.name ?? '')}" placeholder="e.g. Operations Analyst 01" />
         </label>
 
         <label class="metadata-field">
