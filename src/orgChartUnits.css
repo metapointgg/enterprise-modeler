@@ -37,13 +37,16 @@
   letter-spacing: 0.02em;
 }
 
-.org-chart-unit-central-services {
+.org-chart-unit-business-unit,
+.org-chart-unit-function {
   border-color: #b9cbea;
   color: #315d9b;
   background: #eef4ff;
 }
 
-.org-chart-unit-branch {
+.org-chart-unit-office-site,
+.org-chart-unit-legal-entity,
+.org-chart-unit-other {
   border-color: #b9d9c2;
   color: #2f6b42;
   background: #eef9f1;

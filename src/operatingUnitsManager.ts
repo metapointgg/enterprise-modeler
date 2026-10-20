@@ -409,7 +409,7 @@ function initialiseOperatingUnitsManager(): void {
   const anchor = chartButton ?? organisationButton;
 
   if (!anchor) {
-    console.warn('Organisation toolbar buttons were not found; Branch / Units manager was not initialised.');
+    console.warn('Organisation toolbar buttons were not found; Operating Units manager was not initialised.');
     return;
   }
 

@@ -105,7 +105,7 @@ class GlobalSearch {
 
   private render(query: string): void {
     const results = this.search(query);
-    this.root.innerHTML = `<div class="global-search-shell"><header class="global-search-header"><div><strong>Global Search</strong><small>Processes, activities, organisation, branches, systems, APIs and regulations</small></div><button class="global-search-close" type="button" aria-label="Close">×</button></header><div class="global-search-input-row"><input id="global-search-input" type="search" value="${escapeHtml(query)}" placeholder="Search Enterprise Modeler…" autocomplete="off" /><span>Ctrl K</span></div><div class="global-search-results">${results.length === 0 ? '<div class="global-search-empty">No matching operating-model records.</div>' : results.map((item) => `<button type="button" class="global-search-result" data-search-id="${escapeHtml(item.id)}"><span class="global-search-category">${escapeHtml(item.category)}</span><span class="global-search-result-copy"><strong>${escapeHtml(item.title)}</strong><small>${escapeHtml(item.subtitle)}</small></span><span class="global-search-arrow">→</span></button>`).join('')}</div><footer class="global-search-footer">${results.length} result${results.length === 1 ? '' : 's'} · Enter a process, system, API, person, team, branch or regulatory term.</footer></div>`;
+    this.root.innerHTML = `<div class="global-search-shell"><header class="global-search-header"><div><strong>Global Search</strong><small>Processes, activities, organisation, operating units, systems, APIs, data and regulations</small></div><button class="global-search-close" type="button" aria-label="Close">×</button></header><div class="global-search-input-row"><input id="global-search-input" type="search" value="${escapeHtml(query)}" placeholder="Search Enterprise Modeler…" autocomplete="off" /><span>Ctrl K</span></div><div class="global-search-results">${results.length === 0 ? '<div class="global-search-empty">No matching operating-model records.</div>' : results.map((item) => `<button type="button" class="global-search-result" data-search-id="${escapeHtml(item.id)}"><span class="global-search-category">${escapeHtml(item.category)}</span><span class="global-search-result-copy"><strong>${escapeHtml(item.title)}</strong><small>${escapeHtml(item.subtitle)}</small></span><span class="global-search-arrow">→</span></button>`).join('')}</div><footer class="global-search-footer">${results.length} result${results.length === 1 ? '' : 's'} · Enter a process, system, API, person, team, operating unit or regulatory term.</footer></div>`;
 
     const input = this.root.querySelector<HTMLInputElement>('#global-search-input');
     input?.addEventListener('input', () => {
@@ -214,7 +214,7 @@ class GlobalSearch {
 
     units.units.filter((unit) => unit.active).forEach((unit) => items.push({
       id: `unit:${unit.id}`,
-      category: unit.type === 'branch' ? 'Operating Unit' : 'Operating Unit',
+      category: 'Operating Unit',
       title: unit.name,
       subtitle: unit.code,
       keywords: `${unit.id} ${unit.notes}`,

@@ -126,7 +126,7 @@ class OrgChartView {
             <div class="org-chart-subtitle">
               ${hasPositions
                 ? `Establishment hierarchy: Role → Position → Person · Scope: ${escapeHtml(scopeLabel)}`
-                : 'Legacy people hierarchy — add Positions to activate establishment-based branch and Business Unit views'}
+                : 'Legacy people hierarchy — add Positions to activate establishment-based operating-unit views'}
             </div>
           </div>
 
@@ -222,8 +222,8 @@ class OrgChartView {
 
   private renderScopeOptions(): string {
     const activeUnits = sortedByName(this.operatingUnits.units.filter((unit) => unit.active));
-    const central = activeUnits.filter((unit) => unit.type === 'business-unit');
-    const branches = activeUnits.filter((unit) => unit.type === 'office-site');
+    const businessUnits = activeUnits.filter((unit) => unit.type === 'business-unit');
+    const officeSites = activeUnits.filter((unit) => unit.type === 'office-site');
 
     const option = (value: string, label: string): string =>
       `<option value="${escapeHtml(value)}"${value === this.scopeUnitId ? ' selected' : ''}>${escapeHtml(label)}</option>`;
@@ -231,11 +231,11 @@ class OrgChartView {
     return `
       ${option('', 'Whole Organisation')}
       ${option(UNASSIGNED_SCOPE, 'Unassigned Positions')}
-      ${central.length > 0
-        ? `<optgroup label="Business Unit">${central.map((unit) => option(unit.id, unit.name)).join('')}</optgroup>`
+      ${businessUnits.length > 0
+        ? `<optgroup label="Business Units">${businessUnits.map((unit) => option(unit.id, unit.name)).join('')}</optgroup>`
         : ''}
-      ${branches.length > 0
-        ? `<optgroup label="Operating Units">${branches.map((unit) => option(unit.id, unit.name)).join('')}</optgroup>`
+      ${officeSites.length > 0
+        ? `<optgroup label="Offices / Sites">${officeSites.map((unit) => option(unit.id, unit.name)).join('')}</optgroup>`
         : ''}
     `;
   }
