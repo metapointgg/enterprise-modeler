@@ -1,6 +1,7 @@
-const MIGRATION_KEY = 'enterprise-modeler.reference-bank-seed.2026-10-20';
+const LEGACY_MIGRATION_KEY = 'enterprise-modeler.reference-bank-seed.2026-10-20';
+const GENERIC_ARCHITECTURE_MIGRATION_KEY = 'enterprise-modeler.generic-architecture-seed.2026-10-20';
 
-const KEYS = [
+const LEGACY_KEYS = [
   'enterprise-modeler.process-layers.v1',
   'enterprise-modeler.process-catalog.v1',
   'enterprise-modeler.organisation.v2',
@@ -11,11 +12,11 @@ const KEYS = [
   'enterprise-modeler.data-catalogue.v1',
   'enterprise-modeler.relationships.v1',
   'enterprise-modeler.governance-catalogue.v1',
-  'enterprise-modeler.solution-architecture-bpmn.v1'
+  'enterprise-modeler.solution-architecture-bpmn.v1',
 ];
 
-if (!localStorage.getItem(MIGRATION_KEY)) {
-  for (const key of KEYS) {
+if (!localStorage.getItem(LEGACY_MIGRATION_KEY)) {
+  for (const key of LEGACY_KEYS) {
     const value = localStorage.getItem(key);
     if (value !== null) {
       localStorage.setItem(`${key}.pre-reference-bank-20261020`, value);
@@ -36,5 +37,23 @@ if (!localStorage.getItem(MIGRATION_KEY)) {
       }
     });
 
-  localStorage.setItem(MIGRATION_KEY, new Date().toISOString());
+  localStorage.setItem(LEGACY_MIGRATION_KEY, new Date().toISOString());
+}
+
+if (!localStorage.getItem(GENERIC_ARCHITECTURE_MIGRATION_KEY)) {
+  const resetKeys = [
+    'enterprise-modeler.integrations.v1',
+    'enterprise-modeler.solution-architecture-bpmn.v1',
+    'enterprise-modeler.solution-architecture-bpmn.v2',
+  ];
+
+  resetKeys.forEach((key) => {
+    const value = localStorage.getItem(key);
+    if (value !== null) {
+      localStorage.setItem(`${key}.pre-generic-architecture-20261020`, value);
+      localStorage.removeItem(key);
+    }
+  });
+
+  localStorage.setItem(GENERIC_ARCHITECTURE_MIGRATION_KEY, new Date().toISOString());
 }
