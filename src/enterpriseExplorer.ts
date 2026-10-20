@@ -7,6 +7,7 @@ import type {
 } from './enterpriseModel';
 import {
   entityKey,
+  isDerivedRelationship,
   loadEntityIndex,
   type EntityIndexSnapshot,
   type IndexedEntity,
@@ -156,7 +157,7 @@ class EnterpriseExplorer {
               <div class="enterprise-catalog-item-name">${escapeHtml(other?.name || otherRef.id)}</div>
               <div class="enterprise-relationship-meta">${escapeHtml(other ? formatEntityType(other.type) : formatEntityType(otherRef.type))}${relationship.description ? ` · ${escapeHtml(relationship.description)}` : ''}</div>
             </button>
-            <button class="toolbar-button" data-remove-relationship="${escapeHtml(relationship.id)}" type="button">Remove</button>
+            ${isDerivedRelationship(relationship) ? '<span class="enterprise-catalog-item-meta">Derived</span>' : `<button class="toolbar-button" data-remove-relationship="${escapeHtml(relationship.id)}" type="button">Remove</button>`}
           </div>`;
         }).join('') : '<div class="enterprise-empty">No relationships recorded yet.</div>'}
       </div>
@@ -277,15 +278,28 @@ class EnterpriseExplorer {
       notes: '',
     };
     this.snapshot.relationships.relationships.push(relationship);
-    saveEnterpriseRelationshipsLocally(this.snapshot.relationships);
+    this.persistExplicitRelationships();
     this.render();
   }
 
   private removeRelationship(id: string): void {
-    if (!this.snapshot || !id || !window.confirm('Remove this relationship?')) return;
+    if (!this.snapshot || !id) return;
+    const relationship = this.snapshot.relationships.relationships.find((item) => item.id === id);
+    if (!relationship || isDerivedRelationship(relationship)) return;
+    if (!window.confirm('Remove this relationship?')) return;
     this.snapshot.relationships.relationships = this.snapshot.relationships.relationships.filter((item) => item.id !== id);
-    saveEnterpriseRelationshipsLocally(this.snapshot.relationships);
+    this.persistExplicitRelationships();
     this.render();
+  }
+
+  private persistExplicitRelationships(): void {
+    if (!this.snapshot) return;
+    saveEnterpriseRelationshipsLocally({
+      schemaVersion: 1,
+      relationships: this.snapshot.relationships.relationships.filter(
+        (relationship) => !isDerivedRelationship(relationship),
+      ),
+    });
   }
 }
 
