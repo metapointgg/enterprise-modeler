@@ -125,14 +125,11 @@ function ensureExtraSections(): void {
   const nav = document.querySelector<HTMLElement>('.enterprise-modeler-sidebar-nav');
   if (!nav) return;
 
-  const unitsSection = nav.querySelector<HTMLElement>(
-    '.enterprise-modeler-sidebar-section[data-section-id="units"]',
-  );
   const processSection = nav.querySelector<HTMLElement>(
     '.enterprise-modeler-sidebar-section[data-section-id="process"]',
   );
 
-  let insertionPoint: Element | null = unitsSection ?? processSection;
+  let insertionPoint: Element | null = processSection;
   EXTRA_SECTIONS.forEach((definition) => {
     let section = nav.querySelector<HTMLElement>(
       `.enterprise-modeler-sidebar-section[data-section-id="${definition.id}"]`,
