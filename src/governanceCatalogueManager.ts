@@ -93,6 +93,7 @@ class GovernanceCatalogueManager {
               <p>${escapeHtml(selected.description || 'No description recorded.')}</p>
               ${selected.notes ? `<div class="enterprise-catalog-section"><h3>Notes</h3><p>${escapeHtml(selected.notes)}</p></div>` : ''}
               <div class="enterprise-catalog-section">
+                <button class="toolbar-button" id="governance-explore" type="button">Explore Relationships</button>
                 <button class="toolbar-button toolbar-button-primary" id="governance-impact" type="button">Open Impact Analysis</button>
               </div>
             ` : '<div class="enterprise-empty">Select a governance record.</div>'}
@@ -119,8 +120,16 @@ class GovernanceCatalogueManager {
       this.selectedId = button.dataset.governanceRecord ?? '';
       this.render();
     }));
+    this.root.querySelector<HTMLButtonElement>('#governance-explore')?.addEventListener('click', () => {
+      if (!this.selectedId) return;
+      this.dialog.close();
+      document.dispatchEvent(new CustomEvent('enterprise-modeler:open-enterprise-explorer', {
+        detail: { type, id: this.selectedId, mode: 'relationships' },
+      }));
+    });
     this.root.querySelector<HTMLButtonElement>('#governance-impact')?.addEventListener('click', () => {
       if (!this.selectedId) return;
+      this.dialog.close();
       document.dispatchEvent(new CustomEvent('enterprise-modeler:open-enterprise-explorer', {
         detail: { type, id: this.selectedId, mode: 'impact' },
       }));
