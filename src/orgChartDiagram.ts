@@ -490,13 +490,13 @@ class OrgChartDiagramController {
       .join('\n');
 
     return `<?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_Enterprise ModelerOrgChart" targetNamespace="https://enterprise-modeler.local/bpmn/org-chart">
-  <bpmn:process id="Process_Enterprise ModelerOrgChart" name="Enterprise Modeler Organisation Structure" isExecutable="false">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_EnterpriseModelerOrgChart" targetNamespace="https://enterprise-modeler.local/bpmn/org-chart">
+  <bpmn:process id="Process_EnterpriseModelerOrgChart" name="Enterprise Modeler Organisation Structure" isExecutable="false">
 ${taskXml}
 ${associationXml}
   </bpmn:process>
-  <bpmndi:BPMNDiagram id="BPMNDiagram_Enterprise ModelerOrgChart">
-    <bpmndi:BPMNPlane id="BPMNPlane_Enterprise ModelerOrgChart" bpmnElement="Process_Enterprise ModelerOrgChart">
+  <bpmndi:BPMNDiagram id="BPMNDiagram_EnterpriseModelerOrgChart">
+    <bpmndi:BPMNPlane id="BPMNPlane_EnterpriseModelerOrgChart" bpmnElement="Process_EnterpriseModelerOrgChart">
 ${shapeXml}
 ${edgeXml}
     </bpmndi:BPMNPlane>
