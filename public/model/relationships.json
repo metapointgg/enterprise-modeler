@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "relationships": [
+    {
+      "id": "rel-owner-example",
+      "type": "owns",
+      "source": {
+        "type": "person",
+        "id": "person-example-owner"
+      },
+      "target": {
+        "type": "process",
+        "id": "example-business-process"
+      },
+      "description": "Example process owner relationship.",
+      "ownerPositionId": "pos-process-owner",
+      "active": true,
+      "notes": "Replace with client ownership."
+    },
+    {
+      "id": "rel-process-system",
+      "type": "uses",
+      "source": {
+        "type": "process",
+        "id": "example-business-process"
+      },
+      "target": {
+        "type": "system",
+        "id": "system-example-workflow"
+      },
+      "description": "Example process uses the workflow system.",
+      "ownerPositionId": "",
+      "active": true,
+      "notes": ""
+    },
+    {
+      "id": "rel-record-data",
+      "type": "creates",
+      "source": {
+        "type": "process-node",
+        "id": "example-business-process:Task_Receive"
+      },
+      "target": {
+        "type": "data-object",
+        "id": "data-request-record"
+      },
+      "description": "Record request creates the Request Record.",
+      "ownerPositionId": "",
+      "active": true,
+      "notes": ""
+    },
+    {
+      "id": "rel-system-stores-data",
+      "type": "stores",
+      "source": {
+        "type": "system",
+        "id": "system-example-workflow"
+      },
+      "target": {
+        "type": "data-object",
+        "id": "data-request-record"
+      },
+      "description": "Workflow system is the example system of record.",
+      "ownerPositionId": "",
+      "active": true,
+      "notes": ""
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "environment": "local",
+  "auth": {
+    "enabled": false,
+    "domain": "",
+    "clientId": "",
+    "userPoolId": "",
+    "redirectUri": "",
+    "logoutUri": "",
+    "scopes": ["openid", "email", "profile"]
+  },
+  "api": { "baseUrl": "" }
+}

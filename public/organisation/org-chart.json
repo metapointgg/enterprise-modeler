@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 2,
+  "departments": [
+    {
+      "id": "dept-operations",
+      "name": "Operations"
+    },
+    {
+      "id": "dept-technology",
+      "name": "Technology"
+    },
+    {
+      "id": "dept-governance",
+      "name": "Governance"
+    }
+  ],
+  "teams": [
+    {
+      "id": "team-operations",
+      "name": "Operations Team",
+      "departmentId": "dept-operations"
+    }
+  ],
+  "roles": [
+    {
+      "id": "role-process-owner",
+      "name": "Process Owner",
+      "departmentId": "dept-operations"
+    },
+    {
+      "id": "role-process-analyst",
+      "name": "Process Analyst",
+      "departmentId": "dept-operations"
+    }
+  ],
+  "positions": [
+    {
+      "id": "pos-process-owner",
+      "name": "Process Owner",
+      "roleId": "role-process-owner",
+      "departmentId": "dept-operations",
+      "teamIds": [
+        "team-operations"
+      ],
+      "active": true,
+      "notes": "Neutral example position."
+    },
+    {
+      "id": "pos-process-analyst",
+      "name": "Process Analyst",
+      "roleId": "role-process-analyst",
+      "departmentId": "dept-operations",
+      "managerPositionId": "pos-process-owner",
+      "teamIds": [
+        "team-operations"
+      ],
+      "active": true,
+      "notes": "Neutral example position."
+    }
+  ],
+  "people": [
+    {
+      "id": "person-example-owner",
+      "name": "Example Process Owner",
+      "email": "",
+      "positionId": "pos-process-owner",
+      "teamIds": [],
+      "active": true,
+      "notes": "Replace with client data."
+    }
+  ]
+}

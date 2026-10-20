@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "records": [
+    {
+      "processId": "enterprise-operating-model",
+      "status": "draft",
+      "ownerPositionId": "pos-process-owner",
+      "approverPositionId": "",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [],
+      "systemIds": [],
+      "interfaceIds": [],
+      "regulationIds": [],
+      "changeSummary": "Initial neutral enterprise model.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "example-business-process",
+      "status": "draft",
+      "ownerPositionId": "pos-process-owner",
+      "approverPositionId": "",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [],
+      "systemIds": [
+        "system-example-workflow"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [],
+      "changeSummary": "Neutral example process.",
+      "updatedAt": ""
+    }
+  ]
+}

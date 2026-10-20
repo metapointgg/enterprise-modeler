@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "rootProcessId": "enterprise-operating-model",
+  "processes": [
+    {
+      "id": "enterprise-operating-model",
+      "bpmnProcessId": "Process_EnterpriseOperatingModel",
+      "name": "Enterprise Operating Model",
+      "layerId": "layer-l0",
+      "filename": "enterprise-operating-model.bpmn",
+      "url": "/processes/baseline/enterprise-operating-model.bpmn",
+      "metadataUrl": "/metadata/baseline/enterprise-operating-model.json",
+      "active": true
+    },
+    {
+      "id": "example-business-process",
+      "bpmnProcessId": "Process_ExampleBusinessProcess",
+      "name": "Example Business Process",
+      "layerId": "layer-l1",
+      "filename": "example-business-process.bpmn",
+      "url": "/processes/baseline/example-business-process.bpmn",
+      "metadataUrl": "/metadata/baseline/example-business-process.json",
+      "parentId": "enterprise-operating-model",
+      "active": true
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "dataObjects": [
+    {
+      "id": "data-request-record",
+      "name": "Request Record",
+      "description": "Example business request captured by the process.",
+      "domain": "Operations",
+      "businessOwnerPositionId": "pos-process-owner",
+      "dataStewardPositionId": "pos-process-analyst",
+      "classification": "internal",
+      "personalData": false,
+      "specialCategoryData": false,
+      "systemOfRecordId": "system-example-workflow",
+      "retentionPeriod": "TBC",
+      "dataResidency": "TBC",
+      "criticality": "medium",
+      "active": true,
+      "notes": "Neutral example data object."
+    }
+  ],
+  "dataFlows": []
+}

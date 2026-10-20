@@ -1,0 +1,20 @@
+{
+  "name": "enterprise-modeler",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build && node scripts/strip-protected-repository.mjs",
+    "build:aws": "npm run build",
+    "build:local-repository": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "typescript": "~6.0.2",
+    "vite": "^8.1.1"
+  },
+  "dependencies": {
+    "bpmn-js": "^18.22.0"
+  }
+}

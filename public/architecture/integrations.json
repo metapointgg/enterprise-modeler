@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 2,
+  "systems": [
+    {
+      "id": "system-example-workflow",
+      "name": "Example Workflow System",
+      "type": "Business application",
+      "architectureLayer": "platform",
+      "supplier": "TBC",
+      "environment": "TBC",
+      "dataClassification": "internal",
+      "integrationType": "API / TBC",
+      "ownerPositionId": "",
+      "criticality": "medium",
+      "active": true,
+      "notes": "Neutral example system; replace with client architecture."
+    }
+  ],
+  "interfaces": []
+}

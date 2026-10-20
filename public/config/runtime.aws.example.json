@@ -1,0 +1,13 @@
+{
+  "environment": "dev",
+  "auth": {
+    "enabled": true,
+    "domain": "https://<cognito-domain>",
+    "clientId": "<cognito-public-app-client-id>",
+    "userPoolId": "<region>_<user-pool-id>",
+    "redirectUri": "https://<modeler-hostname>/",
+    "logoutUri": "https://<modeler-hostname>/",
+    "scopes": ["openid", "email", "profile"]
+  },
+  "api": { "baseUrl": "https://<api-id>.execute-api.<region>.amazonaws.com" }
+}

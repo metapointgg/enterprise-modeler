@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "layers": [
+    {
+      "id": "layer-l0",
+      "code": "L0",
+      "name": "Enterprise / Value Stream",
+      "description": "Enterprise-wide operating model, value stream or lifecycle.",
+      "sequence": 0,
+      "active": true
+    },
+    {
+      "id": "layer-l1",
+      "code": "L1",
+      "name": "End-to-End Process",
+      "description": "End-to-end business process.",
+      "sequence": 10,
+      "active": true
+    },
+    {
+      "id": "layer-l2",
+      "code": "L2",
+      "name": "Sub-Process",
+      "description": "Reusable sub-process.",
+      "sequence": 20,
+      "active": true
+    },
+    {
+      "id": "layer-l3",
+      "code": "L3",
+      "name": "Operational Procedure",
+      "description": "Operational procedure or detailed workflow.",
+      "sequence": 30,
+      "active": true
+    },
+    {
+      "id": "layer-l4",
+      "code": "L4",
+      "name": "Work Instruction / System Interaction",
+      "description": "Detailed work instruction or system-level interaction.",
+      "sequence": 40,
+      "active": true
+    }
+  ]
+}
