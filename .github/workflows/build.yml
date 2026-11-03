@@ -4,12 +4,14 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - 'standalone/**'
   pull_request:
     branches:
       - main
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build:
@@ -42,3 +44,43 @@ jobs:
             fi
           done
           echo "Protected repository data is absent from the production bundle."
+
+      - name: Build standalone reference distribution
+        run: npm run build:standalone
+
+      - name: Configure standalone runtime
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp public/config/runtime.standalone.json dist/config/runtime.json
+
+      - name: Verify standalone reference data is present
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f dist/index.html
+          test -f dist/architecture/solution-architecture.bpmn
+          test -f dist/architecture/integrations.json
+          grep -q '"environment": "standalone"' dist/config/runtime.json
+          echo "Standalone distribution contains the reference repository and requires no runtime dependency download."
+
+      - name: Publish standalone build into repository
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf standalone
+          mkdir -p standalone
+          cp -a dist/. standalone/
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f standalone
+
+          if git diff --cached --quiet; then
+            echo "Standalone distribution is already current."
+            exit 0
+          fi
+
+          git commit -m "Update dependency-free standalone build"
+          git push

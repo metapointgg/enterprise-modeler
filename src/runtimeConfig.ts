@@ -86,7 +86,9 @@ async function fetchRuntimeConfig(): Promise<RuntimeConfig> {
     },
   };
 
-  if (!config.auth.enabled && !isLocalDevelopmentHost()) {
+  const isStandalone = config.environment.toLowerCase() === 'standalone';
+
+  if (!config.auth.enabled && !isLocalDevelopmentHost() && !isStandalone) {
     throw new Error('Cognito authentication must be enabled for a deployed Process Modeler environment.');
   }
 

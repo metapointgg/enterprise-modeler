@@ -19,6 +19,9 @@ runtime.test.json
 runtime.prod.json
 runtime.aws.json
 
+# standalone/ is intentionally committed.
+# It is the pre-built, dependency-free distribution produced by GitHub Actions.
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

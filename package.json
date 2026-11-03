@@ -8,6 +8,7 @@
     "build": "tsc && vite build && node scripts/strip-protected-repository.mjs",
     "build:aws": "npm run build",
     "build:local-repository": "tsc && vite build",
+    "build:standalone": "npm run build:local-repository",
     "preview": "vite preview"
   },
   "devDependencies": {
