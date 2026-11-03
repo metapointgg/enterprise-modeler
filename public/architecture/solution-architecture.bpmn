@@ -2,49 +2,37 @@
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_EnterpriseSolutionArchitecture" targetNamespace="https://enterprise-modeler.local/architecture">
 
   <bpmn:process id="ArchitectureProcess_channel" name="Channels &amp; Experience" isExecutable="false">
-    <bpmn:task id="system-online-banking" name="Digital Banking Portal" />
+    <bpmn:task id="system-portal" name="Customer / Employee Portal" />
   </bpmn:process>
 
   <bpmn:process id="ArchitectureProcess_integration" name="API &amp; Integration" isExecutable="false">
-    <bpmn:task id="system-payments" name="Payments Gateway" />
+    <bpmn:task id="system-integration-platform" name="API &amp; Integration Platform" />
   </bpmn:process>
 
   <bpmn:process id="ArchitectureProcess_platform" name="Core Platforms &amp; Data" isExecutable="false">
-    <bpmn:task id="system-salesforce" name="Salesforce CRM" />
-    <bpmn:task id="system-t24" name="Temenos Transact (T24)" />
-    <bpmn:task id="system-iris" name="IRIS Financials" />
-    <bpmn:task id="system-sharepoint" name="Microsoft SharePoint Online" />
-    <bpmn:task id="system-data-warehouse" name="Bank Data Warehouse" />
-    <bpmn:task id="system-powerbi" name="Microsoft Power BI" />
-    <bpmn:task id="system-servicenow" name="ServiceNow" />
-    <bpmn:task id="system-treasury-alm" name="Treasury &amp; ALM Tool" />
-    <bpmn:task id="system-m365" name="Microsoft 365" />
+    <bpmn:task id="system-crm" name="CRM Platform" />
+    <bpmn:task id="system-erp" name="ERP Platform" />
+    <bpmn:task id="system-documents" name="Document Management" />
+    <bpmn:task id="system-data-platform" name="Enterprise Data Platform" />
+    <bpmn:task id="system-bi" name="BI &amp; Reporting" />
     <bpmn:task id="system-hris" name="HR Information System" />
-    <bpmn:task id="system-reg-reporting" name="Regulatory Reporting Workspace" />
-    <bpmn:sequenceFlow id="if-salesforce-t24" name="Salesforce ↔ T24 Customer &amp; Account Interface" sourceRef="system-salesforce" targetRef="system-t24" />
-    <bpmn:sequenceFlow id="if-salesforce-sharepoint" name="Salesforce ↔ SharePoint Documents" sourceRef="system-salesforce" targetRef="system-sharepoint" />
-    <bpmn:sequenceFlow id="if-t24-iris" name="T24 → IRIS GL Interface" sourceRef="system-t24" targetRef="system-iris" />
-    <bpmn:sequenceFlow id="if-t24-dwh" name="T24 → Data Warehouse" sourceRef="system-t24" targetRef="system-data-warehouse" />
-    <bpmn:sequenceFlow id="if-salesforce-dwh" name="Salesforce → Data Warehouse" sourceRef="system-salesforce" targetRef="system-data-warehouse" />
-    <bpmn:sequenceFlow id="if-iris-dwh" name="IRIS → Data Warehouse" sourceRef="system-iris" targetRef="system-data-warehouse" />
-    <bpmn:sequenceFlow id="if-t24-treasury" name="T24 → Treasury &amp; ALM" sourceRef="system-t24" targetRef="system-treasury-alm" />
-    <bpmn:sequenceFlow id="if-dwh-powerbi" name="Data Warehouse → Power BI" sourceRef="system-data-warehouse" targetRef="system-powerbi" />
+    <bpmn:task id="system-collaboration" name="Collaboration Platform" />
+    <bpmn:sequenceFlow id="if-crm-documents" name="CRM ↔ Document Management" sourceRef="system-crm" targetRef="system-documents" />
+    <bpmn:sequenceFlow id="if-crm-data" name="CRM → Data Platform" sourceRef="system-crm" targetRef="system-data-platform" />
+    <bpmn:sequenceFlow id="if-erp-data" name="ERP → Data Platform" sourceRef="system-erp" targetRef="system-data-platform" />
+    <bpmn:sequenceFlow id="if-data-bi" name="Data Platform → BI &amp; Reporting" sourceRef="system-data-platform" targetRef="system-bi" />
   </bpmn:process>
 
   <bpmn:process id="ArchitectureProcess_security" name="Identity, Security &amp; Control" isExecutable="false">
-    <bpmn:task id="system-aml-monitoring" name="AML Transaction Monitoring Platform" />
-    <bpmn:task id="system-fraud-monitoring" name="Fraud Monitoring Platform" />
-    <bpmn:task id="system-entra" name="Microsoft Entra ID" />
-    <bpmn:task id="system-sentinel" name="Microsoft Sentinel" />
-    <bpmn:task id="system-backup" name="Enterprise Backup Service" />
-    <bpmn:sequenceFlow id="if-security-sentinel" name="Enterprise Systems → Sentinel" sourceRef="system-entra" targetRef="system-sentinel" />
+    <bpmn:task id="system-iam" name="Identity &amp; Access Management" />
+    <bpmn:task id="system-security-monitoring" name="Security Monitoring" />
+    <bpmn:task id="system-backup" name="Backup &amp; Recovery" />
+    <bpmn:sequenceFlow id="if-iam-security" name="Identity Events → Security Monitoring" sourceRef="system-iam" targetRef="system-security-monitoring" />
   </bpmn:process>
 
   <bpmn:process id="ArchitectureProcess_partner" name="External Providers" isExecutable="false">
-    <bpmn:task id="system-worldcheck" name="LSEG World-Check One" />
-    <bpmn:task id="system-idv" name="Digital Identity Verification Service" />
-    <bpmn:task id="system-experian" name="Experian Credit Bureau" />
-    <bpmn:task id="system-docusign" name="DocuSign" />
+    <bpmn:task id="system-id-verification" name="External Identity Verification" />
+    <bpmn:task id="system-esignature" name="Electronic Signature" />
   </bpmn:process>
 
   <bpmn:process id="ArchitectureProcess_other" name="Other / TBC" isExecutable="false" />
@@ -56,65 +44,58 @@
     <bpmn:participant id="ArchitectureLayer_security" name="Identity, Security &amp; Control" processRef="ArchitectureProcess_security" />
     <bpmn:participant id="ArchitectureLayer_partner" name="External Providers" processRef="ArchitectureProcess_partner" />
     <bpmn:participant id="ArchitectureLayer_other" name="Other / TBC" processRef="ArchitectureProcess_other" />
-    <bpmn:messageFlow id="if-salesforce-idv" name="Salesforce → Identity Verification" sourceRef="system-salesforce" targetRef="system-idv" />
-    <bpmn:messageFlow id="if-salesforce-worldcheck" name="Salesforce → World-Check Screening" sourceRef="system-salesforce" targetRef="system-worldcheck" />
-    <bpmn:messageFlow id="if-salesforce-experian" name="Salesforce → Experian Credit Search" sourceRef="system-salesforce" targetRef="system-experian" />
-    <bpmn:messageFlow id="if-salesforce-docusign" name="Salesforce ↔ DocuSign" sourceRef="system-salesforce" targetRef="system-docusign" />
-    <bpmn:messageFlow id="if-t24-payments" name="T24 ↔ Payments Gateway" sourceRef="system-t24" targetRef="system-payments" />
-    <bpmn:messageFlow id="if-t24-aml" name="T24 → AML Monitoring Feed" sourceRef="system-t24" targetRef="system-aml-monitoring" />
-    <bpmn:messageFlow id="if-t24-fraud" name="T24 → Fraud Monitoring Feed" sourceRef="system-t24" targetRef="system-fraud-monitoring" />
-    <bpmn:messageFlow id="if-app-salesforce" name="Digital Banking → Salesforce" sourceRef="system-online-banking" targetRef="system-salesforce" />
-    <bpmn:messageFlow id="if-app-t24" name="Digital Banking → T24" sourceRef="system-online-banking" targetRef="system-t24" />
+
+    <bpmn:messageFlow id="if-portal-integration" name="Portal → Integration Platform" sourceRef="system-portal" targetRef="system-integration-platform" />
+    <bpmn:messageFlow id="if-integration-crm" name="Integration Platform ↔ CRM" sourceRef="system-integration-platform" targetRef="system-crm" />
+    <bpmn:messageFlow id="if-integration-erp" name="Integration Platform ↔ ERP" sourceRef="system-integration-platform" targetRef="system-erp" />
+    <bpmn:messageFlow id="if-hris-iam" name="HRIS → Identity &amp; Access Management" sourceRef="system-hris" targetRef="system-iam" />
+    <bpmn:messageFlow id="if-iam-portal" name="Identity &amp; Access Management → Portal" sourceRef="system-iam" targetRef="system-portal" />
+    <bpmn:messageFlow id="if-integration-idv" name="Integration Platform → Identity Verification" sourceRef="system-integration-platform" targetRef="system-id-verification" />
+    <bpmn:messageFlow id="if-crm-esignature" name="CRM ↔ Electronic Signature" sourceRef="system-crm" targetRef="system-esignature" />
   </bpmn:collaboration>
 
   <bpmndi:BPMNDiagram id="BPMNDiagram_EnterpriseSolutionArchitecture">
     <bpmndi:BPMNPlane id="BPMNPlane_EnterpriseSolutionArchitecture" bpmnElement="Collaboration_EnterpriseSolutionArchitecture">
-      <bpmndi:BPMNShape id="ArchitectureLayer_channel_di" bpmnElement="ArchitectureLayer_channel" isHorizontal="true"><dc:Bounds x="80" y="80" width="2050" height="140" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="ArchitectureLayer_integration_di" bpmnElement="ArchitectureLayer_integration" isHorizontal="true"><dc:Bounds x="80" y="240" width="2050" height="140" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="ArchitectureLayer_platform_di" bpmnElement="ArchitectureLayer_platform" isHorizontal="true"><dc:Bounds x="80" y="400" width="2050" height="330" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="ArchitectureLayer_security_di" bpmnElement="ArchitectureLayer_security" isHorizontal="true"><dc:Bounds x="80" y="750" width="2050" height="220" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="ArchitectureLayer_partner_di" bpmnElement="ArchitectureLayer_partner" isHorizontal="true"><dc:Bounds x="80" y="990" width="2050" height="220" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="ArchitectureLayer_other_di" bpmnElement="ArchitectureLayer_other" isHorizontal="true"><dc:Bounds x="80" y="1230" width="2050" height="100" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="system-salesforce_di" bpmnElement="system-salesforce"><dc:Bounds x="160" y="440" width="220" height="80" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="system-t24_di" bpmnElement="system-t24"><dc:Bounds x="450" y="440" width="220" height="80" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="system-iris_di" bpmnElement="system-iris"><dc:Bounds x="740" y="440" width="220" height="80" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="system-sharepoint_di" bpmnElement="system-sharepoint"><dc:Bounds x="1030" y="440" width="220" height="80" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="system-worldcheck_di" bpmnElement="system-worldcheck"><dc:Bounds x="160" y="1035" width="220" height="80" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="system-idv_di" bpmnElement="system-idv"><dc:Bounds x="450" y="1035" width="220" height="80" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="system-aml-monitoring_di" bpmnElement="system-aml-monitoring"><dc:Bounds x="160" y="795" width="220" height="80" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="system-fraud-monitoring_di" bpmnElement="system-fraud-monitoring"><dc:Bounds x="450" y="795" width="220" height="80" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="system-experian_di" bpmnElement="system-experian"><dc:Bounds x="740" y="1035" width="220" height="80" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="system-payments_di" bpmnElement="system-payments"><dc:Bounds x="300" y="270" width="220" height="80" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="system-online-banking_di" bpmnElement="system-online-banking"><dc:Bounds x="300" y="110" width="220" height="80" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="system-docusign_di" bpmnElement="system-docusign"><dc:Bounds x="1030" y="1035" width="220" height="80" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="system-data-warehouse_di" bpmnElement="system-data-warehouse"><dc:Bounds x="1320" y="440" width="220" height="80" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="system-powerbi_di" bpmnElement="system-powerbi"><dc:Bounds x="1610" y="440" width="220" height="80" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="system-entra_di" bpmnElement="system-entra"><dc:Bounds x="740" y="795" width="220" height="80" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="system-sentinel_di" bpmnElement="system-sentinel"><dc:Bounds x="1030" y="795" width="220" height="80" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="system-servicenow_di" bpmnElement="system-servicenow"><dc:Bounds x="160" y="575" width="220" height="80" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="system-treasury-alm_di" bpmnElement="system-treasury-alm"><dc:Bounds x="450" y="575" width="220" height="80" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="system-m365_di" bpmnElement="system-m365"><dc:Bounds x="740" y="575" width="220" height="80" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="system-hris_di" bpmnElement="system-hris"><dc:Bounds x="1030" y="575" width="220" height="80" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="system-backup_di" bpmnElement="system-backup"><dc:Bounds x="1320" y="795" width="220" height="80" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="system-reg-reporting_di" bpmnElement="system-reg-reporting"><dc:Bounds x="1320" y="575" width="220" height="80" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="if-salesforce-t24_di" bpmnElement="if-salesforce-t24"><di:waypoint x="270" y="480" /><di:waypoint x="560" y="480" /></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="if-salesforce-idv_di" bpmnElement="if-salesforce-idv"><di:waypoint x="270" y="480" /><di:waypoint x="270" y="764" /><di:waypoint x="560" y="764" /><di:waypoint x="560" y="1075" /></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="if-salesforce-worldcheck_di" bpmnElement="if-salesforce-worldcheck"><di:waypoint x="270" y="480" /><di:waypoint x="270" y="778" /><di:waypoint x="270" y="778" /><di:waypoint x="270" y="1075" /></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="if-salesforce-sharepoint_di" bpmnElement="if-salesforce-sharepoint"><di:waypoint x="270" y="480" /><di:waypoint x="1140" y="480" /></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="if-salesforce-experian_di" bpmnElement="if-salesforce-experian"><di:waypoint x="270" y="480" /><di:waypoint x="270" y="806" /><di:waypoint x="850" y="806" /><di:waypoint x="850" y="1075" /></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="if-salesforce-docusign_di" bpmnElement="if-salesforce-docusign"><di:waypoint x="270" y="480" /><di:waypoint x="270" y="750" /><di:waypoint x="1140" y="750" /><di:waypoint x="1140" y="1075" /></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="if-t24-payments_di" bpmnElement="if-t24-payments"><di:waypoint x="560" y="480" /><di:waypoint x="560" y="381" /><di:waypoint x="410" y="381" /><di:waypoint x="410" y="310" /></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="if-t24-iris_di" bpmnElement="if-t24-iris"><di:waypoint x="560" y="480" /><di:waypoint x="850" y="480" /></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="if-t24-aml_di" bpmnElement="if-t24-aml"><di:waypoint x="560" y="480" /><di:waypoint x="560" y="672" /><di:waypoint x="270" y="672" /><di:waypoint x="270" y="835" /></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="if-t24-fraud_di" bpmnElement="if-t24-fraud"><di:waypoint x="560" y="480" /><di:waypoint x="560" y="686" /><di:waypoint x="560" y="686" /><di:waypoint x="560" y="835" /></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="if-t24-dwh_di" bpmnElement="if-t24-dwh"><di:waypoint x="560" y="480" /><di:waypoint x="1430" y="480" /></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="if-salesforce-dwh_di" bpmnElement="if-salesforce-dwh"><di:waypoint x="270" y="480" /><di:waypoint x="1430" y="480" /></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="if-iris-dwh_di" bpmnElement="if-iris-dwh"><di:waypoint x="850" y="480" /><di:waypoint x="1430" y="480" /></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="if-t24-treasury_di" bpmnElement="if-t24-treasury"><di:waypoint x="560" y="480" /><di:waypoint x="560" y="548" /><di:waypoint x="560" y="548" /><di:waypoint x="560" y="615" /></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="if-dwh-powerbi_di" bpmnElement="if-dwh-powerbi"><di:waypoint x="1430" y="480" /><di:waypoint x="1720" y="480" /></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="if-app-salesforce_di" bpmnElement="if-app-salesforce"><di:waypoint x="410" y="150" /><di:waypoint x="410" y="287" /><di:waypoint x="270" y="287" /><di:waypoint x="270" y="480" /></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="if-app-t24_di" bpmnElement="if-app-t24"><di:waypoint x="410" y="150" /><di:waypoint x="410" y="301" /><di:waypoint x="560" y="301" /><di:waypoint x="560" y="480" /></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="if-security-sentinel_di" bpmnElement="if-security-sentinel"><di:waypoint x="850" y="835" /><di:waypoint x="1140" y="835" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ArchitectureLayer_channel_di" bpmnElement="ArchitectureLayer_channel" isHorizontal="true"><dc:Bounds x="80" y="80" width="1850" height="140" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ArchitectureLayer_integration_di" bpmnElement="ArchitectureLayer_integration" isHorizontal="true"><dc:Bounds x="80" y="240" width="1850" height="140" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ArchitectureLayer_platform_di" bpmnElement="ArchitectureLayer_platform" isHorizontal="true"><dc:Bounds x="80" y="400" width="1850" height="330" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ArchitectureLayer_security_di" bpmnElement="ArchitectureLayer_security" isHorizontal="true"><dc:Bounds x="80" y="750" width="1850" height="190" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ArchitectureLayer_partner_di" bpmnElement="ArchitectureLayer_partner" isHorizontal="true"><dc:Bounds x="80" y="960" width="1850" height="170" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ArchitectureLayer_other_di" bpmnElement="ArchitectureLayer_other" isHorizontal="true"><dc:Bounds x="80" y="1150" width="1850" height="100" /></bpmndi:BPMNShape>
+
+      <bpmndi:BPMNShape id="system-portal_di" bpmnElement="system-portal"><dc:Bounds x="260" y="110" width="240" height="80" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="system-integration-platform_di" bpmnElement="system-integration-platform"><dc:Bounds x="260" y="270" width="240" height="80" /></bpmndi:BPMNShape>
+
+      <bpmndi:BPMNShape id="system-crm_di" bpmnElement="system-crm"><dc:Bounds x="160" y="440" width="220" height="80" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="system-erp_di" bpmnElement="system-erp"><dc:Bounds x="440" y="440" width="220" height="80" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="system-documents_di" bpmnElement="system-documents"><dc:Bounds x="720" y="440" width="220" height="80" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="system-data-platform_di" bpmnElement="system-data-platform"><dc:Bounds x="1000" y="440" width="220" height="80" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="system-bi_di" bpmnElement="system-bi"><dc:Bounds x="1280" y="440" width="220" height="80" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="system-hris_di" bpmnElement="system-hris"><dc:Bounds x="300" y="585" width="220" height="80" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="system-collaboration_di" bpmnElement="system-collaboration"><dc:Bounds x="620" y="585" width="220" height="80" /></bpmndi:BPMNShape>
+
+      <bpmndi:BPMNShape id="system-iam_di" bpmnElement="system-iam"><dc:Bounds x="260" y="795" width="240" height="80" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="system-security-monitoring_di" bpmnElement="system-security-monitoring"><dc:Bounds x="620" y="795" width="240" height="80" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="system-backup_di" bpmnElement="system-backup"><dc:Bounds x="980" y="795" width="240" height="80" /></bpmndi:BPMNShape>
+
+      <bpmndi:BPMNShape id="system-id-verification_di" bpmnElement="system-id-verification"><dc:Bounds x="320" y="1005" width="240" height="80" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="system-esignature_di" bpmnElement="system-esignature"><dc:Bounds x="700" y="1005" width="240" height="80" /></bpmndi:BPMNShape>
+
+      <bpmndi:BPMNEdge id="if-portal-integration_di" bpmnElement="if-portal-integration"><di:waypoint x="380" y="190" /><di:waypoint x="380" y="270" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="if-integration-crm_di" bpmnElement="if-integration-crm"><di:waypoint x="380" y="350" /><di:waypoint x="380" y="390" /><di:waypoint x="270" y="390" /><di:waypoint x="270" y="440" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="if-integration-erp_di" bpmnElement="if-integration-erp"><di:waypoint x="380" y="350" /><di:waypoint x="380" y="390" /><di:waypoint x="550" y="390" /><di:waypoint x="550" y="440" /></bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNEdge id="if-crm-documents_di" bpmnElement="if-crm-documents"><di:waypoint x="380" y="480" /><di:waypoint x="720" y="480" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="if-crm-data_di" bpmnElement="if-crm-data"><di:waypoint x="380" y="480" /><di:waypoint x="1000" y="480" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="if-erp-data_di" bpmnElement="if-erp-data"><di:waypoint x="660" y="480" /><di:waypoint x="1000" y="480" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="if-data-bi_di" bpmnElement="if-data-bi"><di:waypoint x="1220" y="480" /><di:waypoint x="1280" y="480" /></bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNEdge id="if-hris-iam_di" bpmnElement="if-hris-iam"><di:waypoint x="410" y="665" /><di:waypoint x="410" y="730" /><di:waypoint x="380" y="730" /><di:waypoint x="380" y="795" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="if-iam-portal_di" bpmnElement="if-iam-portal"><di:waypoint x="380" y="795" /><di:waypoint x="140" y="795" /><di:waypoint x="140" y="150" /><di:waypoint x="260" y="150" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="if-iam-security_di" bpmnElement="if-iam-security"><di:waypoint x="500" y="835" /><di:waypoint x="620" y="835" /></bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNEdge id="if-integration-idv_di" bpmnElement="if-integration-idv"><di:waypoint x="500" y="310" /><di:waypoint x="1660" y="310" /><di:waypoint x="1660" y="1045" /><di:waypoint x="560" y="1045" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="if-crm-esignature_di" bpmnElement="if-crm-esignature"><di:waypoint x="270" y="520" /><di:waypoint x="270" y="920" /><di:waypoint x="820" y="920" /><di:waypoint x="820" y="1005" /></bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>
