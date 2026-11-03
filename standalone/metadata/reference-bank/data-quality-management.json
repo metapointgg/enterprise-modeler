@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_DataQualityManagement",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Define critical data elements",
+      "ownerPersonId": "person-data-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-data-manager",
+      "links": [],
+      "systems": [
+        "Bank Data Warehouse",
+        "Microsoft Power BI",
+        "Temenos Transact (T24)",
+        "Salesforce CRM"
+      ],
+      "controls": [
+        "Critical data quality rules and exception remediation"
+      ],
+      "risks": [
+        "Material data quality failure"
+      ],
+      "regulations": [
+        "UK GDPR & Data Protection Act 2018",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Measure data quality",
+      "ownerPersonId": "person-data-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-data-manager",
+      "links": [],
+      "systems": [
+        "Bank Data Warehouse",
+        "Microsoft Power BI",
+        "Temenos Transact (T24)",
+        "Salesforce CRM"
+      ],
+      "controls": [
+        "Critical data quality rules and exception remediation"
+      ],
+      "risks": [
+        "Material data quality failure"
+      ],
+      "regulations": [
+        "UK GDPR & Data Protection Act 2018",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Investigate defects",
+      "ownerPersonId": "person-data-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-data-manager",
+      "links": [],
+      "systems": [
+        "Bank Data Warehouse",
+        "Microsoft Power BI",
+        "Temenos Transact (T24)",
+        "Salesforce CRM"
+      ],
+      "controls": [
+        "Critical data quality rules and exception remediation"
+      ],
+      "risks": [
+        "Material data quality failure"
+      ],
+      "regulations": [
+        "UK GDPR & Data Protection Act 2018",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Assign remediation",
+      "ownerPersonId": "person-data-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-data-manager",
+      "links": [],
+      "systems": [
+        "Bank Data Warehouse",
+        "Microsoft Power BI",
+        "Temenos Transact (T24)",
+        "Salesforce CRM"
+      ],
+      "controls": [
+        "Critical data quality rules and exception remediation"
+      ],
+      "risks": [
+        "Material data quality failure"
+      ],
+      "regulations": [
+        "UK GDPR & Data Protection Act 2018",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Validate correction",
+      "ownerPersonId": "person-data-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-data-manager",
+      "links": [],
+      "systems": [
+        "Bank Data Warehouse",
+        "Microsoft Power BI",
+        "Temenos Transact (T24)",
+        "Salesforce CRM"
+      ],
+      "controls": [
+        "Critical data quality rules and exception remediation"
+      ],
+      "risks": [
+        "Material data quality failure"
+      ],
+      "regulations": [
+        "UK GDPR & Data Protection Act 2018",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_6": {
+      "status": "Draft",
+      "description": "Report data quality",
+      "ownerPersonId": "person-data-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-data-manager",
+      "links": [],
+      "systems": [
+        "Bank Data Warehouse",
+        "Microsoft Power BI",
+        "Temenos Transact (T24)",
+        "Salesforce CRM"
+      ],
+      "controls": [
+        "Critical data quality rules and exception remediation"
+      ],
+      "risks": [
+        "Material data quality failure"
+      ],
+      "regulations": [
+        "UK GDPR & Data Protection Act 2018",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_SavingsProductSetup",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Define product features",
+      "ownerPersonId": "person-product-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-product-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Salesforce CRM",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)",
+        "FCA Consumer Duty",
+        "FSCS Depositor Protection Requirements"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Define eligibility and limits",
+      "ownerPersonId": "person-product-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-product-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Salesforce CRM",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)",
+        "FCA Consumer Duty",
+        "FSCS Depositor Protection Requirements"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Configure rates and terms",
+      "ownerPersonId": "person-product-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-product-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Salesforce CRM",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)",
+        "FCA Consumer Duty",
+        "FSCS Depositor Protection Requirements"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Configure T24 product",
+      "ownerPersonId": "person-product-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-product-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Salesforce CRM",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)",
+        "FCA Consumer Duty",
+        "FSCS Depositor Protection Requirements"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Approve and publish product",
+      "ownerPersonId": "person-product-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-product-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Salesforce CRM",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)",
+        "FCA Consumer Duty",
+        "FSCS Depositor Protection Requirements"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

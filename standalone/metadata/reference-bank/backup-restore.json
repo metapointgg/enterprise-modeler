@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_BackupRestore",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Run scheduled backups",
+      "ownerPersonId": "person-it-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-it-ops-manager",
+      "links": [],
+      "systems": [
+        "Enterprise Backup Service",
+        "ServiceNow"
+      ],
+      "controls": [
+        "Backup monitoring and restore testing"
+      ],
+      "risks": [],
+      "regulations": [
+        "FCA/PRA Operational Resilience Requirements",
+        "UK GDPR & Data Protection Act 2018"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Monitor backup success",
+      "ownerPersonId": "person-it-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-it-ops-manager",
+      "links": [],
+      "systems": [
+        "Enterprise Backup Service",
+        "ServiceNow"
+      ],
+      "controls": [
+        "Backup monitoring and restore testing"
+      ],
+      "risks": [],
+      "regulations": [
+        "FCA/PRA Operational Resilience Requirements",
+        "UK GDPR & Data Protection Act 2018"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Investigate failures",
+      "ownerPersonId": "person-it-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-it-ops-manager",
+      "links": [],
+      "systems": [
+        "Enterprise Backup Service",
+        "ServiceNow"
+      ],
+      "controls": [
+        "Backup monitoring and restore testing"
+      ],
+      "risks": [],
+      "regulations": [
+        "FCA/PRA Operational Resilience Requirements",
+        "UK GDPR & Data Protection Act 2018"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Test restore",
+      "ownerPersonId": "person-it-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-it-ops-manager",
+      "links": [],
+      "systems": [
+        "Enterprise Backup Service",
+        "ServiceNow"
+      ],
+      "controls": [
+        "Backup monitoring and restore testing"
+      ],
+      "risks": [],
+      "regulations": [
+        "FCA/PRA Operational Resilience Requirements",
+        "UK GDPR & Data Protection Act 2018"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Retain restore evidence",
+      "ownerPersonId": "person-it-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-it-ops-manager",
+      "links": [],
+      "systems": [
+        "Enterprise Backup Service",
+        "ServiceNow"
+      ],
+      "controls": [
+        "Backup monitoring and restore testing"
+      ],
+      "risks": [],
+      "regulations": [
+        "FCA/PRA Operational Resilience Requirements",
+        "UK GDPR & Data Protection Act 2018"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

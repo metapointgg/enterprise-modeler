@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_PaymentLimitsControls",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Maintain payment limits",
+      "ownerPersonId": "person-savings-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-savings-ops-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Digital Banking Portal",
+        "Fraud Monitoring Platform"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Payment Services Regulations 2017",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Apply authentication rules",
+      "ownerPersonId": "person-savings-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-savings-ops-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Digital Banking Portal",
+        "Fraud Monitoring Platform"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Payment Services Regulations 2017",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Apply velocity and fraud controls",
+      "ownerPersonId": "person-savings-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-savings-ops-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Digital Banking Portal",
+        "Fraud Monitoring Platform"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Payment Services Regulations 2017",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Approve exceptions",
+      "ownerPersonId": "person-savings-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-savings-ops-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Digital Banking Portal",
+        "Fraud Monitoring Platform"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Payment Services Regulations 2017",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Review control effectiveness",
+      "ownerPersonId": "person-savings-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-savings-ops-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Digital Banking Portal",
+        "Fraud Monitoring Platform"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Payment Services Regulations 2017",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

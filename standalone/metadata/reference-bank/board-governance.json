@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_BoardGovernance",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Set agenda and papers",
+      "ownerPersonId": "person-ceo",
+      "responsibleType": "role",
+      "responsibleId": "role-ceo",
+      "links": [],
+      "systems": [
+        "Microsoft SharePoint Online",
+        "Microsoft 365",
+        "Microsoft Power BI"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Senior Managers & Certification Regime",
+        "PRA Rulebook",
+        "Financial Services and Markets Act 2000"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Review performance risk and compliance",
+      "ownerPersonId": "person-ceo",
+      "responsibleType": "role",
+      "responsibleId": "role-ceo",
+      "links": [],
+      "systems": [
+        "Microsoft SharePoint Online",
+        "Microsoft 365",
+        "Microsoft Power BI"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Senior Managers & Certification Regime",
+        "PRA Rulebook",
+        "Financial Services and Markets Act 2000"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Record decisions and actions",
+      "ownerPersonId": "person-ceo",
+      "responsibleType": "role",
+      "responsibleId": "role-ceo",
+      "links": [],
+      "systems": [
+        "Microsoft SharePoint Online",
+        "Microsoft 365",
+        "Microsoft Power BI"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Senior Managers & Certification Regime",
+        "PRA Rulebook",
+        "Financial Services and Markets Act 2000"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Assign accountabilities",
+      "ownerPersonId": "person-ceo",
+      "responsibleType": "role",
+      "responsibleId": "role-ceo",
+      "links": [],
+      "systems": [
+        "Microsoft SharePoint Online",
+        "Microsoft 365",
+        "Microsoft Power BI"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Senior Managers & Certification Regime",
+        "PRA Rulebook",
+        "Financial Services and Markets Act 2000"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Monitor action completion",
+      "ownerPersonId": "person-ceo",
+      "responsibleType": "role",
+      "responsibleId": "role-ceo",
+      "links": [],
+      "systems": [
+        "Microsoft SharePoint Online",
+        "Microsoft 365",
+        "Microsoft Power BI"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Senior Managers & Certification Regime",
+        "PRA Rulebook",
+        "Financial Services and Markets Act 2000"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

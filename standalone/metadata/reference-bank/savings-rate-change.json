@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_SavingsRateChange",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Approve rate change",
+      "ownerPersonId": "person-head-savings",
+      "responsibleType": "role",
+      "responsibleId": "role-head-savings",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Salesforce CRM",
+        "Microsoft 365"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Configure effective date",
+      "ownerPersonId": "person-head-savings",
+      "responsibleType": "role",
+      "responsibleId": "role-head-savings",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Salesforce CRM",
+        "Microsoft 365"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Identify impacted customers",
+      "ownerPersonId": "person-head-savings",
+      "responsibleType": "role",
+      "responsibleId": "role-head-savings",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Salesforce CRM",
+        "Microsoft 365"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Issue customer notification",
+      "ownerPersonId": "person-head-savings",
+      "responsibleType": "role",
+      "responsibleId": "role-head-savings",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Salesforce CRM",
+        "Microsoft 365"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Apply rate",
+      "ownerPersonId": "person-head-savings",
+      "responsibleType": "role",
+      "responsibleId": "role-head-savings",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Salesforce CRM",
+        "Microsoft 365"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_6": {
+      "status": "Draft",
+      "description": "Monitor outcome",
+      "ownerPersonId": "person-head-savings",
+      "responsibleType": "role",
+      "responsibleId": "role-head-savings",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Salesforce CRM",
+        "Microsoft 365"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

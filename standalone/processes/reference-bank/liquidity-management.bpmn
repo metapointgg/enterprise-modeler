@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_LiquidityManagement" targetNamespace="https://enterprise-modeler.local/bpmn">
+<bpmn:process id="Process_LiquidityManagement" name="Liquidity Management" isExecutable="false">
+<bpmn:laneSet id="LaneSet_LiquidityManagement">
+<bpmn:lane id="Lane_LiquidityManagement_External" name="Customer / External Party"><bpmn:flowNodeRef>Start_LiquidityManagement</bpmn:flowNodeRef></bpmn:lane>
+<bpmn:lane id="Lane_LiquidityManagement_Bank" name="Bank — Treasury &amp; ALM Manager"><bpmn:flowNodeRef>Task_1</bpmn:flowNodeRef><bpmn:flowNodeRef>Task_2</bpmn:flowNodeRef><bpmn:flowNodeRef>Task_3</bpmn:flowNodeRef><bpmn:flowNodeRef>Task_4</bpmn:flowNodeRef><bpmn:flowNodeRef>Task_5</bpmn:flowNodeRef><bpmn:flowNodeRef>Task_6</bpmn:flowNodeRef><bpmn:flowNodeRef>End_LiquidityManagement</bpmn:flowNodeRef></bpmn:lane>
+</bpmn:laneSet>
+<bpmn:startEvent id="Start_LiquidityManagement" name="Trigger"><bpmn:outgoing>Flow_1</bpmn:outgoing></bpmn:startEvent>
+<bpmn:task id="Task_1" name="Calculate daily liquidity position"><bpmn:incoming>Flow_1</bpmn:incoming><bpmn:outgoing>Flow_2</bpmn:outgoing></bpmn:task>
+<bpmn:task id="Task_2" name="Forecast cash flows"><bpmn:incoming>Flow_2</bpmn:incoming><bpmn:outgoing>Flow_3</bpmn:outgoing></bpmn:task>
+<bpmn:task id="Task_3" name="Monitor limits and buffers"><bpmn:incoming>Flow_3</bpmn:incoming><bpmn:outgoing>Flow_4</bpmn:outgoing></bpmn:task>
+<bpmn:task id="Task_4" name="Execute funding action"><bpmn:incoming>Flow_4</bpmn:incoming><bpmn:outgoing>Flow_5</bpmn:outgoing></bpmn:task>
+<bpmn:task id="Task_5" name="Escalate limit breaches"><bpmn:incoming>Flow_5</bpmn:incoming><bpmn:outgoing>Flow_6</bpmn:outgoing></bpmn:task>
+<bpmn:task id="Task_6" name="Report liquidity position"><bpmn:incoming>Flow_6</bpmn:incoming><bpmn:outgoing>Flow_7</bpmn:outgoing></bpmn:task>
+<bpmn:endEvent id="End_LiquidityManagement" name="Complete"><bpmn:incoming>Flow_7</bpmn:incoming></bpmn:endEvent>
+<bpmn:sequenceFlow id="Flow_1" sourceRef="Start_LiquidityManagement" targetRef="Task_1" />
+<bpmn:sequenceFlow id="Flow_2" sourceRef="Task_1" targetRef="Task_2" />
+<bpmn:sequenceFlow id="Flow_3" sourceRef="Task_2" targetRef="Task_3" />
+<bpmn:sequenceFlow id="Flow_4" sourceRef="Task_3" targetRef="Task_4" />
+<bpmn:sequenceFlow id="Flow_5" sourceRef="Task_4" targetRef="Task_5" />
+<bpmn:sequenceFlow id="Flow_6" sourceRef="Task_5" targetRef="Task_6" />
+<bpmn:sequenceFlow id="Flow_7" sourceRef="Task_6" targetRef="End_LiquidityManagement" />
+</bpmn:process>
+<bpmn:collaboration id="Collaboration_LiquidityManagement"><bpmn:participant id="Participant_LiquidityManagement" name="Simple Bank" processRef="Process_LiquidityManagement" /></bpmn:collaboration>
+<bpmndi:BPMNDiagram id="Diagram_LiquidityManagement"><bpmndi:BPMNPlane id="Plane_LiquidityManagement" bpmnElement="Collaboration_LiquidityManagement">
+<bpmndi:BPMNShape id="Participant_LiquidityManagement_di" bpmnElement="Participant_LiquidityManagement" isHorizontal="true"><dc:Bounds x="80" y="80" width="1710" height="350" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Lane_LiquidityManagement_External_di" bpmnElement="Lane_LiquidityManagement_External" isHorizontal="true"><dc:Bounds x="110" y="80" width="1680" height="130" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Lane_LiquidityManagement_Bank_di" bpmnElement="Lane_LiquidityManagement_Bank" isHorizontal="true"><dc:Bounds x="110" y="210" width="1680" height="220" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Start_LiquidityManagement_di" bpmnElement="Start_LiquidityManagement"><dc:Bounds x="170" y="127" width="36" height="36" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Task_1_di" bpmnElement="Task_1"><dc:Bounds x="330" y="260" width="155" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Task_2_di" bpmnElement="Task_2"><dc:Bounds x="540" y="260" width="155" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Task_3_di" bpmnElement="Task_3"><dc:Bounds x="750" y="260" width="155" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Task_4_di" bpmnElement="Task_4"><dc:Bounds x="960" y="260" width="155" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Task_5_di" bpmnElement="Task_5"><dc:Bounds x="1170" y="260" width="155" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Task_6_di" bpmnElement="Task_6"><dc:Bounds x="1380" y="260" width="155" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="End_LiquidityManagement_di" bpmnElement="End_LiquidityManagement"><dc:Bounds x="1590" y="282" width="36" height="36" /></bpmndi:BPMNShape>
+<bpmndi:BPMNEdge id="Flow_1_di" bpmnElement="Flow_1"><di:waypoint x="206" y="145" /><di:waypoint x="260" y="145" /><di:waypoint x="260" y="300" /><di:waypoint x="330" y="300" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="Flow_2_di" bpmnElement="Flow_2"><di:waypoint x="485" y="300" /><di:waypoint x="540" y="300" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="Flow_3_di" bpmnElement="Flow_3"><di:waypoint x="695" y="300" /><di:waypoint x="750" y="300" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="Flow_4_di" bpmnElement="Flow_4"><di:waypoint x="905" y="300" /><di:waypoint x="960" y="300" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="Flow_5_di" bpmnElement="Flow_5"><di:waypoint x="1115" y="300" /><di:waypoint x="1170" y="300" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="Flow_6_di" bpmnElement="Flow_6"><di:waypoint x="1325" y="300" /><di:waypoint x="1380" y="300" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="Flow_7_di" bpmnElement="Flow_7"><di:waypoint x="1535" y="300" /><di:waypoint x="1590" y="300" /></bpmndi:BPMNEdge>
+</bpmndi:BPMNPlane></bpmndi:BPMNDiagram></bpmn:definitions>

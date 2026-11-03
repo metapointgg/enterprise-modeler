@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_Procurement",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Receive purchase request",
+      "ownerPersonId": "person-procurement-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-procurement-manager",
+      "links": [],
+      "systems": [
+        "IRIS Financials",
+        "Microsoft SharePoint Online",
+        "Microsoft 365"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Financial Services and Markets Act 2000"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Check budget and need",
+      "ownerPersonId": "person-procurement-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-procurement-manager",
+      "links": [],
+      "systems": [
+        "IRIS Financials",
+        "Microsoft SharePoint Online",
+        "Microsoft 365"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Financial Services and Markets Act 2000"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Source supplier or quote",
+      "ownerPersonId": "person-procurement-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-procurement-manager",
+      "links": [],
+      "systems": [
+        "IRIS Financials",
+        "Microsoft SharePoint Online",
+        "Microsoft 365"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Financial Services and Markets Act 2000"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Approve purchase",
+      "ownerPersonId": "person-procurement-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-procurement-manager",
+      "links": [],
+      "systems": [
+        "IRIS Financials",
+        "Microsoft SharePoint Online",
+        "Microsoft 365"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Financial Services and Markets Act 2000"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Create order",
+      "ownerPersonId": "person-procurement-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-procurement-manager",
+      "links": [],
+      "systems": [
+        "IRIS Financials",
+        "Microsoft SharePoint Online",
+        "Microsoft 365"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Financial Services and Markets Act 2000"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_6": {
+      "status": "Draft",
+      "description": "Confirm receipt",
+      "ownerPersonId": "person-procurement-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-procurement-manager",
+      "links": [],
+      "systems": [
+        "IRIS Financials",
+        "Microsoft SharePoint Online",
+        "Microsoft 365"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Financial Services and Markets Act 2000"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

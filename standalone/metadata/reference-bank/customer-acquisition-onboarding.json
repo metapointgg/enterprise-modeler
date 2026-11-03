@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_CustomerAcquisitionOnboarding",
+  "nodes": {
+    "Call_MarketingLeadManagement": {
+      "status": "Draft",
+      "description": "Reusable marketing and prospect-management sub-process.",
+      "ownerPersonId": "",
+      "responsibleType": "team",
+      "responsibleId": "",
+      "links": [],
+      "systems": [],
+      "controls": [],
+      "risks": [],
+      "regulations": [],
+      "notes": "Illustrative reference-bank process architecture."
+    },
+    "Call_CustomerOnboarding": {
+      "status": "Draft",
+      "description": "Detailed customer onboarding sub-process.",
+      "ownerPersonId": "",
+      "responsibleType": "team",
+      "responsibleId": "",
+      "links": [],
+      "systems": [],
+      "controls": [],
+      "risks": [],
+      "regulations": [],
+      "notes": "Illustrative reference-bank process architecture."
+    },
+    "Call_IdentityVerification": {
+      "status": "Draft",
+      "description": "Reusable identity-verification and eKYC sub-process.",
+      "ownerPersonId": "",
+      "responsibleType": "team",
+      "responsibleId": "",
+      "links": [],
+      "systems": [],
+      "controls": [],
+      "risks": [],
+      "regulations": [],
+      "notes": "Illustrative reference-bank process architecture."
+    },
+    "Call_CustomerProfileMaintenance": {
+      "status": "Draft",
+      "description": "Ongoing customer profile and consent maintenance.",
+      "ownerPersonId": "",
+      "responsibleType": "team",
+      "responsibleId": "",
+      "links": [],
+      "systems": [],
+      "controls": [],
+      "risks": [],
+      "regulations": [],
+      "notes": "Illustrative reference-bank process architecture."
+    }
+  }
+}

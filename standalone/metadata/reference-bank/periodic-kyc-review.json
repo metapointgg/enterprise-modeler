@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_PeriodicKycReview",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Identify review due",
+      "ownerPersonId": "person-fincrime-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-fincrime-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "LSEG World-Check One",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Money Laundering Regulations 2017",
+        "UK Sanctions & Anti-Money Laundering framework"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Refresh customer information",
+      "ownerPersonId": "person-fincrime-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-fincrime-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "LSEG World-Check One",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Money Laundering Regulations 2017",
+        "UK Sanctions & Anti-Money Laundering framework"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Re-screen customer",
+      "ownerPersonId": "person-fincrime-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-fincrime-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "LSEG World-Check One",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Money Laundering Regulations 2017",
+        "UK Sanctions & Anti-Money Laundering framework"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Reassess risk rating",
+      "ownerPersonId": "person-fincrime-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-fincrime-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "LSEG World-Check One",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Money Laundering Regulations 2017",
+        "UK Sanctions & Anti-Money Laundering framework"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Escalate high-risk cases",
+      "ownerPersonId": "person-fincrime-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-fincrime-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "LSEG World-Check One",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Money Laundering Regulations 2017",
+        "UK Sanctions & Anti-Money Laundering framework"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_6": {
+      "status": "Draft",
+      "description": "Complete review",
+      "ownerPersonId": "person-fincrime-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-fincrime-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "LSEG World-Check One",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Money Laundering Regulations 2017",
+        "UK Sanctions & Anti-Money Laundering framework"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

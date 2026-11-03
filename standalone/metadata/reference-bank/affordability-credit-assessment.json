@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_AffordabilityCreditAssessment",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Request credit bureau data",
+      "ownerPersonId": "person-credit-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-credit-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Experian Credit Bureau",
+        "Bank Data Warehouse"
+      ],
+      "controls": [
+        "Affordability assessment before lending decision"
+      ],
+      "risks": [
+        "Unaffordable or unsuitable lending"
+      ],
+      "regulations": [
+        "FCA Consumer Credit Sourcebook (CONC)",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Assess income and expenditure",
+      "ownerPersonId": "person-credit-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-credit-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Experian Credit Bureau",
+        "Bank Data Warehouse"
+      ],
+      "controls": [
+        "Affordability assessment before lending decision"
+      ],
+      "risks": [
+        "Unaffordable or unsuitable lending"
+      ],
+      "regulations": [
+        "FCA Consumer Credit Sourcebook (CONC)",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Calculate affordability",
+      "ownerPersonId": "person-credit-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-credit-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Experian Credit Bureau",
+        "Bank Data Warehouse"
+      ],
+      "controls": [
+        "Affordability assessment before lending decision"
+      ],
+      "risks": [
+        "Unaffordable or unsuitable lending"
+      ],
+      "regulations": [
+        "FCA Consumer Credit Sourcebook (CONC)",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Assess indebtedness and credit history",
+      "ownerPersonId": "person-credit-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-credit-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Experian Credit Bureau",
+        "Bank Data Warehouse"
+      ],
+      "controls": [
+        "Affordability assessment before lending decision"
+      ],
+      "risks": [
+        "Unaffordable or unsuitable lending"
+      ],
+      "regulations": [
+        "FCA Consumer Credit Sourcebook (CONC)",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Record assessment outcome",
+      "ownerPersonId": "person-credit-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-credit-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Experian Credit Bureau",
+        "Bank Data Warehouse"
+      ],
+      "controls": [
+        "Affordability assessment before lending decision"
+      ],
+      "risks": [
+        "Unaffordable or unsuitable lending"
+      ],
+      "regulations": [
+        "FCA Consumer Credit Sourcebook (CONC)",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

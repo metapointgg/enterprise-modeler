@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_LiquidityManagement",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Calculate daily liquidity position",
+      "ownerPersonId": "person-treasury-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-treasury-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Treasury & ALM Tool",
+        "Bank Data Warehouse"
+      ],
+      "controls": [
+        "Liquidity limits and escalation"
+      ],
+      "risks": [
+        "Insufficient liquidity or funding"
+      ],
+      "regulations": [
+        "UK Prudential Capital & Liquidity Framework",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Forecast cash flows",
+      "ownerPersonId": "person-treasury-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-treasury-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Treasury & ALM Tool",
+        "Bank Data Warehouse"
+      ],
+      "controls": [
+        "Liquidity limits and escalation"
+      ],
+      "risks": [
+        "Insufficient liquidity or funding"
+      ],
+      "regulations": [
+        "UK Prudential Capital & Liquidity Framework",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Monitor limits and buffers",
+      "ownerPersonId": "person-treasury-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-treasury-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Treasury & ALM Tool",
+        "Bank Data Warehouse"
+      ],
+      "controls": [
+        "Liquidity limits and escalation"
+      ],
+      "risks": [
+        "Insufficient liquidity or funding"
+      ],
+      "regulations": [
+        "UK Prudential Capital & Liquidity Framework",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Execute funding action",
+      "ownerPersonId": "person-treasury-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-treasury-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Treasury & ALM Tool",
+        "Bank Data Warehouse"
+      ],
+      "controls": [
+        "Liquidity limits and escalation"
+      ],
+      "risks": [
+        "Insufficient liquidity or funding"
+      ],
+      "regulations": [
+        "UK Prudential Capital & Liquidity Framework",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Escalate limit breaches",
+      "ownerPersonId": "person-treasury-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-treasury-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Treasury & ALM Tool",
+        "Bank Data Warehouse"
+      ],
+      "controls": [
+        "Liquidity limits and escalation"
+      ],
+      "risks": [
+        "Insufficient liquidity or funding"
+      ],
+      "regulations": [
+        "UK Prudential Capital & Liquidity Framework",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_6": {
+      "status": "Draft",
+      "description": "Report liquidity position",
+      "ownerPersonId": "person-treasury-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-treasury-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Treasury & ALM Tool",
+        "Bank Data Warehouse"
+      ],
+      "controls": [
+        "Liquidity limits and escalation"
+      ],
+      "risks": [
+        "Insufficient liquidity or funding"
+      ],
+      "regulations": [
+        "UK Prudential Capital & Liquidity Framework",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

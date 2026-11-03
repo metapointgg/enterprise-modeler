@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_LoanRepaymentProcessing",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Receive repayment",
+      "ownerPersonId": "person-loan-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-loan-ops-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Payments Gateway"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Payment Services Regulations 2017",
+        "FCA Consumer Credit Sourcebook (CONC)"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Match payment to loan",
+      "ownerPersonId": "person-loan-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-loan-ops-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Payments Gateway"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Payment Services Regulations 2017",
+        "FCA Consumer Credit Sourcebook (CONC)"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Allocate principal interest and fees",
+      "ownerPersonId": "person-loan-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-loan-ops-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Payments Gateway"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Payment Services Regulations 2017",
+        "FCA Consumer Credit Sourcebook (CONC)"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Post in T24",
+      "ownerPersonId": "person-loan-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-loan-ops-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Payments Gateway"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Payment Services Regulations 2017",
+        "FCA Consumer Credit Sourcebook (CONC)"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Resolve allocation exceptions",
+      "ownerPersonId": "person-loan-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-loan-ops-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Payments Gateway"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Payment Services Regulations 2017",
+        "FCA Consumer Credit Sourcebook (CONC)"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_UnderwritingDecision",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Review credit assessment",
+      "ownerPersonId": "person-credit-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-credit-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Experian Credit Bureau",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [
+        "Independent credit approval within delegated authority"
+      ],
+      "risks": [
+        "Credit loss from poor underwriting",
+        "Unaffordable or unsuitable lending"
+      ],
+      "regulations": [
+        "FCA Consumer Credit Sourcebook (CONC)",
+        "Consumer Credit Act 1974",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Apply lending policy",
+      "ownerPersonId": "person-credit-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-credit-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Experian Credit Bureau",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [
+        "Independent credit approval within delegated authority"
+      ],
+      "risks": [
+        "Credit loss from poor underwriting",
+        "Unaffordable or unsuitable lending"
+      ],
+      "regulations": [
+        "FCA Consumer Credit Sourcebook (CONC)",
+        "Consumer Credit Act 1974",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Assess exceptions",
+      "ownerPersonId": "person-credit-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-credit-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Experian Credit Bureau",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [
+        "Independent credit approval within delegated authority"
+      ],
+      "risks": [
+        "Credit loss from poor underwriting",
+        "Unaffordable or unsuitable lending"
+      ],
+      "regulations": [
+        "FCA Consumer Credit Sourcebook (CONC)",
+        "Consumer Credit Act 1974",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Approve decline or refer",
+      "ownerPersonId": "person-credit-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-credit-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Experian Credit Bureau",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [
+        "Independent credit approval within delegated authority"
+      ],
+      "risks": [
+        "Credit loss from poor underwriting",
+        "Unaffordable or unsuitable lending"
+      ],
+      "regulations": [
+        "FCA Consumer Credit Sourcebook (CONC)",
+        "Consumer Credit Act 1974",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Record rationale",
+      "ownerPersonId": "person-credit-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-credit-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Experian Credit Bureau",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [
+        "Independent credit approval within delegated authority"
+      ],
+      "risks": [
+        "Credit loss from poor underwriting",
+        "Unaffordable or unsuitable lending"
+      ],
+      "regulations": [
+        "FCA Consumer Credit Sourcebook (CONC)",
+        "Consumer Credit Act 1974",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

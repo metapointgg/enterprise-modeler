@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_LendingCredit" targetNamespace="https://enterprise-modeler.local/bpmn">
+<bpmn:process id="Process_LendingCredit" name="Lending &amp; Credit" isExecutable="false">
+<bpmn:laneSet id="LaneSet_LendingCredit"><bpmn:lane id="Lane_LendingCredit" name="Simple Bank"><bpmn:flowNodeRef>Start_LendingCredit</bpmn:flowNodeRef><bpmn:flowNodeRef>Call_1_LoanApplication</bpmn:flowNodeRef><bpmn:flowNodeRef>Call_2_AffordabilityCreditAssessment</bpmn:flowNodeRef><bpmn:flowNodeRef>Call_3_UnderwritingDecision</bpmn:flowNodeRef><bpmn:flowNodeRef>Call_4_LoanOfferDocumentation</bpmn:flowNodeRef><bpmn:flowNodeRef>Call_5_LoanBookingDisbursement</bpmn:flowNodeRef><bpmn:flowNodeRef>Call_6_LoanRepaymentProcessing</bpmn:flowNodeRef><bpmn:flowNodeRef>Call_7_ArrearsCollections</bpmn:flowNodeRef><bpmn:flowNodeRef>Call_8_ForbearanceSupport</bpmn:flowNodeRef><bpmn:flowNodeRef>Call_9_LoanSettlementClosure</bpmn:flowNodeRef><bpmn:flowNodeRef>Call_10_CreditBureauReporting</bpmn:flowNodeRef><bpmn:flowNodeRef>End_LendingCredit</bpmn:flowNodeRef></bpmn:lane></bpmn:laneSet>
+<bpmn:startEvent id="Start_LendingCredit" name="Start"><bpmn:outgoing>Flow_1</bpmn:outgoing></bpmn:startEvent>
+<bpmn:callActivity id="Call_1_LoanApplication" name="Loan Application" calledElement="Process_LoanApplication"><bpmn:incoming>Flow_1</bpmn:incoming><bpmn:outgoing>Flow_2</bpmn:outgoing></bpmn:callActivity>
+<bpmn:callActivity id="Call_2_AffordabilityCreditAssessment" name="Affordability &amp; Credit Assessment" calledElement="Process_AffordabilityCreditAssessment"><bpmn:incoming>Flow_2</bpmn:incoming><bpmn:outgoing>Flow_3</bpmn:outgoing></bpmn:callActivity>
+<bpmn:callActivity id="Call_3_UnderwritingDecision" name="Underwriting Decision" calledElement="Process_UnderwritingDecision"><bpmn:incoming>Flow_3</bpmn:incoming><bpmn:outgoing>Flow_4</bpmn:outgoing></bpmn:callActivity>
+<bpmn:callActivity id="Call_4_LoanOfferDocumentation" name="Loan Offer &amp; Documentation" calledElement="Process_LoanOfferDocumentation"><bpmn:incoming>Flow_4</bpmn:incoming><bpmn:outgoing>Flow_5</bpmn:outgoing></bpmn:callActivity>
+<bpmn:callActivity id="Call_5_LoanBookingDisbursement" name="Loan Booking &amp; Disbursement" calledElement="Process_LoanBookingDisbursement"><bpmn:incoming>Flow_5</bpmn:incoming><bpmn:outgoing>Flow_6</bpmn:outgoing></bpmn:callActivity>
+<bpmn:callActivity id="Call_6_LoanRepaymentProcessing" name="Loan Repayment Processing" calledElement="Process_LoanRepaymentProcessing"><bpmn:incoming>Flow_6</bpmn:incoming><bpmn:outgoing>Flow_7</bpmn:outgoing></bpmn:callActivity>
+<bpmn:callActivity id="Call_7_ArrearsCollections" name="Arrears &amp; Collections" calledElement="Process_ArrearsCollections"><bpmn:incoming>Flow_7</bpmn:incoming><bpmn:outgoing>Flow_8</bpmn:outgoing></bpmn:callActivity>
+<bpmn:callActivity id="Call_8_ForbearanceSupport" name="Forbearance &amp; Financial Difficulty Support" calledElement="Process_ForbearanceSupport"><bpmn:incoming>Flow_8</bpmn:incoming><bpmn:outgoing>Flow_9</bpmn:outgoing></bpmn:callActivity>
+<bpmn:callActivity id="Call_9_LoanSettlementClosure" name="Loan Settlement &amp; Closure" calledElement="Process_LoanSettlementClosure"><bpmn:incoming>Flow_9</bpmn:incoming><bpmn:outgoing>Flow_10</bpmn:outgoing></bpmn:callActivity>
+<bpmn:callActivity id="Call_10_CreditBureauReporting" name="Credit Bureau Reporting" calledElement="Process_CreditBureauReporting"><bpmn:incoming>Flow_10</bpmn:incoming><bpmn:outgoing>Flow_11</bpmn:outgoing></bpmn:callActivity>
+<bpmn:endEvent id="End_LendingCredit" name="Complete"><bpmn:incoming>Flow_11</bpmn:incoming></bpmn:endEvent>
+<bpmn:sequenceFlow id="Flow_1" sourceRef="Start_LendingCredit" targetRef="Call_1_LoanApplication" />
+<bpmn:sequenceFlow id="Flow_2" sourceRef="Call_1_LoanApplication" targetRef="Call_2_AffordabilityCreditAssessment" />
+<bpmn:sequenceFlow id="Flow_3" sourceRef="Call_2_AffordabilityCreditAssessment" targetRef="Call_3_UnderwritingDecision" />
+<bpmn:sequenceFlow id="Flow_4" sourceRef="Call_3_UnderwritingDecision" targetRef="Call_4_LoanOfferDocumentation" />
+<bpmn:sequenceFlow id="Flow_5" sourceRef="Call_4_LoanOfferDocumentation" targetRef="Call_5_LoanBookingDisbursement" />
+<bpmn:sequenceFlow id="Flow_6" sourceRef="Call_5_LoanBookingDisbursement" targetRef="Call_6_LoanRepaymentProcessing" />
+<bpmn:sequenceFlow id="Flow_7" sourceRef="Call_6_LoanRepaymentProcessing" targetRef="Call_7_ArrearsCollections" />
+<bpmn:sequenceFlow id="Flow_8" sourceRef="Call_7_ArrearsCollections" targetRef="Call_8_ForbearanceSupport" />
+<bpmn:sequenceFlow id="Flow_9" sourceRef="Call_8_ForbearanceSupport" targetRef="Call_9_LoanSettlementClosure" />
+<bpmn:sequenceFlow id="Flow_10" sourceRef="Call_9_LoanSettlementClosure" targetRef="Call_10_CreditBureauReporting" />
+<bpmn:sequenceFlow id="Flow_11" sourceRef="Call_10_CreditBureauReporting" targetRef="End_LendingCredit" />
+</bpmn:process>
+<bpmn:collaboration id="Collaboration_LendingCredit"><bpmn:participant id="Participant_LendingCredit" name="Simple Bank" processRef="Process_LendingCredit" /></bpmn:collaboration>
+<bpmndi:BPMNDiagram id="Diagram_LendingCredit"><bpmndi:BPMNPlane id="Plane_LendingCredit" bpmnElement="Collaboration_LendingCredit">
+<bpmndi:BPMNShape id="Participant_LendingCredit_di" bpmnElement="Participant_LendingCredit" isHorizontal="true"><dc:Bounds x="80" y="80" width="3020" height="260" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Lane_LendingCredit_di" bpmnElement="Lane_LendingCredit" isHorizontal="true"><dc:Bounds x="110" y="80" width="2990" height="260" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Start_LendingCredit_di" bpmnElement="Start_LendingCredit"><dc:Bounds x="150" y="192" width="36" height="36" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Call_1_LoanApplication_di" bpmnElement="Call_1_LoanApplication"><dc:Bounds x="200" y="170" width="190" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Call_2_AffordabilityCreditAssessment_di" bpmnElement="Call_2_AffordabilityCreditAssessment"><dc:Bounds x="460" y="170" width="190" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Call_3_UnderwritingDecision_di" bpmnElement="Call_3_UnderwritingDecision"><dc:Bounds x="720" y="170" width="190" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Call_4_LoanOfferDocumentation_di" bpmnElement="Call_4_LoanOfferDocumentation"><dc:Bounds x="980" y="170" width="190" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Call_5_LoanBookingDisbursement_di" bpmnElement="Call_5_LoanBookingDisbursement"><dc:Bounds x="1240" y="170" width="190" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Call_6_LoanRepaymentProcessing_di" bpmnElement="Call_6_LoanRepaymentProcessing"><dc:Bounds x="1500" y="170" width="190" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Call_7_ArrearsCollections_di" bpmnElement="Call_7_ArrearsCollections"><dc:Bounds x="1760" y="170" width="190" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Call_8_ForbearanceSupport_di" bpmnElement="Call_8_ForbearanceSupport"><dc:Bounds x="2020" y="170" width="190" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Call_9_LoanSettlementClosure_di" bpmnElement="Call_9_LoanSettlementClosure"><dc:Bounds x="2280" y="170" width="190" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Call_10_CreditBureauReporting_di" bpmnElement="Call_10_CreditBureauReporting"><dc:Bounds x="2540" y="170" width="190" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="End_LendingCredit_di" bpmnElement="End_LendingCredit"><dc:Bounds x="2820" y="192" width="36" height="36" /></bpmndi:BPMNShape>
+<bpmndi:BPMNEdge id="Flow_1_di" bpmnElement="Flow_1"><di:waypoint x="186" y="210" /><di:waypoint x="200" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="Flow_2_di" bpmnElement="Flow_2"><di:waypoint x="390" y="210" /><di:waypoint x="460" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="Flow_3_di" bpmnElement="Flow_3"><di:waypoint x="650" y="210" /><di:waypoint x="720" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="Flow_4_di" bpmnElement="Flow_4"><di:waypoint x="910" y="210" /><di:waypoint x="980" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="Flow_5_di" bpmnElement="Flow_5"><di:waypoint x="1170" y="210" /><di:waypoint x="1240" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="Flow_6_di" bpmnElement="Flow_6"><di:waypoint x="1430" y="210" /><di:waypoint x="1500" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="Flow_7_di" bpmnElement="Flow_7"><di:waypoint x="1690" y="210" /><di:waypoint x="1760" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="Flow_8_di" bpmnElement="Flow_8"><di:waypoint x="1950" y="210" /><di:waypoint x="2020" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="Flow_9_di" bpmnElement="Flow_9"><di:waypoint x="2210" y="210" /><di:waypoint x="2280" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="Flow_10_di" bpmnElement="Flow_10"><di:waypoint x="2470" y="210" /><di:waypoint x="2540" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="Flow_11_di" bpmnElement="Flow_11"><di:waypoint x="2730" y="210" /><di:waypoint x="2820" y="210" /></bpmndi:BPMNEdge>
+</bpmndi:BPMNPlane></bpmndi:BPMNDiagram></bpmn:definitions>

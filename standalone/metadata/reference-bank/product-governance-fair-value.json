@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_ProductGovernanceFairValue",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Define product outcomes",
+      "ownerPersonId": "person-product-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-product-manager",
+      "links": [],
+      "systems": [
+        "Microsoft Power BI",
+        "Bank Data Warehouse",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Assess fair value",
+      "ownerPersonId": "person-product-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-product-manager",
+      "links": [],
+      "systems": [
+        "Microsoft Power BI",
+        "Bank Data Warehouse",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Review customer outcomes",
+      "ownerPersonId": "person-product-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-product-manager",
+      "links": [],
+      "systems": [
+        "Microsoft Power BI",
+        "Bank Data Warehouse",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Identify remediation",
+      "ownerPersonId": "person-product-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-product-manager",
+      "links": [],
+      "systems": [
+        "Microsoft Power BI",
+        "Bank Data Warehouse",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Approve annual product review",
+      "ownerPersonId": "person-product-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-product-manager",
+      "links": [],
+      "systems": [
+        "Microsoft Power BI",
+        "Bank Data Warehouse",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

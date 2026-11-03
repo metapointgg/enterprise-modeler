@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_LoanBookingDisbursement",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Validate approved agreement",
+      "ownerPersonId": "person-loan-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-loan-ops-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Temenos Transact (T24)",
+        "Payments Gateway"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Consumer Credit Act 1974",
+        "FCA Consumer Credit Sourcebook (CONC)"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Create loan in T24",
+      "ownerPersonId": "person-loan-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-loan-ops-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Temenos Transact (T24)",
+        "Payments Gateway"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Consumer Credit Act 1974",
+        "FCA Consumer Credit Sourcebook (CONC)"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Set repayment schedule",
+      "ownerPersonId": "person-loan-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-loan-ops-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Temenos Transact (T24)",
+        "Payments Gateway"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Consumer Credit Act 1974",
+        "FCA Consumer Credit Sourcebook (CONC)"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Disburse funds",
+      "ownerPersonId": "person-loan-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-loan-ops-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Temenos Transact (T24)",
+        "Payments Gateway"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Consumer Credit Act 1974",
+        "FCA Consumer Credit Sourcebook (CONC)"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Confirm booking and funding",
+      "ownerPersonId": "person-loan-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-loan-ops-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Temenos Transact (T24)",
+        "Payments Gateway"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Consumer Credit Act 1974",
+        "FCA Consumer Credit Sourcebook (CONC)"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

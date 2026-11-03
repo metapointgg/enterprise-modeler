@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_EnterpriseRiskManagement",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Identify risks",
+      "ownerPersonId": "person-risk-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-risk-manager",
+      "links": [],
+      "systems": [
+        "Microsoft SharePoint Online",
+        "Microsoft Power BI"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "PRA Rulebook",
+        "Financial Services and Markets Act 2000"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Assess likelihood and impact",
+      "ownerPersonId": "person-risk-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-risk-manager",
+      "links": [],
+      "systems": [
+        "Microsoft SharePoint Online",
+        "Microsoft Power BI"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "PRA Rulebook",
+        "Financial Services and Markets Act 2000"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Define controls and actions",
+      "ownerPersonId": "person-risk-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-risk-manager",
+      "links": [],
+      "systems": [
+        "Microsoft SharePoint Online",
+        "Microsoft Power BI"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "PRA Rulebook",
+        "Financial Services and Markets Act 2000"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Monitor risk indicators",
+      "ownerPersonId": "person-risk-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-risk-manager",
+      "links": [],
+      "systems": [
+        "Microsoft SharePoint Online",
+        "Microsoft Power BI"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "PRA Rulebook",
+        "Financial Services and Markets Act 2000"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Escalate breaches",
+      "ownerPersonId": "person-risk-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-risk-manager",
+      "links": [],
+      "systems": [
+        "Microsoft SharePoint Online",
+        "Microsoft Power BI"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "PRA Rulebook",
+        "Financial Services and Markets Act 2000"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_6": {
+      "status": "Draft",
+      "description": "Report risk profile",
+      "ownerPersonId": "person-risk-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-risk-manager",
+      "links": [],
+      "systems": [
+        "Microsoft SharePoint Online",
+        "Microsoft Power BI"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "PRA Rulebook",
+        "Financial Services and Markets Act 2000"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

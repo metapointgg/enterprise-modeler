@@ -1,0 +1,811 @@
+{
+  "schemaVersion": 1,
+  "businessRules": [
+    {
+      "id": "rule-cdd-before-open",
+      "name": "CDD must be complete before a customer relationship or account is activated",
+      "description": "CDD must be complete before a customer relationship or account is activated",
+      "ruleType": "Eligibility / compliance",
+      "expression": "CDD_STATUS = COMPLETE",
+      "ownerPositionId": "pos-onboarding-manager",
+      "active": true,
+      "notes": "Illustrative reference business rule."
+    },
+    {
+      "id": "rule-sanctions-clear",
+      "name": "Unresolved sanctions matches prevent onboarding or payment release",
+      "description": "Unresolved sanctions matches prevent onboarding or payment release",
+      "ruleType": "Compliance",
+      "expression": "SANCTIONS_STATUS = CLEAR",
+      "ownerPositionId": "pos-mlro",
+      "active": true,
+      "notes": "Illustrative reference business rule."
+    },
+    {
+      "id": "rule-affordability",
+      "name": "A loan cannot be approved without a documented affordability assessment",
+      "description": "A loan cannot be approved without a documented affordability assessment",
+      "ruleType": "Credit",
+      "expression": "AFFORDABILITY = PASS",
+      "ownerPositionId": "pos-credit-manager",
+      "active": true,
+      "notes": "Illustrative reference business rule."
+    },
+    {
+      "id": "rule-credit-authority",
+      "name": "Credit decisions must remain within delegated authority",
+      "description": "Credit decisions must remain within delegated authority",
+      "ruleType": "Credit",
+      "expression": "AMOUNT <= APPROVER_LIMIT",
+      "ownerPositionId": "pos-credit-manager",
+      "active": true,
+      "notes": "Illustrative reference business rule."
+    },
+    {
+      "id": "rule-fscs-disclosure",
+      "name": "Eligible depositors receive required depositor-protection information",
+      "description": "Eligible depositors receive required depositor-protection information",
+      "ruleType": "Conduct",
+      "expression": "FSCS_DISCLOSURE = SENT",
+      "ownerPositionId": "pos-head-savings",
+      "active": true,
+      "notes": "Illustrative reference business rule."
+    },
+    {
+      "id": "rule-payment-auth",
+      "name": "Outbound payments require successful authentication and fraud checks",
+      "description": "Outbound payments require successful authentication and fraud checks",
+      "ruleType": "Payments",
+      "expression": "AUTH = PASS AND FRAUD = CLEAR",
+      "ownerPositionId": "pos-savings-ops-manager",
+      "active": true,
+      "notes": "Illustrative reference business rule."
+    },
+    {
+      "id": "rule-complaint-clock",
+      "name": "Complaints are tracked against applicable acknowledgement/final-response deadlines",
+      "description": "Complaints are tracked against applicable acknowledgement/final-response deadlines",
+      "ruleType": "Conduct",
+      "expression": "DUE_DATE >= TODAY",
+      "ownerPositionId": "pos-customer-service-manager",
+      "active": true,
+      "notes": "Illustrative reference business rule."
+    },
+    {
+      "id": "rule-vulnerability",
+      "name": "Recorded vulnerability or support needs trigger appropriate service adjustments",
+      "description": "Recorded vulnerability or support needs trigger appropriate service adjustments",
+      "ruleType": "Conduct",
+      "expression": "VULNERABLE = TRUE => ADJUSTMENT_REQUIRED",
+      "ownerPositionId": "pos-head-customer-ops",
+      "active": true,
+      "notes": "Illustrative reference business rule."
+    },
+    {
+      "id": "rule-arrears-forbearance",
+      "name": "Customers in financial difficulty are assessed for appropriate forbearance",
+      "description": "Customers in financial difficulty are assessed for appropriate forbearance",
+      "ruleType": "Collections",
+      "expression": "FIN_DIFFICULTY = TRUE => FORBEARANCE_REVIEW",
+      "ownerPositionId": "pos-collections-manager",
+      "active": true,
+      "notes": "Illustrative reference business rule."
+    },
+    {
+      "id": "rule-dual-journal",
+      "name": "Material manual journals require independent approval",
+      "description": "Material manual journals require independent approval",
+      "ruleType": "Finance",
+      "expression": "MATERIAL_JOURNAL = TRUE => SECOND_APPROVER",
+      "ownerPositionId": "pos-finance-manager",
+      "active": true,
+      "notes": "Illustrative reference business rule."
+    },
+    {
+      "id": "rule-retention",
+      "name": "Data is retained only for the approved retention period unless a legal hold applies",
+      "description": "Data is retained only for the approved retention period unless a legal hold applies",
+      "ruleType": "Data",
+      "expression": "RETENTION_DUE AND NOT LEGAL_HOLD => DISPOSE",
+      "ownerPositionId": "pos-dpo",
+      "active": true,
+      "notes": "Illustrative reference business rule."
+    },
+    {
+      "id": "rule-access-least-privilege",
+      "name": "User access follows least privilege and role-based approval",
+      "description": "User access follows least privilege and role-based approval",
+      "ruleType": "Security",
+      "expression": "ACCESS <= ROLE_ENTITLEMENT",
+      "ownerPositionId": "pos-security-manager",
+      "active": true,
+      "notes": "Illustrative reference business rule."
+    }
+  ],
+  "controls": [
+    {
+      "id": "ctrl-customer-auth",
+      "name": "Customer authentication before sensitive servicing",
+      "description": "Customer authentication before sensitive servicing",
+      "controlType": "preventive",
+      "frequency": "Per interaction",
+      "ownerPositionId": "pos-head-customer-ops",
+      "evidence": "Authentication evidence / CRM audit log",
+      "active": true,
+      "notes": "Illustrative reference control."
+    },
+    {
+      "id": "ctrl-cdd-complete",
+      "name": "CDD complete before relationship activation",
+      "description": "CDD complete before relationship activation",
+      "controlType": "preventive",
+      "frequency": "Per onboarding",
+      "ownerPositionId": "pos-onboarding-manager",
+      "evidence": "KYC checklist and screening result",
+      "active": true,
+      "notes": "Illustrative reference control."
+    },
+    {
+      "id": "ctrl-sanctions-screen",
+      "name": "Sanctions/PEP screening before onboarding and on review",
+      "description": "Sanctions/PEP screening before onboarding and on review",
+      "controlType": "preventive",
+      "frequency": "Per onboarding / periodic",
+      "ownerPositionId": "pos-mlro",
+      "evidence": "Screening record and disposition",
+      "active": true,
+      "notes": "Illustrative reference control."
+    },
+    {
+      "id": "ctrl-credit-approval",
+      "name": "Independent credit approval within delegated authority",
+      "description": "Independent credit approval within delegated authority",
+      "controlType": "preventive",
+      "frequency": "Per loan",
+      "ownerPositionId": "pos-credit-manager",
+      "evidence": "Underwriting decision and approval record",
+      "active": true,
+      "notes": "Illustrative reference control."
+    },
+    {
+      "id": "ctrl-affordability",
+      "name": "Affordability assessment before lending decision",
+      "description": "Affordability assessment before lending decision",
+      "controlType": "preventive",
+      "frequency": "Per loan",
+      "ownerPositionId": "pos-credit-manager",
+      "evidence": "Affordability calculation",
+      "active": true,
+      "notes": "Illustrative reference control."
+    },
+    {
+      "id": "ctrl-dual-payment",
+      "name": "Payment authorisation and fraud controls",
+      "description": "Payment authorisation and fraud controls",
+      "controlType": "preventive",
+      "frequency": "Per outbound payment",
+      "ownerPositionId": "pos-savings-ops-manager",
+      "evidence": "Payment authentication and fraud decision",
+      "active": true,
+      "notes": "Illustrative reference control."
+    },
+    {
+      "id": "ctrl-reconciliation",
+      "name": "Daily independent reconciliation of banking and settlement records",
+      "description": "Daily independent reconciliation of banking and settlement records",
+      "controlType": "detective",
+      "frequency": "Daily",
+      "ownerPositionId": "pos-finance-manager",
+      "evidence": "Signed reconciliation",
+      "active": true,
+      "notes": "Illustrative reference control."
+    },
+    {
+      "id": "ctrl-gl-interface",
+      "name": "Controlled T24 to IRIS journal interface with control totals",
+      "description": "Controlled T24 to IRIS journal interface with control totals",
+      "controlType": "detective",
+      "frequency": "Daily",
+      "ownerPositionId": "pos-finance-manager",
+      "evidence": "Interface totals and reject report",
+      "active": true,
+      "notes": "Illustrative reference control."
+    },
+    {
+      "id": "ctrl-liquidity-limits",
+      "name": "Liquidity limits and escalation",
+      "description": "Liquidity limits and escalation",
+      "controlType": "preventive",
+      "frequency": "Daily",
+      "ownerPositionId": "pos-treasury-manager",
+      "evidence": "Liquidity dashboard / escalation",
+      "active": true,
+      "notes": "Illustrative reference control."
+    },
+    {
+      "id": "ctrl-complaints",
+      "name": "Complaint tracking and deadline monitoring",
+      "description": "Complaint tracking and deadline monitoring",
+      "controlType": "detective",
+      "frequency": "Daily",
+      "ownerPositionId": "pos-customer-service-manager",
+      "evidence": "Complaint case SLA report",
+      "active": true,
+      "notes": "Illustrative reference control."
+    },
+    {
+      "id": "ctrl-aml-monitoring",
+      "name": "AML transaction monitoring scenarios and alert review",
+      "description": "AML transaction monitoring scenarios and alert review",
+      "controlType": "detective",
+      "frequency": "Continuous / daily",
+      "ownerPositionId": "pos-mlro",
+      "evidence": "Alert disposition evidence",
+      "active": true,
+      "notes": "Illustrative reference control."
+    },
+    {
+      "id": "ctrl-sar-mlro",
+      "name": "MLRO approval of SAR decisions",
+      "description": "MLRO approval of SAR decisions",
+      "controlType": "preventive",
+      "frequency": "Per suspicion case",
+      "ownerPositionId": "pos-mlro",
+      "evidence": "MLRO decision record",
+      "active": true,
+      "notes": "Illustrative reference control."
+    },
+    {
+      "id": "ctrl-access-review",
+      "name": "Periodic user access recertification",
+      "description": "Periodic user access recertification",
+      "controlType": "detective",
+      "frequency": "Quarterly",
+      "ownerPositionId": "pos-security-manager",
+      "evidence": "Access review sign-off",
+      "active": true,
+      "notes": "Illustrative reference control."
+    },
+    {
+      "id": "ctrl-change-approval",
+      "name": "Risk-based change approval before production deployment",
+      "description": "Risk-based change approval before production deployment",
+      "controlType": "preventive",
+      "frequency": "Per change",
+      "ownerPositionId": "pos-it-ops-manager",
+      "evidence": "Approved change ticket",
+      "active": true,
+      "notes": "Illustrative reference control."
+    },
+    {
+      "id": "ctrl-backup-restore",
+      "name": "Backup monitoring and restore testing",
+      "description": "Backup monitoring and restore testing",
+      "controlType": "detective",
+      "frequency": "Daily / quarterly",
+      "ownerPositionId": "pos-it-ops-manager",
+      "evidence": "Backup reports and restore tests",
+      "active": true,
+      "notes": "Illustrative reference control."
+    },
+    {
+      "id": "ctrl-data-quality",
+      "name": "Critical data quality rules and exception remediation",
+      "description": "Critical data quality rules and exception remediation",
+      "controlType": "detective",
+      "frequency": "Daily / monthly",
+      "ownerPositionId": "pos-data-manager",
+      "evidence": "Data quality dashboard",
+      "active": true,
+      "notes": "Illustrative reference control."
+    },
+    {
+      "id": "ctrl-data-retention",
+      "name": "Retention and disposal controls",
+      "description": "Retention and disposal controls",
+      "controlType": "preventive",
+      "frequency": "Scheduled",
+      "ownerPositionId": "pos-dpo",
+      "evidence": "Retention schedule and disposal log",
+      "active": true,
+      "notes": "Illustrative reference control."
+    },
+    {
+      "id": "ctrl-third-party",
+      "name": "Third-party due diligence and periodic review",
+      "description": "Third-party due diligence and periodic review",
+      "controlType": "preventive",
+      "frequency": "Onboarding / annual",
+      "ownerPositionId": "pos-vendor-manager",
+      "evidence": "Due diligence pack",
+      "active": true,
+      "notes": "Illustrative reference control."
+    },
+    {
+      "id": "ctrl-policy-review",
+      "name": "Policy approval and scheduled review",
+      "description": "Policy approval and scheduled review",
+      "controlType": "directive",
+      "frequency": "Annual / change",
+      "ownerPositionId": "pos-compliance-manager",
+      "evidence": "Approved policy",
+      "active": true,
+      "notes": "Illustrative reference control."
+    },
+    {
+      "id": "ctrl-operational-resilience",
+      "name": "Impact tolerance testing for important business services",
+      "description": "Impact tolerance testing for important business services",
+      "controlType": "detective",
+      "frequency": "At least annual",
+      "ownerPositionId": "pos-opres-manager",
+      "evidence": "Scenario test and remediation plan",
+      "active": true,
+      "notes": "Illustrative reference control."
+    }
+  ],
+  "risks": [
+    {
+      "id": "risk-customer-misidentification",
+      "name": "Customer misidentification or impersonation",
+      "description": "Customer misidentification or impersonation",
+      "category": "Financial crime",
+      "likelihood": "Medium",
+      "impact": "High",
+      "ownerPositionId": "pos-onboarding-manager",
+      "active": true,
+      "notes": "Illustrative reference risk."
+    },
+    {
+      "id": "risk-sanctions-breach",
+      "name": "Sanctions breach or prohibited customer relationship",
+      "description": "Sanctions breach or prohibited customer relationship",
+      "category": "Financial crime",
+      "likelihood": "Low",
+      "impact": "Severe",
+      "ownerPositionId": "pos-mlro",
+      "active": true,
+      "notes": "Illustrative reference risk."
+    },
+    {
+      "id": "risk-money-laundering",
+      "name": "Money laundering or terrorist financing",
+      "description": "Money laundering or terrorist financing",
+      "category": "Financial crime",
+      "likelihood": "Medium",
+      "impact": "Severe",
+      "ownerPositionId": "pos-mlro",
+      "active": true,
+      "notes": "Illustrative reference risk."
+    },
+    {
+      "id": "risk-credit-loss",
+      "name": "Credit loss from poor underwriting",
+      "description": "Credit loss from poor underwriting",
+      "category": "Credit",
+      "likelihood": "Medium",
+      "impact": "High",
+      "ownerPositionId": "pos-head-lending",
+      "active": true,
+      "notes": "Illustrative reference risk."
+    },
+    {
+      "id": "risk-unaffordable-lending",
+      "name": "Unaffordable or unsuitable lending",
+      "description": "Unaffordable or unsuitable lending",
+      "category": "Conduct",
+      "likelihood": "Medium",
+      "impact": "High",
+      "ownerPositionId": "pos-head-lending",
+      "active": true,
+      "notes": "Illustrative reference risk."
+    },
+    {
+      "id": "risk-payment-fraud",
+      "name": "Fraudulent or misdirected payment",
+      "description": "Fraudulent or misdirected payment",
+      "category": "Fraud",
+      "likelihood": "Medium",
+      "impact": "High",
+      "ownerPositionId": "pos-fincrime-manager",
+      "active": true,
+      "notes": "Illustrative reference risk."
+    },
+    {
+      "id": "risk-conduct",
+      "name": "Poor customer outcomes or conduct failure",
+      "description": "Poor customer outcomes or conduct failure",
+      "category": "Conduct",
+      "likelihood": "Medium",
+      "impact": "High",
+      "ownerPositionId": "pos-compliance-manager",
+      "active": true,
+      "notes": "Illustrative reference risk."
+    },
+    {
+      "id": "risk-operational-error",
+      "name": "Operational processing error",
+      "description": "Operational processing error",
+      "category": "Operational",
+      "likelihood": "Medium",
+      "impact": "Medium",
+      "ownerPositionId": "pos-coo",
+      "active": true,
+      "notes": "Illustrative reference risk."
+    },
+    {
+      "id": "risk-reconciliation-break",
+      "name": "Unidentified reconciliation break or financial misstatement",
+      "description": "Unidentified reconciliation break or financial misstatement",
+      "category": "Finance",
+      "likelihood": "Medium",
+      "impact": "High",
+      "ownerPositionId": "pos-finance-manager",
+      "active": true,
+      "notes": "Illustrative reference risk."
+    },
+    {
+      "id": "risk-liquidity",
+      "name": "Insufficient liquidity or funding",
+      "description": "Insufficient liquidity or funding",
+      "category": "Treasury",
+      "likelihood": "Low",
+      "impact": "Severe",
+      "ownerPositionId": "pos-treasury-manager",
+      "active": true,
+      "notes": "Illustrative reference risk."
+    },
+    {
+      "id": "risk-interest-rate",
+      "name": "Interest-rate risk in the banking book",
+      "description": "Interest-rate risk in the banking book",
+      "category": "Treasury",
+      "likelihood": "Medium",
+      "impact": "High",
+      "ownerPositionId": "pos-treasury-manager",
+      "active": true,
+      "notes": "Illustrative reference risk."
+    },
+    {
+      "id": "risk-data-breach",
+      "name": "Personal or confidential data breach",
+      "description": "Personal or confidential data breach",
+      "category": "Data protection",
+      "likelihood": "Medium",
+      "impact": "High",
+      "ownerPositionId": "pos-dpo",
+      "active": true,
+      "notes": "Illustrative reference risk."
+    },
+    {
+      "id": "risk-data-quality",
+      "name": "Material data quality failure",
+      "description": "Material data quality failure",
+      "category": "Data",
+      "likelihood": "Medium",
+      "impact": "High",
+      "ownerPositionId": "pos-data-manager",
+      "active": true,
+      "notes": "Illustrative reference risk."
+    },
+    {
+      "id": "risk-cyber",
+      "name": "Cyber attack or unauthorised access",
+      "description": "Cyber attack or unauthorised access",
+      "category": "Technology",
+      "likelihood": "Medium",
+      "impact": "Severe",
+      "ownerPositionId": "pos-security-manager",
+      "active": true,
+      "notes": "Illustrative reference risk."
+    },
+    {
+      "id": "risk-system-outage",
+      "name": "Critical banking system outage",
+      "description": "Critical banking system outage",
+      "category": "Technology",
+      "likelihood": "Medium",
+      "impact": "Severe",
+      "ownerPositionId": "pos-cto",
+      "active": true,
+      "notes": "Illustrative reference risk."
+    },
+    {
+      "id": "risk-third-party",
+      "name": "Critical third-party service failure",
+      "description": "Critical third-party service failure",
+      "category": "Third party",
+      "likelihood": "Medium",
+      "impact": "High",
+      "ownerPositionId": "pos-vendor-manager",
+      "active": true,
+      "notes": "Illustrative reference risk."
+    },
+    {
+      "id": "risk-regulatory-change",
+      "name": "Regulatory change not identified or implemented",
+      "description": "Regulatory change not identified or implemented",
+      "category": "Compliance",
+      "likelihood": "Medium",
+      "impact": "High",
+      "ownerPositionId": "pos-compliance-manager",
+      "active": true,
+      "notes": "Illustrative reference risk."
+    },
+    {
+      "id": "risk-financial-reporting",
+      "name": "Material financial reporting error",
+      "description": "Material financial reporting error",
+      "category": "Finance",
+      "likelihood": "Low",
+      "impact": "High",
+      "ownerPositionId": "pos-cfo",
+      "active": true,
+      "notes": "Illustrative reference risk."
+    }
+  ],
+  "requirements": [
+    {
+      "id": "req-consumer-outcomes",
+      "regulationId": "reg-consumer-duty",
+      "name": "Good customer outcomes",
+      "description": "Products and services, price/value, consumer understanding and support should deliver good outcomes.",
+      "sourceReference": "PRIN 2A",
+      "ownerPositionId": "pos-compliance-manager",
+      "active": true,
+      "notes": "Illustrative requirement summary; verify legal text."
+    },
+    {
+      "id": "req-cdd",
+      "regulationId": "reg-mlr",
+      "name": "Customer due diligence",
+      "description": "Identify and verify customers and assess money-laundering risk.",
+      "sourceReference": "MLR customer due diligence provisions",
+      "ownerPositionId": "pos-mlro",
+      "active": true,
+      "notes": "Illustrative requirement summary; verify legal text."
+    },
+    {
+      "id": "req-sanctions",
+      "regulationId": "reg-sanctions",
+      "name": "Sanctions compliance",
+      "description": "Prevent prohibited dealings and appropriately investigate sanctions matches.",
+      "sourceReference": "Applicable UK sanctions regulations",
+      "ownerPositionId": "pos-mlro",
+      "active": true,
+      "notes": "Illustrative requirement summary; verify legal text."
+    },
+    {
+      "id": "req-sar",
+      "regulationId": "reg-poca",
+      "name": "Suspicious activity reporting",
+      "description": "Escalate suspicion and submit SARs where required.",
+      "sourceReference": "POCA / SAR regime",
+      "ownerPositionId": "pos-mlro",
+      "active": true,
+      "notes": "Illustrative requirement summary; verify legal text."
+    },
+    {
+      "id": "req-deposit-conduct",
+      "regulationId": "reg-bcobs",
+      "name": "Deposit conduct requirements",
+      "description": "Provide clear, fair information and administer retail banking services appropriately.",
+      "sourceReference": "FCA BCOBS",
+      "ownerPositionId": "pos-compliance-manager",
+      "active": true,
+      "notes": "Illustrative requirement summary; verify legal text."
+    },
+    {
+      "id": "req-fscs",
+      "regulationId": "reg-fscs",
+      "name": "Depositor protection disclosures",
+      "description": "Provide required depositor-protection information and maintain data supporting payout readiness.",
+      "sourceReference": "PRA Depositor Protection / FSCS",
+      "ownerPositionId": "pos-head-savings",
+      "active": true,
+      "notes": "Illustrative requirement summary; verify legal text."
+    },
+    {
+      "id": "req-affordability",
+      "regulationId": "reg-conc",
+      "name": "Creditworthiness and affordability",
+      "description": "Assess creditworthiness and affordability before granting regulated credit.",
+      "sourceReference": "FCA CONC",
+      "ownerPositionId": "pos-compliance-manager",
+      "active": true,
+      "notes": "Illustrative requirement summary; verify legal text."
+    },
+    {
+      "id": "req-credit-docs",
+      "regulationId": "reg-cca",
+      "name": "Consumer credit documentation",
+      "description": "Provide compliant agreements, notices and settlement information.",
+      "sourceReference": "CCA 1974",
+      "ownerPositionId": "pos-compliance-manager",
+      "active": true,
+      "notes": "Illustrative requirement summary; verify legal text."
+    },
+    {
+      "id": "req-complaints",
+      "regulationId": "reg-disp",
+      "name": "Complaint handling",
+      "description": "Recognise, investigate, resolve and report complaints within applicable DISP requirements.",
+      "sourceReference": "FCA DISP",
+      "ownerPositionId": "pos-compliance-manager",
+      "active": true,
+      "notes": "Illustrative requirement summary; verify legal text."
+    },
+    {
+      "id": "req-payments",
+      "regulationId": "reg-psr",
+      "name": "Payment execution and customer protection",
+      "description": "Apply required authentication, execution and information requirements to payment services.",
+      "sourceReference": "PSRs 2017",
+      "ownerPositionId": "pos-compliance-manager",
+      "active": true,
+      "notes": "Illustrative requirement summary; verify legal text."
+    },
+    {
+      "id": "req-data-protection",
+      "regulationId": "reg-uk-gdpr",
+      "name": "Data protection principles",
+      "description": "Process personal data lawfully, fairly, securely and only for defined purposes.",
+      "sourceReference": "UK GDPR",
+      "ownerPositionId": "pos-dpo",
+      "active": true,
+      "notes": "Illustrative requirement summary; verify legal text."
+    },
+    {
+      "id": "req-resilience",
+      "regulationId": "reg-opres",
+      "name": "Operational resilience",
+      "description": "Identify important business services, set impact tolerances and test resilience.",
+      "sourceReference": "FCA/PRA operational resilience",
+      "ownerPositionId": "pos-opres-manager",
+      "active": true,
+      "notes": "Illustrative requirement summary; verify legal text."
+    },
+    {
+      "id": "req-prudential",
+      "regulationId": "reg-prudential",
+      "name": "Capital and liquidity adequacy",
+      "description": "Maintain prudential resources, liquidity and risk management appropriate to the bank.",
+      "sourceReference": "PRA / UK prudential framework",
+      "ownerPositionId": "pos-risk-manager",
+      "active": true,
+      "notes": "Illustrative requirement summary; verify legal text."
+    },
+    {
+      "id": "req-smcr",
+      "regulationId": "reg-smcr",
+      "name": "Senior management accountability",
+      "description": "Maintain clear responsibilities, fitness/competence and governance under SM&CR.",
+      "sourceReference": "SM&CR",
+      "ownerPositionId": "pos-cro",
+      "active": true,
+      "notes": "Illustrative requirement summary; verify legal text."
+    }
+  ],
+  "policies": [
+    {
+      "id": "policy-customer-onboarding",
+      "name": "Customer Onboarding & KYC Policy",
+      "description": "Customer onboarding, CDD, screening and risk classification.",
+      "policyType": "policy",
+      "ownerPositionId": "pos-mlro",
+      "sourceReference": "",
+      "active": true,
+      "notes": "Illustrative reference policy."
+    },
+    {
+      "id": "policy-lending",
+      "name": "Lending & Credit Risk Policy",
+      "description": "Credit appetite, affordability, underwriting authorities and exceptions.",
+      "policyType": "policy",
+      "ownerPositionId": "pos-head-lending",
+      "sourceReference": "",
+      "active": true,
+      "notes": "Illustrative reference policy."
+    },
+    {
+      "id": "policy-collections",
+      "name": "Arrears, Collections & Forbearance Policy",
+      "description": "Treatment of arrears, financial difficulty and forbearance.",
+      "policyType": "policy",
+      "ownerPositionId": "pos-head-lending",
+      "sourceReference": "",
+      "active": true,
+      "notes": "Illustrative reference policy."
+    },
+    {
+      "id": "policy-complaints",
+      "name": "Complaints Handling Policy",
+      "description": "Complaint recognition, investigation, redress and FOS rights.",
+      "policyType": "policy",
+      "ownerPositionId": "pos-compliance-manager",
+      "sourceReference": "",
+      "active": true,
+      "notes": "Illustrative reference policy."
+    },
+    {
+      "id": "policy-fincrime",
+      "name": "Financial Crime Policy",
+      "description": "AML, sanctions, PEP, transaction monitoring and SAR controls.",
+      "policyType": "policy",
+      "ownerPositionId": "pos-mlro",
+      "sourceReference": "",
+      "active": true,
+      "notes": "Illustrative reference policy."
+    },
+    {
+      "id": "policy-data-protection",
+      "name": "Data Protection & Privacy Policy",
+      "description": "Personal-data processing, rights, sharing and security.",
+      "policyType": "policy",
+      "ownerPositionId": "pos-dpo",
+      "sourceReference": "",
+      "active": true,
+      "notes": "Illustrative reference policy."
+    },
+    {
+      "id": "policy-information-security",
+      "name": "Information Security Policy",
+      "description": "Security governance, access, monitoring and incident response.",
+      "policyType": "policy",
+      "ownerPositionId": "pos-security-manager",
+      "sourceReference": "",
+      "active": true,
+      "notes": "Illustrative reference policy."
+    },
+    {
+      "id": "policy-operational-resilience",
+      "name": "Operational Resilience & BCP Policy",
+      "description": "Important business services, impact tolerances, continuity and DR.",
+      "policyType": "policy",
+      "ownerPositionId": "pos-opres-manager",
+      "sourceReference": "",
+      "active": true,
+      "notes": "Illustrative reference policy."
+    },
+    {
+      "id": "policy-change",
+      "name": "Technology Change & Release Standard",
+      "description": "Controlled design, testing, approval and deployment of technology changes.",
+      "policyType": "standard",
+      "ownerPositionId": "pos-it-ops-manager",
+      "sourceReference": "",
+      "active": true,
+      "notes": "Illustrative reference policy."
+    },
+    {
+      "id": "policy-data-governance",
+      "name": "Data Governance Standard",
+      "description": "Ownership, stewardship, quality, lineage and critical data controls.",
+      "policyType": "standard",
+      "ownerPositionId": "pos-data-manager",
+      "sourceReference": "",
+      "active": true,
+      "notes": "Illustrative reference policy."
+    },
+    {
+      "id": "policy-third-party",
+      "name": "Third-Party Risk Management Policy",
+      "description": "Due diligence, contracting, monitoring and exit for third parties.",
+      "policyType": "policy",
+      "ownerPositionId": "pos-vendor-manager",
+      "sourceReference": "",
+      "active": true,
+      "notes": "Illustrative reference policy."
+    },
+    {
+      "id": "policy-financial-control",
+      "name": "Financial Control Policy",
+      "description": "Accounting, journals, reconciliations and financial close controls.",
+      "policyType": "policy",
+      "ownerPositionId": "pos-cfo",
+      "sourceReference": "",
+      "active": true,
+      "notes": "Illustrative reference policy."
+    }
+  ]
+}

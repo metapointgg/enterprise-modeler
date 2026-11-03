@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_ProductDevelopmentApproval",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Define target market and need",
+      "ownerPersonId": "person-head-product",
+      "responsibleType": "role",
+      "responsibleId": "role-head-product",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Microsoft SharePoint Online",
+        "Microsoft Power BI"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Duty",
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)",
+        "FCA Consumer Credit Sourcebook (CONC)"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Design product features",
+      "ownerPersonId": "person-head-product",
+      "responsibleType": "role",
+      "responsibleId": "role-head-product",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Microsoft SharePoint Online",
+        "Microsoft Power BI"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Duty",
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)",
+        "FCA Consumer Credit Sourcebook (CONC)"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Assess risks and controls",
+      "ownerPersonId": "person-head-product",
+      "responsibleType": "role",
+      "responsibleId": "role-head-product",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Microsoft SharePoint Online",
+        "Microsoft Power BI"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Duty",
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)",
+        "FCA Consumer Credit Sourcebook (CONC)"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Complete product approval",
+      "ownerPersonId": "person-head-product",
+      "responsibleType": "role",
+      "responsibleId": "role-head-product",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Microsoft SharePoint Online",
+        "Microsoft Power BI"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Duty",
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)",
+        "FCA Consumer Credit Sourcebook (CONC)"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Configure systems",
+      "ownerPersonId": "person-head-product",
+      "responsibleType": "role",
+      "responsibleId": "role-head-product",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Microsoft SharePoint Online",
+        "Microsoft Power BI"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Duty",
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)",
+        "FCA Consumer Credit Sourcebook (CONC)"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_6": {
+      "status": "Draft",
+      "description": "Launch and monitor",
+      "ownerPersonId": "person-head-product",
+      "responsibleType": "role",
+      "responsibleId": "role-head-product",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Microsoft SharePoint Online",
+        "Microsoft Power BI"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Duty",
+        "FCA Banking: Conduct of Business Sourcebook (BCOBS)",
+        "FCA Consumer Credit Sourcebook (CONC)"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

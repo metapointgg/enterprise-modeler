@@ -1,0 +1,2462 @@
+{
+  "schemaVersion": 1,
+  "records": [
+    {
+      "processId": "bank-operating-model",
+      "status": "draft",
+      "ownerPositionId": "pos-ceo",
+      "approverPositionId": "pos-ceo",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-fsma",
+        "reg-pra",
+        "reg-consumer-duty"
+      ],
+      "changeSummary": "Initial simple-bank reference operating model.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "customer-acquisition-onboarding",
+      "status": "draft",
+      "ownerPositionId": "pos-head-customer-ops",
+      "approverPositionId": "pos-coo",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-salesforce",
+        "system-idv",
+        "system-worldcheck",
+        "system-sharepoint",
+        "system-t24"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-consumer-duty",
+        "reg-mlr",
+        "reg-sanctions",
+        "reg-uk-gdpr"
+      ],
+      "changeSummary": "Illustrative simple-bank reference process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "savings-deposits",
+      "status": "draft",
+      "ownerPositionId": "pos-head-savings",
+      "approverPositionId": "pos-coo",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-salesforce",
+        "system-t24",
+        "system-payments",
+        "system-online-banking"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-bcobs",
+        "reg-consumer-duty",
+        "reg-fscs",
+        "reg-uk-gdpr"
+      ],
+      "changeSummary": "Illustrative simple-bank reference process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "lending-credit",
+      "status": "draft",
+      "ownerPositionId": "pos-head-lending",
+      "approverPositionId": "pos-coo",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-salesforce",
+        "system-t24",
+        "system-experian",
+        "system-docusign",
+        "system-sharepoint"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-conc",
+        "reg-cca",
+        "reg-consumer-duty",
+        "reg-uk-gdpr"
+      ],
+      "changeSummary": "Illustrative simple-bank reference process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "payments-operations",
+      "status": "draft",
+      "ownerPositionId": "pos-savings-ops-manager",
+      "approverPositionId": "pos-head-savings",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-t24",
+        "system-payments",
+        "system-online-banking"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-psr",
+        "reg-consumer-duty",
+        "reg-sanctions"
+      ],
+      "changeSummary": "Illustrative simple-bank reference process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "customer-servicing",
+      "status": "draft",
+      "ownerPositionId": "pos-head-customer-ops",
+      "approverPositionId": "pos-coo",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-salesforce",
+        "system-t24",
+        "system-sharepoint",
+        "system-online-banking"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-consumer-duty",
+        "reg-disp",
+        "reg-uk-gdpr"
+      ],
+      "changeSummary": "Illustrative simple-bank reference process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "financial-crime",
+      "status": "draft",
+      "ownerPositionId": "pos-mlro",
+      "approverPositionId": "pos-cro",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-worldcheck",
+        "system-aml-monitoring",
+        "system-fraud-monitoring",
+        "system-salesforce",
+        "system-t24"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-mlr",
+        "reg-poca",
+        "reg-sanctions"
+      ],
+      "changeSummary": "Illustrative simple-bank reference process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "finance-treasury",
+      "status": "draft",
+      "ownerPositionId": "pos-cfo",
+      "approverPositionId": "pos-ceo",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-t24",
+        "system-iris",
+        "system-treasury-alm",
+        "system-data-warehouse"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-pra",
+        "reg-prudential",
+        "reg-fsma"
+      ],
+      "changeSummary": "Illustrative simple-bank reference process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "risk-compliance",
+      "status": "draft",
+      "ownerPositionId": "pos-cro",
+      "approverPositionId": "pos-ceo",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-reg-reporting",
+        "system-salesforce",
+        "system-data-warehouse",
+        "system-powerbi"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-fsma",
+        "reg-consumer-duty",
+        "reg-pra",
+        "reg-smcr",
+        "reg-opres",
+        "reg-uk-gdpr"
+      ],
+      "changeSummary": "Illustrative simple-bank reference process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "product-partner",
+      "status": "draft",
+      "ownerPositionId": "pos-head-product",
+      "approverPositionId": "pos-coo",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-salesforce",
+        "system-sharepoint",
+        "system-powerbi"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-consumer-duty",
+        "reg-bcobs",
+        "reg-conc"
+      ],
+      "changeSummary": "Illustrative simple-bank reference process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "technology-resilience",
+      "status": "draft",
+      "ownerPositionId": "pos-cto",
+      "approverPositionId": "pos-ceo",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-servicenow",
+        "system-entra",
+        "system-sentinel",
+        "system-backup"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-opres",
+        "reg-uk-gdpr"
+      ],
+      "changeSummary": "Illustrative simple-bank reference process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "data-mi",
+      "status": "draft",
+      "ownerPositionId": "pos-data-manager",
+      "approverPositionId": "pos-cfo",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-data-warehouse",
+        "system-powerbi",
+        "system-t24",
+        "system-salesforce",
+        "system-iris"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-uk-gdpr",
+        "reg-pra",
+        "reg-fsma"
+      ],
+      "changeSummary": "Illustrative simple-bank reference process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "people-corporate",
+      "status": "draft",
+      "ownerPositionId": "pos-coo",
+      "approverPositionId": "pos-ceo",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-hris",
+        "system-m365",
+        "system-sharepoint",
+        "system-iris"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-smcr",
+        "reg-uk-gdpr"
+      ],
+      "changeSummary": "Illustrative simple-bank reference process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "marketing-lead-management",
+      "status": "draft",
+      "ownerPositionId": "pos-head-customer-ops",
+      "approverPositionId": "pos-coo",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-salesforce"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-consumer-duty",
+        "reg-uk-gdpr"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "customer-onboarding",
+      "status": "draft",
+      "ownerPositionId": "pos-onboarding-manager",
+      "approverPositionId": "pos-head-customer-ops",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-salesforce",
+        "system-idv",
+        "system-worldcheck",
+        "system-sharepoint",
+        "system-t24"
+      ],
+      "interfaceIds": [
+        "if-salesforce-idv",
+        "if-salesforce-worldcheck",
+        "if-salesforce-t24"
+      ],
+      "regulationIds": [
+        "reg-mlr",
+        "reg-sanctions",
+        "reg-consumer-duty",
+        "reg-uk-gdpr"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "identity-verification",
+      "status": "draft",
+      "ownerPositionId": "pos-onboarding-manager",
+      "approverPositionId": "pos-head-customer-ops",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-salesforce",
+        "system-idv",
+        "system-sharepoint"
+      ],
+      "interfaceIds": [
+        "if-salesforce-sharepoint"
+      ],
+      "regulationIds": [
+        "reg-mlr",
+        "reg-uk-gdpr"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "customer-profile-maintenance",
+      "status": "draft",
+      "ownerPositionId": "pos-head-customer-ops",
+      "approverPositionId": "pos-coo",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-salesforce",
+        "system-t24",
+        "system-sharepoint"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-uk-gdpr",
+        "reg-consumer-duty"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "savings-product-setup",
+      "status": "draft",
+      "ownerPositionId": "pos-product-manager",
+      "approverPositionId": "pos-head-product",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-t24",
+        "system-salesforce",
+        "system-sharepoint"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-bcobs",
+        "reg-consumer-duty",
+        "reg-fscs"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "savings-account-opening",
+      "status": "draft",
+      "ownerPositionId": "pos-savings-ops-manager",
+      "approverPositionId": "pos-head-savings",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-salesforce",
+        "system-t24",
+        "system-worldcheck",
+        "system-online-banking"
+      ],
+      "interfaceIds": [
+        "if-salesforce-t24"
+      ],
+      "regulationIds": [
+        "reg-bcobs",
+        "reg-mlr",
+        "reg-sanctions",
+        "reg-fscs"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "deposit-funding",
+      "status": "draft",
+      "ownerPositionId": "pos-savings-ops-manager",
+      "approverPositionId": "pos-head-savings",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-t24",
+        "system-payments",
+        "system-online-banking"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-psr",
+        "reg-bcobs"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "interest-accrual-payment",
+      "status": "draft",
+      "ownerPositionId": "pos-savings-ops-manager",
+      "approverPositionId": "pos-head-savings",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-t24",
+        "system-iris"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-bcobs",
+        "reg-fscs"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "savings-withdrawal-closure",
+      "status": "draft",
+      "ownerPositionId": "pos-savings-ops-manager",
+      "approverPositionId": "pos-head-savings",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-t24",
+        "system-payments",
+        "system-online-banking"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-psr",
+        "reg-bcobs"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "dormant-account-management",
+      "status": "draft",
+      "ownerPositionId": "pos-savings-ops-manager",
+      "approverPositionId": "pos-head-savings",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-t24",
+        "system-salesforce"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-bcobs",
+        "reg-uk-gdpr"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "savings-rate-change",
+      "status": "draft",
+      "ownerPositionId": "pos-head-savings",
+      "approverPositionId": "pos-coo",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-t24",
+        "system-salesforce",
+        "system-m365"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-bcobs",
+        "reg-consumer-duty"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "loan-application",
+      "status": "draft",
+      "ownerPositionId": "pos-head-lending",
+      "approverPositionId": "pos-coo",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-salesforce",
+        "system-sharepoint",
+        "system-experian"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-conc",
+        "reg-cca",
+        "reg-consumer-duty",
+        "reg-uk-gdpr"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "affordability-credit-assessment",
+      "status": "draft",
+      "ownerPositionId": "pos-credit-manager",
+      "approverPositionId": "pos-head-lending",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-salesforce",
+        "system-experian",
+        "system-data-warehouse"
+      ],
+      "interfaceIds": [
+        "if-salesforce-experian"
+      ],
+      "regulationIds": [
+        "reg-conc",
+        "reg-consumer-duty"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "underwriting-decision",
+      "status": "draft",
+      "ownerPositionId": "pos-credit-manager",
+      "approverPositionId": "pos-head-lending",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-salesforce",
+        "system-experian",
+        "system-sharepoint"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-conc",
+        "reg-cca",
+        "reg-consumer-duty"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "loan-offer-documentation",
+      "status": "draft",
+      "ownerPositionId": "pos-loan-ops-manager",
+      "approverPositionId": "pos-head-lending",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-salesforce",
+        "system-sharepoint",
+        "system-docusign"
+      ],
+      "interfaceIds": [
+        "if-salesforce-docusign"
+      ],
+      "regulationIds": [
+        "reg-cca",
+        "reg-conc"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "loan-booking-disbursement",
+      "status": "draft",
+      "ownerPositionId": "pos-loan-ops-manager",
+      "approverPositionId": "pos-head-lending",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-salesforce",
+        "system-t24",
+        "system-payments"
+      ],
+      "interfaceIds": [
+        "if-salesforce-t24"
+      ],
+      "regulationIds": [
+        "reg-cca",
+        "reg-conc"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "loan-repayment-processing",
+      "status": "draft",
+      "ownerPositionId": "pos-loan-ops-manager",
+      "approverPositionId": "pos-head-lending",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-t24",
+        "system-payments"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-psr",
+        "reg-conc"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "arrears-collections",
+      "status": "draft",
+      "ownerPositionId": "pos-collections-manager",
+      "approverPositionId": "pos-head-lending",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-t24",
+        "system-salesforce",
+        "system-m365"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-conc",
+        "reg-consumer-duty"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "forbearance-support",
+      "status": "draft",
+      "ownerPositionId": "pos-collections-manager",
+      "approverPositionId": "pos-head-lending",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-salesforce",
+        "system-t24",
+        "system-sharepoint"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-conc",
+        "reg-consumer-duty"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "loan-settlement-closure",
+      "status": "draft",
+      "ownerPositionId": "pos-loan-ops-manager",
+      "approverPositionId": "pos-head-lending",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-t24",
+        "system-payments",
+        "system-salesforce"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-conc",
+        "reg-cca"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "credit-bureau-reporting",
+      "status": "draft",
+      "ownerPositionId": "pos-credit-manager",
+      "approverPositionId": "pos-head-lending",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-t24",
+        "system-experian",
+        "system-data-warehouse"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-uk-gdpr",
+        "reg-conc"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "inbound-payment-processing",
+      "status": "draft",
+      "ownerPositionId": "pos-savings-ops-manager",
+      "approverPositionId": "pos-head-savings",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-payments",
+        "system-t24"
+      ],
+      "interfaceIds": [
+        "if-t24-payments"
+      ],
+      "regulationIds": [
+        "reg-psr",
+        "reg-sanctions"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "outbound-payment-processing",
+      "status": "draft",
+      "ownerPositionId": "pos-savings-ops-manager",
+      "approverPositionId": "pos-head-savings",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-online-banking",
+        "system-t24",
+        "system-payments",
+        "system-fraud-monitoring"
+      ],
+      "interfaceIds": [
+        "if-t24-payments"
+      ],
+      "regulationIds": [
+        "reg-psr",
+        "reg-sanctions",
+        "reg-consumer-duty"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "payment-exceptions-returns",
+      "status": "draft",
+      "ownerPositionId": "pos-savings-ops-manager",
+      "approverPositionId": "pos-head-savings",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-payments",
+        "system-t24",
+        "system-salesforce"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-psr",
+        "reg-consumer-duty"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "payment-limits-controls",
+      "status": "draft",
+      "ownerPositionId": "pos-savings-ops-manager",
+      "approverPositionId": "pos-head-savings",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-t24",
+        "system-online-banking",
+        "system-fraud-monitoring"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-psr",
+        "reg-consumer-duty"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "customer-enquiries",
+      "status": "draft",
+      "ownerPositionId": "pos-customer-service-manager",
+      "approverPositionId": "pos-head-customer-ops",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-salesforce",
+        "system-t24",
+        "system-sharepoint"
+      ],
+      "interfaceIds": [
+        "if-app-salesforce",
+        "if-app-t24"
+      ],
+      "regulationIds": [
+        "reg-consumer-duty",
+        "reg-uk-gdpr"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "complaint-handling",
+      "status": "draft",
+      "ownerPositionId": "pos-customer-service-manager",
+      "approverPositionId": "pos-head-customer-ops",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-salesforce",
+        "system-sharepoint"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-disp",
+        "reg-consumer-duty"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "vulnerable-customer-support",
+      "status": "draft",
+      "ownerPositionId": "pos-head-customer-ops",
+      "approverPositionId": "pos-coo",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-salesforce",
+        "system-sharepoint"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-consumer-duty",
+        "reg-uk-gdpr"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "bereavement-estate-servicing",
+      "status": "draft",
+      "ownerPositionId": "pos-head-customer-ops",
+      "approverPositionId": "pos-coo",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-salesforce",
+        "system-t24",
+        "system-sharepoint"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-consumer-duty",
+        "reg-uk-gdpr"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "fraud-scam-customer-report",
+      "status": "draft",
+      "ownerPositionId": "pos-fincrime-manager",
+      "approverPositionId": "pos-mlro",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-salesforce",
+        "system-t24",
+        "system-fraud-monitoring"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-consumer-duty",
+        "reg-psr"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "data-rights-request",
+      "status": "draft",
+      "ownerPositionId": "pos-dpo",
+      "approverPositionId": "pos-cro",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-salesforce",
+        "system-sharepoint",
+        "system-t24",
+        "system-m365"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-uk-gdpr"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "customer-communications",
+      "status": "draft",
+      "ownerPositionId": "pos-head-customer-ops",
+      "approverPositionId": "pos-coo",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-salesforce",
+        "system-m365",
+        "system-sharepoint"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-consumer-duty",
+        "reg-uk-gdpr"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "sanctions-pep-screening",
+      "status": "draft",
+      "ownerPositionId": "pos-mlro",
+      "approverPositionId": "pos-cro",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-worldcheck",
+        "system-salesforce",
+        "system-t24"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-sanctions",
+        "reg-mlr"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "transaction-monitoring",
+      "status": "draft",
+      "ownerPositionId": "pos-fincrime-manager",
+      "approverPositionId": "pos-mlro",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-t24",
+        "system-aml-monitoring"
+      ],
+      "interfaceIds": [
+        "if-t24-aml"
+      ],
+      "regulationIds": [
+        "reg-mlr",
+        "reg-poca"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "aml-investigation",
+      "status": "draft",
+      "ownerPositionId": "pos-fincrime-manager",
+      "approverPositionId": "pos-mlro",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-aml-monitoring",
+        "system-salesforce",
+        "system-sharepoint"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-mlr",
+        "reg-poca"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "sar-reporting",
+      "status": "draft",
+      "ownerPositionId": "pos-mlro",
+      "approverPositionId": "pos-cro",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-aml-monitoring",
+        "system-sharepoint"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-poca",
+        "reg-mlr"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "fraud-monitoring-investigation",
+      "status": "draft",
+      "ownerPositionId": "pos-fincrime-manager",
+      "approverPositionId": "pos-mlro",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-fraud-monitoring",
+        "system-t24",
+        "system-salesforce"
+      ],
+      "interfaceIds": [
+        "if-t24-fraud"
+      ],
+      "regulationIds": [
+        "reg-consumer-duty",
+        "reg-psr"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "periodic-kyc-review",
+      "status": "draft",
+      "ownerPositionId": "pos-fincrime-manager",
+      "approverPositionId": "pos-mlro",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-salesforce",
+        "system-worldcheck",
+        "system-sharepoint"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-mlr",
+        "reg-sanctions"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "daily-reconciliation",
+      "status": "draft",
+      "ownerPositionId": "pos-finance-manager",
+      "approverPositionId": "pos-cfo",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-t24",
+        "system-payments",
+        "system-iris"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-pra",
+        "reg-fsma"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "general-ledger-posting",
+      "status": "draft",
+      "ownerPositionId": "pos-finance-manager",
+      "approverPositionId": "pos-cfo",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-t24",
+        "system-iris"
+      ],
+      "interfaceIds": [
+        "if-t24-iris"
+      ],
+      "regulationIds": [
+        "reg-fsma",
+        "reg-pra"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "month-end-close",
+      "status": "draft",
+      "ownerPositionId": "pos-finance-manager",
+      "approverPositionId": "pos-cfo",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-iris",
+        "system-t24",
+        "system-data-warehouse"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-fsma",
+        "reg-pra"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "financial-reporting",
+      "status": "draft",
+      "ownerPositionId": "pos-cfo",
+      "approverPositionId": "pos-ceo",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-iris",
+        "system-data-warehouse",
+        "system-powerbi"
+      ],
+      "interfaceIds": [
+        "if-iris-dwh"
+      ],
+      "regulationIds": [
+        "reg-fsma",
+        "reg-pra"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "liquidity-management",
+      "status": "draft",
+      "ownerPositionId": "pos-treasury-manager",
+      "approverPositionId": "pos-cfo",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-t24",
+        "system-treasury-alm",
+        "system-data-warehouse"
+      ],
+      "interfaceIds": [
+        "if-t24-treasury"
+      ],
+      "regulationIds": [
+        "reg-prudential",
+        "reg-pra"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "interest-rate-risk",
+      "status": "draft",
+      "ownerPositionId": "pos-treasury-manager",
+      "approverPositionId": "pos-cfo",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-t24",
+        "system-treasury-alm"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-prudential",
+        "reg-pra"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "accounts-payable",
+      "status": "draft",
+      "ownerPositionId": "pos-finance-manager",
+      "approverPositionId": "pos-cfo",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-iris",
+        "system-sharepoint",
+        "system-m365"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-fsma"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "year-end-audit",
+      "status": "draft",
+      "ownerPositionId": "pos-cfo",
+      "approverPositionId": "pos-ceo",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-iris",
+        "system-sharepoint",
+        "system-data-warehouse"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-fsma",
+        "reg-pra"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "enterprise-risk-management",
+      "status": "draft",
+      "ownerPositionId": "pos-risk-manager",
+      "approverPositionId": "pos-cro",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-sharepoint",
+        "system-powerbi"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-pra",
+        "reg-fsma"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "compliance-monitoring",
+      "status": "draft",
+      "ownerPositionId": "pos-compliance-manager",
+      "approverPositionId": "pos-cro",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-salesforce",
+        "system-sharepoint",
+        "system-powerbi"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-fsma",
+        "reg-consumer-duty",
+        "reg-bcobs",
+        "reg-conc"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "regulatory-change-management",
+      "status": "draft",
+      "ownerPositionId": "pos-compliance-manager",
+      "approverPositionId": "pos-cro",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-sharepoint",
+        "system-reg-reporting"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-fsma",
+        "reg-pra"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "control-testing",
+      "status": "draft",
+      "ownerPositionId": "pos-risk-manager",
+      "approverPositionId": "pos-cro",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-sharepoint",
+        "system-powerbi"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-pra",
+        "reg-fsma"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "policy-management",
+      "status": "draft",
+      "ownerPositionId": "pos-compliance-manager",
+      "approverPositionId": "pos-cro",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-sharepoint"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-fsma",
+        "reg-smcr"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "operational-resilience",
+      "status": "draft",
+      "ownerPositionId": "pos-opres-manager",
+      "approverPositionId": "pos-cro",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-servicenow",
+        "system-sharepoint",
+        "system-powerbi"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-opres"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "data-protection-governance",
+      "status": "draft",
+      "ownerPositionId": "pos-dpo",
+      "approverPositionId": "pos-cro",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-sharepoint",
+        "system-data-warehouse"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-uk-gdpr"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "board-governance",
+      "status": "draft",
+      "ownerPositionId": "pos-ceo",
+      "approverPositionId": "pos-ceo",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-sharepoint",
+        "system-m365",
+        "system-powerbi"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-smcr",
+        "reg-pra",
+        "reg-fsma"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "internal-audit",
+      "status": "draft",
+      "ownerPositionId": "pos-head-internal-audit",
+      "approverPositionId": "pos-ceo",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-sharepoint",
+        "system-data-warehouse"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-pra",
+        "reg-fsma"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "product-development-approval",
+      "status": "draft",
+      "ownerPositionId": "pos-head-product",
+      "approverPositionId": "pos-coo",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-salesforce",
+        "system-sharepoint",
+        "system-powerbi"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-consumer-duty",
+        "reg-bcobs",
+        "reg-conc"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "product-governance-fair-value",
+      "status": "draft",
+      "ownerPositionId": "pos-product-manager",
+      "approverPositionId": "pos-head-product",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-powerbi",
+        "system-data-warehouse",
+        "system-sharepoint"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-consumer-duty"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "pricing-rate-management",
+      "status": "draft",
+      "ownerPositionId": "pos-product-manager",
+      "approverPositionId": "pos-head-product",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-t24",
+        "system-treasury-alm",
+        "system-powerbi"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-consumer-duty",
+        "reg-bcobs",
+        "reg-conc"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "third-party-management",
+      "status": "draft",
+      "ownerPositionId": "pos-vendor-manager",
+      "approverPositionId": "pos-head-product",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-sharepoint",
+        "system-servicenow",
+        "system-iris"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-opres",
+        "reg-uk-gdpr"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "user-access-management",
+      "status": "draft",
+      "ownerPositionId": "pos-security-manager",
+      "approverPositionId": "pos-cto",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-entra",
+        "system-servicenow"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-uk-gdpr",
+        "reg-opres"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "change-release-management",
+      "status": "draft",
+      "ownerPositionId": "pos-it-ops-manager",
+      "approverPositionId": "pos-cto",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-servicenow",
+        "system-sharepoint"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-opres"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "technology-incident-management",
+      "status": "draft",
+      "ownerPositionId": "pos-it-ops-manager",
+      "approverPositionId": "pos-cto",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-servicenow",
+        "system-sentinel",
+        "system-m365"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-opres"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "cyber-monitoring-response",
+      "status": "draft",
+      "ownerPositionId": "pos-security-manager",
+      "approverPositionId": "pos-cto",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-sentinel",
+        "system-entra",
+        "system-servicenow"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-opres",
+        "reg-uk-gdpr"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "vulnerability-patch-management",
+      "status": "draft",
+      "ownerPositionId": "pos-security-manager",
+      "approverPositionId": "pos-cto",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-servicenow",
+        "system-sentinel"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-opres"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "backup-restore",
+      "status": "draft",
+      "ownerPositionId": "pos-it-ops-manager",
+      "approverPositionId": "pos-cto",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-backup",
+        "system-servicenow"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-opres",
+        "reg-uk-gdpr"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "business-continuity-dr",
+      "status": "draft",
+      "ownerPositionId": "pos-opres-manager",
+      "approverPositionId": "pos-cro",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-servicenow",
+        "system-backup",
+        "system-m365"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-opres"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "application-support",
+      "status": "draft",
+      "ownerPositionId": "pos-it-ops-manager",
+      "approverPositionId": "pos-cto",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-servicenow",
+        "system-t24",
+        "system-salesforce",
+        "system-iris"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-opres"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "capacity-availability",
+      "status": "draft",
+      "ownerPositionId": "pos-it-ops-manager",
+      "approverPositionId": "pos-cto",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-servicenow",
+        "system-sentinel"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-opres"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "data-quality-management",
+      "status": "draft",
+      "ownerPositionId": "pos-data-manager",
+      "approverPositionId": "pos-cfo",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-data-warehouse",
+        "system-powerbi",
+        "system-t24",
+        "system-salesforce"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-uk-gdpr",
+        "reg-pra"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "data-lineage-management",
+      "status": "draft",
+      "ownerPositionId": "pos-data-manager",
+      "approverPositionId": "pos-cfo",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-data-warehouse",
+        "system-sharepoint"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-uk-gdpr",
+        "reg-pra"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "management-information",
+      "status": "draft",
+      "ownerPositionId": "pos-data-manager",
+      "approverPositionId": "pos-cfo",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-data-warehouse",
+        "system-powerbi"
+      ],
+      "interfaceIds": [
+        "if-t24-dwh",
+        "if-salesforce-dwh",
+        "if-dwh-powerbi"
+      ],
+      "regulationIds": [
+        "reg-consumer-duty",
+        "reg-pra"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "regulatory-data-reporting",
+      "status": "draft",
+      "ownerPositionId": "pos-data-manager",
+      "approverPositionId": "pos-cfo",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-data-warehouse",
+        "system-reg-reporting",
+        "system-powerbi"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-pra",
+        "reg-fsma"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "data-retention-disposal",
+      "status": "draft",
+      "ownerPositionId": "pos-dpo",
+      "approverPositionId": "pos-cro",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-sharepoint",
+        "system-salesforce",
+        "system-t24",
+        "system-data-warehouse"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-uk-gdpr"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "master-reference-data",
+      "status": "draft",
+      "ownerPositionId": "pos-data-manager",
+      "approverPositionId": "pos-cfo",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-t24",
+        "system-salesforce",
+        "system-data-warehouse"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-pra",
+        "reg-uk-gdpr"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "recruitment-onboarding",
+      "status": "draft",
+      "ownerPositionId": "pos-hr-manager",
+      "approverPositionId": "pos-coo",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-hris",
+        "system-entra",
+        "system-m365",
+        "system-servicenow"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-uk-gdpr",
+        "reg-smcr"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "learning-competence",
+      "status": "draft",
+      "ownerPositionId": "pos-hr-manager",
+      "approverPositionId": "pos-coo",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-hris",
+        "system-sharepoint"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-smcr"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "performance-management",
+      "status": "draft",
+      "ownerPositionId": "pos-hr-manager",
+      "approverPositionId": "pos-coo",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-hris"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-smcr",
+        "reg-uk-gdpr"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "procurement",
+      "status": "draft",
+      "ownerPositionId": "pos-procurement-manager",
+      "approverPositionId": "pos-coo",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-iris",
+        "system-sharepoint",
+        "system-m365"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-fsma"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "supplier-contract-management",
+      "status": "draft",
+      "ownerPositionId": "pos-procurement-manager",
+      "approverPositionId": "pos-coo",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-sharepoint",
+        "system-iris"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-opres",
+        "reg-uk-gdpr"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    },
+    {
+      "processId": "records-document-management",
+      "status": "draft",
+      "ownerPositionId": "pos-procurement-manager",
+      "approverPositionId": "pos-coo",
+      "version": "0.1",
+      "effectiveDate": "",
+      "reviewDate": "",
+      "channels": [
+        "digital",
+        "central",
+        "external"
+      ],
+      "systemIds": [
+        "system-sharepoint",
+        "system-m365"
+      ],
+      "interfaceIds": [],
+      "regulationIds": [
+        "reg-uk-gdpr"
+      ],
+      "changeSummary": "Illustrative simple-bank reference sub-process.",
+      "updatedAt": ""
+    }
+  ]
+}

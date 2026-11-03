@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_GeneralLedgerPosting",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Extract T24 accounting entries",
+      "ownerPersonId": "person-finance-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-finance-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "IRIS Financials"
+      ],
+      "controls": [
+        "Controlled T24 to IRIS journal interface with control totals"
+      ],
+      "risks": [
+        "Material financial reporting error",
+        "Unidentified reconciliation break or financial misstatement"
+      ],
+      "regulations": [
+        "Financial Services and Markets Act 2000",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Validate control totals",
+      "ownerPersonId": "person-finance-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-finance-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "IRIS Financials"
+      ],
+      "controls": [
+        "Controlled T24 to IRIS journal interface with control totals"
+      ],
+      "risks": [
+        "Material financial reporting error",
+        "Unidentified reconciliation break or financial misstatement"
+      ],
+      "regulations": [
+        "Financial Services and Markets Act 2000",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Transform journal file",
+      "ownerPersonId": "person-finance-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-finance-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "IRIS Financials"
+      ],
+      "controls": [
+        "Controlled T24 to IRIS journal interface with control totals"
+      ],
+      "risks": [
+        "Material financial reporting error",
+        "Unidentified reconciliation break or financial misstatement"
+      ],
+      "regulations": [
+        "Financial Services and Markets Act 2000",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Post to IRIS",
+      "ownerPersonId": "person-finance-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-finance-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "IRIS Financials"
+      ],
+      "controls": [
+        "Controlled T24 to IRIS journal interface with control totals"
+      ],
+      "risks": [
+        "Material financial reporting error",
+        "Unidentified reconciliation break or financial misstatement"
+      ],
+      "regulations": [
+        "Financial Services and Markets Act 2000",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Resolve rejects",
+      "ownerPersonId": "person-finance-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-finance-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "IRIS Financials"
+      ],
+      "controls": [
+        "Controlled T24 to IRIS journal interface with control totals"
+      ],
+      "risks": [
+        "Material financial reporting error",
+        "Unidentified reconciliation break or financial misstatement"
+      ],
+      "regulations": [
+        "Financial Services and Markets Act 2000",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_6": {
+      "status": "Draft",
+      "description": "Reconcile ledger totals",
+      "ownerPersonId": "person-finance-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-finance-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "IRIS Financials"
+      ],
+      "controls": [
+        "Controlled T24 to IRIS journal interface with control totals"
+      ],
+      "risks": [
+        "Material financial reporting error",
+        "Unidentified reconciliation break or financial misstatement"
+      ],
+      "regulations": [
+        "Financial Services and Markets Act 2000",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

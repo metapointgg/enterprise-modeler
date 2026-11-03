@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_ComplaintHandling",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Receive and log complaint",
+      "ownerPersonId": "person-customer-service-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-customer-service-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [
+        "Complaint tracking and deadline monitoring"
+      ],
+      "risks": [
+        "Poor customer outcomes or conduct failure"
+      ],
+      "regulations": [
+        "FCA Dispute Resolution: Complaints (DISP)",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Acknowledge complaint",
+      "ownerPersonId": "person-customer-service-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-customer-service-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [
+        "Complaint tracking and deadline monitoring"
+      ],
+      "risks": [
+        "Poor customer outcomes or conduct failure"
+      ],
+      "regulations": [
+        "FCA Dispute Resolution: Complaints (DISP)",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Investigate facts",
+      "ownerPersonId": "person-customer-service-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-customer-service-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [
+        "Complaint tracking and deadline monitoring"
+      ],
+      "risks": [
+        "Poor customer outcomes or conduct failure"
+      ],
+      "regulations": [
+        "FCA Dispute Resolution: Complaints (DISP)",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Determine outcome and redress",
+      "ownerPersonId": "person-customer-service-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-customer-service-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [
+        "Complaint tracking and deadline monitoring"
+      ],
+      "risks": [
+        "Poor customer outcomes or conduct failure"
+      ],
+      "regulations": [
+        "FCA Dispute Resolution: Complaints (DISP)",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Issue final response",
+      "ownerPersonId": "person-customer-service-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-customer-service-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [
+        "Complaint tracking and deadline monitoring"
+      ],
+      "risks": [
+        "Poor customer outcomes or conduct failure"
+      ],
+      "regulations": [
+        "FCA Dispute Resolution: Complaints (DISP)",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_6": {
+      "status": "Draft",
+      "description": "Capture root cause and learning",
+      "ownerPersonId": "person-customer-service-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-customer-service-manager",
+      "links": [],
+      "systems": [
+        "Salesforce CRM",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [
+        "Complaint tracking and deadline monitoring"
+      ],
+      "risks": [
+        "Poor customer outcomes or conduct failure"
+      ],
+      "regulations": [
+        "FCA Dispute Resolution: Complaints (DISP)",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

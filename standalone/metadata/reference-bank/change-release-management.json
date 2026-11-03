@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_ChangeReleaseManagement",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Log change",
+      "ownerPersonId": "person-it-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-it-ops-manager",
+      "links": [],
+      "systems": [
+        "ServiceNow",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [
+        "Risk-based change approval before production deployment"
+      ],
+      "risks": [],
+      "regulations": [
+        "FCA/PRA Operational Resilience Requirements"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Assess risk and impact",
+      "ownerPersonId": "person-it-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-it-ops-manager",
+      "links": [],
+      "systems": [
+        "ServiceNow",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [
+        "Risk-based change approval before production deployment"
+      ],
+      "risks": [],
+      "regulations": [
+        "FCA/PRA Operational Resilience Requirements"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Approve change",
+      "ownerPersonId": "person-it-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-it-ops-manager",
+      "links": [],
+      "systems": [
+        "ServiceNow",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [
+        "Risk-based change approval before production deployment"
+      ],
+      "risks": [],
+      "regulations": [
+        "FCA/PRA Operational Resilience Requirements"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Implement and test",
+      "ownerPersonId": "person-it-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-it-ops-manager",
+      "links": [],
+      "systems": [
+        "ServiceNow",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [
+        "Risk-based change approval before production deployment"
+      ],
+      "risks": [],
+      "regulations": [
+        "FCA/PRA Operational Resilience Requirements"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Deploy release",
+      "ownerPersonId": "person-it-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-it-ops-manager",
+      "links": [],
+      "systems": [
+        "ServiceNow",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [
+        "Risk-based change approval before production deployment"
+      ],
+      "risks": [],
+      "regulations": [
+        "FCA/PRA Operational Resilience Requirements"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_6": {
+      "status": "Draft",
+      "description": "Review outcome",
+      "ownerPersonId": "person-it-ops-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-it-ops-manager",
+      "links": [],
+      "systems": [
+        "ServiceNow",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [
+        "Risk-based change approval before production deployment"
+      ],
+      "risks": [],
+      "regulations": [
+        "FCA/PRA Operational Resilience Requirements"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

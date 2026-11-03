@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_YearEndAudit",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Prepare audit schedules",
+      "ownerPersonId": "person-cfo",
+      "responsibleType": "role",
+      "responsibleId": "role-cfo",
+      "links": [],
+      "systems": [
+        "IRIS Financials",
+        "Microsoft SharePoint Online",
+        "Bank Data Warehouse"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Financial Services and Markets Act 2000",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Provide evidence",
+      "ownerPersonId": "person-cfo",
+      "responsibleType": "role",
+      "responsibleId": "role-cfo",
+      "links": [],
+      "systems": [
+        "IRIS Financials",
+        "Microsoft SharePoint Online",
+        "Bank Data Warehouse"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Financial Services and Markets Act 2000",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Respond to audit queries",
+      "ownerPersonId": "person-cfo",
+      "responsibleType": "role",
+      "responsibleId": "role-cfo",
+      "links": [],
+      "systems": [
+        "IRIS Financials",
+        "Microsoft SharePoint Online",
+        "Bank Data Warehouse"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Financial Services and Markets Act 2000",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Track adjustments",
+      "ownerPersonId": "person-cfo",
+      "responsibleType": "role",
+      "responsibleId": "role-cfo",
+      "links": [],
+      "systems": [
+        "IRIS Financials",
+        "Microsoft SharePoint Online",
+        "Bank Data Warehouse"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Financial Services and Markets Act 2000",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Complete financial statement review",
+      "ownerPersonId": "person-cfo",
+      "responsibleType": "role",
+      "responsibleId": "role-cfo",
+      "links": [],
+      "systems": [
+        "IRIS Financials",
+        "Microsoft SharePoint Online",
+        "Bank Data Warehouse"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Financial Services and Markets Act 2000",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

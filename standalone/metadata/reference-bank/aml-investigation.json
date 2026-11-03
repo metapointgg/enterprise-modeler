@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_AmlInvestigation",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Open investigation",
+      "ownerPersonId": "person-fincrime-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-fincrime-manager",
+      "links": [],
+      "systems": [
+        "AML Transaction Monitoring Platform",
+        "Salesforce CRM",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Money Laundering Regulations 2017",
+        "Proceeds of Crime Act 2002 / SAR obligations"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Gather customer and transaction evidence",
+      "ownerPersonId": "person-fincrime-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-fincrime-manager",
+      "links": [],
+      "systems": [
+        "AML Transaction Monitoring Platform",
+        "Salesforce CRM",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Money Laundering Regulations 2017",
+        "Proceeds of Crime Act 2002 / SAR obligations"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Analyse activity",
+      "ownerPersonId": "person-fincrime-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-fincrime-manager",
+      "links": [],
+      "systems": [
+        "AML Transaction Monitoring Platform",
+        "Salesforce CRM",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Money Laundering Regulations 2017",
+        "Proceeds of Crime Act 2002 / SAR obligations"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Determine suspicion",
+      "ownerPersonId": "person-fincrime-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-fincrime-manager",
+      "links": [],
+      "systems": [
+        "AML Transaction Monitoring Platform",
+        "Salesforce CRM",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Money Laundering Regulations 2017",
+        "Proceeds of Crime Act 2002 / SAR obligations"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Record decision and actions",
+      "ownerPersonId": "person-fincrime-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-fincrime-manager",
+      "links": [],
+      "systems": [
+        "AML Transaction Monitoring Platform",
+        "Salesforce CRM",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Money Laundering Regulations 2017",
+        "Proceeds of Crime Act 2002 / SAR obligations"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_SavingsDeposits" targetNamespace="https://enterprise-modeler.local/bpmn">
+<bpmn:process id="Process_SavingsDeposits" name="Savings &amp; Deposits" isExecutable="false">
+<bpmn:laneSet id="LaneSet_SavingsDeposits"><bpmn:lane id="Lane_SavingsDeposits" name="Simple Bank"><bpmn:flowNodeRef>Start_SavingsDeposits</bpmn:flowNodeRef><bpmn:flowNodeRef>Call_1_SavingsProductSetup</bpmn:flowNodeRef><bpmn:flowNodeRef>Call_2_SavingsAccountOpening</bpmn:flowNodeRef><bpmn:flowNodeRef>Call_3_DepositFunding</bpmn:flowNodeRef><bpmn:flowNodeRef>Call_4_InterestAccrualPayment</bpmn:flowNodeRef><bpmn:flowNodeRef>Call_5_SavingsWithdrawalClosure</bpmn:flowNodeRef><bpmn:flowNodeRef>Call_6_DormantAccountManagement</bpmn:flowNodeRef><bpmn:flowNodeRef>Call_7_SavingsRateChange</bpmn:flowNodeRef><bpmn:flowNodeRef>End_SavingsDeposits</bpmn:flowNodeRef></bpmn:lane></bpmn:laneSet>
+<bpmn:startEvent id="Start_SavingsDeposits" name="Start"><bpmn:outgoing>Flow_1</bpmn:outgoing></bpmn:startEvent>
+<bpmn:callActivity id="Call_1_SavingsProductSetup" name="Savings Product Setup" calledElement="Process_SavingsProductSetup"><bpmn:incoming>Flow_1</bpmn:incoming><bpmn:outgoing>Flow_2</bpmn:outgoing></bpmn:callActivity>
+<bpmn:callActivity id="Call_2_SavingsAccountOpening" name="Savings Account Opening" calledElement="Process_SavingsAccountOpening"><bpmn:incoming>Flow_2</bpmn:incoming><bpmn:outgoing>Flow_3</bpmn:outgoing></bpmn:callActivity>
+<bpmn:callActivity id="Call_3_DepositFunding" name="Deposit Funding" calledElement="Process_DepositFunding"><bpmn:incoming>Flow_3</bpmn:incoming><bpmn:outgoing>Flow_4</bpmn:outgoing></bpmn:callActivity>
+<bpmn:callActivity id="Call_4_InterestAccrualPayment" name="Interest Accrual &amp; Payment" calledElement="Process_InterestAccrualPayment"><bpmn:incoming>Flow_4</bpmn:incoming><bpmn:outgoing>Flow_5</bpmn:outgoing></bpmn:callActivity>
+<bpmn:callActivity id="Call_5_SavingsWithdrawalClosure" name="Savings Withdrawal &amp; Account Closure" calledElement="Process_SavingsWithdrawalClosure"><bpmn:incoming>Flow_5</bpmn:incoming><bpmn:outgoing>Flow_6</bpmn:outgoing></bpmn:callActivity>
+<bpmn:callActivity id="Call_6_DormantAccountManagement" name="Dormant Account Management" calledElement="Process_DormantAccountManagement"><bpmn:incoming>Flow_6</bpmn:incoming><bpmn:outgoing>Flow_7</bpmn:outgoing></bpmn:callActivity>
+<bpmn:callActivity id="Call_7_SavingsRateChange" name="Savings Rate &amp; Maturity Management" calledElement="Process_SavingsRateChange"><bpmn:incoming>Flow_7</bpmn:incoming><bpmn:outgoing>Flow_8</bpmn:outgoing></bpmn:callActivity>
+<bpmn:endEvent id="End_SavingsDeposits" name="Complete"><bpmn:incoming>Flow_8</bpmn:incoming></bpmn:endEvent>
+<bpmn:sequenceFlow id="Flow_1" sourceRef="Start_SavingsDeposits" targetRef="Call_1_SavingsProductSetup" />
+<bpmn:sequenceFlow id="Flow_2" sourceRef="Call_1_SavingsProductSetup" targetRef="Call_2_SavingsAccountOpening" />
+<bpmn:sequenceFlow id="Flow_3" sourceRef="Call_2_SavingsAccountOpening" targetRef="Call_3_DepositFunding" />
+<bpmn:sequenceFlow id="Flow_4" sourceRef="Call_3_DepositFunding" targetRef="Call_4_InterestAccrualPayment" />
+<bpmn:sequenceFlow id="Flow_5" sourceRef="Call_4_InterestAccrualPayment" targetRef="Call_5_SavingsWithdrawalClosure" />
+<bpmn:sequenceFlow id="Flow_6" sourceRef="Call_5_SavingsWithdrawalClosure" targetRef="Call_6_DormantAccountManagement" />
+<bpmn:sequenceFlow id="Flow_7" sourceRef="Call_6_DormantAccountManagement" targetRef="Call_7_SavingsRateChange" />
+<bpmn:sequenceFlow id="Flow_8" sourceRef="Call_7_SavingsRateChange" targetRef="End_SavingsDeposits" />
+</bpmn:process>
+<bpmn:collaboration id="Collaboration_SavingsDeposits"><bpmn:participant id="Participant_SavingsDeposits" name="Simple Bank" processRef="Process_SavingsDeposits" /></bpmn:collaboration>
+<bpmndi:BPMNDiagram id="Diagram_SavingsDeposits"><bpmndi:BPMNPlane id="Plane_SavingsDeposits" bpmnElement="Collaboration_SavingsDeposits">
+<bpmndi:BPMNShape id="Participant_SavingsDeposits_di" bpmnElement="Participant_SavingsDeposits" isHorizontal="true"><dc:Bounds x="80" y="80" width="2240" height="260" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Lane_SavingsDeposits_di" bpmnElement="Lane_SavingsDeposits" isHorizontal="true"><dc:Bounds x="110" y="80" width="2210" height="260" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Start_SavingsDeposits_di" bpmnElement="Start_SavingsDeposits"><dc:Bounds x="150" y="192" width="36" height="36" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Call_1_SavingsProductSetup_di" bpmnElement="Call_1_SavingsProductSetup"><dc:Bounds x="200" y="170" width="190" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Call_2_SavingsAccountOpening_di" bpmnElement="Call_2_SavingsAccountOpening"><dc:Bounds x="460" y="170" width="190" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Call_3_DepositFunding_di" bpmnElement="Call_3_DepositFunding"><dc:Bounds x="720" y="170" width="190" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Call_4_InterestAccrualPayment_di" bpmnElement="Call_4_InterestAccrualPayment"><dc:Bounds x="980" y="170" width="190" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Call_5_SavingsWithdrawalClosure_di" bpmnElement="Call_5_SavingsWithdrawalClosure"><dc:Bounds x="1240" y="170" width="190" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Call_6_DormantAccountManagement_di" bpmnElement="Call_6_DormantAccountManagement"><dc:Bounds x="1500" y="170" width="190" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Call_7_SavingsRateChange_di" bpmnElement="Call_7_SavingsRateChange"><dc:Bounds x="1760" y="170" width="190" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="End_SavingsDeposits_di" bpmnElement="End_SavingsDeposits"><dc:Bounds x="2040" y="192" width="36" height="36" /></bpmndi:BPMNShape>
+<bpmndi:BPMNEdge id="Flow_1_di" bpmnElement="Flow_1"><di:waypoint x="186" y="210" /><di:waypoint x="200" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="Flow_2_di" bpmnElement="Flow_2"><di:waypoint x="390" y="210" /><di:waypoint x="460" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="Flow_3_di" bpmnElement="Flow_3"><di:waypoint x="650" y="210" /><di:waypoint x="720" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="Flow_4_di" bpmnElement="Flow_4"><di:waypoint x="910" y="210" /><di:waypoint x="980" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="Flow_5_di" bpmnElement="Flow_5"><di:waypoint x="1170" y="210" /><di:waypoint x="1240" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="Flow_6_di" bpmnElement="Flow_6"><di:waypoint x="1430" y="210" /><di:waypoint x="1500" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="Flow_7_di" bpmnElement="Flow_7"><di:waypoint x="1690" y="210" /><di:waypoint x="1760" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="Flow_8_di" bpmnElement="Flow_8"><di:waypoint x="1950" y="210" /><di:waypoint x="2040" y="210" /></bpmndi:BPMNEdge>
+</bpmndi:BPMNPlane></bpmndi:BPMNDiagram></bpmn:definitions>

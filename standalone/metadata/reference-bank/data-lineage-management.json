@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_DataLineageManagement",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Identify data source",
+      "ownerPersonId": "person-data-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-data-manager",
+      "links": [],
+      "systems": [
+        "Bank Data Warehouse",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "UK GDPR & Data Protection Act 2018",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Map transformations and flows",
+      "ownerPersonId": "person-data-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-data-manager",
+      "links": [],
+      "systems": [
+        "Bank Data Warehouse",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "UK GDPR & Data Protection Act 2018",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Record lineage metadata",
+      "ownerPersonId": "person-data-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-data-manager",
+      "links": [],
+      "systems": [
+        "Bank Data Warehouse",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "UK GDPR & Data Protection Act 2018",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Validate owners and stewards",
+      "ownerPersonId": "person-data-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-data-manager",
+      "links": [],
+      "systems": [
+        "Bank Data Warehouse",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "UK GDPR & Data Protection Act 2018",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Review change impact",
+      "ownerPersonId": "person-data-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-data-manager",
+      "links": [],
+      "systems": [
+        "Bank Data Warehouse",
+        "Microsoft SharePoint Online"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "UK GDPR & Data Protection Act 2018",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

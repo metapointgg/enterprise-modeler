@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_AccountsPayable",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Receive supplier invoice",
+      "ownerPersonId": "person-finance-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-finance-manager",
+      "links": [],
+      "systems": [
+        "IRIS Financials",
+        "Microsoft SharePoint Online",
+        "Microsoft 365"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Financial Services and Markets Act 2000"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Validate purchase and approval",
+      "ownerPersonId": "person-finance-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-finance-manager",
+      "links": [],
+      "systems": [
+        "IRIS Financials",
+        "Microsoft SharePoint Online",
+        "Microsoft 365"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Financial Services and Markets Act 2000"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Code invoice",
+      "ownerPersonId": "person-finance-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-finance-manager",
+      "links": [],
+      "systems": [
+        "IRIS Financials",
+        "Microsoft SharePoint Online",
+        "Microsoft 365"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Financial Services and Markets Act 2000"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Approve payment",
+      "ownerPersonId": "person-finance-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-finance-manager",
+      "links": [],
+      "systems": [
+        "IRIS Financials",
+        "Microsoft SharePoint Online",
+        "Microsoft 365"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Financial Services and Markets Act 2000"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Post in IRIS",
+      "ownerPersonId": "person-finance-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-finance-manager",
+      "links": [],
+      "systems": [
+        "IRIS Financials",
+        "Microsoft SharePoint Online",
+        "Microsoft 365"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Financial Services and Markets Act 2000"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_6": {
+      "status": "Draft",
+      "description": "Reconcile supplier account",
+      "ownerPersonId": "person-finance-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-finance-manager",
+      "links": [],
+      "systems": [
+        "IRIS Financials",
+        "Microsoft SharePoint Online",
+        "Microsoft 365"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Financial Services and Markets Act 2000"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

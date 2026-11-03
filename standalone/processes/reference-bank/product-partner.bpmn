@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_ProductPartner" targetNamespace="https://enterprise-modeler.local/bpmn">
+<bpmn:process id="Process_ProductPartner" name="Product &amp; Partner Management" isExecutable="false">
+<bpmn:laneSet id="LaneSet_ProductPartner"><bpmn:lane id="Lane_ProductPartner" name="Simple Bank"><bpmn:flowNodeRef>Start_ProductPartner</bpmn:flowNodeRef><bpmn:flowNodeRef>Call_1_ProductDevelopmentApproval</bpmn:flowNodeRef><bpmn:flowNodeRef>Call_2_ProductGovernanceFairValue</bpmn:flowNodeRef><bpmn:flowNodeRef>Call_3_PricingRateManagement</bpmn:flowNodeRef><bpmn:flowNodeRef>Call_4_ThirdPartyManagement</bpmn:flowNodeRef><bpmn:flowNodeRef>End_ProductPartner</bpmn:flowNodeRef></bpmn:lane></bpmn:laneSet>
+<bpmn:startEvent id="Start_ProductPartner" name="Start"><bpmn:outgoing>Flow_1</bpmn:outgoing></bpmn:startEvent>
+<bpmn:callActivity id="Call_1_ProductDevelopmentApproval" name="Product Development &amp; Approval" calledElement="Process_ProductDevelopmentApproval"><bpmn:incoming>Flow_1</bpmn:incoming><bpmn:outgoing>Flow_2</bpmn:outgoing></bpmn:callActivity>
+<bpmn:callActivity id="Call_2_ProductGovernanceFairValue" name="Product Governance &amp; Fair Value" calledElement="Process_ProductGovernanceFairValue"><bpmn:incoming>Flow_2</bpmn:incoming><bpmn:outgoing>Flow_3</bpmn:outgoing></bpmn:callActivity>
+<bpmn:callActivity id="Call_3_PricingRateManagement" name="Pricing &amp; Rate Management" calledElement="Process_PricingRateManagement"><bpmn:incoming>Flow_3</bpmn:incoming><bpmn:outgoing>Flow_4</bpmn:outgoing></bpmn:callActivity>
+<bpmn:callActivity id="Call_4_ThirdPartyManagement" name="Third-Party &amp; Outsourcing Management" calledElement="Process_ThirdPartyManagement"><bpmn:incoming>Flow_4</bpmn:incoming><bpmn:outgoing>Flow_5</bpmn:outgoing></bpmn:callActivity>
+<bpmn:endEvent id="End_ProductPartner" name="Complete"><bpmn:incoming>Flow_5</bpmn:incoming></bpmn:endEvent>
+<bpmn:sequenceFlow id="Flow_1" sourceRef="Start_ProductPartner" targetRef="Call_1_ProductDevelopmentApproval" />
+<bpmn:sequenceFlow id="Flow_2" sourceRef="Call_1_ProductDevelopmentApproval" targetRef="Call_2_ProductGovernanceFairValue" />
+<bpmn:sequenceFlow id="Flow_3" sourceRef="Call_2_ProductGovernanceFairValue" targetRef="Call_3_PricingRateManagement" />
+<bpmn:sequenceFlow id="Flow_4" sourceRef="Call_3_PricingRateManagement" targetRef="Call_4_ThirdPartyManagement" />
+<bpmn:sequenceFlow id="Flow_5" sourceRef="Call_4_ThirdPartyManagement" targetRef="End_ProductPartner" />
+</bpmn:process>
+<bpmn:collaboration id="Collaboration_ProductPartner"><bpmn:participant id="Participant_ProductPartner" name="Simple Bank" processRef="Process_ProductPartner" /></bpmn:collaboration>
+<bpmndi:BPMNDiagram id="Diagram_ProductPartner"><bpmndi:BPMNPlane id="Plane_ProductPartner" bpmnElement="Collaboration_ProductPartner">
+<bpmndi:BPMNShape id="Participant_ProductPartner_di" bpmnElement="Participant_ProductPartner" isHorizontal="true"><dc:Bounds x="80" y="80" width="1460" height="260" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Lane_ProductPartner_di" bpmnElement="Lane_ProductPartner" isHorizontal="true"><dc:Bounds x="110" y="80" width="1430" height="260" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Start_ProductPartner_di" bpmnElement="Start_ProductPartner"><dc:Bounds x="150" y="192" width="36" height="36" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Call_1_ProductDevelopmentApproval_di" bpmnElement="Call_1_ProductDevelopmentApproval"><dc:Bounds x="200" y="170" width="190" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Call_2_ProductGovernanceFairValue_di" bpmnElement="Call_2_ProductGovernanceFairValue"><dc:Bounds x="460" y="170" width="190" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Call_3_PricingRateManagement_di" bpmnElement="Call_3_PricingRateManagement"><dc:Bounds x="720" y="170" width="190" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="Call_4_ThirdPartyManagement_di" bpmnElement="Call_4_ThirdPartyManagement"><dc:Bounds x="980" y="170" width="190" height="80" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="End_ProductPartner_di" bpmnElement="End_ProductPartner"><dc:Bounds x="1260" y="192" width="36" height="36" /></bpmndi:BPMNShape>
+<bpmndi:BPMNEdge id="Flow_1_di" bpmnElement="Flow_1"><di:waypoint x="186" y="210" /><di:waypoint x="200" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="Flow_2_di" bpmnElement="Flow_2"><di:waypoint x="390" y="210" /><di:waypoint x="460" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="Flow_3_di" bpmnElement="Flow_3"><di:waypoint x="650" y="210" /><di:waypoint x="720" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="Flow_4_di" bpmnElement="Flow_4"><di:waypoint x="910" y="210" /><di:waypoint x="980" y="210" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="Flow_5_di" bpmnElement="Flow_5"><di:waypoint x="1170" y="210" /><di:waypoint x="1260" y="210" /></bpmndi:BPMNEdge>
+</bpmndi:BPMNPlane></bpmndi:BPMNDiagram></bpmn:definitions>

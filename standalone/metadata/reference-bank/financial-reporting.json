@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_FinancialReporting",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Prepare financial results",
+      "ownerPersonId": "person-cfo",
+      "responsibleType": "role",
+      "responsibleId": "role-cfo",
+      "links": [],
+      "systems": [
+        "IRIS Financials",
+        "Bank Data Warehouse",
+        "Microsoft Power BI"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Financial Services and Markets Act 2000",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Validate disclosures",
+      "ownerPersonId": "person-cfo",
+      "responsibleType": "role",
+      "responsibleId": "role-cfo",
+      "links": [],
+      "systems": [
+        "IRIS Financials",
+        "Bank Data Warehouse",
+        "Microsoft Power BI"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Financial Services and Markets Act 2000",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Review management accounts",
+      "ownerPersonId": "person-cfo",
+      "responsibleType": "role",
+      "responsibleId": "role-cfo",
+      "links": [],
+      "systems": [
+        "IRIS Financials",
+        "Bank Data Warehouse",
+        "Microsoft Power BI"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Financial Services and Markets Act 2000",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Approve reporting pack",
+      "ownerPersonId": "person-cfo",
+      "responsibleType": "role",
+      "responsibleId": "role-cfo",
+      "links": [],
+      "systems": [
+        "IRIS Financials",
+        "Bank Data Warehouse",
+        "Microsoft Power BI"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Financial Services and Markets Act 2000",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Issue statutory or management reports",
+      "ownerPersonId": "person-cfo",
+      "responsibleType": "role",
+      "responsibleId": "role-cfo",
+      "links": [],
+      "systems": [
+        "IRIS Financials",
+        "Bank Data Warehouse",
+        "Microsoft Power BI"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "Financial Services and Markets Act 2000",
+        "PRA Rulebook"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}

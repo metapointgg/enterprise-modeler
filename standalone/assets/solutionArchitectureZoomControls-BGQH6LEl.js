@@ -1,0 +1,10 @@
+import{getBpmnModelerForCanvas as e}from"./bpmnModelerRegistry-hecB-_TW.js";var t=`#solution-architecture-bpmn-canvas`,n=`solution-architecture-zoom-controls`,r=1.2,i=.2,a=4,o=!1;function s(t,n){let r=e(t);if(r)try{n(r.get(`canvas`))}catch(e){console.warn(`Unable to access the Solution Architecture BPMN canvas.`,e)}}function c(e,t){s(e,e=>{let n=e.zoom();if(!Number.isFinite(n)||n<=0)return;let o=Math.min(a,Math.max(i,n*(t===`in`?r:1/r)));e.zoom(o)})}function l(e){s(e,e=>e.zoom(`fit-viewport`))}function u(){o=!1;let e=document.querySelector(t);if(!e||e.querySelector(`.${n}`))return;let r=document.createElement(`div`);r.className=n,r.setAttribute(`aria-label`,`Solution architecture zoom controls`),r.innerHTML=`
+    <button type="button" class="solution-architecture-zoom-button" data-architecture-zoom="fit" title="Fit diagram" aria-label="Fit diagram">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M8 3H3v5M16 3h5v5M21 16v5h-5M8 21H3v-5" />
+        <circle cx="12" cy="12" r="3" />
+      </svg>
+    </button>
+    <button type="button" class="solution-architecture-zoom-button solution-architecture-zoom-symbol" data-architecture-zoom="in" title="Zoom in" aria-label="Zoom in">+</button>
+    <button type="button" class="solution-architecture-zoom-button solution-architecture-zoom-symbol" data-architecture-zoom="out" title="Zoom out" aria-label="Zoom out">−</button>
+  `,r.querySelectorAll(`[data-architecture-zoom]`).forEach(t=>{t.addEventListener(`click`,()=>{let n=t.dataset.architectureZoom;if(n===`fit`){l(e);return}(n===`in`||n===`out`)&&c(e,n)})}),e.appendChild(r)}function d(){o||(o=!0,window.requestAnimationFrame(u))}new MutationObserver(d).observe(document.body,{subtree:!0,childList:!0}),document.addEventListener(`enterprise-modeler:workspace-page-changed`,d),document.addEventListener(`enterprise-modeler:bpmn-modeler-registered`,d),d();

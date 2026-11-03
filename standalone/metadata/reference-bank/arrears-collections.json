@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 3,
+  "processId": "Process_ArrearsCollections",
+  "nodes": {
+    "Task_1": {
+      "status": "Draft",
+      "description": "Identify missed payment",
+      "ownerPersonId": "person-collections-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-collections-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Salesforce CRM",
+        "Microsoft 365"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Credit Sourcebook (CONC)",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_2": {
+      "status": "Draft",
+      "description": "Assess customer circumstances",
+      "ownerPersonId": "person-collections-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-collections-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Salesforce CRM",
+        "Microsoft 365"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Credit Sourcebook (CONC)",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_3": {
+      "status": "Draft",
+      "description": "Contact customer",
+      "ownerPersonId": "person-collections-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-collections-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Salesforce CRM",
+        "Microsoft 365"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Credit Sourcebook (CONC)",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_4": {
+      "status": "Draft",
+      "description": "Agree collection action",
+      "ownerPersonId": "person-collections-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-collections-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Salesforce CRM",
+        "Microsoft 365"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Credit Sourcebook (CONC)",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_5": {
+      "status": "Draft",
+      "description": "Monitor promise or arrangement",
+      "ownerPersonId": "person-collections-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-collections-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Salesforce CRM",
+        "Microsoft 365"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Credit Sourcebook (CONC)",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    },
+    "Task_6": {
+      "status": "Draft",
+      "description": "Escalate if unresolved",
+      "ownerPersonId": "person-collections-manager",
+      "responsibleType": "role",
+      "responsibleId": "role-collections-manager",
+      "links": [],
+      "systems": [
+        "Temenos Transact (T24)",
+        "Salesforce CRM",
+        "Microsoft 365"
+      ],
+      "controls": [],
+      "risks": [],
+      "regulations": [
+        "FCA Consumer Credit Sourcebook (CONC)",
+        "FCA Consumer Duty"
+      ],
+      "notes": "Illustrative simple-bank reference process step."
+    }
+  }
+}
