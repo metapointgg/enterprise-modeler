@@ -8,6 +8,7 @@ import {
   loadProcessGovernance,
   saveIntegrationDataLocally,
   type ArchitectureEnvironment,
+  type EnvironmentOperationRecord,
   type IntegrationData,
   type InterfaceRecord,
 } from './operatingModelRegistry';
@@ -128,6 +129,7 @@ class IntegrationManager {
             </section>
             <section class="integration-editor">${this.renderInterfaceForm(selected)}</section>
           </div>
+          ${this.renderEnvironmentOperations()}
         </div>
 
         <footer class="integration-manager-footer">
@@ -137,6 +139,54 @@ class IntegrationManager {
     `;
 
     this.bindEvents();
+  }
+
+  private renderEnvironmentOperations(): string {
+    const operations = this.data.environmentOperations ?? [];
+    if (operations.length === 0) return '';
+
+    return `
+      <section class="integration-environment-operations">
+        <div class="integration-list-heading">
+          <span>Environment Operations</span>
+          <small>Refreshes, copies and manual transfers between environment layers</small>
+        </div>
+        <div class="integration-environment-operation-grid">
+          ${operations.map((operation) => this.renderEnvironmentOperation(operation)).join('')}
+        </div>
+      </section>
+    `;
+  }
+
+  private renderEnvironmentOperation(operation: EnvironmentOperationRecord): string {
+    const source = this.systemName(operation.sourceSystemId);
+    const target = this.systemName(operation.targetSystemId);
+    const sourceEnvironment = this.environmentLabel(operation.sourceEnvironment);
+    const targetEnvironment = this.environmentLabel(operation.targetEnvironment);
+    const scramble = operation.dataScrambled === null
+      ? 'Scrambling: TBC'
+      : operation.dataScrambled
+        ? 'Scrambled'
+        : 'Not scrambled';
+    const automation = operation.automated === null
+      ? 'Automation: TBC'
+      : operation.automated
+        ? 'Automated'
+        : 'Manual';
+
+    return `
+      <article class="integration-environment-operation">
+        <strong>${escapeHtml(operation.name)}</strong>
+        <span>${escapeHtml(source)} [${escapeHtml(sourceEnvironment)}] → ${escapeHtml(target)} [${escapeHtml(targetEnvironment)}]</span>
+        <small>${escapeHtml(operation.operationType)} · ${escapeHtml(operation.frequency || 'Frequency TBC')} · ${escapeHtml(scramble)} · ${escapeHtml(automation)} · ${escapeHtml(operation.status)}</small>
+        ${operation.notes ? `<p>${escapeHtml(operation.notes)}</p>` : ''}
+      </article>
+    `;
+  }
+
+  private environmentLabel(environment: ArchitectureEnvironment | 'tbc'): string {
+    if (environment === 'tbc') return 'TBC';
+    return ARCHITECTURE_ENVIRONMENTS.find((candidate) => candidate.id === environment)?.label ?? environment;
   }
 
   private renderInterfaceForm(item: InterfaceRecord | null): string {
