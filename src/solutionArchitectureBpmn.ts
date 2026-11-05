@@ -1032,7 +1032,11 @@ class SolutionArchitectureBpmnPage {
     return ARCHITECTURE_LAYERS.find((layer) => layer.label === name)?.id ?? 'other';
   }
 
-  private systemName(systemId: string): string {\n    return this.data.systems.find((system) => system.id === systemId)?.name ?? '';\n  }\n\n  private positionOptions(selected: string): string {
+  private systemName(systemId: string): string {
+    return this.data.systems.find((system) => system.id === systemId)?.name ?? '';
+  }
+
+  private positionOptions(selected: string): string {
     const positions = this.organisation?.positions
       .filter((position) => position.active)
       .sort((left, right) => left.name.localeCompare(right.name)) ?? [];
