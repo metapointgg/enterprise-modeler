@@ -127,7 +127,7 @@ const INTEGRATIONS_URL = '/architecture/integrations.json';
 const REGULATIONS_URL = '/governance/regulations.json';
 
 const GOVERNANCE_AUTOSAVE_KEY = 'enterprise-modeler.process-governance.v1';
-const INTEGRATIONS_AUTOSAVE_KEY = 'enterprise-modeler.client.integrations.v1';
+const INTEGRATIONS_AUTOSAVE_KEY = 'enterprise-modeler.client.integrations.v2';
 const REGULATIONS_AUTOSAVE_KEY = 'enterprise-modeler.regulations.v1';
 
 function isLifecycleStatus(value: string | undefined): value is ProcessLifecycleStatus {
