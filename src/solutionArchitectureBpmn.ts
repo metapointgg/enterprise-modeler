@@ -3,7 +3,7 @@ import BpmnModeler from 'bpmn-js/lib/Modeler';
 import 'bpmn-js/dist/assets/diagram-js.css';
 import 'bpmn-js/dist/assets/bpmn-font/css/bpmn.css';
 import './solutionArchitectureBpmn.css';
-import { modelUrl } from './modelRepository';
+import { MODEL_NAMESPACE, modelUrl } from './modelRepository';
 
 import {
   ARCHITECTURE_ENVIRONMENTS,
@@ -77,7 +77,7 @@ interface SaveXmlResult {
 }
 
 const ARCHITECTURE_BPMN_URL = modelUrl('/architecture/solution-architecture.bpmn');
-const ARCHITECTURE_AUTOSAVE_KEY = 'enterprise-modeler.solution-architecture-bpmn.v3';
+const ARCHITECTURE_AUTOSAVE_KEY = `enterprise-modeler.${MODEL_NAMESPACE}.solution-architecture-bpmn.v4`;
 const ARCHITECTURE_LAYER_PREFIX = 'ArchitectureLayer_';
 const ARCHITECTURE_PROCESS_PREFIX = 'ArchitectureProcess_';
 const PROCESS_FADED_MARKER = 'architecture-bpmn-faded';
