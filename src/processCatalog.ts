@@ -1,3 +1,5 @@
+import { modelUrl } from './modelRepository';
+
 export interface ProcessLayer {
   id: string;
   code: string;
@@ -39,8 +41,8 @@ export interface ProcessRepositorySnapshot {
   catalog: ProcessCatalogData;
 }
 
-const PROCESS_LAYERS_URL = '/processes/process-layers.json';
-const PROCESS_CATALOG_URL = '/processes/process-catalog.json';
+const PROCESS_LAYERS_URL = modelUrl('/processes/process-layers.json');
+const PROCESS_CATALOG_URL = modelUrl('/processes/process-catalog.json');
 const PROCESS_LAYERS_AUTOSAVE_KEY = 'enterprise-modeler.process-layers.v1';
 const PROCESS_CATALOG_AUTOSAVE_KEY = 'enterprise-modeler.process-catalog.v1';
 
@@ -80,8 +82,8 @@ function normaliseProcess(value: Partial<ProcessDefinitionRecord>): ProcessDefin
     name: value.name || 'Unnamed Process',
     layerId: value.layerId || '',
     filename: value.filename || 'process.bpmn',
-    url: value.url || '/processes/custom/process.bpmn',
-    metadataUrl: value.metadataUrl || '/metadata/custom/process.json',
+    url: modelUrl(value.url || '/processes/custom/process.bpmn'),
+    metadataUrl: modelUrl(value.metadataUrl || '/metadata/custom/process.json'),
     parentId: value.parentId || undefined,
     active: value.active !== false,
   };
