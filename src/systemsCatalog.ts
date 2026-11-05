@@ -1,6 +1,7 @@
 import './systemsCatalog.css';
 
 import {
+  ARCHITECTURE_ENVIRONMENTS,
   ARCHITECTURE_LAYERS,
   exportRegistryJson,
   generateRegistryId,
@@ -8,6 +9,7 @@ import {
   loadIntegrationData,
   loadProcessGovernance,
   saveIntegrationDataLocally,
+  type ArchitectureEnvironment,
   type ArchitectureLayer,
   type IntegrationData,
   type ProcessGovernanceData,
@@ -278,7 +280,12 @@ class SystemsCatalog {
 
         <div class="systems-two-col">
           <label class="metadata-field"><span>Supplier</span><input id="systems-supplier" value="${escapeHtml(system?.supplier ?? '')}" placeholder="Supplier / owner or TBC" /></label>
-          <label class="metadata-field"><span>Environment</span><input id="systems-environment" value="${escapeHtml(system?.environment ?? '')}" placeholder="e.g. Production / multi-environment / TBC" /></label>
+          <fieldset class="metadata-field">
+            <span>Environments</span>
+            <div class="organisation-checkbox-row">
+              ${ARCHITECTURE_ENVIRONMENTS.map((environment) => `<label><input type="checkbox" data-system-environment="${environment.id}"${(system?.environments ?? ['production']).includes(environment.id) ? ' checked' : ''} /><span>${escapeHtml(environment.label)}</span></label>`).join('')}
+            </div>
+          </fieldset>
         </div>
 
         <div class="systems-two-col">
@@ -396,7 +403,8 @@ class SystemsCatalog {
       type: this.value('#systems-type'),
       architectureLayer,
       supplier: this.value('#systems-supplier'),
-      environment: this.value('#systems-environment'),
+      environment: this.readEnvironments().map((environment) => ARCHITECTURE_ENVIRONMENTS.find((candidate) => candidate.id === environment)?.label ?? environment).join(', '),
+      environments: this.readEnvironments(),
       dataClassification: this.value('#systems-data-classification'),
       integrationType: this.value('#systems-integration-type'),
       ownerPositionId: this.value('#systems-owner'),
@@ -448,6 +456,7 @@ class SystemsCatalog {
           system.type,
           system.supplier,
           system.environment,
+          system.environments.join(' '),
           system.dataClassification,
           system.integrationType,
           system.notes,
@@ -499,6 +508,15 @@ class SystemsCatalog {
     return this.root.querySelector<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>(selector)?.value.trim() ?? '';
   }
 
+  private readEnvironments(): ArchitectureEnvironment[] {
+    const selected = [...this.root.querySelectorAll<HTMLInputElement>('[data-system-environment]')]
+      .filter((input) => input.checked)
+      .map((input) => input.dataset.systemEnvironment ?? '')
+      .filter((value): value is ArchitectureEnvironment =>
+        ARCHITECTURE_ENVIRONMENTS.some((environment) => environment.id === value),
+      );
+    return selected.length > 0 ? selected : ['production'];
+  }
   private architectureLayerOptions(selected: ArchitectureLayer): string {
     return ARCHITECTURE_LAYERS
       .map((layer) => `<option value="${layer.id}"${layer.id === selected ? ' selected' : ''}>${escapeHtml(layer.label)}</option>`)
