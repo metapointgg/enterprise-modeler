@@ -196,47 +196,158 @@ class SolutionArchitectureBpmnPage {
   }
 
   private bindContextPadExtensions(): void {
-    const observer = new MutationObserver(() => this.renderInterfaceContextPadActions());
+    const observer = new MutationObserver(() => this.renderElementContextPadActions());
     observer.observe(this.canvasHost, { childList: true, subtree: true });
   }
 
-  private renderInterfaceContextPadActions(): void {
+  private renderElementContextPadActions(): void {
     const element = this.selectedElement;
-    if (!element || !this.isInterfaceElement(element)) return;
-
-    const record = this.data.interfaces.find((candidate) => candidate.id === element.id);
-    if (!record) return;
+    if (!element) return;
 
     const contextPad = this.canvasHost.querySelector<HTMLElement>('.djs-context-pad');
-    if (!contextPad || contextPad.querySelector('[data-architecture-line-style]')) return;
+    if (!contextPad || contextPad.querySelector('[data-enterprise-context-actions]')) return;
 
     const actions = document.createElement('div');
-    actions.className = 'architecture-line-style-context-actions';
+    actions.className = 'architecture-enterprise-context-actions';
+    actions.dataset.enterpriseContextActions = 'true';
 
-    ([
-      ['solid', 'Solid line', '━'],
-      ['dashed', 'Dashed line', '┅'],
-      ['dotted', 'Dotted line', '···'],
-    ] as const).forEach(([style, title, glyph]) => {
-      const button = document.createElement('button');
-      button.type = 'button';
-      button.className = 'entry architecture-line-style-entry';
-      button.dataset.architectureLineStyle = style;
-      button.title = title;
-      button.setAttribute('aria-label', title);
-      button.textContent = glyph;
-      if ((record.lineStyle ?? 'solid') === style) button.classList.add('architecture-line-style-selected');
+    if (this.isSystemElement(element)) {
+      const system = this.data.systems.find((candidate) => candidate.id === element.id);
+      if (system) {
+        this.addContextPadButton(actions, 'System details', 'ⓘ', () => {
+          document.dispatchEvent(new CustomEvent('enterprise-modeler:open-systems-catalog', {
+            detail: { recordId: system.id },
+          }));
+        });
 
-      button.addEventListener('click', (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        this.setInterfaceLineStyle(record, element, style);
+        ARCHITECTURE_ENVIRONMENTS.forEach((environment) => {
+          const selected = (system.environments ?? ['production']).includes(environment.id);
+          this.addContextPadButton(
+            actions,
+            `${selected ? 'Remove from' : 'Add to'} ${environment.label}`,
+            environment.id === 'production' ? 'P' : environment.id === 'uat' ? 'U' : 'D',
+            () => this.toggleSystemEnvironment(system, environment.id),
+            selected,
+          );
+        });
+      }
+    } else if (this.isInterfaceElement(element)) {
+      const record = this.data.interfaces.find((candidate) => candidate.id === element.id);
+      if (record) {
+        this.addContextPadButton(actions, 'Interface details', 'ⓘ', () => {
+          document.dispatchEvent(new CustomEvent('enterprise-modeler:open-integration-catalog', {
+            detail: { recordKind: 'interface', recordId: record.id },
+          }));
+        });
+
+        ([
+          ['solid', 'Solid line', '━'],
+          ['dashed', 'Dashed line', '┅'],
+          ['dotted', 'Dotted line', '···'],
+        ] as const).forEach(([style, title, glyph]) => {
+          this.addContextPadButton(
+            actions,
+            title,
+            glyph,
+            () => this.setInterfaceLineStyle(record, element, style),
+            (record.lineStyle ?? 'solid') === style,
+          );
+        });
+
+        ([
+          ['outbound', 'Outbound', '→'],
+          ['inbound', 'Inbound', '←'],
+          ['bidirectional', 'Bidirectional', '↔'],
+        ] as const).forEach(([direction, title, glyph]) => {
+          this.addContextPadButton(
+            actions,
+            title,
+            glyph,
+            () => this.setInterfaceDirection(record, direction),
+            record.direction === direction,
+          );
+        });
+
+        ARCHITECTURE_ENVIRONMENTS.forEach((environment) => {
+          const selected = (record.environments ?? ['production']).includes(environment.id);
+          this.addContextPadButton(
+            actions,
+            `${selected ? 'Remove from' : 'Add to'} ${environment.label}`,
+            environment.id === 'production' ? 'P' : environment.id === 'uat' ? 'U' : 'D',
+            () => this.toggleInterfaceEnvironment(record, environment.id),
+            selected,
+          );
+        });
+      }
+    } else if (element.businessObject?.$type === 'bpmn:Participant') {
+      this.addContextPadButton(actions, 'Lane details', 'ⓘ', () => this.renderContextPanel());
+      this.addContextPadButton(actions, 'Fit view', '⤢', () => {
+        this.modeler.get<CanvasService>('canvas').zoom('fit-viewport');
       });
+    }
 
-      actions.appendChild(button);
+    if (actions.childElementCount > 0) contextPad.appendChild(actions);
+  }
+
+  private addContextPadButton(
+    container: HTMLElement,
+    title: string,
+    glyph: string,
+    action: () => void,
+    selected = false,
+  ): void {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'entry architecture-context-entry';
+    if (selected) button.classList.add('architecture-context-entry-selected');
+    button.title = title;
+    button.setAttribute('aria-label', title);
+    button.textContent = glyph;
+    button.addEventListener('click', (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      action();
+      window.setTimeout(() => this.renderElementContextPadActions(), 0);
     });
+    container.appendChild(button);
+  }
 
-    contextPad.appendChild(actions);
+  private toggleSystemEnvironment(system: SystemRecord, environment: ArchitectureEnvironment): void {
+    const current = new Set(system.environments ?? ['production']);
+    if (current.has(environment) && current.size > 1) current.delete(environment);
+    else current.add(environment);
+    system.environments = [...current];
+    system.environment = system.environments
+      .map((id) => ARCHITECTURE_ENVIRONMENTS.find((candidate) => candidate.id === id)?.label ?? id)
+      .join(', ');
+    this.saveArchitectureRegistry();
+    this.applyEnvironmentFocus();
+    this.renderContextPanel();
+  }
+
+  private toggleInterfaceEnvironment(record: InterfaceRecord, environment: ArchitectureEnvironment): void {
+    const current = new Set(record.environments ?? ['production']);
+    if (current.has(environment) && current.size > 1) current.delete(environment);
+    else current.add(environment);
+    record.environments = [...current];
+    this.saveArchitectureRegistry();
+    this.applyEnvironmentFocus();
+    this.renderContextPanel();
+  }
+
+  private setInterfaceDirection(record: InterfaceRecord, direction: InterfaceRecord['direction']): void {
+    record.direction = direction;
+    this.saveArchitectureRegistry();
+    this.renderContextPanel();
+  }
+
+  private saveArchitectureRegistry(): void {
+    this.internalRegistryWrite = true;
+    try {
+      saveIntegrationDataLocally(this.data);
+    } finally {
+      this.internalRegistryWrite = false;
+    }
   }
 
   private setInterfaceLineStyle(
@@ -246,12 +357,7 @@ class SolutionArchitectureBpmnPage {
   ): void {
     record.lineStyle = style;
 
-    this.internalRegistryWrite = true;
-    try {
-      saveIntegrationDataLocally(this.data);
-    } finally {
-      this.internalRegistryWrite = false;
-    }
+    this.saveArchitectureRegistry();
 
     this.applyInterfaceLineStyle(record, element);
     this.renderContextPanel();
