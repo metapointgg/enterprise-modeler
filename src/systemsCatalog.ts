@@ -276,7 +276,7 @@ class SystemsCatalog {
 
         <label class="metadata-field"><span>Name</span><input id="systems-name" required value="${escapeHtml(system?.name ?? '')}" /></label>
         <label class="metadata-field"><span>Type</span><input id="systems-type" value="${escapeHtml(system?.type ?? '')}" placeholder="e.g. CRM, ERP, workflow platform" /></label>
-        <label class="metadata-field"><span>Architecture layer</span><select id="systems-layer">${this.architectureLayerOptions(system?.architectureLayer ?? 'other')}</select></label>
+        <label class="metadata-field"><span>Architecture layer</span><select id="systems-layer">${this.architectureLayerOptions(system?.architectureLayer ?? 'other')}</select></label>\n        <label class="metadata-field"><span>Parent system</span><input value="${escapeHtml(this.systemName(system?.parentSystemId ?? '') || 'None')}" readonly /></label>\n        <label class="organisation-checkbox-row"><input type="checkbox" disabled${system?.isContainer ? ' checked' : ''} /><span>System container</span></label>
 
         <div class="systems-two-col">
           <label class="metadata-field"><span>Supplier</span><input id="systems-supplier" value="${escapeHtml(system?.supplier ?? '')}" placeholder="Supplier / owner or TBC" /></label>
@@ -460,6 +460,8 @@ class SystemsCatalog {
           system.dataClassification,
           system.integrationType,
           system.notes,
+          this.systemName(system.parentSystemId ?? ''),
+          system.isContainer ? 'container' : 'component',
         ].join(' ').toLowerCase().includes(query);
         const matchesCriticality = !this.filters.criticality || system.criticality === this.filters.criticality;
         const matchesLayer = !this.filters.architectureLayer || system.architectureLayer === this.filters.architectureLayer;
