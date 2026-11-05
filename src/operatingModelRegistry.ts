@@ -56,10 +56,26 @@ export interface InterfaceRecord {
   notes: string;
 }
 
+export interface EnvironmentOperationRecord {
+  id: string;
+  name: string;
+  sourceSystemId: string;
+  sourceEnvironment: ArchitectureEnvironment | 'tbc';
+  targetSystemId: string;
+  targetEnvironment: ArchitectureEnvironment | 'tbc';
+  operationType: 'refresh' | 'manual-transfer' | 'copy' | 'other';
+  frequency: string;
+  dataScrambled: boolean | null;
+  automated: boolean | null;
+  status: 'observed' | 'confirmed' | 'tbc';
+  notes: string;
+}
+
 export interface IntegrationData {
   schemaVersion: number;
   systems: SystemRecord[];
   interfaces: InterfaceRecord[];
+  environmentOperations?: EnvironmentOperationRecord[];
 }
 
 export interface RegulationRecord {
@@ -213,11 +229,53 @@ function normaliseInterface(value: Partial<InterfaceRecord>, index: number): Int
   };
 }
 
+function normaliseEnvironmentOperation(
+  value: Partial<EnvironmentOperationRecord>,
+  index: number,
+): EnvironmentOperationRecord {
+  const sourceEnvironment = value.sourceEnvironment === 'uat'
+    || value.sourceEnvironment === 'dev-test'
+    || value.sourceEnvironment === 'production'
+    ? value.sourceEnvironment
+    : 'tbc';
+  const targetEnvironment = value.targetEnvironment === 'uat'
+    || value.targetEnvironment === 'dev-test'
+    || value.targetEnvironment === 'production'
+    ? value.targetEnvironment
+    : 'tbc';
+  const operationType = value.operationType === 'refresh'
+    || value.operationType === 'manual-transfer'
+    || value.operationType === 'copy'
+    ? value.operationType
+    : 'other';
+  const status = value.status === 'observed' || value.status === 'confirmed'
+    ? value.status
+    : 'tbc';
+
+  return {
+    id: value.id || `environment-operation-${index}`,
+    name: value.name || `Environment operation ${index + 1}`,
+    sourceSystemId: value.sourceSystemId || '',
+    sourceEnvironment,
+    targetSystemId: value.targetSystemId || '',
+    targetEnvironment,
+    operationType,
+    frequency: value.frequency || '',
+    dataScrambled: typeof value.dataScrambled === 'boolean' ? value.dataScrambled : null,
+    automated: typeof value.automated === 'boolean' ? value.automated : null,
+    status,
+    notes: value.notes || '',
+  };
+}
+
 function normaliseIntegrations(value: Partial<IntegrationData>): IntegrationData {
   return {
     schemaVersion: 2,
     systems: Array.isArray(value.systems) ? value.systems.map(normaliseSystem) : [],
     interfaces: Array.isArray(value.interfaces) ? value.interfaces.map(normaliseInterface) : [],
+    environmentOperations: Array.isArray(value.environmentOperations)
+      ? value.environmentOperations.map(normaliseEnvironmentOperation)
+      : [],
   };
 }
 
