@@ -1,6 +1,6 @@
 export type ProcessLifecycleStatus = 'draft' | 'in-review' | 'approved' | 'published' | 'superseded';
 export type ProcessChannel = 'digital' | 'physical' | 'central' | 'external';
-export type ArchitectureLayer = 'channel' | 'integration' | 'platform' | 'security' | 'partner' | 'other';
+export type ArchitectureLayer = 'client-facing' | 'internal' | 'third-party';
 export type ArchitectureEnvironment = 'production' | 'uat' | 'dev-test';
 
 export interface ProcessGovernanceRecord {
@@ -38,6 +38,7 @@ export interface SystemRecord {
   criticality: 'low' | 'medium' | 'high';
   active: boolean;
   notes: string;
+  parentSystemId?: string;
 }
 
 export interface InterfaceRecord {
@@ -116,12 +117,9 @@ export const ARCHITECTURE_ENVIRONMENTS: Array<{ id: ArchitectureEnvironment; lab
 ];
 
 export const ARCHITECTURE_LAYERS: Array<{ id: ArchitectureLayer; label: string; sequence: number }> = [
-  { id: 'channel', label: 'Channels & Experience', sequence: 10 },
-  { id: 'integration', label: 'API & Integration', sequence: 20 },
-  { id: 'platform', label: 'Core Platforms & Data', sequence: 30 },
-  { id: 'security', label: 'Identity, Security & Control', sequence: 40 },
-  { id: 'partner', label: 'External Providers', sequence: 50 },
-  { id: 'other', label: 'Other / TBC', sequence: 60 },
+  { id: 'client-facing', label: 'Client Facing / Portals', sequence: 10 },
+  { id: 'internal', label: 'Internal', sequence: 20 },
+  { id: 'third-party', label: 'Third Party Integration', sequence: 30 },
 ];
 
 const GOVERNANCE_URL = '/governance/process-governance.json';
@@ -195,7 +193,7 @@ function normaliseSystem(value: Partial<SystemRecord>, index: number): SystemRec
     id: value.id || `system-${index}`,
     name: value.name || `System ${index + 1}`,
     type: value.type || '',
-    architectureLayer: isArchitectureLayer(value.architectureLayer) ? value.architectureLayer : 'other',
+    architectureLayer: isArchitectureLayer(value.architectureLayer) ? value.architectureLayer : 'internal',
     supplier: value.supplier || '',
     environment: value.environment || '',
     environments: normaliseEnvironments(value.environments, value.environment || ''),
@@ -205,6 +203,7 @@ function normaliseSystem(value: Partial<SystemRecord>, index: number): SystemRec
     criticality,
     active: value.active !== false,
     notes: value.notes || '',
+    parentSystemId: value.parentSystemId || '',
   };
 }
 
