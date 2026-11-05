@@ -307,7 +307,10 @@ class SolutionArchitectureBpmnPage {
       event.preventDefault();
       event.stopPropagation();
       action();
-      window.setTimeout(() => this.renderElementContextPadActions(), 0);
+      window.setTimeout(() => {
+        this.canvasHost.querySelector<HTMLElement>('[data-enterprise-context-actions]')?.remove();
+        this.renderElementContextPadActions();
+      }, 0);
     });
     container.appendChild(button);
   }
@@ -362,12 +365,8 @@ class SolutionArchitectureBpmnPage {
     this.applyInterfaceLineStyle(record, element);
     this.renderContextPanel();
 
-    this.canvasHost
-      .querySelectorAll<HTMLElement>('[data-architecture-line-style]')
-      .forEach((button) => button.classList.toggle(
-        'architecture-line-style-selected',
-        button.dataset.architectureLineStyle === style,
-      ));
+    this.canvasHost.querySelector<HTMLElement>('[data-enterprise-context-actions]')?.remove();
+    this.renderElementContextPadActions();
   }
 
   private bindPageEvents(): void {
