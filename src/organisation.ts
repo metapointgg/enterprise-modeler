@@ -1,3 +1,5 @@
+import { modelUrl } from './modelRepository';
+
 export interface Department {
   id: string;
   name: string;
@@ -56,7 +58,7 @@ export interface OrganisationData {
   people: Person[];
 }
 
-const ORGANISATION_URL = '/organisation/org-chart.json';
+const ORGANISATION_URL = modelUrl('/organisation/org-chart.json');
 const ORGANISATION_AUTOSAVE_KEY = 'enterprise-modeler.organisation.v2';
 const LEGACY_ORGANISATION_AUTOSAVE_KEY = 'enterprise-modeler.organisation.v1';
 
