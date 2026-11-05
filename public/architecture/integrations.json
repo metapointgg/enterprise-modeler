@@ -280,13 +280,14 @@
       "supplier": "TBC",
       "environments": [
         "production",
+        "uat",
         "dev-test"
       ],
       "dataClassification": "confidential",
       "integrationType": "TBC",
       "criticality": "medium",
-      "notes": "Pink Dev/Test marker appears adjacent to FCM; no clear green UAT marker is visible.",
-      "environment": "Production, Dev / Test",
+      "notes": "Pink Dev/Test and green UAT markers are both visible adjacent to FCM in the supplied whiteboard photograph.",
+      "environment": "Production, UAT, Dev / Test",
       "ownerPositionId": "",
       "active": true
     },
@@ -715,13 +716,14 @@
       "authentication": "TBC",
       "environments": [
         "production",
+        "uat",
         "dev-test"
       ],
       "ownerPositionId": "",
       "criticality": "medium",
       "status": "tbc",
       "documentationReference": "",
-      "notes": "Relationship drawn; direction/mechanism need confirmation. Non-production interface coverage is inferred from endpoint availability unless explicitly stated and should be validated."
+      "notes": "Relationship drawn; direction/mechanism need confirmation. Non-production interface coverage is currently inferred from both endpoint environments and should be validated."
     },
     {
       "id": "if-sio-hid",
@@ -906,6 +908,148 @@
       "status": "active",
       "documentationReference": "",
       "notes": "Annotated overnight reports, e.g. finance. Non-production interface coverage is inferred from endpoint availability unless explicitly stated and should be validated."
+    }
+  ],
+  "environmentOperations": [
+    {
+      "id": "envop-salesforce-uat-refresh",
+      "name": "Salesforce Production → UAT refresh",
+      "sourceSystemId": "system-salesforce",
+      "sourceEnvironment": "production",
+      "targetSystemId": "system-salesforce",
+      "targetEnvironment": "uat",
+      "operationType": "refresh",
+      "frequency": "Ad hoc; whiteboard note indicates allowed once monthly",
+      "dataScrambled": true,
+      "automated": null,
+      "status": "observed",
+      "notes": "Captured from whiteboard environment table."
+    },
+    {
+      "id": "envop-salesforce-dev-refresh",
+      "name": "Salesforce Production → Dev/Test refresh",
+      "sourceSystemId": "system-salesforce",
+      "sourceEnvironment": "production",
+      "targetSystemId": "system-salesforce",
+      "targetEnvironment": "dev-test",
+      "operationType": "refresh",
+      "frequency": "Ad hoc",
+      "dataScrambled": true,
+      "automated": null,
+      "status": "observed",
+      "notes": "Captured from whiteboard environment table."
+    },
+    {
+      "id": "envop-t24-uat-refresh",
+      "name": "T24 Production → UAT refresh",
+      "sourceSystemId": "system-t24",
+      "sourceEnvironment": "production",
+      "targetSystemId": "system-t24",
+      "targetEnvironment": "uat",
+      "operationType": "refresh",
+      "frequency": "Ad hoc",
+      "dataScrambled": false,
+      "automated": null,
+      "status": "observed",
+      "notes": "Captured from whiteboard environment table."
+    },
+    {
+      "id": "envop-t24-dev-refresh",
+      "name": "T24 Production → Dev/Test refresh",
+      "sourceSystemId": "system-t24",
+      "sourceEnvironment": "production",
+      "targetSystemId": "system-t24",
+      "targetEnvironment": "dev-test",
+      "operationType": "refresh",
+      "frequency": "Ad hoc",
+      "dataScrambled": false,
+      "automated": null,
+      "status": "observed",
+      "notes": "Captured from whiteboard environment table."
+    },
+    {
+      "id": "envop-gfs-uat-refresh",
+      "name": "GFS refresh to UAT",
+      "sourceSystemId": "system-gfs",
+      "sourceEnvironment": "production",
+      "targetSystemId": "system-gfs",
+      "targetEnvironment": "uat",
+      "operationType": "refresh",
+      "frequency": "Ad hoc",
+      "dataScrambled": false,
+      "automated": null,
+      "status": "tbc",
+      "notes": "Whiteboard lists GFS UAT refresh, but GFS production topology is not yet confirmed."
+    },
+    {
+      "id": "envop-gfs-dev-refresh",
+      "name": "GFS refresh to Dev/Test",
+      "sourceSystemId": "system-gfs",
+      "sourceEnvironment": "production",
+      "targetSystemId": "system-gfs",
+      "targetEnvironment": "dev-test",
+      "operationType": "refresh",
+      "frequency": "Ad hoc",
+      "dataScrambled": false,
+      "automated": null,
+      "status": "tbc",
+      "notes": "Whiteboard lists GFS Dev refresh, but GFS production topology is not yet confirmed."
+    },
+    {
+      "id": "envop-bip-uat-refresh",
+      "name": "BIP refresh to UAT",
+      "sourceSystemId": "system-bip",
+      "sourceEnvironment": "production",
+      "targetSystemId": "system-bip",
+      "targetEnvironment": "uat",
+      "operationType": "refresh",
+      "frequency": "Ad hoc",
+      "dataScrambled": false,
+      "automated": null,
+      "status": "observed",
+      "notes": "Captured from whiteboard environment table."
+    },
+    {
+      "id": "envop-t24uat-bipuat",
+      "name": "T24 UAT → BIP UAT manual transfer",
+      "sourceSystemId": "system-t24",
+      "sourceEnvironment": "uat",
+      "targetSystemId": "system-bip",
+      "targetEnvironment": "uat",
+      "operationType": "manual-transfer",
+      "frequency": "TBC",
+      "dataScrambled": false,
+      "automated": false,
+      "status": "observed",
+      "notes": "Whiteboard explicitly notes manual transfer and '(no SFTP)'."
+    },
+    {
+      "id": "envop-t24uat-gfsuat",
+      "name": "T24 UAT → GFS UAT manual transfer",
+      "sourceSystemId": "system-t24",
+      "sourceEnvironment": "uat",
+      "targetSystemId": "system-gfs",
+      "targetEnvironment": "uat",
+      "operationType": "manual-transfer",
+      "frequency": "TBC",
+      "dataScrambled": false,
+      "automated": false,
+      "status": "observed",
+      "notes": "Captured from turquoise whiteboard note."
+    },
+    {
+      "id": "envop-t24dev-gfsdev",
+      "name": "T24 Dev/Test → GFS Dev/Test manual transfer",
+      "sourceSystemId": "system-t24",
+      "sourceEnvironment": "dev-test",
+      "targetSystemId": "system-gfs",
+      "targetEnvironment": "dev-test",
+      "operationType": "manual-transfer",
+      "frequency": "TBC",
+      "dataScrambled": false,
+      "automated": false,
+      "status": "observed",
+      "notes": "Captured from turquoise whiteboard note."
     }
   ]
 }
