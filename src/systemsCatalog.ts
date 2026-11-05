@@ -456,7 +456,7 @@ class SystemsCatalog {
           system.type,
           system.supplier,
           system.environment,
-          system.environments.join(' '),
+          (system.environments ?? ['production']).join(' '),
           system.dataClassification,
           system.integrationType,
           system.notes,
