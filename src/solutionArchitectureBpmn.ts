@@ -327,6 +327,28 @@ class SolutionArchitectureBpmnPage {
     container.appendChild(button);
   }
 
+  private convertSystemToContainer(system: SystemRecord, element: DiagramElement): void {
+    if (system.isContainer) return;
+    const type = element.businessObject?.$type ?? element.type ?? '';
+    if (type === 'bpmn:SubProcess') {
+      system.isContainer = true;
+      this.saveArchitectureRegistry();
+      this.renderContextPanel();
+      return;
+    }
+
+    const replace = this.modeler.get<ReplaceService>('bpmnReplace');
+    const replacement = replace.replaceElement(element, {
+      type: 'bpmn:SubProcess',
+      isExpanded: true,
+    });
+    system.isContainer = true;
+    this.selectedElement = replacement;
+    this.saveArchitectureRegistry();
+    this.scheduleAutosave();
+    this.scheduleRegistrySync();
+    this.renderContextPanel();
+  }
   private toggleSystemEnvironment(system: SystemRecord, environment: ArchitectureEnvironment): void {
     const current = new Set(system.environments ?? ['production']);
     if (current.has(environment) && current.size > 1) current.delete(environment);
