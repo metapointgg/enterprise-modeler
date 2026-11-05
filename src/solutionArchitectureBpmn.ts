@@ -632,7 +632,10 @@ class SolutionArchitectureBpmnPage {
         <div class="solution-architecture-context-note">Move this BPMN Task into another architecture Pool to change its domain.</div>
         <label><span>Type</span><input id="architecture-bpmn-system-type" value="${escapeHtml(system.type)}" /></label>
         <label><span>Supplier</span><input id="architecture-bpmn-system-supplier" value="${escapeHtml(system.supplier)}" /></label>
-        <label><span>Environment</span><input id="architecture-bpmn-system-environment" value="${escapeHtml(system.environment)}" /></label>
+        <fieldset>
+          <span>Environments</span>
+          ${ARCHITECTURE_ENVIRONMENTS.map((environment) => `<label class="solution-architecture-context-check"><input type="checkbox" data-architecture-system-environment="${environment.id}"${(system.environments ?? ['production']).includes(environment.id) ? ' checked' : ''} /><span>${escapeHtml(environment.label)}</span></label>`).join('')}
+        </fieldset>
         <label><span>Data classification</span><input id="architecture-bpmn-system-data" value="${escapeHtml(system.dataClassification)}" /></label>
         <label><span>Integration type</span><input id="architecture-bpmn-system-integration-type" value="${escapeHtml(system.integrationType)}" /></label>
         <label><span>Owner position</span><select id="architecture-bpmn-system-owner">${this.positionOptions(system.ownerPositionId)}</select></label>
@@ -655,7 +658,8 @@ class SolutionArchitectureBpmnPage {
       system.name = this.inputValue('#architecture-bpmn-system-name') || system.name;
       system.type = this.inputValue('#architecture-bpmn-system-type');
       system.supplier = this.inputValue('#architecture-bpmn-system-supplier');
-      system.environment = this.inputValue('#architecture-bpmn-system-environment');
+      system.environments = this.readContextEnvironments('[data-architecture-system-environment]');
+      system.environment = system.environments.map((environment) => ARCHITECTURE_ENVIRONMENTS.find((candidate) => candidate.id === environment)?.label ?? environment).join(', ');
       system.dataClassification = this.inputValue('#architecture-bpmn-system-data');
       system.integrationType = this.inputValue('#architecture-bpmn-system-integration-type');
       system.ownerPositionId = this.selectValue('#architecture-bpmn-system-owner');
@@ -703,6 +707,10 @@ class SolutionArchitectureBpmnPage {
         <label><span>Target</span><input value="${escapeHtml(target?.name ?? record.targetSystemId)}" readonly /></label>
         <div class="solution-architecture-context-note">Reconnect the native BPMN Flow to change its source or target.</div>
         <label><span>Direction</span><select id="architecture-bpmn-interface-direction">${this.directionOptions(record.direction)}</select></label>
+        <fieldset>
+          <span>Environments</span>
+          ${ARCHITECTURE_ENVIRONMENTS.map((environment) => `<label class="solution-architecture-context-check"><input type="checkbox" data-architecture-interface-environment="${environment.id}"${(record.environments ?? ['production']).includes(environment.id) ? ' checked' : ''} /><span>${escapeHtml(environment.label)}</span></label>`).join('')}
+        </fieldset>
         <label><span>Protocol</span><input id="architecture-bpmn-interface-protocol" value="${escapeHtml(record.protocol)}" /></label>
         <label><span>Authentication</span><input id="architecture-bpmn-interface-authentication" value="${escapeHtml(record.authentication)}" /></label>
         <label><span>Owner position</span><select id="architecture-bpmn-interface-owner">${this.positionOptions(record.ownerPositionId)}</select></label>
@@ -727,6 +735,7 @@ class SolutionArchitectureBpmnPage {
       record.direction = this.selectValue('#architecture-bpmn-interface-direction') as InterfaceRecord['direction'];
       record.protocol = this.inputValue('#architecture-bpmn-interface-protocol');
       record.authentication = this.inputValue('#architecture-bpmn-interface-authentication');
+      record.environments = this.readContextEnvironments('[data-architecture-interface-environment]');
       record.ownerPositionId = this.selectValue('#architecture-bpmn-interface-owner');
       record.criticality = this.selectValue('#architecture-bpmn-interface-criticality') as InterfaceRecord['criticality'];
       record.status = this.selectValue('#architecture-bpmn-interface-status') as InterfaceRecord['status'];
@@ -807,6 +816,15 @@ class SolutionArchitectureBpmnPage {
     ].map(([value, label]) => `<option value="${value}"${value === selected ? ' selected' : ''}>${label}</option>`).join('');
   }
 
+  private readContextEnvironments(selector: string): ArchitectureEnvironment[] {
+    const selected = [...this.contextPanel.querySelectorAll<HTMLInputElement>(selector)]
+      .filter((input) => input.checked)
+      .map((input) => input.dataset.architectureSystemEnvironment ?? input.dataset.architectureInterfaceEnvironment ?? '')
+      .filter((value): value is ArchitectureEnvironment =>
+        ARCHITECTURE_ENVIRONMENTS.some((environment) => environment.id === value),
+      );
+    return selected.length > 0 ? selected : ['production'];
+  }
   private inputValue(selector: string): string {
     return this.contextPanel.querySelector<HTMLInputElement>(selector)?.value.trim() ?? '';
   }
