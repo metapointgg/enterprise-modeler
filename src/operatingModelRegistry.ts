@@ -1,6 +1,6 @@
 export type ProcessLifecycleStatus = 'draft' | 'in-review' | 'approved' | 'published' | 'superseded';
 export type ProcessChannel = 'digital' | 'physical' | 'central' | 'external';
-export type ArchitectureLayer = 'client-facing' | 'internal' | 'third-party';
+export type ArchitectureLayer = 'client-portals' | 'core-platforms' | 'data-reporting' | 'third-party';
 export type ArchitectureEnvironment = 'production' | 'uat' | 'dev-test';
 
 export interface ProcessGovernanceRecord {
@@ -117,9 +117,10 @@ export const ARCHITECTURE_ENVIRONMENTS: Array<{ id: ArchitectureEnvironment; lab
 ];
 
 export const ARCHITECTURE_LAYERS: Array<{ id: ArchitectureLayer; label: string; sequence: number }> = [
-  { id: 'client-facing', label: 'Client Facing / Portals', sequence: 10 },
-  { id: 'internal', label: 'Internal', sequence: 20 },
-  { id: 'third-party', label: 'Third Party Integration', sequence: 30 },
+  { id: 'client-portals', label: 'Client Portals', sequence: 10 },
+  { id: 'core-platforms', label: 'Core Platforms', sequence: 20 },
+  { id: 'data-reporting', label: 'Data / Reporting', sequence: 30 },
+  { id: 'third-party', label: 'Third Party Integration', sequence: 40 },
 ];
 
 const GOVERNANCE_URL = '/governance/process-governance.json';
@@ -193,7 +194,7 @@ function normaliseSystem(value: Partial<SystemRecord>, index: number): SystemRec
     id: value.id || `system-${index}`,
     name: value.name || `System ${index + 1}`,
     type: value.type || '',
-    architectureLayer: isArchitectureLayer(value.architectureLayer) ? value.architectureLayer : 'internal',
+    architectureLayer: isArchitectureLayer(value.architectureLayer) ? value.architectureLayer : 'core-platforms',
     supplier: value.supplier || '',
     environment: value.environment || '',
     environments: normaliseEnvironments(value.environments, value.environment || ''),
