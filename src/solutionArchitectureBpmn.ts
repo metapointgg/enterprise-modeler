@@ -224,6 +224,14 @@ class SolutionArchitectureBpmnPage {
           }));
         });
 
+        this.addContextPadButton(
+          actions,
+          system.isContainer ? 'System container' : 'Convert to system container',
+          system.isContainer ? '▣' : '▢',
+          () => this.convertSystemToContainer(system, element),
+          system.isContainer === true,
+        );
+
         ARCHITECTURE_ENVIRONMENTS.forEach((environment) => {
           const selected = (system.environments ?? ['production']).includes(environment.id);
           this.addContextPadButton(
