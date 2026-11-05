@@ -874,7 +874,9 @@ class SolutionArchitectureBpmnPage {
       </div>
       <form id="architecture-bpmn-system-form" class="solution-architecture-context-form">
         <label><span>Name</span><input id="architecture-bpmn-system-name" required value="${escapeHtml(system.name)}" /></label>
-        <label><span>Architecture domain</span><input value="${escapeHtml(getArchitectureLayerLabel(layer))}" readonly /></label>\n        <label><span>Parent system</span><input value="${escapeHtml(this.systemName(system.parentSystemId ?? '') || 'None')}" readonly /></label>\n        <label class="solution-architecture-context-check"><input type="checkbox" disabled${system.isContainer ? ' checked' : ''} /><span>System container</span></label>
+        <label><span>Architecture domain</span><input value="${escapeHtml(getArchitectureLayerLabel(layer))}" readonly /></label>
+        <label><span>Parent system</span><input value="${escapeHtml(this.systemName(system.parentSystemId ?? '') || 'None')}" readonly /></label>
+        <label class="solution-architecture-context-check"><input type="checkbox" disabled${system.isContainer ? ' checked' : ''} /><span>System container</span></label>
         <div class="solution-architecture-context-note">Move this BPMN Task into another architecture Pool to change its domain.</div>
         <label><span>Type</span><input id="architecture-bpmn-system-type" value="${escapeHtml(system.type)}" /></label>
         <label><span>Supplier</span><input id="architecture-bpmn-system-supplier" value="${escapeHtml(system.supplier)}" /></label>
