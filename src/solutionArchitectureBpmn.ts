@@ -122,6 +122,7 @@ class SolutionArchitectureBpmnPage {
     this.modeler = new BpmnModeler({ container: this.canvasHost });
     this.bindModelerEvents();
     this.bindPageEvents();
+    this.bindContextPadExtensions();
 
     document.addEventListener('enterprise-modeler:open-solution-architecture-map', (event) => {
       const processId = (event as CustomEvent<{ processId?: string }>).detail?.processId ?? '';
@@ -192,6 +193,75 @@ class SolutionArchitectureBpmnPage {
       this.scheduleAutosave();
       this.scheduleRegistrySync();
     });
+  }
+
+  private bindContextPadExtensions(): void {
+    const observer = new MutationObserver(() => this.renderInterfaceContextPadActions());
+    observer.observe(this.canvasHost, { childList: true, subtree: true });
+  }
+
+  private renderInterfaceContextPadActions(): void {
+    const element = this.selectedElement;
+    if (!element || !this.isInterfaceElement(element)) return;
+
+    const record = this.data.interfaces.find((candidate) => candidate.id === element.id);
+    if (!record) return;
+
+    const contextPad = this.canvasHost.querySelector<HTMLElement>('.djs-context-pad');
+    if (!contextPad || contextPad.querySelector('[data-architecture-line-style]')) return;
+
+    const actions = document.createElement('div');
+    actions.className = 'architecture-line-style-context-actions';
+
+    ([
+      ['solid', 'Solid line', '━'],
+      ['dashed', 'Dashed line', '┅'],
+      ['dotted', 'Dotted line', '···'],
+    ] as const).forEach(([style, title, glyph]) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'entry architecture-line-style-entry';
+      button.dataset.architectureLineStyle = style;
+      button.title = title;
+      button.setAttribute('aria-label', title);
+      button.textContent = glyph;
+      if ((record.lineStyle ?? 'solid') === style) button.classList.add('architecture-line-style-selected');
+
+      button.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        this.setInterfaceLineStyle(record, element, style);
+      });
+
+      actions.appendChild(button);
+    });
+
+    contextPad.appendChild(actions);
+  }
+
+  private setInterfaceLineStyle(
+    record: InterfaceRecord,
+    element: DiagramElement,
+    style: NonNullable<InterfaceRecord['lineStyle']>,
+  ): void {
+    record.lineStyle = style;
+
+    this.internalRegistryWrite = true;
+    try {
+      saveIntegrationDataLocally(this.data);
+    } finally {
+      this.internalRegistryWrite = false;
+    }
+
+    this.applyInterfaceLineStyle(record, element);
+    this.renderContextPanel();
+
+    this.canvasHost
+      .querySelectorAll<HTMLElement>('[data-architecture-line-style]')
+      .forEach((button) => button.classList.toggle(
+        'architecture-line-style-selected',
+        button.dataset.architectureLineStyle === style,
+      ));
   }
 
   private bindPageEvents(): void {
