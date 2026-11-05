@@ -5,7 +5,7 @@
       "id": "system-broker-portal",
       "name": "Broker Portal",
       "type": "Broker-facing portal",
-      "architectureLayer": "channel",
+      "architectureLayer": "client-facing",
       "supplier": "TBC",
       "environments": [
         "production",
@@ -24,7 +24,7 @@
       "id": "system-online-mortgage-portal",
       "name": "Online Mortgage Portal",
       "type": "Customer mortgage portal",
-      "architectureLayer": "channel",
+      "architectureLayer": "client-facing",
       "supplier": "TBC",
       "environments": [
         "production",
@@ -42,7 +42,7 @@
       "id": "system-aip-calculator",
       "name": "AIP Calculator",
       "type": "Public web calculator",
-      "architectureLayer": "channel",
+      "architectureLayer": "client-facing",
       "supplier": "TBC",
       "environments": [
         "production",
@@ -61,7 +61,7 @@
       "id": "system-risk-calculator",
       "name": "Risk Calculator",
       "type": "Public web calculator",
-      "architectureLayer": "channel",
+      "architectureLayer": "client-facing",
       "supplier": "TBC",
       "environments": [
         "production",
@@ -80,7 +80,7 @@
       "id": "system-credit-team-portal",
       "name": "Credit Team Portal",
       "type": "Internal credit portal",
-      "architectureLayer": "channel",
+      "architectureLayer": "client-facing",
       "supplier": "TBC",
       "environments": [
         "production",
@@ -99,7 +99,7 @@
       "id": "system-indulge-management-portal",
       "name": "Indulge Management Portal",
       "type": "Management portal",
-      "architectureLayer": "channel",
+      "architectureLayer": "client-facing",
       "supplier": "TBC",
       "environments": [
         "production"
@@ -116,7 +116,7 @@
       "id": "system-indulge-customer-portal",
       "name": "Indulge Customer Portal",
       "type": "Customer portal",
-      "architectureLayer": "channel",
+      "architectureLayer": "client-facing",
       "supplier": "TBC",
       "environments": [
         "production"
@@ -133,7 +133,7 @@
       "id": "system-salesforce",
       "name": "Salesforce",
       "type": "CRM / workflow platform",
-      "architectureLayer": "platform",
+      "architectureLayer": "internal",
       "supplier": "Salesforce",
       "environments": [
         "production",
@@ -152,7 +152,7 @@
       "id": "system-jade",
       "name": "JADE",
       "type": "Mortgage application platform",
-      "architectureLayer": "platform",
+      "architectureLayer": "internal",
       "supplier": "TBC",
       "environments": [
         "production"
@@ -169,7 +169,7 @@
       "id": "system-emortgages",
       "name": "eMortgages",
       "type": "Mortgage platform",
-      "architectureLayer": "platform",
+      "architectureLayer": "internal",
       "supplier": "TBC",
       "environments": [
         "production",
@@ -188,7 +188,7 @@
       "id": "system-t24",
       "name": "T24",
       "type": "Core banking platform",
-      "architectureLayer": "platform",
+      "architectureLayer": "internal",
       "supplier": "Temenos",
       "environments": [
         "production",
@@ -207,7 +207,7 @@
       "id": "system-bragi",
       "name": "BRAGI",
       "type": "Data / reporting integration platform",
-      "architectureLayer": "integration",
+      "architectureLayer": "internal",
       "supplier": "TBC",
       "environments": [
         "production"
@@ -224,7 +224,7 @@
       "id": "system-sql-staging",
       "name": "SQL Staging",
       "type": "Integration / staging database",
-      "architectureLayer": "integration",
+      "architectureLayer": "internal",
       "supplier": "TBC",
       "environments": [
         "production"
@@ -241,7 +241,7 @@
       "id": "system-bip",
       "name": "BIP",
       "type": "Payments / integration platform",
-      "architectureLayer": "integration",
+      "architectureLayer": "internal",
       "supplier": "TBC",
       "environments": [
         "production",
@@ -259,7 +259,7 @@
       "id": "system-tableau",
       "name": "Tableau",
       "type": "BI / reporting platform",
-      "architectureLayer": "platform",
+      "architectureLayer": "internal",
       "supplier": "Tableau",
       "environments": [
         "production"
@@ -276,7 +276,7 @@
       "id": "system-fcm",
       "name": "FCM",
       "type": "Processing platform",
-      "architectureLayer": "platform",
+      "architectureLayer": "internal",
       "supplier": "TBC",
       "environments": [
         "production",
@@ -295,7 +295,7 @@
       "id": "system-sio",
       "name": "SIO",
       "type": "Identity / customer access component",
-      "architectureLayer": "security",
+      "architectureLayer": "internal",
       "supplier": "TBC",
       "environments": [
         "production",
@@ -314,7 +314,7 @@
       "id": "system-hid",
       "name": "HID",
       "type": "Identity / access component",
-      "architectureLayer": "security",
+      "architectureLayer": "internal",
       "supplier": "HID",
       "environments": [
         "production",
@@ -330,10 +330,10 @@
     },
     {
       "id": "system-ln-gen-doc",
-      "name": "LN Gen Doc",
-      "type": "Document generation",
-      "architectureLayer": "platform",
-      "supplier": "TBC",
+      "name": "LN (Document Generation)",
+      "type": "EFS document generation component",
+      "architectureLayer": "internal",
+      "supplier": "EFS",
       "environments": [
         "production",
         "uat",
@@ -345,14 +345,15 @@
       "notes": "Pink and green markers visible in document-generation cluster.",
       "environment": "Production, UAT, Dev / Test",
       "ownerPositionId": "",
-      "active": true
+      "active": true,
+      "parentSystemId": "system-efs-suite"
     },
     {
       "id": "system-om-doc-mgmt",
-      "name": "OM Doc Mgmt",
-      "type": "Document management",
-      "architectureLayer": "platform",
-      "supplier": "TBC",
+      "name": "DM (Document Management)",
+      "type": "EFS document management component",
+      "architectureLayer": "internal",
+      "supplier": "EFS",
       "environments": [
         "production",
         "uat",
@@ -364,14 +365,15 @@
       "notes": "Pink and green markers visible.",
       "environment": "Production, UAT, Dev / Test",
       "ownerPositionId": "",
-      "active": true
+      "active": true,
+      "parentSystemId": "system-efs-suite"
     },
     {
       "id": "system-bpm-print-auto",
-      "name": "BPM Print Auto",
-      "type": "Print automation",
-      "architectureLayer": "platform",
-      "supplier": "TBC",
+      "name": "BPM (Print Automation)",
+      "type": "EFS print automation component",
+      "architectureLayer": "internal",
+      "supplier": "EFS",
       "environments": [
         "production",
         "uat",
@@ -383,13 +385,14 @@
       "notes": "Non-production markers appear in document cluster; validate exact coverage.",
       "environment": "Production, UAT, Dev / Test",
       "ownerPositionId": "",
-      "active": true
+      "active": true,
+      "parentSystemId": "system-efs-suite"
     },
     {
       "id": "system-file-server-repo",
       "name": "File Server Repo",
       "type": "Document repository",
-      "architectureLayer": "platform",
+      "architectureLayer": "internal",
       "supplier": "TBC",
       "environments": [
         "production",
@@ -408,7 +411,7 @@
       "id": "system-report-file-share",
       "name": "Reporting File Share",
       "type": "File share / reporting output",
-      "architectureLayer": "platform",
+      "architectureLayer": "internal",
       "supplier": "TBC",
       "environments": [
         "production"
@@ -425,7 +428,7 @@
       "id": "system-hsbc",
       "name": "HSBC",
       "type": "External banking service",
-      "architectureLayer": "partner",
+      "architectureLayer": "third-party",
       "supplier": "HSBC",
       "environments": [
         "production"
@@ -442,7 +445,7 @@
       "id": "system-gfs",
       "name": "GFS",
       "type": "TBC",
-      "architectureLayer": "other",
+      "architectureLayer": "internal",
       "supplier": "TBC",
       "environments": [
         "uat",
@@ -460,7 +463,7 @@
       "id": "system-nabu",
       "name": "NABU",
       "type": "TBC data holding area",
-      "architectureLayer": "other",
+      "architectureLayer": "internal",
       "supplier": "TBC",
       "environments": [
         "production"
@@ -472,6 +475,25 @@
       "environment": "Production",
       "ownerPositionId": "",
       "active": true
+    },
+    {
+      "id": "system-efs-suite",
+      "name": "EFS Document Automation Suite",
+      "type": "Document automation product suite",
+      "architectureLayer": "internal",
+      "supplier": "EFS",
+      "environments": [
+        "production",
+        "uat",
+        "dev-test"
+      ],
+      "environment": "Production, UAT, Dev / Test",
+      "dataClassification": "confidential",
+      "integrationType": "Document generation / management / print automation",
+      "ownerPositionId": "",
+      "criticality": "high",
+      "active": true,
+      "notes": "Parent product suite for LN, DM and BPM document-automation components."
     }
   ],
   "interfaces": [
@@ -799,7 +821,7 @@
     },
     {
       "id": "if-t24-ln-gen-doc",
-      "name": "T24 → LN Gen Doc",
+      "name": "T24 → EFS LN",
       "sourceSystemId": "system-t24",
       "targetSystemId": "system-ln-gen-doc",
       "direction": "outbound",
@@ -818,7 +840,7 @@
     },
     {
       "id": "if-t24-om-doc",
-      "name": "T24 ↔ OM Doc Mgmt",
+      "name": "T24 ↔ EFS DM",
       "sourceSystemId": "system-t24",
       "targetSystemId": "system-om-doc-mgmt",
       "direction": "bidirectional",
@@ -837,7 +859,7 @@
     },
     {
       "id": "if-ln-doc-om-doc",
-      "name": "LN Gen Doc → OM Doc Mgmt",
+      "name": "EFS LN → DM",
       "sourceSystemId": "system-ln-gen-doc",
       "targetSystemId": "system-om-doc-mgmt",
       "direction": "outbound",
@@ -856,7 +878,7 @@
     },
     {
       "id": "if-om-doc-bpm",
-      "name": "OM Doc Mgmt → BPM Print Auto",
+      "name": "EFS DM → BPM",
       "sourceSystemId": "system-om-doc-mgmt",
       "targetSystemId": "system-bpm-print-auto",
       "direction": "outbound",
@@ -875,7 +897,7 @@
     },
     {
       "id": "if-om-doc-file-repo",
-      "name": "OM Doc Mgmt → File Server Repo",
+      "name": "EFS DM → File Server Repo",
       "sourceSystemId": "system-om-doc-mgmt",
       "targetSystemId": "system-file-server-repo",
       "direction": "outbound",
