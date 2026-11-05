@@ -5,11 +5,13 @@ import 'bpmn-js/dist/assets/bpmn-font/css/bpmn.css';
 import './solutionArchitectureBpmn.css';
 
 import {
+  ARCHITECTURE_ENVIRONMENTS,
   ARCHITECTURE_LAYERS,
   getArchitectureLayerLabel,
   loadIntegrationData,
   loadProcessGovernance,
   saveIntegrationDataLocally,
+  type ArchitectureEnvironment,
   type ArchitectureLayer,
   type IntegrationData,
   type InterfaceRecord,
@@ -77,7 +79,8 @@ const ARCHITECTURE_BPMN_URL = '/architecture/solution-architecture.bpmn';
 const ARCHITECTURE_AUTOSAVE_KEY = 'enterprise-modeler.solution-architecture-bpmn.v3';
 const ARCHITECTURE_LAYER_PREFIX = 'ArchitectureLayer_';
 const ARCHITECTURE_PROCESS_PREFIX = 'ArchitectureProcess_';
-const FADED_MARKER = 'architecture-bpmn-faded';
+const PROCESS_PROCESS_FADED_MARKER = 'architecture-bpmn-faded';
+const ENVIRONMENT_PROCESS_FADED_MARKER = 'architecture-bpmn-environment-faded';
 
 class SolutionArchitectureBpmnPage {
   private readonly dialog: HTMLDialogElement;
@@ -93,6 +96,7 @@ class SolutionArchitectureBpmnPage {
   };
   private selectedElement: DiagramElement | null = null;
   private focusProcessId = '';
+  private environmentView: ArchitectureEnvironment | 'all' = 'production';
   private loaded = false;
   private suppressModelEvents = false;
   private internalRegistryWrite = false;
@@ -150,6 +154,15 @@ class SolutionArchitectureBpmnPage {
             <span>Highlight process dependency</span>
             <select id="solution-architecture-bpmn-focus"><option value="">Whole solution</option></select>
           </label>
+          <label>
+            <span>Environment layer</span>
+            <select id="solution-architecture-bpmn-environment">
+              <option value="production">Production</option>
+              <option value="uat">UAT</option>
+              <option value="dev-test">Dev / Test</option>
+              <option value="all">All environments</option>
+            </select>
+          </label>
           <div class="solution-architecture-bpmn-help">
             Move systems and reconnect flows using the native BPMN canvas. Drag a Task into another Pool to change its architecture domain.
           </div>
@@ -203,6 +216,16 @@ class SolutionArchitectureBpmnPage {
         this.focusProcessId = (event.currentTarget as HTMLSelectElement).value;
         this.applyProcessFocus();
       });
+
+    this.dialog.querySelector<HTMLSelectElement>('#solution-architecture-bpmn-environment')
+      ?.addEventListener('change', (event) => {
+        const value = (event.currentTarget as HTMLSelectElement).value;
+        this.environmentView = value === 'uat' || value === 'dev-test' || value === 'production'
+          ? value
+          : 'all';
+        this.applyEnvironmentFocus();
+        this.renderContextPanel();
+      });
   }
 
   private async open(processId = ''): Promise<void> {
@@ -224,6 +247,7 @@ class SolutionArchitectureBpmnPage {
 
     this.modeler.get<CanvasService>('canvas').zoom('fit-viewport');
     this.applyProcessFocus();
+    this.applyEnvironmentFocus();
     this.renderContextPanel();
   }
 
@@ -245,6 +269,7 @@ class SolutionArchitectureBpmnPage {
     if (this.loaded) this.applyRegistryMetadataToDiagram();
     this.renderContextPanel();
     this.applyProcessFocus();
+    this.applyEnvironmentFocus();
   }
 
   private async loadDiagram(): Promise<void> {
@@ -341,7 +366,8 @@ class SolutionArchitectureBpmnPage {
           type: '',
           architectureLayer: layer,
           supplier: '',
-          environment: '',
+          environment: 'Production',
+          environments: ['production'],
           dataClassification: '',
           integrationType: '',
           ownerPositionId: '',
@@ -384,6 +410,7 @@ class SolutionArchitectureBpmnPage {
             direction: 'outbound',
             protocol: '',
             authentication: '',
+            environments: ['production'],
             ownerPositionId: '',
             criticality: 'medium',
             status: 'design',
@@ -477,7 +504,7 @@ class SolutionArchitectureBpmnPage {
 
     const canvas = this.modeler.get<CanvasService>('canvas');
     const registry = this.modeler.get<ElementRegistryService>('elementRegistry');
-    registry.getAll().forEach((element) => canvas.removeMarker(element.id, FADED_MARKER));
+    registry.getAll().forEach((element) => canvas.removeMarker(element.id, PROCESS_FADED_MARKER));
 
     if (!this.focusProcessId) return;
     const focus = this.governanceRecords.find((record) => record.processId === this.focusProcessId);
@@ -494,17 +521,47 @@ class SolutionArchitectureBpmnPage {
 
     this.data.systems.forEach((system) => {
       if (!systemIds.has(system.id) && registry.get(system.id)) {
-        canvas.addMarker(system.id, FADED_MARKER);
+        canvas.addMarker(system.id, PROCESS_FADED_MARKER);
       }
     });
 
     this.data.interfaces.forEach((record) => {
       if (!interfaceIds.has(record.id) && registry.get(record.id)) {
-        canvas.addMarker(record.id, FADED_MARKER);
+        canvas.addMarker(record.id, PROCESS_FADED_MARKER);
       }
     });
   }
 
+  private applyEnvironmentFocus(): void {
+    if (!this.loaded) return;
+
+    const canvas = this.modeler.get<CanvasService>('canvas');
+    const registry = this.modeler.get<ElementRegistryService>('elementRegistry');
+    registry.getAll().forEach((element) => canvas.removeMarker(element.id, ENVIRONMENT_FADED_MARKER));
+
+    if (this.environmentView === 'all') return;
+
+    const visibleSystems = new Set(
+      this.data.systems
+        .filter((system) => system.environments.includes(this.environmentView as ArchitectureEnvironment))
+        .map((system) => system.id),
+    );
+
+    this.data.systems.forEach((system) => {
+      if (!visibleSystems.has(system.id) && registry.get(system.id)) {
+        canvas.addMarker(system.id, ENVIRONMENT_FADED_MARKER);
+      }
+    });
+
+    this.data.interfaces.forEach((record) => {
+      const visible = record.environments.includes(this.environmentView as ArchitectureEnvironment)
+        && visibleSystems.has(record.sourceSystemId)
+        && visibleSystems.has(record.targetSystemId);
+      if (!visible && registry.get(record.id)) {
+        canvas.addMarker(record.id, ENVIRONMENT_FADED_MARKER);
+      }
+    });
+  }
   private renderContextPanel(): void {
     const element = this.selectedElement;
     if (!element) {
