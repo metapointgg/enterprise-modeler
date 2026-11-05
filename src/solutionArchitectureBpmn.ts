@@ -686,7 +686,6 @@ class SolutionArchitectureBpmnPage {
       } finally {
         this.suppressModelEvents = false;
       }
-      this.applyInterfaceLineStyle(record, element);
       this.scheduleAutosave();
       this.renderContextPanel();
     });
@@ -765,6 +764,7 @@ class SolutionArchitectureBpmnPage {
       } finally {
         this.suppressModelEvents = false;
       }
+      this.applyInterfaceLineStyle(record, element);
       this.scheduleAutosave();
       this.renderContextPanel();
     });
