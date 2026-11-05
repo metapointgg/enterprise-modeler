@@ -876,7 +876,7 @@ class SolutionArchitectureBpmnPage {
       </div>
       <form id="architecture-bpmn-system-form" class="solution-architecture-context-form">
         <label><span>Name</span><input id="architecture-bpmn-system-name" required value="${escapeHtml(system.name)}" /></label>
-        <label><span>Architecture domain</span><input value="${escapeHtml(getArchitectureLayerLabel(layer))}" readonly /></label>
+        <label><span>Architecture domain</span><input value="${escapeHtml(getArchitectureLayerLabel(layer))}" readonly /></label>\n        <label><span>Parent system</span><input value="${escapeHtml(this.systemName(system.parentSystemId ?? '') || 'None')}" readonly /></label>\n        <label class="solution-architecture-context-check"><input type="checkbox" disabled${system.isContainer ? ' checked' : ''} /><span>System container</span></label>
         <div class="solution-architecture-context-note">Move this BPMN Task into another architecture Pool to change its domain.</div>
         <label><span>Type</span><input id="architecture-bpmn-system-type" value="${escapeHtml(system.type)}" /></label>
         <label><span>Supplier</span><input id="architecture-bpmn-system-supplier" value="${escapeHtml(system.supplier)}" /></label>
@@ -1034,7 +1034,7 @@ class SolutionArchitectureBpmnPage {
     return ARCHITECTURE_LAYERS.find((layer) => layer.label === name)?.id ?? 'other';
   }
 
-  private positionOptions(selected: string): string {
+  private systemName(systemId: string): string {\n    return this.data.systems.find((system) => system.id === systemId)?.name ?? '';\n  }\n\n  private positionOptions(selected: string): string {
     const positions = this.organisation?.positions
       .filter((position) => position.active)
       .sort((left, right) => left.name.localeCompare(right.name)) ?? [];
