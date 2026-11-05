@@ -695,9 +695,7 @@ class SolutionArchitectureBpmnPage {
   private getParentSystemId(element: DiagramElement): string {
     let current = element.parent;
     while (current) {
-      if (this.isContainerElement(current) && this.data.systems.some((system) => system.id === current?.id)) {
-        return current.id;
-      }
+      if (this.isContainerElement(current)) return current.id;
       const type = current.businessObject?.$type ?? current.type ?? '';
       if (type === 'bpmn:Participant') break;
       current = current.parent;
