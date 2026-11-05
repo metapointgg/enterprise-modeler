@@ -711,20 +711,20 @@ class SolutionArchitectureBpmnPage {
   }
 
   private getElementArchitectureLayer(element: DiagramElement): ArchitectureLayer {
-    const parent = element.parent;
-    const participantId = parent?.businessObject?.$type === 'bpmn:Participant'
-      ? parent.id
-      : '';
+    let current: DiagramElement | undefined = element.parent;
+    while (current) {
+      const type = current.businessObject?.$type ?? current.type ?? '';
+      if (type === 'bpmn:Participant') {
+        const byParticipantId = this.layerFromIdentifier(current.id, ARCHITECTURE_LAYER_PREFIX);
+        if (byParticipantId) return byParticipantId;
+        const participantName = current.businessObject?.name?.trim() ?? '';
+        return ARCHITECTURE_LAYERS.find((layer) => layer.label === participantName)?.id ?? 'other';
+      }
+      current = current.parent;
+    }
+
     const processId = element.businessObject?.$parent?.id ?? '';
-    const participantName = parent?.businessObject?.name?.trim() ?? '';
-
-    const byParticipantId = this.layerFromIdentifier(participantId, ARCHITECTURE_LAYER_PREFIX);
-    if (byParticipantId) return byParticipantId;
-
-    const byProcessId = this.layerFromIdentifier(processId, ARCHITECTURE_PROCESS_PREFIX);
-    if (byProcessId) return byProcessId;
-
-    return ARCHITECTURE_LAYERS.find((layer) => layer.label === participantName)?.id ?? 'other';
+    return this.layerFromIdentifier(processId, ARCHITECTURE_PROCESS_PREFIX) ?? 'other';
   }
 
   private layerFromIdentifier(identifier: string, prefix: string): ArchitectureLayer | null {
