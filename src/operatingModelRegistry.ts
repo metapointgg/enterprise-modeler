@@ -40,6 +40,8 @@ export interface SystemRecord {
   criticality: 'low' | 'medium' | 'high';
   active: boolean;
   notes: string;
+  parentSystemId?: string;
+  isContainer?: boolean;
 }
 
 export interface InterfaceRecord {
@@ -192,6 +194,8 @@ function normaliseSystem(value: Partial<SystemRecord>, index: number): SystemRec
     criticality,
     active: value.active !== false,
     notes: value.notes || '',
+    parentSystemId: value.parentSystemId || '',
+    isContainer: value.isContainer === true,
   };
 }
 
