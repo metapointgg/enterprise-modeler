@@ -518,9 +518,11 @@ class SystemsCatalog {
     return selected.length > 0 ? selected : ['production'];
   }
   private architectureLayerOptions(selected: ArchitectureLayer): string {
-    return ARCHITECTURE_LAYERS
+    const configured = ARCHITECTURE_LAYERS
       .map((layer) => `<option value="${layer.id}"${layer.id === selected ? ' selected' : ''}>${escapeHtml(layer.label)}</option>`)
       .join('');
+    if (!selected || ARCHITECTURE_LAYERS.some((layer) => layer.id === selected)) return configured;
+    return `<option value="${escapeHtml(selected)}" selected>${escapeHtml(getArchitectureLayerLabel(selected))}</option>${configured}`;
   }
 
   private criticalityOptions(selected: string): string {
