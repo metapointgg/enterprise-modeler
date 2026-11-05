@@ -1,4 +1,4 @@
-import { modelUrl } from './modelRepository';
+import { MODEL_NAMESPACE, modelUrl } from './modelRepository';
 
 export type ProcessLifecycleStatus = 'draft' | 'in-review' | 'approved' | 'published' | 'superseded';
 export type ProcessChannel = 'digital' | 'physical' | 'central' | 'external';
@@ -115,9 +115,9 @@ const GOVERNANCE_URL = modelUrl('/governance/process-governance.json');
 const INTEGRATIONS_URL = modelUrl('/architecture/integrations.json');
 const REGULATIONS_URL = modelUrl('/governance/regulations.json');
 
-const GOVERNANCE_AUTOSAVE_KEY = 'enterprise-modeler.process-governance.v1';
-const INTEGRATIONS_AUTOSAVE_KEY = 'enterprise-modeler.integrations.v2';
-const REGULATIONS_AUTOSAVE_KEY = 'enterprise-modeler.regulations.v1';
+const GOVERNANCE_AUTOSAVE_KEY = `enterprise-modeler.${MODEL_NAMESPACE}.process-governance.v1`;
+const INTEGRATIONS_AUTOSAVE_KEY = `enterprise-modeler.${MODEL_NAMESPACE}.integrations.v2`;
+const REGULATIONS_AUTOSAVE_KEY = `enterprise-modeler.${MODEL_NAMESPACE}.regulations.v1`;
 
 function isLifecycleStatus(value: string | undefined): value is ProcessLifecycleStatus {
   return PROCESS_LIFECYCLE_STATUSES.some((status) => status.id === value);
