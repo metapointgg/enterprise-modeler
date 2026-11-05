@@ -1,11 +1,13 @@
 import './integrationManager.css';
 
 import {
+  ARCHITECTURE_ENVIRONMENTS,
   exportRegistryJson,
   generateRegistryId,
   loadIntegrationData,
   loadProcessGovernance,
   saveIntegrationDataLocally,
+  type ArchitectureEnvironment,
   type IntegrationData,
   type InterfaceRecord,
 } from './operatingModelRegistry';
@@ -176,6 +178,13 @@ class IntegrationManager {
           </label>
         </div>
 
+        <fieldset class="metadata-field">
+          <span>Environments</span>
+          <div class="organisation-checkbox-row">
+            ${ARCHITECTURE_ENVIRONMENTS.map((environment) => `<label><input type="checkbox" data-interface-environment="${environment.id}"${(item?.environments ?? ['production']).includes(environment.id) ? ' checked' : ''} /><span>${escapeHtml(environment.label)}</span></label>`).join('')}
+          </div>
+        </fieldset>
+
         <label class="metadata-field"><span>Protocol</span><input id="integration-interface-protocol" value="${escapeHtml(item?.protocol ?? '')}" placeholder="e.g. HTTPS / JSON or TBC" /></label>
         <label class="metadata-field"><span>Authentication</span><input id="integration-interface-auth" value="${escapeHtml(item?.authentication ?? '')}" placeholder="Configuration / mechanism or TBC" /></label>
         <label class="metadata-field"><span>Owner position</span><select id="integration-interface-owner"><option value="">Unassigned</option>${this.positionOptions(item?.ownerPositionId ?? '')}</select></label>
@@ -241,6 +250,7 @@ class IntegrationManager {
         : 'outbound',
       protocol: this.value('#integration-interface-protocol'),
       authentication: this.value('#integration-interface-auth'),
+      environments: this.readEnvironments(),
       ownerPositionId: this.value('#integration-interface-owner'),
       criticality: criticality === 'low' || criticality === 'high' ? criticality : 'medium',
       status: statusValue === 'active' || statusValue === 'retired' || statusValue === 'tbc'
@@ -279,6 +289,15 @@ class IntegrationManager {
     return this.root.querySelector<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>(selector)?.value.trim() ?? '';
   }
 
+  private readEnvironments(): ArchitectureEnvironment[] {
+    const selected = [...this.root.querySelectorAll<HTMLInputElement>('[data-interface-environment]')]
+      .filter((input) => input.checked)
+      .map((input) => input.dataset.interfaceEnvironment ?? '')
+      .filter((value): value is ArchitectureEnvironment =>
+        ARCHITECTURE_ENVIRONMENTS.some((environment) => environment.id === value),
+      );
+    return selected.length > 0 ? selected : ['production'];
+  }
   private positionOptions(selected: string): string {
     if (!this.organisation) return '';
     return this.organisation.positions
