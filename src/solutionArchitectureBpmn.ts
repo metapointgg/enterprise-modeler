@@ -3,6 +3,7 @@ import BpmnModeler from 'bpmn-js/lib/Modeler';
 import 'bpmn-js/dist/assets/diagram-js.css';
 import 'bpmn-js/dist/assets/bpmn-font/css/bpmn.css';
 import './solutionArchitectureBpmn.css';
+import { modelUrl } from './modelRepository';
 
 import {
   ARCHITECTURE_ENVIRONMENTS,
@@ -75,12 +76,13 @@ interface SaveXmlResult {
   xml?: string;
 }
 
-const ARCHITECTURE_BPMN_URL = '/architecture/solution-architecture.bpmn';
+const ARCHITECTURE_BPMN_URL = modelUrl('/architecture/solution-architecture.bpmn');
 const ARCHITECTURE_AUTOSAVE_KEY = 'enterprise-modeler.solution-architecture-bpmn.v3';
 const ARCHITECTURE_LAYER_PREFIX = 'ArchitectureLayer_';
 const ARCHITECTURE_PROCESS_PREFIX = 'ArchitectureProcess_';
 const PROCESS_FADED_MARKER = 'architecture-bpmn-faded';
 const ENVIRONMENT_FADED_MARKER = 'architecture-bpmn-environment-faded';
+const LINE_STYLE_MARKERS = ['architecture-line-solid', 'architecture-line-dashed', 'architecture-line-dotted'] as const;
 
 class SolutionArchitectureBpmnPage {
   private readonly dialog: HTMLDialogElement;
@@ -310,12 +312,14 @@ class SolutionArchitectureBpmnPage {
         }
       });
 
+      const canvas = this.modeler.get<CanvasService>('canvas');
       this.data.interfaces.forEach((record) => {
         const element = registry.get(record.id);
         if (!element || !this.isInterfaceElement(element)) return;
         if ((element.businessObject?.name ?? '') !== record.name) {
           modeling.updateProperties(element, { name: record.name });
         }
+        this.applyInterfaceLineStyle(record, element, canvas);
       });
     } finally {
       this.suppressModelEvents = previous;
@@ -410,6 +414,7 @@ class SolutionArchitectureBpmnPage {
             direction: 'outbound',
             protocol: '',
             authentication: '',
+            lineStyle: 'solid',
             environments: ['production'],
             ownerPositionId: '',
             criticality: 'medium',
@@ -681,6 +686,7 @@ class SolutionArchitectureBpmnPage {
       } finally {
         this.suppressModelEvents = false;
       }
+      this.applyInterfaceLineStyle(record, element);
       this.scheduleAutosave();
       this.renderContextPanel();
     });
@@ -707,6 +713,7 @@ class SolutionArchitectureBpmnPage {
         <label><span>Target</span><input value="${escapeHtml(target?.name ?? record.targetSystemId)}" readonly /></label>
         <div class="solution-architecture-context-note">Reconnect the native BPMN Flow to change its source or target.</div>
         <label><span>Direction</span><select id="architecture-bpmn-interface-direction">${this.directionOptions(record.direction)}</select></label>
+        <label><span>Line style</span><select id="architecture-bpmn-interface-line-style">${this.lineStyleOptions(record.lineStyle ?? 'solid')}</select></label>
         <fieldset>
           <span>Environments</span>
           ${ARCHITECTURE_ENVIRONMENTS.map((environment) => `<label class="solution-architecture-context-check"><input type="checkbox" data-architecture-interface-environment="${environment.id}"${(record.environments ?? ['production']).includes(environment.id) ? ' checked' : ''} /><span>${escapeHtml(environment.label)}</span></label>`).join('')}
@@ -733,6 +740,7 @@ class SolutionArchitectureBpmnPage {
       event.preventDefault();
       record.name = this.inputValue('#architecture-bpmn-interface-name') || record.name;
       record.direction = this.selectValue('#architecture-bpmn-interface-direction') as InterfaceRecord['direction'];
+      record.lineStyle = this.selectValue('#architecture-bpmn-interface-line-style') as NonNullable<InterfaceRecord['lineStyle']>;
       record.protocol = this.inputValue('#architecture-bpmn-interface-protocol');
       record.authentication = this.inputValue('#architecture-bpmn-interface-authentication');
       record.environments = this.readContextEnvironments('[data-architecture-interface-environment]');
@@ -797,6 +805,26 @@ class SolutionArchitectureBpmnPage {
     return ['low', 'medium', 'high']
       .map((value) => `<option value="${value}"${value === selected ? ' selected' : ''}>${capitalise(value)}</option>`)
       .join('');
+  }
+
+  private applyInterfaceLineStyle(
+    record: InterfaceRecord,
+    element: DiagramElement,
+    canvas = this.modeler.get<CanvasService>('canvas'),
+  ): void {
+    LINE_STYLE_MARKERS.forEach((marker) => canvas.removeMarker(element.id, marker));
+    const style = record.lineStyle === 'dashed' || record.lineStyle === 'dotted'
+      ? record.lineStyle
+      : 'solid';
+    canvas.addMarker(element.id, `architecture-line-${style}`);
+  }
+
+  private lineStyleOptions(selected: NonNullable<InterfaceRecord['lineStyle']>): string {
+    return [
+      ['solid', 'Solid'],
+      ['dashed', 'Dashed'],
+      ['dotted', 'Dotted'],
+    ].map(([value, label]) => `<option value="${value}"${value === selected ? ' selected' : ''}>${label}</option>`).join('');
   }
 
   private directionOptions(selected: InterfaceRecord['direction']): string {
