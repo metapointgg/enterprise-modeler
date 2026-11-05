@@ -276,7 +276,7 @@ class SystemsCatalog {
 
         <label class="metadata-field"><span>Name</span><input id="systems-name" required value="${escapeHtml(system?.name ?? '')}" /></label>
         <label class="metadata-field"><span>Type</span><input id="systems-type" value="${escapeHtml(system?.type ?? '')}" placeholder="e.g. CRM, ERP, workflow platform" /></label>
-        <label class="metadata-field"><span>Architecture layer</span><select id="systems-layer">${this.architectureLayerOptions(system?.architectureLayer ?? 'other')}</select></label>
+        <label class="metadata-field"><span>Architecture layer</span><select id="systems-layer">${this.architectureLayerOptions(system?.architectureLayer ?? 'internal')}</select></label>
 
         <div class="systems-two-col">
           <label class="metadata-field"><span>Supplier</span><input id="systems-supplier" value="${escapeHtml(system?.supplier ?? '')}" placeholder="Supplier / owner or TBC" /></label>
@@ -395,7 +395,7 @@ class SystemsCatalog {
     const layerValue = this.value('#systems-layer');
     const architectureLayer = ARCHITECTURE_LAYERS.some((layer) => layer.id === layerValue)
       ? layerValue as ArchitectureLayer
-      : 'other';
+      : 'internal';
 
     const record: SystemRecord = {
       id: existing?.id ?? generateRegistryId('system', name),
