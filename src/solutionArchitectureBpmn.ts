@@ -587,14 +587,26 @@ class SolutionArchitectureBpmnPage {
           criticality: 'medium',
           active: true,
           notes: '',
+          parentSystemId: this.getParentSystemId(element),
+          isContainer: this.isContainerElement(element),
         });
         changed = true;
         return;
       }
 
-      if (existing.name !== name || existing.architectureLayer !== layer || !existing.active) {
+      const parentSystemId = this.getParentSystemId(element);
+      const isContainer = this.isContainerElement(element);
+      if (
+        existing.name !== name
+        || existing.architectureLayer !== layer
+        || existing.parentSystemId !== parentSystemId
+        || existing.isContainer !== isContainer
+        || !existing.active
+      ) {
         existing.name = name;
         existing.architectureLayer = layer;
+        existing.parentSystemId = parentSystemId;
+        existing.isContainer = isContainer;
         existing.active = true;
         changed = true;
       }
@@ -662,11 +674,35 @@ class SolutionArchitectureBpmnPage {
 
   private isSystemElement(element: DiagramElement): boolean {
     const type = element.businessObject?.$type ?? element.type ?? '';
-    if (!type.endsWith('Task')) return false;
+    if (!type.endsWith('Task') && type !== 'bpmn:SubProcess') return false;
 
-    const parentType = element.parent?.businessObject?.$type ?? '';
+    let current: DiagramElement | undefined = element.parent;
+    while (current) {
+      const currentType = current.businessObject?.$type ?? current.type ?? '';
+      if (currentType === 'bpmn:Participant') return true;
+      current = current.parent;
+    }
+
     const parentProcessId = element.businessObject?.$parent?.id ?? '';
-    return parentType === 'bpmn:Participant' || parentProcessId.startsWith(ARCHITECTURE_PROCESS_PREFIX);
+    return parentProcessId.startsWith(ARCHITECTURE_PROCESS_PREFIX);
+  }
+
+  private isContainerElement(element: DiagramElement): boolean {
+    const type = element.businessObject?.$type ?? element.type ?? '';
+    return type === 'bpmn:SubProcess';
+  }
+
+  private getParentSystemId(element: DiagramElement): string {
+    let current = element.parent;
+    while (current) {
+      if (this.isContainerElement(current) && this.data.systems.some((system) => system.id === current?.id)) {
+        return current.id;
+      }
+      const type = current.businessObject?.$type ?? current.type ?? '';
+      if (type === 'bpmn:Participant') break;
+      current = current.parent;
+    }
+    return '';
   }
 
   private isInterfaceElement(element: DiagramElement): boolean {
