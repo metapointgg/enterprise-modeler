@@ -5,3 +5,8 @@
 .solution-architecture-bpmn-canvas .architecture-line-style-entry{display:flex!important;align-items:center;justify-content:center;width:28px;height:26px;padding:0;border:0;background:#fff;color:#334155;font-size:16px;line-height:1;cursor:pointer}
 .solution-architecture-bpmn-canvas .architecture-line-style-entry:hover{background:#eff6ff;color:#1d4ed8}
 .solution-architecture-bpmn-canvas .architecture-line-style-entry.architecture-line-style-selected{background:#dbeafe;color:#1d4ed8;font-weight:700}
+
+.solution-architecture-bpmn-canvas .architecture-enterprise-context-actions{display:grid;grid-template-columns:repeat(4,28px);gap:2px;padding:3px;border-top:1px solid #e2e8f0;background:#fff}
+.solution-architecture-bpmn-canvas .architecture-context-entry{display:flex!important;align-items:center;justify-content:center;width:28px;height:26px;padding:0;border:0;background:#fff;color:#334155;font-size:14px;line-height:1;cursor:pointer}
+.solution-architecture-bpmn-canvas .architecture-context-entry:hover{background:#eff6ff;color:#1d4ed8}
+.solution-architecture-bpmn-canvas .architecture-context-entry.architecture-context-entry-selected{background:#dbeafe;color:#1d4ed8;font-weight:700}
