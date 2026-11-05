@@ -1,0 +1,1 @@
+var e=r(``),t=e?e.replace(/[^a-zA-Z0-9]+/g,`-`).replace(/^-+|-+$/g,``):`default`;function n(t){let n=t.startsWith(`/`)?t:`/${t}`;return!e||n===e||n.startsWith(`${e}/`)?n:`${e}${n}`}function r(e){let t=e.trim();return!t||t===`/`?``:`/${t.replace(/^\/+|\/+$/g,``)}`}export{n,t};
