@@ -7,13 +7,18 @@
       "type": "Digital channel",
       "architectureLayer": "channel",
       "supplier": "Sample / in-house",
-      "environment": "Production",
+      "environment": "Production, UAT, Dev / Test",
       "dataClassification": "confidential",
       "integrationType": "API",
       "ownerPositionId": "pos-process-owner",
       "criticality": "high",
       "active": true,
-      "notes": "Illustrative browser or mobile entry point for users."
+      "notes": "Illustrative browser or mobile entry point for users.",
+      "environments": [
+        "production",
+        "uat",
+        "dev-test"
+      ]
     },
     {
       "id": "system-integration-platform",
@@ -21,13 +26,18 @@
       "type": "Integration platform",
       "architectureLayer": "integration",
       "supplier": "Sample provider",
-      "environment": "Production",
+      "environment": "Production, UAT, Dev / Test",
       "dataClassification": "confidential",
       "integrationType": "REST / events / file",
       "ownerPositionId": "pos-process-owner",
       "criticality": "high",
       "active": true,
-      "notes": "Illustrative API gateway, orchestration and integration layer."
+      "notes": "Illustrative API gateway, orchestration and integration layer.",
+      "environments": [
+        "production",
+        "uat",
+        "dev-test"
+      ]
     },
     {
       "id": "system-crm",
@@ -35,13 +45,18 @@
       "type": "Customer / stakeholder relationship management",
       "architectureLayer": "platform",
       "supplier": "Sample provider",
-      "environment": "Production",
+      "environment": "Production, UAT, Dev / Test",
       "dataClassification": "confidential",
       "integrationType": "API / events",
       "ownerPositionId": "pos-process-owner",
       "criticality": "high",
       "active": true,
-      "notes": "Example system for contacts, cases, interactions and workflow."
+      "notes": "Example system for contacts, cases, interactions and workflow.",
+      "environments": [
+        "production",
+        "uat",
+        "dev-test"
+      ]
     },
     {
       "id": "system-erp",
@@ -49,13 +64,17 @@
       "type": "Enterprise resource planning",
       "architectureLayer": "platform",
       "supplier": "Sample provider",
-      "environment": "Production",
+      "environment": "Production, UAT",
       "dataClassification": "confidential",
       "integrationType": "API / file / events",
       "ownerPositionId": "pos-process-owner",
       "criticality": "high",
       "active": true,
-      "notes": "Example system of record for finance, procurement and operational transactions."
+      "notes": "Example system of record for finance, procurement and operational transactions.",
+      "environments": [
+        "production",
+        "uat"
+      ]
     },
     {
       "id": "system-documents",
@@ -63,13 +82,17 @@
       "type": "Document and content management",
       "architectureLayer": "platform",
       "supplier": "Sample provider",
-      "environment": "Production",
+      "environment": "Production, UAT",
       "dataClassification": "confidential",
       "integrationType": "API / links",
       "ownerPositionId": "pos-process-analyst",
       "criticality": "medium",
       "active": true,
-      "notes": "Example document repository and records-management platform."
+      "notes": "Example document repository and records-management platform.",
+      "environments": [
+        "production",
+        "uat"
+      ]
     },
     {
       "id": "system-data-platform",
@@ -77,13 +100,18 @@
       "type": "Data warehouse / lakehouse",
       "architectureLayer": "platform",
       "supplier": "Sample / cloud",
-      "environment": "Production",
+      "environment": "Production, UAT, Dev / Test",
       "dataClassification": "restricted",
       "integrationType": "ETL / ELT / CDC",
       "ownerPositionId": "pos-process-analyst",
       "criticality": "high",
       "active": true,
-      "notes": "Illustrative analytical data store for reporting and downstream analysis."
+      "notes": "Illustrative analytical data store for reporting and downstream analysis.",
+      "environments": [
+        "production",
+        "uat",
+        "dev-test"
+      ]
     },
     {
       "id": "system-bi",
@@ -91,13 +119,17 @@
       "type": "Analytics and reporting",
       "architectureLayer": "platform",
       "supplier": "Sample provider",
-      "environment": "Production",
+      "environment": "Production, UAT",
       "dataClassification": "confidential",
       "integrationType": "Semantic model / SQL",
       "ownerPositionId": "pos-process-analyst",
       "criticality": "medium",
       "active": true,
-      "notes": "Illustrative management information and dashboard platform."
+      "notes": "Illustrative management information and dashboard platform.",
+      "environments": [
+        "production",
+        "uat"
+      ]
     },
     {
       "id": "system-hris",
@@ -105,13 +137,17 @@
       "type": "People / HR system",
       "architectureLayer": "platform",
       "supplier": "Sample provider",
-      "environment": "Production",
+      "environment": "Production, UAT",
       "dataClassification": "confidential",
       "integrationType": "API / file",
       "ownerPositionId": "pos-process-owner",
       "criticality": "medium",
       "active": true,
-      "notes": "Illustrative employee lifecycle and organisational data platform."
+      "notes": "Illustrative employee lifecycle and organisational data platform.",
+      "environments": [
+        "production",
+        "uat"
+      ]
     },
     {
       "id": "system-collaboration",
@@ -125,7 +161,10 @@
       "ownerPositionId": "pos-process-owner",
       "criticality": "medium",
       "active": true,
-      "notes": "Illustrative email, messaging and productivity platform."
+      "notes": "Illustrative email, messaging and productivity platform.",
+      "environments": [
+        "production"
+      ]
     },
     {
       "id": "system-iam",
@@ -133,13 +172,18 @@
       "type": "Identity and access management",
       "architectureLayer": "security",
       "supplier": "Sample provider",
-      "environment": "Production",
+      "environment": "Production, UAT, Dev / Test",
       "dataClassification": "restricted",
       "integrationType": "OIDC / SAML / SCIM",
       "ownerPositionId": "pos-process-owner",
       "criticality": "high",
       "active": true,
-      "notes": "Illustrative workforce and application identity, MFA and access-control service."
+      "notes": "Illustrative workforce and application identity, MFA and access-control service.",
+      "environments": [
+        "production",
+        "uat",
+        "dev-test"
+      ]
     },
     {
       "id": "system-security-monitoring",
@@ -147,13 +191,17 @@
       "type": "SIEM / security operations",
       "architectureLayer": "security",
       "supplier": "Sample provider",
-      "environment": "Production",
+      "environment": "Production, UAT",
       "dataClassification": "restricted",
       "integrationType": "Log and event ingestion",
       "ownerPositionId": "pos-process-owner",
       "criticality": "high",
       "active": true,
-      "notes": "Illustrative security event monitoring and incident detection service."
+      "notes": "Illustrative security event monitoring and incident detection service.",
+      "environments": [
+        "production",
+        "uat"
+      ]
     },
     {
       "id": "system-backup",
@@ -167,7 +215,10 @@
       "ownerPositionId": "pos-process-owner",
       "criticality": "high",
       "active": true,
-      "notes": "Illustrative backup and recovery service."
+      "notes": "Illustrative backup and recovery service.",
+      "environments": [
+        "production"
+      ]
     },
     {
       "id": "system-id-verification",
@@ -175,13 +226,17 @@
       "type": "External verification service",
       "architectureLayer": "partner",
       "supplier": "Sample provider",
-      "environment": "Production",
+      "environment": "Production, UAT",
       "dataClassification": "restricted",
       "integrationType": "API",
       "ownerPositionId": "pos-process-owner",
       "criticality": "medium",
       "active": true,
-      "notes": "Illustrative external identity and document verification provider."
+      "notes": "Illustrative external identity and document verification provider.",
+      "environments": [
+        "production",
+        "uat"
+      ]
     },
     {
       "id": "system-esignature",
@@ -189,13 +244,17 @@
       "type": "Electronic signature service",
       "architectureLayer": "partner",
       "supplier": "Sample provider",
-      "environment": "Production",
+      "environment": "Production, UAT",
       "dataClassification": "confidential",
       "integrationType": "API / webhook",
       "ownerPositionId": "pos-process-owner",
       "criticality": "medium",
       "active": true,
-      "notes": "Illustrative third-party electronic signature provider."
+      "notes": "Illustrative third-party electronic signature provider.",
+      "environments": [
+        "production",
+        "uat"
+      ]
     }
   ],
   "interfaces": [
@@ -211,7 +270,12 @@
       "criticality": "high",
       "status": "active",
       "documentationReference": "",
-      "notes": "Illustrative digital-channel API integration."
+      "notes": "Illustrative digital-channel API integration.",
+      "environments": [
+        "production",
+        "uat",
+        "dev-test"
+      ]
     },
     {
       "id": "if-integration-crm",
@@ -225,7 +289,12 @@
       "criticality": "high",
       "status": "active",
       "documentationReference": "",
-      "notes": "Illustrative CRM integration."
+      "notes": "Illustrative CRM integration.",
+      "environments": [
+        "production",
+        "uat",
+        "dev-test"
+      ]
     },
     {
       "id": "if-integration-erp",
@@ -239,7 +308,11 @@
       "criticality": "high",
       "status": "active",
       "documentationReference": "",
-      "notes": "Illustrative ERP integration."
+      "notes": "Illustrative ERP integration.",
+      "environments": [
+        "production",
+        "uat"
+      ]
     },
     {
       "id": "if-crm-documents",
@@ -253,7 +326,11 @@
       "criticality": "medium",
       "status": "active",
       "documentationReference": "",
-      "notes": "Illustrative document and case-content integration."
+      "notes": "Illustrative document and case-content integration.",
+      "environments": [
+        "production",
+        "uat"
+      ]
     },
     {
       "id": "if-crm-data",
@@ -267,7 +344,12 @@
       "criticality": "medium",
       "status": "active",
       "documentationReference": "",
-      "notes": "Illustrative analytical data feed."
+      "notes": "Illustrative analytical data feed.",
+      "environments": [
+        "production",
+        "uat",
+        "dev-test"
+      ]
     },
     {
       "id": "if-erp-data",
@@ -281,7 +363,11 @@
       "criticality": "high",
       "status": "active",
       "documentationReference": "",
-      "notes": "Illustrative operational and financial data feed."
+      "notes": "Illustrative operational and financial data feed.",
+      "environments": [
+        "production",
+        "uat"
+      ]
     },
     {
       "id": "if-data-bi",
@@ -295,7 +381,11 @@
       "criticality": "medium",
       "status": "active",
       "documentationReference": "",
-      "notes": "Illustrative reporting feed."
+      "notes": "Illustrative reporting feed.",
+      "environments": [
+        "production",
+        "uat"
+      ]
     },
     {
       "id": "if-hris-iam",
@@ -309,7 +399,11 @@
       "criticality": "high",
       "status": "active",
       "documentationReference": "",
-      "notes": "Illustrative joiner, mover and leaver identity feed."
+      "notes": "Illustrative joiner, mover and leaver identity feed.",
+      "environments": [
+        "production",
+        "uat"
+      ]
     },
     {
       "id": "if-iam-portal",
@@ -323,7 +417,12 @@
       "criticality": "high",
       "status": "active",
       "documentationReference": "",
-      "notes": "Illustrative authentication and authorisation relationship."
+      "notes": "Illustrative authentication and authorisation relationship.",
+      "environments": [
+        "production",
+        "uat",
+        "dev-test"
+      ]
     },
     {
       "id": "if-iam-security",
@@ -337,7 +436,11 @@
       "criticality": "high",
       "status": "active",
       "documentationReference": "",
-      "notes": "Illustrative identity security telemetry."
+      "notes": "Illustrative identity security telemetry.",
+      "environments": [
+        "production",
+        "uat"
+      ]
     },
     {
       "id": "if-integration-idv",
@@ -351,7 +454,11 @@
       "criticality": "medium",
       "status": "active",
       "documentationReference": "",
-      "notes": "Illustrative external verification integration."
+      "notes": "Illustrative external verification integration.",
+      "environments": [
+        "production",
+        "uat"
+      ]
     },
     {
       "id": "if-crm-esignature",
@@ -365,7 +472,11 @@
       "criticality": "medium",
       "status": "active",
       "documentationReference": "",
-      "notes": "Illustrative document-signing integration."
+      "notes": "Illustrative document-signing integration.",
+      "environments": [
+        "production",
+        "uat"
+      ]
     }
   ]
 }
