@@ -474,7 +474,7 @@ class SolutionArchitectureBpmnPage {
     const byProcessId = this.layerFromIdentifier(processId, ARCHITECTURE_PROCESS_PREFIX);
     if (byProcessId) return byProcessId;
 
-    return ARCHITECTURE_LAYERS.find((layer) => layer.label === participantName)?.id ?? 'internal';
+    return ARCHITECTURE_LAYERS.find((layer) => layer.label === participantName)?.id ?? 'core-platforms';
   }
 
   private layerFromIdentifier(identifier: string, prefix: string): ArchitectureLayer | null {
