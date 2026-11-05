@@ -1,6 +1,7 @@
 export type ProcessLifecycleStatus = 'draft' | 'in-review' | 'approved' | 'published' | 'superseded';
 export type ProcessChannel = 'digital' | 'physical' | 'central' | 'external';
 export type ArchitectureLayer = 'channel' | 'integration' | 'platform' | 'security' | 'partner' | 'other';
+export type ArchitectureEnvironment = 'production' | 'uat' | 'dev-test';
 
 export interface ProcessGovernanceRecord {
   processId: string;
@@ -30,6 +31,7 @@ export interface SystemRecord {
   architectureLayer: ArchitectureLayer;
   supplier: string;
   environment: string;
+  environments: ArchitectureEnvironment[];
   dataClassification: string;
   integrationType: string;
   ownerPositionId: string;
@@ -46,6 +48,7 @@ export interface InterfaceRecord {
   direction: 'outbound' | 'inbound' | 'bidirectional';
   protocol: string;
   authentication: string;
+  environments: ArchitectureEnvironment[];
   ownerPositionId: string;
   criticality: 'low' | 'medium' | 'high';
   status: 'design' | 'active' | 'retired' | 'tbc';
@@ -90,6 +93,12 @@ export const PROCESS_CHANNELS: Array<{ id: ProcessChannel; label: string }> = [
   { id: 'external', label: 'External' },
 ];
 
+export const ARCHITECTURE_ENVIRONMENTS: Array<{ id: ArchitectureEnvironment; label: string; colourHint: string }> = [
+  { id: 'production', label: 'Production', colourHint: 'baseline' },
+  { id: 'uat', label: 'UAT', colourHint: 'green' },
+  { id: 'dev-test', label: 'Dev / Test', colourHint: 'pink' },
+];
+
 export const ARCHITECTURE_LAYERS: Array<{ id: ArchitectureLayer; label: string; sequence: number }> = [
   { id: 'channel', label: 'Channels & Experience', sequence: 10 },
   { id: 'integration', label: 'API & Integration', sequence: 20 },
@@ -117,6 +126,24 @@ function isChannel(value: string): value is ProcessChannel {
 
 function isArchitectureLayer(value: string | undefined): value is ArchitectureLayer {
   return ARCHITECTURE_LAYERS.some((layer) => layer.id === value);
+}
+
+function isArchitectureEnvironment(value: string): value is ArchitectureEnvironment {
+  return ARCHITECTURE_ENVIRONMENTS.some((environment) => environment.id === value);
+}
+
+function normaliseEnvironments(values: unknown, legacyEnvironment = ''): ArchitectureEnvironment[] {
+  if (Array.isArray(values)) {
+    const environments = values.filter((value): value is string => typeof value === 'string').filter(isArchitectureEnvironment);
+    if (environments.length > 0) return [...new Set(environments)];
+  }
+
+  const legacy = legacyEnvironment.toLowerCase();
+  const inferred: ArchitectureEnvironment[] = [];
+  if (!legacy || legacy.includes('prod')) inferred.push('production');
+  if (legacy.includes('uat')) inferred.push('uat');
+  if (legacy.includes('dev') || legacy.includes('test')) inferred.push('dev-test');
+  return inferred.length > 0 ? inferred : ['production'];
 }
 
 function normaliseGovernanceRecord(value: Partial<ProcessGovernanceRecord>): ProcessGovernanceRecord {
@@ -155,6 +182,7 @@ function normaliseSystem(value: Partial<SystemRecord>, index: number): SystemRec
     architectureLayer: isArchitectureLayer(value.architectureLayer) ? value.architectureLayer : 'other',
     supplier: value.supplier || '',
     environment: value.environment || '',
+    environments: normaliseEnvironments(value.environments, value.environment || ''),
     dataClassification: value.dataClassification || '',
     integrationType: value.integrationType || '',
     ownerPositionId: value.ownerPositionId || '',
@@ -176,6 +204,7 @@ function normaliseInterface(value: Partial<InterfaceRecord>, index: number): Int
     direction,
     protocol: value.protocol || '',
     authentication: value.authentication || '',
+    environments: normaliseEnvironments(value.environments, ''),
     ownerPositionId: value.ownerPositionId || '',
     criticality,
     status,
