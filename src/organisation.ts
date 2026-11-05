@@ -1,4 +1,4 @@
-import { modelUrl } from './modelRepository';
+import { MODEL_NAMESPACE, modelUrl } from './modelRepository';
 
 export interface Department {
   id: string;
@@ -59,8 +59,8 @@ export interface OrganisationData {
 }
 
 const ORGANISATION_URL = modelUrl('/organisation/org-chart.json');
-const ORGANISATION_AUTOSAVE_KEY = 'enterprise-modeler.organisation.v2';
-const LEGACY_ORGANISATION_AUTOSAVE_KEY = 'enterprise-modeler.organisation.v1';
+const ORGANISATION_AUTOSAVE_KEY = `enterprise-modeler.${MODEL_NAMESPACE}.organisation.v2`;
+const LEGACY_ORGANISATION_AUTOSAVE_KEY = `enterprise-modeler.${MODEL_NAMESPACE}.organisation.v1`;
 
 export function createEmptyOrganisation(): OrganisationData {
   return {
