@@ -395,7 +395,7 @@ class SystemsCatalog {
     const layerValue = this.value('#systems-layer');
     const architectureLayer = ARCHITECTURE_LAYERS.some((layer) => layer.id === layerValue)
       ? layerValue as ArchitectureLayer
-      : 'internal';
+      : 'core-platforms';
 
     const record: SystemRecord = {
       id: existing?.id ?? generateRegistryId('system', name),
