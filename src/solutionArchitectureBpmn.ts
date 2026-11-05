@@ -543,7 +543,7 @@ class SolutionArchitectureBpmnPage {
 
     const visibleSystems = new Set(
       this.data.systems
-        .filter((system) => system.environments.includes(this.environmentView as ArchitectureEnvironment))
+        .filter((system) => (system.environments ?? ['production']).includes(this.environmentView as ArchitectureEnvironment))
         .map((system) => system.id),
     );
 
@@ -554,7 +554,7 @@ class SolutionArchitectureBpmnPage {
     });
 
     this.data.interfaces.forEach((record) => {
-      const visible = record.environments.includes(this.environmentView as ArchitectureEnvironment)
+      const visible = (record.environments ?? ['production']).includes(this.environmentView as ArchitectureEnvironment)
         && visibleSystems.has(record.sourceSystemId)
         && visibleSystems.has(record.targetSystemId);
       if (!visible && registry.get(record.id)) {
