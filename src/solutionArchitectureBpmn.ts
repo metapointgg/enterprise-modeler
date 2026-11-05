@@ -60,6 +60,10 @@ interface ModelingService {
   updateProperties(element: DiagramElement, properties: Record<string, unknown>): void;
 }
 
+interface ReplaceService {
+  replaceElement(element: DiagramElement, target: Record<string, unknown>): DiagramElement;
+}
+
 interface SelectionService {
   select(elements: DiagramElement | DiagramElement[]): void;
 }
