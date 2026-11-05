@@ -10,3 +10,8 @@
 .solution-architecture-bpmn-canvas .architecture-context-entry{display:flex!important;align-items:center;justify-content:center;width:28px;height:26px;padding:0;border:0;background:#fff;color:#334155;font-size:14px;line-height:1;cursor:pointer}
 .solution-architecture-bpmn-canvas .architecture-context-entry:hover{background:#eff6ff;color:#1d4ed8}
 .solution-architecture-bpmn-canvas .architecture-context-entry.architecture-context-entry-selected{background:#dbeafe;color:#1d4ed8;font-weight:700}
+
+.solution-architecture-bpmn-canvas .djs-shape[data-element-id^="system-"][data-element-id] .djs-visual>rect{rx:6px;ry:6px}
+.solution-architecture-bpmn-canvas .djs-shape[data-element-id^="system-"] .djs-visual>rect[width][height]{vector-effect:non-scaling-stroke}
+.solution-architecture-bpmn-canvas .djs-shape[data-element-id^="system-"].djs-element[data-element-id] .djs-visual>rect+rect{stroke:#94a3b8!important}
+.solution-architecture-bpmn-canvas .djs-shape[data-element-id^="system-"] .djs-visual>rect[style*="stroke-dasharray"]{stroke:#475569!important}
