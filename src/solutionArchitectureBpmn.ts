@@ -474,7 +474,7 @@ class SolutionArchitectureBpmnPage {
     const byProcessId = this.layerFromIdentifier(processId, ARCHITECTURE_PROCESS_PREFIX);
     if (byProcessId) return byProcessId;
 
-    return ARCHITECTURE_LAYERS.find((layer) => layer.label === participantName)?.id ?? 'other';
+    return ARCHITECTURE_LAYERS.find((layer) => layer.label === participantName)?.id ?? 'internal';
   }
 
   private layerFromIdentifier(identifier: string, prefix: string): ArchitectureLayer | null {
@@ -780,7 +780,7 @@ class SolutionArchitectureBpmnPage {
     const byId = this.layerFromIdentifier(element.id, ARCHITECTURE_LAYER_PREFIX);
     if (byId) return byId;
     const name = element.businessObject?.name?.trim() ?? '';
-    return ARCHITECTURE_LAYERS.find((layer) => layer.label === name)?.id ?? 'other';
+    return ARCHITECTURE_LAYERS.find((layer) => layer.label === name)?.id ?? 'internal';
   }
 
   private positionOptions(selected: string): string {
