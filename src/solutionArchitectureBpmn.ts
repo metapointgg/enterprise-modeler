@@ -79,8 +79,8 @@ const ARCHITECTURE_BPMN_URL = '/architecture/solution-architecture.bpmn';
 const ARCHITECTURE_AUTOSAVE_KEY = 'enterprise-modeler.solution-architecture-bpmn.v3';
 const ARCHITECTURE_LAYER_PREFIX = 'ArchitectureLayer_';
 const ARCHITECTURE_PROCESS_PREFIX = 'ArchitectureProcess_';
-const PROCESS_PROCESS_FADED_MARKER = 'architecture-bpmn-faded';
-const ENVIRONMENT_PROCESS_FADED_MARKER = 'architecture-bpmn-environment-faded';
+const PROCESS_FADED_MARKER = 'architecture-bpmn-faded';
+const ENVIRONMENT_FADED_MARKER = 'architecture-bpmn-environment-faded';
 
 class SolutionArchitectureBpmnPage {
   private readonly dialog: HTMLDialogElement;
