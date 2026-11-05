@@ -31,7 +31,7 @@ export interface SystemRecord {
   architectureLayer: ArchitectureLayer;
   supplier: string;
   environment: string;
-  environments: ArchitectureEnvironment[];
+  environments?: ArchitectureEnvironment[];
   dataClassification: string;
   integrationType: string;
   ownerPositionId: string;
@@ -48,7 +48,7 @@ export interface InterfaceRecord {
   direction: 'outbound' | 'inbound' | 'bidirectional';
   protocol: string;
   authentication: string;
-  environments: ArchitectureEnvironment[];
+  environments?: ArchitectureEnvironment[];
   ownerPositionId: string;
   criticality: 'low' | 'medium' | 'high';
   status: 'design' | 'active' | 'retired' | 'tbc';
