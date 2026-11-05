@@ -2,7 +2,7 @@ import { MODEL_NAMESPACE, modelUrl } from './modelRepository';
 
 export type ProcessLifecycleStatus = 'draft' | 'in-review' | 'approved' | 'published' | 'superseded';
 export type ProcessChannel = 'digital' | 'physical' | 'central' | 'external';
-export type ArchitectureLayer = 'channel' | 'integration' | 'platform' | 'security' | 'partner' | 'other';
+export type ArchitectureLayer = string;
 export type ArchitectureEnvironment = 'production' | 'uat' | 'dev-test';
 
 export interface ProcessGovernanceRecord {
@@ -128,7 +128,7 @@ function isChannel(value: string): value is ProcessChannel {
 }
 
 function isArchitectureLayer(value: string | undefined): value is ArchitectureLayer {
-  return ARCHITECTURE_LAYERS.some((layer) => layer.id === value);
+  return typeof value === 'string' && value.trim().length > 0;
 }
 
 function isArchitectureEnvironment(value: string): value is ArchitectureEnvironment {
@@ -343,7 +343,9 @@ export function getLifecycleLabel(status: ProcessLifecycleStatus): string {
 }
 
 export function getArchitectureLayerLabel(layer: ArchitectureLayer): string {
-  return ARCHITECTURE_LAYERS.find((candidate) => candidate.id === layer)?.label ?? layer;
+  const configured = ARCHITECTURE_LAYERS.find((candidate) => candidate.id === layer)?.label;
+  if (configured) return configured;
+  return layer.split('-').filter(Boolean).map((part) => `${part.charAt(0).toUpperCase()}${part.slice(1)}`).join(' ') || 'Other / TBC';
 }
 
 export function notifyRegistryChanged(scope: string): void {
