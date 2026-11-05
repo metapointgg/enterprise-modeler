@@ -1,3 +1,5 @@
+import { modelUrl } from './modelRepository';
+
 export type ProcessLifecycleStatus = 'draft' | 'in-review' | 'approved' | 'published' | 'superseded';
 export type ProcessChannel = 'digital' | 'physical' | 'central' | 'external';
 export type ArchitectureLayer = 'channel' | 'integration' | 'platform' | 'security' | 'partner' | 'other';
@@ -48,6 +50,7 @@ export interface InterfaceRecord {
   direction: 'outbound' | 'inbound' | 'bidirectional';
   protocol: string;
   authentication: string;
+  lineStyle?: 'solid' | 'dashed' | 'dotted';
   environments?: ArchitectureEnvironment[];
   ownerPositionId: string;
   criticality: 'low' | 'medium' | 'high';
@@ -108,9 +111,9 @@ export const ARCHITECTURE_LAYERS: Array<{ id: ArchitectureLayer; label: string; 
   { id: 'other', label: 'Other / TBC', sequence: 60 },
 ];
 
-const GOVERNANCE_URL = '/governance/process-governance.json';
-const INTEGRATIONS_URL = '/architecture/integrations.json';
-const REGULATIONS_URL = '/governance/regulations.json';
+const GOVERNANCE_URL = modelUrl('/governance/process-governance.json');
+const INTEGRATIONS_URL = modelUrl('/architecture/integrations.json');
+const REGULATIONS_URL = modelUrl('/governance/regulations.json');
 
 const GOVERNANCE_AUTOSAVE_KEY = 'enterprise-modeler.process-governance.v1';
 const INTEGRATIONS_AUTOSAVE_KEY = 'enterprise-modeler.integrations.v2';
@@ -204,6 +207,7 @@ function normaliseInterface(value: Partial<InterfaceRecord>, index: number): Int
     direction,
     protocol: value.protocol || '',
     authentication: value.authentication || '',
+    lineStyle: value.lineStyle === 'dashed' || value.lineStyle === 'dotted' ? value.lineStyle : 'solid',
     environments: normaliseEnvironments(value.environments, ''),
     ownerPositionId: value.ownerPositionId || '',
     criticality,
