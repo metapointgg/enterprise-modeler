@@ -1,4 +1,4 @@
-import { modelUrl } from './modelRepository';
+import { MODEL_NAMESPACE, modelUrl } from './modelRepository';
 
 export interface ProcessLayer {
   id: string;
@@ -43,11 +43,11 @@ export interface ProcessRepositorySnapshot {
 
 const PROCESS_LAYERS_URL = modelUrl('/processes/process-layers.json');
 const PROCESS_CATALOG_URL = modelUrl('/processes/process-catalog.json');
-const PROCESS_LAYERS_AUTOSAVE_KEY = 'enterprise-modeler.process-layers.v1';
-const PROCESS_CATALOG_AUTOSAVE_KEY = 'enterprise-modeler.process-catalog.v1';
+const PROCESS_LAYERS_AUTOSAVE_KEY = `enterprise-modeler.${MODEL_NAMESPACE}.process-layers.v1`;
+const PROCESS_CATALOG_AUTOSAVE_KEY = `enterprise-modeler.${MODEL_NAMESPACE}.process-catalog.v1`;
 
-export const PROCESS_BPMN_AUTOSAVE_PREFIX = 'enterprise-modeler.hierarchy.v2.';
-export const PROCESS_METADATA_AUTOSAVE_PREFIX = 'enterprise-modeler.metadata.v2.';
+export const PROCESS_BPMN_AUTOSAVE_PREFIX = `enterprise-modeler.${MODEL_NAMESPACE}.hierarchy.v2.`;
+export const PROCESS_METADATA_AUTOSAVE_PREFIX = `enterprise-modeler.${MODEL_NAMESPACE}.metadata.v2.`;
 
 export const PROCESS_CATALOG: Record<string, ProcessDefinition> = {};
 export let PROCESS_LAYERS: ProcessLayer[] = [];
