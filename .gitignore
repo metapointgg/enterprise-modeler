@@ -32,3 +32,6 @@ runtime.aws.json
 *.njsproj
 *.sln
 *.sw?
+
+# Client-specific models are local data, not application source
+public/client-models/
