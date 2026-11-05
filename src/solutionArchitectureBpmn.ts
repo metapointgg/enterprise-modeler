@@ -485,9 +485,7 @@ class SolutionArchitectureBpmnPage {
   private layerFromIdentifier(identifier: string, prefix: string): ArchitectureLayer | null {
     if (!identifier.startsWith(prefix)) return null;
     const candidate = identifier.slice(prefix.length);
-    return ARCHITECTURE_LAYERS.some((layer) => layer.id === candidate)
-      ? candidate as ArchitectureLayer
-      : null;
+    return candidate ? candidate as ArchitectureLayer : null;
   }
 
   private renderFocusOptions(): void {
