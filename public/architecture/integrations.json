@@ -2,481 +2,910 @@
   "schemaVersion": 2,
   "systems": [
     {
-      "id": "system-portal",
-      "name": "Customer / Employee Portal",
-      "type": "Digital channel",
+      "id": "system-broker-portal",
+      "name": "Broker Portal",
+      "type": "Broker-facing portal",
       "architectureLayer": "channel",
-      "supplier": "Sample / in-house",
-      "environment": "Production, UAT, Dev / Test",
-      "dataClassification": "confidential",
-      "integrationType": "API",
-      "ownerPositionId": "pos-process-owner",
-      "criticality": "high",
-      "active": true,
-      "notes": "Illustrative browser or mobile entry point for users.",
+      "supplier": "TBC",
       "environments": [
         "production",
         "uat",
         "dev-test"
-      ]
+      ],
+      "dataClassification": "confidential",
+      "integrationType": "APIM / API",
+      "criticality": "high",
+      "notes": "Production topology from whiteboard. Pink and green environment markers appear against the portal; Dev/Test and UAT should be validated.",
+      "environment": "Production, UAT, Dev / Test",
+      "ownerPositionId": "",
+      "active": true
     },
     {
-      "id": "system-integration-platform",
-      "name": "API & Integration Platform",
-      "type": "Integration platform",
+      "id": "system-online-mortgage-portal",
+      "name": "Online Mortgage Portal",
+      "type": "Customer mortgage portal",
+      "architectureLayer": "channel",
+      "supplier": "TBC",
+      "environments": [
+        "production",
+        "uat"
+      ],
+      "dataClassification": "confidential",
+      "integrationType": "Experience Cloud / web",
+      "criticality": "high",
+      "notes": "Green UAT marker visible; no clear pink Dev/Test marker in supplied photographs.",
+      "environment": "Production, UAT",
+      "ownerPositionId": "",
+      "active": true
+    },
+    {
+      "id": "system-aip-calculator",
+      "name": "AIP Calculator",
+      "type": "Public web calculator",
+      "architectureLayer": "channel",
+      "supplier": "TBC",
+      "environments": [
+        "production",
+        "uat",
+        "dev-test"
+      ],
+      "dataClassification": "confidential",
+      "integrationType": "Experience Cloud",
+      "criticality": "medium",
+      "notes": "Both non-production markers appear adjacent to the component; validate exact environment coverage.",
+      "environment": "Production, UAT, Dev / Test",
+      "ownerPositionId": "",
+      "active": true
+    },
+    {
+      "id": "system-risk-calculator",
+      "name": "Risk Calculator",
+      "type": "Public web calculator",
+      "architectureLayer": "channel",
+      "supplier": "TBC",
+      "environments": [
+        "production",
+        "uat",
+        "dev-test"
+      ],
+      "dataClassification": "confidential",
+      "integrationType": "API",
+      "criticality": "medium",
+      "notes": "Both non-production markers appear adjacent to the component; whiteboard notes it is invisibly managed.",
+      "environment": "Production, UAT, Dev / Test",
+      "ownerPositionId": "",
+      "active": true
+    },
+    {
+      "id": "system-credit-team-portal",
+      "name": "Credit Team Portal",
+      "type": "Internal credit portal",
+      "architectureLayer": "channel",
+      "supplier": "TBC",
+      "environments": [
+        "production",
+        "uat",
+        "dev-test"
+      ],
+      "dataClassification": "confidential",
+      "integrationType": "Experience Cloud",
+      "criticality": "high",
+      "notes": "Pink and green markers visible in the close-up photograph.",
+      "environment": "Production, UAT, Dev / Test",
+      "ownerPositionId": "",
+      "active": true
+    },
+    {
+      "id": "system-indulge-management-portal",
+      "name": "Indulge Management Portal",
+      "type": "Management portal",
+      "architectureLayer": "channel",
+      "supplier": "TBC",
+      "environments": [
+        "production"
+      ],
+      "dataClassification": "confidential",
+      "integrationType": "TBC",
+      "criticality": "medium",
+      "notes": "No explicit Dev/Test or UAT dot identified from the supplied photographs.",
+      "environment": "Production",
+      "ownerPositionId": "",
+      "active": true
+    },
+    {
+      "id": "system-indulge-customer-portal",
+      "name": "Indulge Customer Portal",
+      "type": "Customer portal",
+      "architectureLayer": "channel",
+      "supplier": "TBC",
+      "environments": [
+        "production"
+      ],
+      "dataClassification": "confidential",
+      "integrationType": "TBC",
+      "criticality": "medium",
+      "notes": "Shown on production whiteboard; exact connection and non-production coverage are TBC.",
+      "environment": "Production",
+      "ownerPositionId": "",
+      "active": true
+    },
+    {
+      "id": "system-salesforce",
+      "name": "Salesforce",
+      "type": "CRM / workflow platform",
+      "architectureLayer": "platform",
+      "supplier": "Salesforce",
+      "environments": [
+        "production",
+        "uat",
+        "dev-test"
+      ],
+      "dataClassification": "confidential",
+      "integrationType": "API / Experience Cloud / Jitterbit",
+      "criticality": "high",
+      "notes": "Central mortgage/customer platform. Pink and green markers visible. Whiteboard separately notes UAT and Dev refreshes are ad hoc and data is scrambled.",
+      "environment": "Production, UAT, Dev / Test",
+      "ownerPositionId": "",
+      "active": true
+    },
+    {
+      "id": "system-jade",
+      "name": "JADE",
+      "type": "Mortgage application platform",
+      "architectureLayer": "platform",
+      "supplier": "TBC",
+      "environments": [
+        "production"
+      ],
+      "dataClassification": "confidential",
+      "integrationType": "APIM / TBC",
+      "criticality": "high",
+      "notes": "Production join point between Broker Portal and eMortgages. No clear non-production dot visible in supplied photographs.",
+      "environment": "Production",
+      "ownerPositionId": "",
+      "active": true
+    },
+    {
+      "id": "system-emortgages",
+      "name": "eMortgages",
+      "type": "Mortgage platform",
+      "architectureLayer": "platform",
+      "supplier": "TBC",
+      "environments": [
+        "production",
+        "uat",
+        "dev-test"
+      ],
+      "dataClassification": "confidential",
+      "integrationType": "TBC",
+      "criticality": "high",
+      "notes": "DEV/UAT annotation is visible near the component; exact interface parity needs validation.",
+      "environment": "Production, UAT, Dev / Test",
+      "ownerPositionId": "",
+      "active": true
+    },
+    {
+      "id": "system-t24",
+      "name": "T24",
+      "type": "Core banking platform",
+      "architectureLayer": "platform",
+      "supplier": "Temenos",
+      "environments": [
+        "production",
+        "uat",
+        "dev-test"
+      ],
+      "dataClassification": "restricted",
+      "integrationType": "SOAP / SFTP / SQL / file",
+      "criticality": "high",
+      "notes": "Core banking join point. Pink and green markers visible. Whiteboard notes UAT and Dev refreshes are ad hoc and not scrambled.",
+      "environment": "Production, UAT, Dev / Test",
+      "ownerPositionId": "",
+      "active": true
+    },
+    {
+      "id": "system-bragi",
+      "name": "BRAGI",
+      "type": "Data / reporting integration platform",
       "architectureLayer": "integration",
-      "supplier": "Sample provider",
-      "environment": "Production, UAT, Dev / Test",
-      "dataClassification": "confidential",
-      "integrationType": "REST / events / file",
-      "ownerPositionId": "pos-process-owner",
-      "criticality": "high",
-      "active": true,
-      "notes": "Illustrative API gateway, orchestration and integration layer.",
-      "environments": [
-        "production",
-        "uat",
-        "dev-test"
-      ]
-    },
-    {
-      "id": "system-crm",
-      "name": "CRM Platform",
-      "type": "Customer / stakeholder relationship management",
-      "architectureLayer": "platform",
-      "supplier": "Sample provider",
-      "environment": "Production, UAT, Dev / Test",
-      "dataClassification": "confidential",
-      "integrationType": "API / events",
-      "ownerPositionId": "pos-process-owner",
-      "criticality": "high",
-      "active": true,
-      "notes": "Example system for contacts, cases, interactions and workflow.",
-      "environments": [
-        "production",
-        "uat",
-        "dev-test"
-      ]
-    },
-    {
-      "id": "system-erp",
-      "name": "ERP Platform",
-      "type": "Enterprise resource planning",
-      "architectureLayer": "platform",
-      "supplier": "Sample provider",
-      "environment": "Production, UAT",
-      "dataClassification": "confidential",
-      "integrationType": "API / file / events",
-      "ownerPositionId": "pos-process-owner",
-      "criticality": "high",
-      "active": true,
-      "notes": "Example system of record for finance, procurement and operational transactions.",
-      "environments": [
-        "production",
-        "uat"
-      ]
-    },
-    {
-      "id": "system-documents",
-      "name": "Document Management",
-      "type": "Document and content management",
-      "architectureLayer": "platform",
-      "supplier": "Sample provider",
-      "environment": "Production, UAT",
-      "dataClassification": "confidential",
-      "integrationType": "API / links",
-      "ownerPositionId": "pos-process-analyst",
-      "criticality": "medium",
-      "active": true,
-      "notes": "Example document repository and records-management platform.",
-      "environments": [
-        "production",
-        "uat"
-      ]
-    },
-    {
-      "id": "system-data-platform",
-      "name": "Enterprise Data Platform",
-      "type": "Data warehouse / lakehouse",
-      "architectureLayer": "platform",
-      "supplier": "Sample / cloud",
-      "environment": "Production, UAT, Dev / Test",
-      "dataClassification": "restricted",
-      "integrationType": "ETL / ELT / CDC",
-      "ownerPositionId": "pos-process-analyst",
-      "criticality": "high",
-      "active": true,
-      "notes": "Illustrative analytical data store for reporting and downstream analysis.",
-      "environments": [
-        "production",
-        "uat",
-        "dev-test"
-      ]
-    },
-    {
-      "id": "system-bi",
-      "name": "BI & Reporting",
-      "type": "Analytics and reporting",
-      "architectureLayer": "platform",
-      "supplier": "Sample provider",
-      "environment": "Production, UAT",
-      "dataClassification": "confidential",
-      "integrationType": "Semantic model / SQL",
-      "ownerPositionId": "pos-process-analyst",
-      "criticality": "medium",
-      "active": true,
-      "notes": "Illustrative management information and dashboard platform.",
-      "environments": [
-        "production",
-        "uat"
-      ]
-    },
-    {
-      "id": "system-hris",
-      "name": "HR Information System",
-      "type": "People / HR system",
-      "architectureLayer": "platform",
-      "supplier": "Sample provider",
-      "environment": "Production, UAT",
-      "dataClassification": "confidential",
-      "integrationType": "API / file",
-      "ownerPositionId": "pos-process-owner",
-      "criticality": "medium",
-      "active": true,
-      "notes": "Illustrative employee lifecycle and organisational data platform.",
-      "environments": [
-        "production",
-        "uat"
-      ]
-    },
-    {
-      "id": "system-collaboration",
-      "name": "Collaboration Platform",
-      "type": "Email, messaging and productivity",
-      "architectureLayer": "platform",
-      "supplier": "Sample provider",
-      "environment": "Production",
-      "dataClassification": "confidential",
-      "integrationType": "Native / API",
-      "ownerPositionId": "pos-process-owner",
-      "criticality": "medium",
-      "active": true,
-      "notes": "Illustrative email, messaging and productivity platform.",
+      "supplier": "TBC",
       "environments": [
         "production"
-      ]
+      ],
+      "dataClassification": "confidential",
+      "integrationType": "Jitterbit / database sync",
+      "criticality": "high",
+      "notes": "Canonical spelling follows user clarification: BRAGI. Joins T24-side data feeds to Salesforce and Tableau.",
+      "environment": "Production",
+      "ownerPositionId": "",
+      "active": true
     },
     {
-      "id": "system-iam",
-      "name": "Identity & Access Management",
-      "type": "Identity and access management",
-      "architectureLayer": "security",
-      "supplier": "Sample provider",
-      "environment": "Production, UAT, Dev / Test",
+      "id": "system-sql-staging",
+      "name": "SQL Staging",
+      "type": "Integration / staging database",
+      "architectureLayer": "integration",
+      "supplier": "TBC",
+      "environments": [
+        "production"
+      ],
+      "dataClassification": "confidential",
+      "integrationType": "SQL / overnight sync",
+      "criticality": "medium",
+      "notes": "Small SQL component shown between T24 and BRAGI. Exact implementation and ownership are TBC.",
+      "environment": "Production",
+      "ownerPositionId": "",
+      "active": true
+    },
+    {
+      "id": "system-bip",
+      "name": "BIP",
+      "type": "Payments / integration platform",
+      "architectureLayer": "integration",
+      "supplier": "TBC",
+      "environments": [
+        "production",
+        "uat"
+      ],
       "dataClassification": "restricted",
-      "integrationType": "OIDC / SAML / SCIM",
-      "ownerPositionId": "pos-process-owner",
+      "integrationType": "SOAP / SFTP / payment messages",
       "criticality": "high",
-      "active": true,
-      "notes": "Illustrative workforce and application identity, MFA and access-control service.",
+      "notes": "UAT is explicitly referenced in whiteboard environment notes; no Dev entry is shown.",
+      "environment": "Production, UAT",
+      "ownerPositionId": "",
+      "active": true
+    },
+    {
+      "id": "system-tableau",
+      "name": "Tableau",
+      "type": "BI / reporting platform",
+      "architectureLayer": "platform",
+      "supplier": "Tableau",
+      "environments": [
+        "production"
+      ],
+      "dataClassification": "confidential",
+      "integrationType": "Reporting feed",
+      "criticality": "medium",
+      "notes": "Shown downstream of BRAGI.",
+      "environment": "Production",
+      "ownerPositionId": "",
+      "active": true
+    },
+    {
+      "id": "system-fcm",
+      "name": "FCM",
+      "type": "Processing platform",
+      "architectureLayer": "platform",
+      "supplier": "TBC",
+      "environments": [
+        "production",
+        "dev-test"
+      ],
+      "dataClassification": "confidential",
+      "integrationType": "TBC",
+      "criticality": "medium",
+      "notes": "Pink Dev/Test marker appears adjacent to FCM; no clear green UAT marker is visible.",
+      "environment": "Production, Dev / Test",
+      "ownerPositionId": "",
+      "active": true
+    },
+    {
+      "id": "system-sio",
+      "name": "SIO",
+      "type": "Identity / customer access component",
+      "architectureLayer": "security",
+      "supplier": "TBC",
       "environments": [
         "production",
         "uat",
         "dev-test"
-      ]
+      ],
+      "dataClassification": "restricted",
+      "integrationType": "SOAP / TBC",
+      "criticality": "high",
+      "notes": "Pink and green markers appear in the SIO/HID area; exact environment split should be confirmed.",
+      "environment": "Production, UAT, Dev / Test",
+      "ownerPositionId": "",
+      "active": true
     },
     {
-      "id": "system-security-monitoring",
-      "name": "Security Monitoring",
-      "type": "SIEM / security operations",
+      "id": "system-hid",
+      "name": "HID",
+      "type": "Identity / access component",
       "architectureLayer": "security",
-      "supplier": "Sample provider",
-      "environment": "Production, UAT",
-      "dataClassification": "restricted",
-      "integrationType": "Log and event ingestion",
-      "ownerPositionId": "pos-process-owner",
-      "criticality": "high",
-      "active": true,
-      "notes": "Illustrative security event monitoring and incident detection service.",
+      "supplier": "HID",
       "environments": [
         "production",
         "uat"
-      ]
+      ],
+      "dataClassification": "restricted",
+      "integrationType": "TBC",
+      "criticality": "high",
+      "notes": "Green marker visible adjacent to HID; no clear pink marker identified.",
+      "environment": "Production, UAT",
+      "ownerPositionId": "",
+      "active": true
     },
     {
-      "id": "system-backup",
-      "name": "Backup & Recovery",
-      "type": "Backup and recovery",
-      "architectureLayer": "security",
-      "supplier": "Sample provider",
-      "environment": "Production",
-      "dataClassification": "restricted",
-      "integrationType": "Agent / API",
-      "ownerPositionId": "pos-process-owner",
+      "id": "system-ln-gen-doc",
+      "name": "LN Gen Doc",
+      "type": "Document generation",
+      "architectureLayer": "platform",
+      "supplier": "TBC",
+      "environments": [
+        "production",
+        "uat",
+        "dev-test"
+      ],
+      "dataClassification": "confidential",
+      "integrationType": "SFTP / file",
+      "criticality": "medium",
+      "notes": "Pink and green markers visible in document-generation cluster.",
+      "environment": "Production, UAT, Dev / Test",
+      "ownerPositionId": "",
+      "active": true
+    },
+    {
+      "id": "system-om-doc-mgmt",
+      "name": "OM Doc Mgmt",
+      "type": "Document management",
+      "architectureLayer": "platform",
+      "supplier": "TBC",
+      "environments": [
+        "production",
+        "uat",
+        "dev-test"
+      ],
+      "dataClassification": "confidential",
+      "integrationType": "File / document integration",
       "criticality": "high",
-      "active": true,
-      "notes": "Illustrative backup and recovery service.",
+      "notes": "Pink and green markers visible.",
+      "environment": "Production, UAT, Dev / Test",
+      "ownerPositionId": "",
+      "active": true
+    },
+    {
+      "id": "system-bpm-print-auto",
+      "name": "BPM Print Auto",
+      "type": "Print automation",
+      "architectureLayer": "platform",
+      "supplier": "TBC",
+      "environments": [
+        "production",
+        "uat",
+        "dev-test"
+      ],
+      "dataClassification": "confidential",
+      "integrationType": "Document / print",
+      "criticality": "medium",
+      "notes": "Non-production markers appear in document cluster; validate exact coverage.",
+      "environment": "Production, UAT, Dev / Test",
+      "ownerPositionId": "",
+      "active": true
+    },
+    {
+      "id": "system-file-server-repo",
+      "name": "File Server Repo",
+      "type": "Document repository",
+      "architectureLayer": "platform",
+      "supplier": "TBC",
+      "environments": [
+        "production",
+        "uat",
+        "dev-test"
+      ],
+      "dataClassification": "confidential",
+      "integrationType": "File share",
+      "criticality": "medium",
+      "notes": "Non-production markers appear in document cluster; validate exact coverage.",
+      "environment": "Production, UAT, Dev / Test",
+      "ownerPositionId": "",
+      "active": true
+    },
+    {
+      "id": "system-report-file-share",
+      "name": "Reporting File Share",
+      "type": "File share / reporting output",
+      "architectureLayer": "platform",
+      "supplier": "TBC",
       "environments": [
         "production"
-      ]
-    },
-    {
-      "id": "system-id-verification",
-      "name": "External Identity Verification",
-      "type": "External verification service",
-      "architectureLayer": "partner",
-      "supplier": "Sample provider",
-      "environment": "Production, UAT",
-      "dataClassification": "restricted",
-      "integrationType": "API",
-      "ownerPositionId": "pos-process-owner",
-      "criticality": "medium",
-      "active": true,
-      "notes": "Illustrative external identity and document verification provider.",
-      "environments": [
-        "production",
-        "uat"
-      ]
-    },
-    {
-      "id": "system-esignature",
-      "name": "Electronic Signature",
-      "type": "Electronic signature service",
-      "architectureLayer": "partner",
-      "supplier": "Sample provider",
-      "environment": "Production, UAT",
+      ],
       "dataClassification": "confidential",
-      "integrationType": "API / webhook",
-      "ownerPositionId": "pos-process-owner",
+      "integrationType": "Overnight file",
       "criticality": "medium",
-      "active": true,
-      "notes": "Illustrative third-party electronic signature provider.",
+      "notes": "Shown to the lower right of T24 for overnight reports, e.g. finance.",
+      "environment": "Production",
+      "ownerPositionId": "",
+      "active": true
+    },
+    {
+      "id": "system-hsbc",
+      "name": "HSBC",
+      "type": "External banking service",
+      "architectureLayer": "partner",
+      "supplier": "HSBC",
       "environments": [
-        "production",
-        "uat"
-      ]
+        "production"
+      ],
+      "dataClassification": "restricted",
+      "integrationType": "SFTP / payment messages",
+      "criticality": "high",
+      "notes": "External endpoint. Whiteboard questions ownership of HSBC SFTP server/connection; non-production coverage is TBC.",
+      "environment": "Production",
+      "ownerPositionId": "",
+      "active": true
+    },
+    {
+      "id": "system-gfs",
+      "name": "GFS",
+      "type": "TBC",
+      "architectureLayer": "other",
+      "supplier": "TBC",
+      "environments": [
+        "uat",
+        "dev-test"
+      ],
+      "dataClassification": "confidential",
+      "integrationType": "Manual transfer / TBC",
+      "criticality": "medium",
+      "notes": "Appears only in environment/refresh notes: UAT and Dev are refreshed ad hoc and not scrambled. Production topology and system role are not yet confirmed.",
+      "environment": "UAT, Dev / Test",
+      "ownerPositionId": "",
+      "active": true
+    },
+    {
+      "id": "system-nabu",
+      "name": "NABU",
+      "type": "TBC data holding area",
+      "architectureLayer": "other",
+      "supplier": "TBC",
+      "environments": [
+        "production"
+      ],
+      "dataClassification": "confidential",
+      "integrationType": "TBC",
+      "criticality": "medium",
+      "notes": "Annotated 'Home for data with no home'. No explicit interface drawn; retain as TBC pending validation.",
+      "environment": "Production",
+      "ownerPositionId": "",
+      "active": true
     }
   ],
   "interfaces": [
     {
-      "id": "if-portal-integration",
-      "name": "Portal → Integration Platform",
-      "sourceSystemId": "system-portal",
-      "targetSystemId": "system-integration-platform",
+      "id": "if-broker-jade",
+      "name": "Broker Portal ↔ JADE",
+      "sourceSystemId": "system-broker-portal",
+      "targetSystemId": "system-jade",
       "direction": "bidirectional",
-      "protocol": "REST / JSON",
-      "authentication": "OIDC / OAuth2",
-      "ownerPositionId": "pos-process-owner",
+      "protocol": "APIM",
+      "authentication": "TBC",
+      "environments": [
+        "production"
+      ],
+      "ownerPositionId": "",
       "criticality": "high",
       "status": "active",
       "documentationReference": "",
-      "notes": "Illustrative digital-channel API integration.",
+      "notes": "Production integration explicitly drawn. Non-production interface coverage is inferred from endpoint availability unless explicitly stated and should be validated."
+    },
+    {
+      "id": "if-broker-salesforce",
+      "name": "Broker Portal ↔ Salesforce",
+      "sourceSystemId": "system-broker-portal",
+      "targetSystemId": "system-salesforce",
+      "direction": "bidirectional",
+      "protocol": "APIM",
+      "authentication": "TBC",
       "environments": [
         "production",
         "uat",
         "dev-test"
-      ]
-    },
-    {
-      "id": "if-integration-crm",
-      "name": "Integration Platform ↔ CRM",
-      "sourceSystemId": "system-integration-platform",
-      "targetSystemId": "system-crm",
-      "direction": "bidirectional",
-      "protocol": "REST / events",
-      "authentication": "OAuth2",
-      "ownerPositionId": "pos-process-owner",
+      ],
+      "ownerPositionId": "",
       "criticality": "high",
       "status": "active",
       "documentationReference": "",
-      "notes": "Illustrative CRM integration.",
+      "notes": "Vertical APIM connection explicitly drawn. Non-production interface coverage is inferred from endpoint availability unless explicitly stated and should be validated."
+    },
+    {
+      "id": "if-jade-emortgages",
+      "name": "JADE ↔ eMortgages",
+      "sourceSystemId": "system-jade",
+      "targetSystemId": "system-emortgages",
+      "direction": "bidirectional",
+      "protocol": "TBC",
+      "authentication": "TBC",
+      "environments": [
+        "production"
+      ],
+      "ownerPositionId": "",
+      "criticality": "high",
+      "status": "active",
+      "documentationReference": "",
+      "notes": "Direct relationship shown; mechanism not annotated. Non-production interface coverage is inferred from endpoint availability unless explicitly stated and should be validated."
+    },
+    {
+      "id": "if-online-mortgage-salesforce",
+      "name": "Online Mortgage Portal → Salesforce",
+      "sourceSystemId": "system-online-mortgage-portal",
+      "targetSystemId": "system-salesforce",
+      "direction": "outbound",
+      "protocol": "Experience Cloud",
+      "authentication": "TBC",
+      "environments": [
+        "production",
+        "uat"
+      ],
+      "ownerPositionId": "",
+      "criticality": "high",
+      "status": "active",
+      "documentationReference": "",
+      "notes": "Experience Cloud annotation shown. Non-production interface coverage is inferred from endpoint availability unless explicitly stated and should be validated."
+    },
+    {
+      "id": "if-aip-salesforce",
+      "name": "AIP Calculator → Salesforce",
+      "sourceSystemId": "system-aip-calculator",
+      "targetSystemId": "system-salesforce",
+      "direction": "outbound",
+      "protocol": "Experience Cloud",
+      "authentication": "TBC",
       "environments": [
         "production",
         "uat",
         "dev-test"
-      ]
-    },
-    {
-      "id": "if-integration-erp",
-      "name": "Integration Platform ↔ ERP",
-      "sourceSystemId": "system-integration-platform",
-      "targetSystemId": "system-erp",
-      "direction": "bidirectional",
-      "protocol": "REST / events",
-      "authentication": "OAuth2 / service identity",
-      "ownerPositionId": "pos-process-owner",
-      "criticality": "high",
-      "status": "active",
-      "documentationReference": "",
-      "notes": "Illustrative ERP integration.",
-      "environments": [
-        "production",
-        "uat"
-      ]
-    },
-    {
-      "id": "if-crm-documents",
-      "name": "CRM ↔ Document Management",
-      "sourceSystemId": "system-crm",
-      "targetSystemId": "system-documents",
-      "direction": "bidirectional",
-      "protocol": "REST / document links",
-      "authentication": "OAuth2",
-      "ownerPositionId": "pos-process-analyst",
+      ],
+      "ownerPositionId": "",
       "criticality": "medium",
       "status": "active",
       "documentationReference": "",
-      "notes": "Illustrative document and case-content integration.",
-      "environments": [
-        "production",
-        "uat"
-      ]
+      "notes": "Experience Cloud annotation shown. Non-production interface coverage is inferred from endpoint availability unless explicitly stated and should be validated."
     },
     {
-      "id": "if-crm-data",
-      "name": "CRM → Data Platform",
-      "sourceSystemId": "system-crm",
-      "targetSystemId": "system-data-platform",
+      "id": "if-risk-salesforce",
+      "name": "Risk Calculator → Salesforce",
+      "sourceSystemId": "system-risk-calculator",
+      "targetSystemId": "system-salesforce",
       "direction": "outbound",
-      "protocol": "ETL / CDC",
-      "authentication": "Service identity",
-      "ownerPositionId": "pos-process-analyst",
-      "criticality": "medium",
-      "status": "active",
-      "documentationReference": "",
-      "notes": "Illustrative analytical data feed.",
+      "protocol": "API",
+      "authentication": "TBC",
       "environments": [
         "production",
         "uat",
         "dev-test"
-      ]
-    },
-    {
-      "id": "if-erp-data",
-      "name": "ERP → Data Platform",
-      "sourceSystemId": "system-erp",
-      "targetSystemId": "system-data-platform",
-      "direction": "outbound",
-      "protocol": "ETL / CDC",
-      "authentication": "Service identity",
-      "ownerPositionId": "pos-process-analyst",
-      "criticality": "high",
-      "status": "active",
-      "documentationReference": "",
-      "notes": "Illustrative operational and financial data feed.",
-      "environments": [
-        "production",
-        "uat"
-      ]
-    },
-    {
-      "id": "if-data-bi",
-      "name": "Data Platform → BI & Reporting",
-      "sourceSystemId": "system-data-platform",
-      "targetSystemId": "system-bi",
-      "direction": "outbound",
-      "protocol": "SQL / semantic model",
-      "authentication": "Service identity",
-      "ownerPositionId": "pos-process-analyst",
+      ],
+      "ownerPositionId": "",
       "criticality": "medium",
       "status": "active",
       "documentationReference": "",
-      "notes": "Illustrative reporting feed.",
-      "environments": [
-        "production",
-        "uat"
-      ]
+      "notes": "API annotation shown. Non-production interface coverage is inferred from endpoint availability unless explicitly stated and should be validated."
     },
     {
-      "id": "if-hris-iam",
-      "name": "HRIS → Identity & Access Management",
-      "sourceSystemId": "system-hris",
-      "targetSystemId": "system-iam",
+      "id": "if-credit-salesforce",
+      "name": "Credit Team Portal → Salesforce",
+      "sourceSystemId": "system-credit-team-portal",
+      "targetSystemId": "system-salesforce",
       "direction": "outbound",
-      "protocol": "SCIM / API",
-      "authentication": "Service identity",
-      "ownerPositionId": "pos-process-owner",
-      "criticality": "high",
-      "status": "active",
-      "documentationReference": "",
-      "notes": "Illustrative joiner, mover and leaver identity feed.",
-      "environments": [
-        "production",
-        "uat"
-      ]
-    },
-    {
-      "id": "if-iam-portal",
-      "name": "Identity & Access Management → Portal",
-      "sourceSystemId": "system-iam",
-      "targetSystemId": "system-portal",
-      "direction": "bidirectional",
-      "protocol": "OIDC",
-      "authentication": "OIDC",
-      "ownerPositionId": "pos-process-owner",
-      "criticality": "high",
-      "status": "active",
-      "documentationReference": "",
-      "notes": "Illustrative authentication and authorisation relationship.",
+      "protocol": "Experience Cloud",
+      "authentication": "TBC",
       "environments": [
         "production",
         "uat",
         "dev-test"
-      ]
-    },
-    {
-      "id": "if-iam-security",
-      "name": "Identity Events → Security Monitoring",
-      "sourceSystemId": "system-iam",
-      "targetSystemId": "system-security-monitoring",
-      "direction": "outbound",
-      "protocol": "Log / event streaming",
-      "authentication": "Managed service identity",
-      "ownerPositionId": "pos-process-owner",
+      ],
+      "ownerPositionId": "",
       "criticality": "high",
       "status": "active",
       "documentationReference": "",
-      "notes": "Illustrative identity security telemetry.",
-      "environments": [
-        "production",
-        "uat"
-      ]
+      "notes": "Experience Cloud annotation shown. Non-production interface coverage is inferred from endpoint availability unless explicitly stated and should be validated."
     },
     {
-      "id": "if-integration-idv",
-      "name": "Integration Platform → Identity Verification",
-      "sourceSystemId": "system-integration-platform",
-      "targetSystemId": "system-id-verification",
+      "id": "if-salesforce-bragi",
+      "name": "Salesforce ↔ BRAGI",
+      "sourceSystemId": "system-salesforce",
+      "targetSystemId": "system-bragi",
       "direction": "bidirectional",
-      "protocol": "REST",
-      "authentication": "OAuth2 / mTLS",
-      "ownerPositionId": "pos-process-owner",
+      "protocol": "Jitterbit",
+      "authentication": "TBC",
+      "environments": [
+        "production"
+      ],
+      "ownerPositionId": "",
+      "criticality": "high",
+      "status": "active",
+      "documentationReference": "",
+      "notes": "Jitterbit explicitly labelled. Non-production interface coverage is inferred from endpoint availability unless explicitly stated and should be validated."
+    },
+    {
+      "id": "if-t24-sql",
+      "name": "T24 → SQL Staging",
+      "sourceSystemId": "system-t24",
+      "targetSystemId": "system-sql-staging",
+      "direction": "outbound",
+      "protocol": "SQL / DB sync",
+      "authentication": "TBC",
+      "environments": [
+        "production"
+      ],
+      "ownerPositionId": "",
+      "criticality": "high",
+      "status": "active",
+      "documentationReference": "",
+      "notes": "SQL component shown on T24-to-BRAGI path. Non-production interface coverage is inferred from endpoint availability unless explicitly stated and should be validated."
+    },
+    {
+      "id": "if-sql-bragi",
+      "name": "SQL Staging → BRAGI",
+      "sourceSystemId": "system-sql-staging",
+      "targetSystemId": "system-bragi",
+      "direction": "outbound",
+      "protocol": "Overnight sync",
+      "authentication": "TBC",
+      "environments": [
+        "production"
+      ],
+      "ownerPositionId": "",
+      "criticality": "high",
+      "status": "active",
+      "documentationReference": "",
+      "notes": "Overnight sync annotation shown. Non-production interface coverage is inferred from endpoint availability unless explicitly stated and should be validated."
+    },
+    {
+      "id": "if-bragi-tableau",
+      "name": "BRAGI → Tableau",
+      "sourceSystemId": "system-bragi",
+      "targetSystemId": "system-tableau",
+      "direction": "outbound",
+      "protocol": "Reporting feed",
+      "authentication": "TBC",
+      "environments": [
+        "production"
+      ],
+      "ownerPositionId": "",
       "criticality": "medium",
       "status": "active",
       "documentationReference": "",
-      "notes": "Illustrative external verification integration.",
+      "notes": "Vertical feed explicitly drawn. Non-production interface coverage is inferred from endpoint availability unless explicitly stated and should be validated."
+    },
+    {
+      "id": "if-bip-hsbc",
+      "name": "BIP ↔ HSBC",
+      "sourceSystemId": "system-bip",
+      "targetSystemId": "system-hsbc",
+      "direction": "bidirectional",
+      "protocol": "PAIN / CAMT / SFTP",
+      "authentication": "TBC",
+      "environments": [
+        "production"
+      ],
+      "ownerPositionId": "",
+      "criticality": "high",
+      "status": "active",
+      "documentationReference": "",
+      "notes": "PAIN and CAMT 52153-style annotation visible; exact message set needs confirmation. Non-production interface coverage is inferred from endpoint availability unless explicitly stated and should be validated."
+    },
+    {
+      "id": "if-t24-bip",
+      "name": "T24 ↔ BIP",
+      "sourceSystemId": "system-t24",
+      "targetSystemId": "system-bip",
+      "direction": "bidirectional",
+      "protocol": "SOAP / SFTP / PAIN",
+      "authentication": "TBC",
       "environments": [
         "production",
         "uat"
-      ]
+      ],
+      "ownerPositionId": "",
+      "criticality": "high",
+      "status": "active",
+      "documentationReference": "",
+      "notes": "SOAP and SFTP/PAIN annotations shown. Whiteboard notes T24 UAT → BIP UAT manual transfer/no SFTP. Non-production interface coverage is inferred from endpoint availability unless explicitly stated and should be validated."
     },
     {
-      "id": "if-crm-esignature",
-      "name": "CRM ↔ Electronic Signature",
-      "sourceSystemId": "system-crm",
-      "targetSystemId": "system-esignature",
+      "id": "if-fcm-t24",
+      "name": "FCM → T24",
+      "sourceSystemId": "system-fcm",
+      "targetSystemId": "system-t24",
+      "direction": "outbound",
+      "protocol": "TBC",
+      "authentication": "TBC",
+      "environments": [
+        "production",
+        "dev-test"
+      ],
+      "ownerPositionId": "",
+      "criticality": "medium",
+      "status": "tbc",
+      "documentationReference": "",
+      "notes": "Relationship drawn; direction/mechanism need confirmation. Non-production interface coverage is inferred from endpoint availability unless explicitly stated and should be validated."
+    },
+    {
+      "id": "if-sio-hid",
+      "name": "SIO ↔ HID",
+      "sourceSystemId": "system-sio",
+      "targetSystemId": "system-hid",
       "direction": "bidirectional",
-      "protocol": "REST / webhook",
-      "authentication": "OAuth2",
-      "ownerPositionId": "pos-process-owner",
+      "protocol": "TBC",
+      "authentication": "TBC",
+      "environments": [
+        "production",
+        "uat"
+      ],
+      "ownerPositionId": "",
+      "criticality": "high",
+      "status": "active",
+      "documentationReference": "",
+      "notes": "Direct bidirectional arrows shown. Non-production interface coverage is inferred from endpoint availability unless explicitly stated and should be validated."
+    },
+    {
+      "id": "if-sio-t24",
+      "name": "SIO ↔ T24",
+      "sourceSystemId": "system-sio",
+      "targetSystemId": "system-t24",
+      "direction": "bidirectional",
+      "protocol": "SOAP",
+      "authentication": "TBC",
+      "environments": [
+        "production",
+        "uat",
+        "dev-test"
+      ],
+      "ownerPositionId": "",
+      "criticality": "high",
+      "status": "active",
+      "documentationReference": "",
+      "notes": "SOAP explicitly annotated. Non-production interface coverage is inferred from endpoint availability unless explicitly stated and should be validated."
+    },
+    {
+      "id": "if-indulge-management-hid",
+      "name": "Indulge Management Portal ↔ HID",
+      "sourceSystemId": "system-indulge-management-portal",
+      "targetSystemId": "system-hid",
+      "direction": "bidirectional",
+      "protocol": "TBC",
+      "authentication": "TBC",
+      "environments": [
+        "production"
+      ],
+      "ownerPositionId": "",
       "criticality": "medium",
       "status": "active",
       "documentationReference": "",
-      "notes": "Illustrative document-signing integration.",
+      "notes": "Direct relationship drawn. Non-production interface coverage is inferred from endpoint availability unless explicitly stated and should be validated."
+    },
+    {
+      "id": "if-hid-t24-registration",
+      "name": "HID → T24 User Registration",
+      "sourceSystemId": "system-hid",
+      "targetSystemId": "system-t24",
+      "direction": "outbound",
+      "protocol": "TBC",
+      "authentication": "TBC",
       "environments": [
         "production",
         "uat"
-      ]
+      ],
+      "ownerPositionId": "",
+      "criticality": "high",
+      "status": "active",
+      "documentationReference": "",
+      "notes": "User registration annotation shown on path into T24. Non-production interface coverage is inferred from endpoint availability unless explicitly stated and should be validated."
+    },
+    {
+      "id": "if-t24-ln-gen-doc",
+      "name": "T24 → LN Gen Doc",
+      "sourceSystemId": "system-t24",
+      "targetSystemId": "system-ln-gen-doc",
+      "direction": "outbound",
+      "protocol": "SFTP",
+      "authentication": "TBC",
+      "environments": [
+        "production",
+        "uat",
+        "dev-test"
+      ],
+      "ownerPositionId": "",
+      "criticality": "medium",
+      "status": "active",
+      "documentationReference": "",
+      "notes": "SFTP annotation shown on document-generation path. Non-production interface coverage is inferred from endpoint availability unless explicitly stated and should be validated."
+    },
+    {
+      "id": "if-t24-om-doc",
+      "name": "T24 ↔ OM Doc Mgmt",
+      "sourceSystemId": "system-t24",
+      "targetSystemId": "system-om-doc-mgmt",
+      "direction": "bidirectional",
+      "protocol": "View / TBC",
+      "authentication": "TBC",
+      "environments": [
+        "production",
+        "uat",
+        "dev-test"
+      ],
+      "ownerPositionId": "",
+      "criticality": "high",
+      "status": "active",
+      "documentationReference": "",
+      "notes": "View annotation shown; exact mechanism TBC. Non-production interface coverage is inferred from endpoint availability unless explicitly stated and should be validated."
+    },
+    {
+      "id": "if-ln-doc-om-doc",
+      "name": "LN Gen Doc → OM Doc Mgmt",
+      "sourceSystemId": "system-ln-gen-doc",
+      "targetSystemId": "system-om-doc-mgmt",
+      "direction": "outbound",
+      "protocol": "Document / file",
+      "authentication": "TBC",
+      "environments": [
+        "production",
+        "uat",
+        "dev-test"
+      ],
+      "ownerPositionId": "",
+      "criticality": "medium",
+      "status": "active",
+      "documentationReference": "",
+      "notes": "Relationship shown in document cluster. Non-production interface coverage is inferred from endpoint availability unless explicitly stated and should be validated."
+    },
+    {
+      "id": "if-om-doc-bpm",
+      "name": "OM Doc Mgmt → BPM Print Auto",
+      "sourceSystemId": "system-om-doc-mgmt",
+      "targetSystemId": "system-bpm-print-auto",
+      "direction": "outbound",
+      "protocol": "Document / print",
+      "authentication": "TBC",
+      "environments": [
+        "production",
+        "uat",
+        "dev-test"
+      ],
+      "ownerPositionId": "",
+      "criticality": "medium",
+      "status": "active",
+      "documentationReference": "",
+      "notes": "Relationship shown. Non-production interface coverage is inferred from endpoint availability unless explicitly stated and should be validated."
+    },
+    {
+      "id": "if-om-doc-file-repo",
+      "name": "OM Doc Mgmt → File Server Repo",
+      "sourceSystemId": "system-om-doc-mgmt",
+      "targetSystemId": "system-file-server-repo",
+      "direction": "outbound",
+      "protocol": "File",
+      "authentication": "TBC",
+      "environments": [
+        "production",
+        "uat",
+        "dev-test"
+      ],
+      "ownerPositionId": "",
+      "criticality": "medium",
+      "status": "active",
+      "documentationReference": "",
+      "notes": "Relationship shown. Non-production interface coverage is inferred from endpoint availability unless explicitly stated and should be validated."
+    },
+    {
+      "id": "if-t24-report-share",
+      "name": "T24 → Reporting File Share",
+      "sourceSystemId": "system-t24",
+      "targetSystemId": "system-report-file-share",
+      "direction": "outbound",
+      "protocol": "Overnight file",
+      "authentication": "TBC",
+      "environments": [
+        "production"
+      ],
+      "ownerPositionId": "",
+      "criticality": "medium",
+      "status": "active",
+      "documentationReference": "",
+      "notes": "Annotated overnight reports, e.g. finance. Non-production interface coverage is inferred from endpoint availability unless explicitly stated and should be validated."
     }
   ]
 }
