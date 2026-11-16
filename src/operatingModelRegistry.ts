@@ -1,5 +1,5 @@
 import { MODEL_NAMESPACE, modelUrl } from './modelRepository';
-import { readModelJson, writeModelJson } from './modelWorkspace';
+import { hasOpenEnterpriseModel, readModelJson, writeModelJson } from './modelWorkspace';
 
 export type ProcessLifecycleStatus = 'draft' | 'in-review' | 'approved' | 'published' | 'superseded';
 export type ProcessChannel = 'digital' | 'physical' | 'central' | 'external';
@@ -255,7 +255,7 @@ async function fetchJson<T>(url: string): Promise<T> {
 }
 
 export async function loadProcessGovernance(preferAutosave = true): Promise<ProcessGovernanceData> {
-  if (preferAutosave) {
+  if (preferAutosave && !hasOpenEnterpriseModel()) {
     const saved = localStorage.getItem(GOVERNANCE_AUTOSAVE_KEY);
     if (saved) {
       try {
@@ -269,7 +269,7 @@ export async function loadProcessGovernance(preferAutosave = true): Promise<Proc
 }
 
 export async function loadIntegrationData(preferAutosave = true): Promise<IntegrationData> {
-  if (preferAutosave) {
+  if (preferAutosave && !hasOpenEnterpriseModel()) {
     const saved = localStorage.getItem(INTEGRATIONS_AUTOSAVE_KEY);
     if (saved) {
       try {
@@ -283,7 +283,7 @@ export async function loadIntegrationData(preferAutosave = true): Promise<Integr
 }
 
 export async function loadRegulationData(preferAutosave = true): Promise<RegulationData> {
-  if (preferAutosave) {
+  if (preferAutosave && !hasOpenEnterpriseModel()) {
     const saved = localStorage.getItem(REGULATIONS_AUTOSAVE_KEY);
     if (saved) {
       try {
