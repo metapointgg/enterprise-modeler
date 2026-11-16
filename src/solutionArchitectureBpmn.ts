@@ -4,6 +4,7 @@ import 'bpmn-js/dist/assets/diagram-js.css';
 import 'bpmn-js/dist/assets/bpmn-font/css/bpmn.css';
 import './solutionArchitectureBpmn.css';
 import { MODEL_NAMESPACE, modelUrl } from './modelRepository';
+import { readModelText, writeModelText } from './modelWorkspace';
 
 import {
   ARCHITECTURE_ENVIRONMENTS,
@@ -375,6 +376,8 @@ class SolutionArchitectureBpmnPage {
   private setInterfaceDirection(record: InterfaceRecord, direction: InterfaceRecord['direction']): void {
     record.direction = direction;
     this.saveArchitectureRegistry();
+    const element = this.modeler.get<ElementRegistryService>('elementRegistry').get(record.id);
+    if (element) this.applyInterfaceDirection(record, element);
     this.renderContextPanel();
   }
 
@@ -497,11 +500,7 @@ class SolutionArchitectureBpmnPage {
   }
 
   private async fetchRepositoryBpmn(): Promise<string> {
-    const response = await fetch(ARCHITECTURE_BPMN_URL, { cache: 'no-store' });
-    if (!response.ok) {
-      throw new Error(`Unable to load ${ARCHITECTURE_BPMN_URL}. HTTP ${response.status}.`);
-    }
-    return response.text();
+    return readModelText(ARCHITECTURE_BPMN_URL);
   }
 
   private applyRegistryMetadataToDiagram(): void {
@@ -529,6 +528,7 @@ class SolutionArchitectureBpmnPage {
           modeling.updateProperties(element, { name: record.name });
         }
         this.applyInterfaceLineStyle(record, element, canvas);
+        this.applyInterfaceDirection(record, element);
       });
     } finally {
       this.suppressModelEvents = previous;
@@ -546,7 +546,10 @@ class SolutionArchitectureBpmnPage {
   private async saveDiagramLocally(): Promise<void> {
     try {
       const result = await this.modeler.saveXML({ format: true }) as SaveXmlResult;
-      if (result.xml) localStorage.setItem(ARCHITECTURE_AUTOSAVE_KEY, result.xml);
+      if (result.xml) {
+        localStorage.setItem(ARCHITECTURE_AUTOSAVE_KEY, result.xml);
+        await writeModelText('/architecture/solution-architecture.bpmn', result.xml);
+      }
     } catch (error) {
       console.warn('Unable to autosave the Solution Architecture BPMN model.', error);
     }
@@ -1052,6 +1055,32 @@ class SolutionArchitectureBpmnPage {
     return ['low', 'medium', 'high']
       .map((value) => `<option value="${value}"${value === selected ? ' selected' : ''}>${capitalise(value)}</option>`)
       .join('');
+  }
+
+  private applyInterfaceDirection(record: InterfaceRecord, element: DiagramElement): void {
+    const shape = this.canvasHost.querySelector<SVGPathElement>(
+      `[data-element-id="${CSS.escape(element.id)}"] .djs-visual > path`,
+    );
+    if (!shape) return;
+
+    const storedMarker = shape.dataset.enterpriseMarkerEnd || shape.getAttribute('marker-end') || '';
+    if (storedMarker && !shape.dataset.enterpriseMarkerEnd) {
+      shape.dataset.enterpriseMarkerEnd = storedMarker;
+    }
+
+    const marker = shape.dataset.enterpriseMarkerEnd || storedMarker;
+    shape.removeAttribute('marker-start');
+    shape.removeAttribute('marker-end');
+
+    if (!marker) return;
+    if (record.direction === 'inbound') {
+      shape.setAttribute('marker-start', marker);
+    } else if (record.direction === 'bidirectional') {
+      shape.setAttribute('marker-start', marker);
+      shape.setAttribute('marker-end', marker);
+    } else {
+      shape.setAttribute('marker-end', marker);
+    }
   }
 
   private applyInterfaceLineStyle(
