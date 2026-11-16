@@ -197,7 +197,8 @@ app.innerHTML = `
     <div class="toolbar">
       <div class="toolbar-group">
         <button id="new-button" class="toolbar-button" type="button">New</button>
-        <button id="open-button" class="toolbar-button" type="button">Open BPMN</button>\n        <button id="open-model-button" class="toolbar-button" type="button">Open Enterprise Model</button>
+        <button id="open-button" class="toolbar-button" type="button">Open BPMN</button>
+        <button id="open-model-button" class="toolbar-button" type="button">Open Enterprise Model</button>
         <button id="home-button" class="toolbar-button" type="button">Home Model</button>
         <button id="reset-button" class="toolbar-button" type="button">Reset Current</button>
       </div>
