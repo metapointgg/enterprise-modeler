@@ -1178,7 +1178,7 @@ async function loadMetadataForProcess(
   process: ProcessDefinition,
   preferAutosave: boolean,
 ): Promise<ProcessMetadata> {
-  if (preferAutosave) {
+  if (preferAutosave && !hasOpenEnterpriseModel()) {
     const autosaved = localStorage.getItem(getMetadataAutosaveKey(process.id));
     if (autosaved) {
       try {
@@ -1329,7 +1329,7 @@ async function loadCatalogProcess(
   setStatus(`Loading ${process.level} ${process.name}…`);
 
   try {
-    const autosavedXml = preferAutosave
+    const autosavedXml = preferAutosave && !hasOpenEnterpriseModel()
       ? localStorage.getItem(getAutosaveXmlKey())
       : null;
 
