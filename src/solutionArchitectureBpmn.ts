@@ -356,11 +356,12 @@ class SolutionArchitectureBpmnPage {
     this.renderContextPanel();
   }
   private toggleSystemEnvironment(system: SystemRecord, environment: ArchitectureEnvironment): void {
-    const current = new Set(system.environments ?? ['production']);
+    const current = new Set<ArchitectureEnvironment>(system.environments ?? ['production']);
     if (current.has(environment) && current.size > 1) current.delete(environment);
     else current.add(environment);
-    system.environments = [...current];
-    system.environment = system.environments
+    const environments = [...current];
+    system.environments = environments;
+    system.environment = environments
       .map((id) => ARCHITECTURE_ENVIRONMENTS.find((candidate) => candidate.id === id)?.label ?? id)
       .join(', ');
     this.saveArchitectureRegistry();
@@ -369,7 +370,7 @@ class SolutionArchitectureBpmnPage {
   }
 
   private toggleInterfaceEnvironment(record: InterfaceRecord, environment: ArchitectureEnvironment): void {
-    const current = new Set(record.environments ?? ['production']);
+    const current = new Set<ArchitectureEnvironment>(record.environments ?? ['production']);
     if (current.has(environment) && current.size > 1) current.delete(environment);
     else current.add(environment);
     record.environments = [...current];
