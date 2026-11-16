@@ -81,6 +81,17 @@ The reference Solution Architecture Map is populated with neutral sample systems
 
 The sample architecture is intentionally illustrative rather than Banxlocal-specific.
 
+
+## AI agent guidance
+
+This repository includes instructions for AI agents that build or interrogate Enterprise Models, including Azure DevOps MCP workflows:
+
+- `AGENTS.md` — agent entry point and model-root conventions.
+- `docs/ai-model-authoring.md` — organisation, process, systems/integration, data and governance authoring rules.
+- `docs/ai-model-interrogation.md` — dependency traversal, impact analysis, stakeholder discovery and data-lineage interrogation.
+
+The guidance is designed so an agent can answer questions such as which downstream systems, data, processes and owners are affected by changing a system or integration point.
+
 ## Status
 
 Initial V1 genericisation and data-model expansion is in progress.
