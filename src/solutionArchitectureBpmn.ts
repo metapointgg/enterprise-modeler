@@ -73,6 +73,25 @@ interface EventBusService {
   on(eventName: string, callback: (event: unknown) => void): void;
 }
 
+interface ContextPadEntry {
+  group: string;
+  className: string;
+  title: string;
+  action: {
+    click: () => void;
+  };
+}
+
+interface ContextPadProvider {
+  getContextPadEntries(element: DiagramElement): Record<string, ContextPadEntry>;
+}
+
+interface ContextPadService {
+  registerProvider(priority: number, provider: ContextPadProvider): void;
+  open(element: DiagramElement): void;
+  close(): void;
+}
+
 interface SelectionChangedEvent {
   newSelection?: DiagramElement[];
 }
@@ -127,7 +146,7 @@ class SolutionArchitectureBpmnPage {
     this.modeler = new BpmnModeler({ container: this.canvasHost });
     this.bindModelerEvents();
     this.bindPageEvents();
-    this.bindContextPadExtensions();
+    this.bindContextPadProvider();
 
     document.addEventListener('enterprise-modeler:open-solution-architecture-map', (event) => {
       const processId = (event as CustomEvent<{ processId?: string }>).detail?.processId ?? '';
@@ -205,132 +224,153 @@ class SolutionArchitectureBpmnPage {
     });
   }
 
-  private bindContextPadExtensions(): void {
-    const observer = new MutationObserver(() => this.renderElementContextPadActions());
-    observer.observe(this.canvasHost, { childList: true, subtree: true });
+  private bindContextPadProvider(): void {
+    const contextPad = this.modeler.get<ContextPadService>('contextPad');
+    contextPad.registerProvider(1600, {
+      getContextPadEntries: (element) => this.getEnterpriseContextPadEntries(element),
+    });
   }
 
-  private renderElementContextPadActions(): void {
-    const element = this.selectedElement;
-    if (!element) return;
+  private getEnterpriseContextPadEntries(element: DiagramElement): Record<string, ContextPadEntry> {
+    const entries: Record<string, ContextPadEntry> = {};
 
-    const contextPad = this.canvasHost.querySelector<HTMLElement>('.djs-context-pad');
-    if (!contextPad || contextPad.querySelector('[data-enterprise-context-actions]')) return;
-
-    const actions = document.createElement('div');
-    actions.className = 'architecture-enterprise-context-actions';
-    actions.dataset.enterpriseContextActions = 'true';
+    const add = (
+      id: string,
+      group: string,
+      title: string,
+      iconClass: string,
+      action: () => void,
+      selected = false,
+    ): void => {
+      entries[id] = {
+        group,
+        title,
+        className: `architecture-context-icon ${iconClass}${selected ? ' architecture-context-icon-selected' : ''}`,
+        action: {
+          click: () => {
+            action();
+            this.refreshContextPad(element);
+          },
+        },
+      };
+    };
 
     if (this.isSystemElement(element)) {
       const system = this.data.systems.find((candidate) => candidate.id === element.id);
-      if (system) {
-        this.addContextPadButton(actions, 'System details', 'ⓘ', () => {
-          document.dispatchEvent(new CustomEvent('enterprise-modeler:open-systems-catalog', {
-            detail: { recordId: system.id },
-          }));
-        });
+      if (!system) return entries;
 
-        this.addContextPadButton(
-          actions,
-          system.isContainer ? 'System container' : 'Convert to system container',
-          system.isContainer ? '▣' : '▢',
-          () => this.convertSystemToContainer(system, element),
-          system.isContainer === true,
+      add('enterprise-system-details', 'enterprise-details', 'System details', 'architecture-context-icon-info', () => {
+        document.dispatchEvent(new CustomEvent('enterprise-modeler:open-systems-catalog', {
+          detail: { recordId: system.id },
+        }));
+      });
+
+      add(
+        'enterprise-system-container',
+        'enterprise-details',
+        system.isContainer ? 'System container' : 'Convert to system container',
+        system.isContainer ? 'architecture-context-icon-container-active' : 'architecture-context-icon-container',
+        () => this.convertSystemToContainer(system, element),
+        system.isContainer === true,
+      );
+
+      ARCHITECTURE_ENVIRONMENTS.forEach((environment) => {
+        const selected = (system.environments ?? ['production']).includes(environment.id);
+        add(
+          `enterprise-system-environment-${environment.id}`,
+          'enterprise-environment',
+          `${selected ? 'Remove from' : 'Add to'} ${environment.label}`,
+          environment.id === 'production'
+            ? 'architecture-context-icon-production'
+            : environment.id === 'uat'
+              ? 'architecture-context-icon-uat'
+              : 'architecture-context-icon-dev',
+          () => this.toggleSystemEnvironment(system, environment.id),
+          selected,
         );
+      });
 
-        ARCHITECTURE_ENVIRONMENTS.forEach((environment) => {
-          const selected = (system.environments ?? ['production']).includes(environment.id);
-          this.addContextPadButton(
-            actions,
-            `${selected ? 'Remove from' : 'Add to'} ${environment.label}`,
-            environment.id === 'production' ? 'P' : environment.id === 'uat' ? 'U' : 'D',
-            () => this.toggleSystemEnvironment(system, environment.id),
-            selected,
-          );
-        });
-      }
-    } else if (this.isInterfaceElement(element)) {
+      return entries;
+    }
+
+    if (this.isInterfaceElement(element)) {
       const record = this.data.interfaces.find((candidate) => candidate.id === element.id);
-      if (record) {
-        this.addContextPadButton(actions, 'Interface details', 'ⓘ', () => {
-          document.dispatchEvent(new CustomEvent('enterprise-modeler:open-integration-catalog', {
-            detail: { recordKind: 'interface', recordId: record.id },
-          }));
-        });
+      if (!record) return entries;
 
-        ([
-          ['solid', 'Solid line', '━'],
-          ['dashed', 'Dashed line', '┅'],
-          ['dotted', 'Dotted line', '···'],
-        ] as const).forEach(([style, title, glyph]) => {
-          this.addContextPadButton(
-            actions,
-            title,
-            glyph,
-            () => this.setInterfaceLineStyle(record, element, style),
-            (record.lineStyle ?? 'solid') === style,
-          );
-        });
+      add('enterprise-interface-details', 'enterprise-details', 'Interface details', 'architecture-context-icon-info', () => {
+        document.dispatchEvent(new CustomEvent('enterprise-modeler:open-integration-catalog', {
+          detail: { recordKind: 'interface', recordId: record.id },
+        }));
+      });
 
-        ([
-          ['outbound', 'Outbound', '→'],
-          ['inbound', 'Inbound', '←'],
-          ['bidirectional', 'Bidirectional', '↔'],
-        ] as const).forEach(([direction, title, glyph]) => {
-          this.addContextPadButton(
-            actions,
-            title,
-            glyph,
-            () => this.setInterfaceDirection(record, direction),
-            record.direction === direction,
-          );
-        });
+      ([
+        ['solid', 'Solid line', 'architecture-context-icon-solid'],
+        ['dashed', 'Dashed line', 'architecture-context-icon-dashed'],
+        ['dotted', 'Dotted line', 'architecture-context-icon-dotted'],
+      ] as const).forEach(([style, title, iconClass]) => {
+        add(
+          `enterprise-interface-line-${style}`,
+          'enterprise-line-style',
+          title,
+          iconClass,
+          () => this.setInterfaceLineStyle(record, element, style),
+          (record.lineStyle ?? 'solid') === style,
+        );
+      });
 
-        ARCHITECTURE_ENVIRONMENTS.forEach((environment) => {
-          const selected = (record.environments ?? ['production']).includes(environment.id);
-          this.addContextPadButton(
-            actions,
-            `${selected ? 'Remove from' : 'Add to'} ${environment.label}`,
-            environment.id === 'production' ? 'P' : environment.id === 'uat' ? 'U' : 'D',
-            () => this.toggleInterfaceEnvironment(record, environment.id),
-            selected,
-          );
-        });
-      }
-    } else if (element.businessObject?.$type === 'bpmn:Participant') {
-      this.addContextPadButton(actions, 'Lane details', 'ⓘ', () => this.renderContextPanel());
-      this.addContextPadButton(actions, 'Fit view', '⤢', () => {
+      ([
+        ['outbound', 'Outbound', 'architecture-context-icon-outbound'],
+        ['inbound', 'Inbound', 'architecture-context-icon-inbound'],
+        ['bidirectional', 'Bidirectional', 'architecture-context-icon-bidirectional'],
+      ] as const).forEach(([direction, title, iconClass]) => {
+        add(
+          `enterprise-interface-direction-${direction}`,
+          'enterprise-direction',
+          title,
+          iconClass,
+          () => this.setInterfaceDirection(record, direction),
+          record.direction === direction,
+        );
+      });
+
+      ARCHITECTURE_ENVIRONMENTS.forEach((environment) => {
+        const selected = (record.environments ?? ['production']).includes(environment.id);
+        add(
+          `enterprise-interface-environment-${environment.id}`,
+          'enterprise-environment',
+          `${selected ? 'Remove from' : 'Add to'} ${environment.label}`,
+          environment.id === 'production'
+            ? 'architecture-context-icon-production'
+            : environment.id === 'uat'
+              ? 'architecture-context-icon-uat'
+              : 'architecture-context-icon-dev',
+          () => this.toggleInterfaceEnvironment(record, environment.id),
+          selected,
+        );
+      });
+
+      return entries;
+    }
+
+    if (element.businessObject?.$type === 'bpmn:Participant') {
+      add('enterprise-lane-details', 'enterprise-details', 'Lane details', 'architecture-context-icon-info', () => {
+        this.selectedElement = element;
+        this.renderContextPanel();
+      });
+      add('enterprise-fit-view', 'enterprise-details', 'Fit view', 'architecture-context-icon-fit', () => {
         this.modeler.get<CanvasService>('canvas').zoom('fit-viewport');
       });
     }
 
-    if (actions.childElementCount > 0) contextPad.appendChild(actions);
+    return entries;
   }
 
-  private addContextPadButton(
-    container: HTMLElement,
-    title: string,
-    glyph: string,
-    action: () => void,
-    selected = false,
-  ): void {
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.className = 'entry architecture-context-entry';
-    if (selected) button.classList.add('architecture-context-entry-selected');
-    button.title = title;
-    button.setAttribute('aria-label', title);
-    button.textContent = glyph;
-    button.addEventListener('click', (event) => {
-      event.preventDefault();
-      event.stopPropagation();
-      action();
-      window.setTimeout(() => {
-        this.canvasHost.querySelector<HTMLElement>('[data-enterprise-context-actions]')?.remove();
-        this.renderElementContextPadActions();
-      }, 0);
-    });
-    container.appendChild(button);
+  private refreshContextPad(element: DiagramElement): void {
+    const contextPad = this.modeler.get<ContextPadService>('contextPad');
+    window.setTimeout(() => {
+      contextPad.close();
+      contextPad.open(element);
+    }, 0);
   }
 
   private convertSystemToContainer(system: SystemRecord, element: DiagramElement): void {
@@ -408,8 +448,7 @@ class SolutionArchitectureBpmnPage {
     this.applyInterfaceLineStyle(record, element);
     this.renderContextPanel();
 
-    this.canvasHost.querySelector<HTMLElement>('[data-enterprise-context-actions]')?.remove();
-    this.renderElementContextPadActions();
+    this.refreshContextPad(element);
   }
 
   private bindPageEvents(): void {
