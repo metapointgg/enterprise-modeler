@@ -1,4 +1,5 @@
 import { MODEL_NAMESPACE, modelUrl } from './modelRepository';
+import { readModelJson, writeModelJson } from './modelWorkspace';
 
 export type ProcessLifecycleStatus = 'draft' | 'in-review' | 'approved' | 'published' | 'superseded';
 export type ProcessChannel = 'digital' | 'physical' | 'central' | 'external';
@@ -250,11 +251,7 @@ function normaliseRegulations(value: Partial<RegulationData>): RegulationData {
 }
 
 async function fetchJson<T>(url: string): Promise<T> {
-  const response = await fetch(url, { cache: 'no-store' });
-  if (!response.ok) {
-    throw new Error(`Unable to load ${url}. HTTP ${response.status}.`);
-  }
-  return response.json() as Promise<T>;
+  return readModelJson<T>(url);
 }
 
 export async function loadProcessGovernance(preferAutosave = true): Promise<ProcessGovernanceData> {
@@ -311,17 +308,23 @@ export function ensureProcessGovernanceRecords(data: ProcessGovernanceData, proc
 }
 
 export function saveProcessGovernanceLocally(data: ProcessGovernanceData): void {
-  localStorage.setItem(GOVERNANCE_AUTOSAVE_KEY, JSON.stringify(normaliseGovernance(data), null, 2));
+  const normalised = normaliseGovernance(data);
+  localStorage.setItem(GOVERNANCE_AUTOSAVE_KEY, JSON.stringify(normalised, null, 2));
+  void writeModelJson('/governance/process-governance.json', normalised);
   notifyRegistryChanged('governance');
 }
 
 export function saveIntegrationDataLocally(data: IntegrationData): void {
-  localStorage.setItem(INTEGRATIONS_AUTOSAVE_KEY, JSON.stringify(normaliseIntegrations(data), null, 2));
+  const normalised = normaliseIntegrations(data);
+  localStorage.setItem(INTEGRATIONS_AUTOSAVE_KEY, JSON.stringify(normalised, null, 2));
+  void writeModelJson('/architecture/integrations.json', normalised);
   notifyRegistryChanged('integrations');
 }
 
 export function saveRegulationDataLocally(data: RegulationData): void {
-  localStorage.setItem(REGULATIONS_AUTOSAVE_KEY, JSON.stringify(normaliseRegulations(data), null, 2));
+  const normalised = normaliseRegulations(data);
+  localStorage.setItem(REGULATIONS_AUTOSAVE_KEY, JSON.stringify(normalised, null, 2));
+  void writeModelJson('/governance/regulations.json', normalised);
   notifyRegistryChanged('regulations');
 }
 
