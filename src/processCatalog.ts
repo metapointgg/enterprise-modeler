@@ -1,5 +1,5 @@
 import { MODEL_NAMESPACE, modelUrl } from './modelRepository';
-import { readModelJson, writeModelJson } from './modelWorkspace';
+import { hasOpenEnterpriseModel, readModelJson, writeModelJson } from './modelWorkspace';
 
 export interface ProcessLayer {
   id: string;
@@ -140,7 +140,7 @@ export async function fetchRepositoryProcessRepository(): Promise<ProcessReposit
 }
 
 export async function loadProcessRepository(preferAutosave = true): Promise<ProcessRepositorySnapshot> {
-  if (preferAutosave) {
+  if (preferAutosave && !hasOpenEnterpriseModel()) {
     const savedLayers = localStorage.getItem(PROCESS_LAYERS_AUTOSAVE_KEY);
     const savedCatalog = localStorage.getItem(PROCESS_CATALOG_AUTOSAVE_KEY);
 
