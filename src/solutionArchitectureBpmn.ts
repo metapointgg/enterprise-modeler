@@ -4,7 +4,7 @@ import 'bpmn-js/dist/assets/diagram-js.css';
 import 'bpmn-js/dist/assets/bpmn-font/css/bpmn.css';
 import './solutionArchitectureBpmn.css';
 import { MODEL_NAMESPACE, modelUrl } from './modelRepository';
-import { readModelText, writeModelText } from './modelWorkspace';
+import { hasOpenEnterpriseModel, readModelText, writeModelText } from './modelWorkspace';
 
 import {
   ARCHITECTURE_ENVIRONMENTS,
@@ -132,6 +132,11 @@ class SolutionArchitectureBpmnPage {
     document.addEventListener('enterprise-modeler:open-solution-architecture-map', (event) => {
       const processId = (event as CustomEvent<{ processId?: string }>).detail?.processId ?? '';
       void this.open(processId);
+    });
+
+    document.addEventListener('enterprise-modeler:model-folder-changed', () => {
+      this.loaded = false;
+      this.selectedElement = null;
     });
 
     document.addEventListener('enterprise-modeler:operating-model-registry-changed', (event) => {
@@ -487,7 +492,7 @@ class SolutionArchitectureBpmnPage {
   }
 
   private async loadDiagram(): Promise<void> {
-    const saved = localStorage.getItem(ARCHITECTURE_AUTOSAVE_KEY);
+    const saved = hasOpenEnterpriseModel() ? null : localStorage.getItem(ARCHITECTURE_AUTOSAVE_KEY);
     const xml = saved || await this.fetchRepositoryBpmn();
 
     this.suppressModelEvents = true;
