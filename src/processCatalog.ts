@@ -1,4 +1,5 @@
 import { MODEL_NAMESPACE, modelUrl } from './modelRepository';
+import { readModelJson, writeModelJson } from './modelWorkspace';
 
 export interface ProcessLayer {
   id: string;
@@ -123,13 +124,7 @@ function syncRuntimeRepository(snapshot: ProcessRepositorySnapshot): void {
 }
 
 async function fetchJson<T>(url: string): Promise<T> {
-  const response = await fetch(url, { cache: 'no-store' });
-
-  if (!response.ok) {
-    throw new Error(`Unable to load ${url}. HTTP ${response.status}.`);
-  }
-
-  return response.json() as Promise<T>;
+  return readModelJson<T>(url);
 }
 
 export async function fetchRepositoryProcessRepository(): Promise<ProcessRepositorySnapshot> {
@@ -188,6 +183,8 @@ export function saveProcessRepositoryLocally(snapshot: ProcessRepositorySnapshot
   );
 
   syncRuntimeRepository(normalised);
+  void writeModelJson('/processes/process-layers.json', normalised.layers);
+  void writeModelJson('/processes/process-catalog.json', normalised.catalog);
 }
 
 export async function resetProcessRepositoryToRepository(): Promise<ProcessRepositorySnapshot> {
