@@ -15,3 +15,22 @@
 .solution-architecture-bpmn-canvas .djs-shape[data-element-id^="system-"] .djs-visual>rect[width][height]{vector-effect:non-scaling-stroke}
 .solution-architecture-bpmn-canvas .djs-shape[data-element-id^="system-"].djs-element[data-element-id] .djs-visual>rect+rect{stroke:#94a3b8!important}
 .solution-architecture-bpmn-canvas .djs-shape[data-element-id^="system-"] .djs-visual>rect[style*="stroke-dasharray"]{stroke:#475569!important}
+
+.solution-architecture-bpmn-canvas .djs-context-pad .architecture-context-icon{position:relative}
+.solution-architecture-bpmn-canvas .djs-context-pad .architecture-context-icon::before{display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-family:Inter,Arial,sans-serif;font-size:13px;font-weight:700;line-height:1;color:#334155}
+.solution-architecture-bpmn-canvas .djs-context-pad .architecture-context-icon:hover::before{color:#1d4ed8}
+.solution-architecture-bpmn-canvas .djs-context-pad .architecture-context-icon-selected{background:#dbeafe!important}
+.solution-architecture-bpmn-canvas .djs-context-pad .architecture-context-icon-selected::before{color:#1d4ed8}
+.solution-architecture-bpmn-canvas .djs-context-pad .architecture-context-icon-info::before{content:"ⓘ"}
+.solution-architecture-bpmn-canvas .djs-context-pad .architecture-context-icon-container::before{content:"▢"}
+.solution-architecture-bpmn-canvas .djs-context-pad .architecture-context-icon-container-active::before{content:"▣"}
+.solution-architecture-bpmn-canvas .djs-context-pad .architecture-context-icon-production::before{content:"P"}
+.solution-architecture-bpmn-canvas .djs-context-pad .architecture-context-icon-uat::before{content:"U"}
+.solution-architecture-bpmn-canvas .djs-context-pad .architecture-context-icon-dev::before{content:"D"}
+.solution-architecture-bpmn-canvas .djs-context-pad .architecture-context-icon-solid::before{content:"━";font-size:16px}
+.solution-architecture-bpmn-canvas .djs-context-pad .architecture-context-icon-dashed::before{content:"┅";font-size:16px}
+.solution-architecture-bpmn-canvas .djs-context-pad .architecture-context-icon-dotted::before{content:"···";font-size:16px}
+.solution-architecture-bpmn-canvas .djs-context-pad .architecture-context-icon-outbound::before{content:"→";font-size:17px}
+.solution-architecture-bpmn-canvas .djs-context-pad .architecture-context-icon-inbound::before{content:"←";font-size:17px}
+.solution-architecture-bpmn-canvas .djs-context-pad .architecture-context-icon-bidirectional::before{content:"↔";font-size:17px}
+.solution-architecture-bpmn-canvas .djs-context-pad .architecture-context-icon-fit::before{content:"⤢";font-size:16px}
