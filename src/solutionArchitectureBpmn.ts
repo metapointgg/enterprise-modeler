@@ -1016,6 +1016,7 @@ class SolutionArchitectureBpmnPage {
         this.suppressModelEvents = false;
       }
       this.applyInterfaceLineStyle(record, element);
+      this.applyInterfaceDirection(record, element);
       this.scheduleAutosave();
       this.renderContextPanel();
     });
