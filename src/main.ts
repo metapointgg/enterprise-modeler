@@ -30,6 +30,15 @@ import {
   initialiseProcessRepository,
   type ProcessDefinition,
 } from './processCatalog';
+import {
+  getOpenEnterpriseModelName,
+  hasOpenEnterpriseModel,
+  openEnterpriseModelFolder,
+  readModelJson,
+  readModelText,
+  writeModelJson,
+  writeModelText,
+} from './modelWorkspace';
 
 const EMPTY_BPMN_XML = `<?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions
@@ -188,7 +197,7 @@ app.innerHTML = `
     <div class="toolbar">
       <div class="toolbar-group">
         <button id="new-button" class="toolbar-button" type="button">New</button>
-        <button id="open-button" class="toolbar-button" type="button">Open</button>
+        <button id="open-button" class="toolbar-button" type="button">Open BPMN</button>\n        <button id="open-model-button" class="toolbar-button" type="button">Open Enterprise Model</button>
         <button id="home-button" class="toolbar-button" type="button">Home Model</button>
         <button id="reset-button" class="toolbar-button" type="button">Reset Current</button>
       </div>
@@ -382,6 +391,7 @@ const statusElement = getElement<HTMLDivElement>('status');
 const backButton = getElement<HTMLButtonElement>('back-button');
 const newButton = getElement<HTMLButtonElement>('new-button');
 const openButton = getElement<HTMLButtonElement>('open-button');
+const openModelButton = getElement<HTMLButtonElement>('open-model-button');
 const homeButton = getElement<HTMLButtonElement>('home-button');
 const resetButton = getElement<HTMLButtonElement>('reset-button');
 const saveButton = getElement<HTMLButtonElement>('save-button');
@@ -1059,6 +1069,10 @@ function persistMetadataLocally(): void {
     getMetadataAutosaveKey(),
     JSON.stringify(currentMetadata, null, 2),
   );
+  const currentProcess = getCurrentProcess();
+  if (currentProcess) {
+    void writeModelJson(currentProcess.metadataUrl, currentMetadata);
+  }
 }
 
 function saveSelectedMetadata(showStatus = true): void {
@@ -1156,11 +1170,7 @@ function exportMetadata(): void {
 }
 
 async function fetchRepositoryMetadata(process: ProcessDefinition): Promise<ProcessMetadata> {
-  const response = await fetch(process.metadataUrl, { cache: 'no-store' });
-  if (!response.ok) {
-    throw new Error(`Unable to load metadata for ${process.name}. HTTP ${response.status}.`);
-  }
-  const parsed = await response.json() as RawProcessMetadata;
+  const parsed = await readModelJson<RawProcessMetadata>(process.metadataUrl);
   return normaliseProcessMetadata(parsed, process.bpmnProcessId);
 }
 
@@ -1232,7 +1242,9 @@ async function persistCurrentDiagram(): Promise<void> {
 
     localStorage.setItem(getAutosaveXmlKey(), result.xml);
     localStorage.setItem(getAutosaveFilenameKey(), currentFilename);
-    setStatus('Saved locally', 'success');
+    const currentProcess = getCurrentProcess();
+    if (currentProcess) await writeModelText(currentProcess.url, result.xml);
+    setStatus(hasOpenEnterpriseModel() ? `Saved to ${getOpenEnterpriseModelName()}` : 'Saved locally', 'success');
   } catch (error) {
     console.error('Unable to autosave BPMN diagram.', error);
     setStatus('Autosave failed', 'error');
@@ -1285,11 +1297,7 @@ async function importDiagram(xml: string, filename: string): Promise<void> {
 }
 
 async function fetchProcessXml(process: ProcessDefinition): Promise<string> {
-  const response = await fetch(process.url, { cache: 'no-store' });
-  if (!response.ok) {
-    throw new Error(`Unable to load ${process.name}. HTTP ${response.status}.`);
-  }
-  return response.text();
+  return readModelText(process.url);
 }
 
 async function loadCatalogProcess(
@@ -1382,14 +1390,19 @@ async function saveBpmnFile(): Promise<void> {
       throw new Error('bpmn-js returned no XML.');
     }
 
-    downloadFile(
-      normaliseBpmnFilename(currentFilename),
-      result.xml,
-      'application/xml;charset=utf-8',
-    );
+    if (hasOpenEnterpriseModel()) {
+      const currentProcess = getCurrentProcess();
+      if (currentProcess) {
+        await writeModelText(currentProcess.url, result.xml);
+      } else {
+        downloadFile(normaliseBpmnFilename(currentFilename), result.xml, 'application/xml;charset=utf-8');
+      }
+    } else {
+      downloadFile(normaliseBpmnFilename(currentFilename), result.xml, 'application/xml;charset=utf-8');
+    }
 
     await persistCurrentDiagram();
-    setStatus('BPMN downloaded', 'success');
+    setStatus(hasOpenEnterpriseModel() ? 'BPMN saved to Enterprise Model folder' : 'BPMN downloaded', 'success');
   } catch (error) {
     console.error('Unable to save BPMN file.', error);
     setStatus('Unable to save BPMN', 'error');
@@ -1507,6 +1520,26 @@ function handleOpenProcessEvent(event: Event): void {
   }
 }
 
+async function openEnterpriseModel(): Promise<void> {
+  try {
+    await persistCurrentDiagram();
+    const name = await openEnterpriseModelFolder();
+    await initialiseProcessRepository(false);
+    currentOrganisation = await loadOrganisation(false);
+    organisationManager.setData(currentOrganisation);
+
+    const rootProcess = getProcessById(ROOT_PROCESS_ID)
+      ?? Object.values(PROCESS_CATALOG).find((process) => process.active)
+      ?? Object.values(PROCESS_CATALOG)[0];
+
+    if (rootProcess) await loadCatalogProcess(rootProcess.id, false);
+    setStatus(`Enterprise Model opened: ${name}`, 'success');
+  } catch (error) {
+    console.error('Unable to open Enterprise Model folder.', error);
+    setStatus(error instanceof Error ? error.message : 'Unable to open Enterprise Model folder', 'error');
+  }
+}
+
 async function initialise(): Promise<void> {
   try {
     await initialiseProcessRepository(true);
@@ -1538,6 +1571,7 @@ openButton.addEventListener('click', () => {
   fileInput.value = '';
   fileInput.click();
 });
+openModelButton.addEventListener('click', () => void openEnterpriseModel());
 homeButton.addEventListener('click', () => {
   const home = getProcessById(ROOT_PROCESS_ID);
   if (home) {
