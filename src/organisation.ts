@@ -1,5 +1,5 @@
 import { MODEL_NAMESPACE, modelUrl } from './modelRepository';
-import { readModelJson, writeModelJson } from './modelWorkspace';
+import { hasOpenEnterpriseModel, readModelJson, writeModelJson } from './modelWorkspace';
 
 export interface Department {
   id: string;
@@ -105,7 +105,7 @@ export async function fetchRepositoryOrganisation(): Promise<OrganisationData> {
 }
 
 export async function loadOrganisation(preferAutosave = true): Promise<OrganisationData> {
-  if (preferAutosave) {
+  if (preferAutosave && !hasOpenEnterpriseModel()) {
     const autosaved = localStorage.getItem(ORGANISATION_AUTOSAVE_KEY)
       ?? localStorage.getItem(LEGACY_ORGANISATION_AUTOSAVE_KEY);
 
