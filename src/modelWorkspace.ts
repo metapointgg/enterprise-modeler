@@ -1,4 +1,4 @@
-import { modelUrl } from './modelRepository';
+import { MODEL_ROOT, modelUrl } from './modelRepository';
 
 interface LocalFileHandle {
   getFile(): Promise<File>;
@@ -78,7 +78,9 @@ export async function writeModelJson(path: string, value: unknown): Promise<bool
 async function resolveFile(path: string, create: boolean): Promise<LocalFileHandle> {
   if (!activeModelDirectory) throw new Error('No Enterprise Model folder is open.');
 
-  const parts = path.replace(/^\/+/, '').split('/').filter(Boolean);
+  let relativePath = path;
+  if (MODEL_ROOT && relativePath.startsWith(`${MODEL_ROOT}/`)) relativePath = relativePath.slice(MODEL_ROOT.length);
+  const parts = relativePath.replace(/^\/+/, '').split('/').filter(Boolean);
   if (parts.length === 0) throw new Error('A model file path is required.');
 
   let directory = activeModelDirectory;
