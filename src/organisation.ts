@@ -1,4 +1,5 @@
 import { MODEL_NAMESPACE, modelUrl } from './modelRepository';
+import { readModelJson, writeModelJson } from './modelWorkspace';
 
 export interface Department {
   id: string;
@@ -99,13 +100,7 @@ function normaliseOrganisation(value: Partial<OrganisationData>): OrganisationDa
 }
 
 export async function fetchRepositoryOrganisation(): Promise<OrganisationData> {
-  const response = await fetch(ORGANISATION_URL, { cache: 'no-store' });
-
-  if (!response.ok) {
-    throw new Error(`Unable to load organisation data. HTTP ${response.status}.`);
-  }
-
-  const parsed = await response.json() as Partial<OrganisationData>;
+  const parsed = await readModelJson<Partial<OrganisationData>>(ORGANISATION_URL);
   return normaliseOrganisation(parsed);
 }
 
@@ -137,6 +132,7 @@ export function saveOrganisationLocally(data: OrganisationData): void {
     JSON.stringify(normaliseOrganisation(data), null, 2),
   );
   localStorage.removeItem(LEGACY_ORGANISATION_AUTOSAVE_KEY);
+  void writeModelJson('/organisation/org-chart.json', normaliseOrganisation(data));
 }
 
 export async function resetOrganisationToRepository(): Promise<OrganisationData> {
