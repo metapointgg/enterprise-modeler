@@ -10,6 +10,7 @@ Read these two guides before creating, editing, or interrogating model data:
 
 - `docs/ai-model-authoring.md` — how to build and maintain organisation, process, systems/integration and data models.
 - `docs/ai-model-interrogation.md` — how to answer impact, ownership, dependency, lineage and stakeholder questions from the model.
+- `docs/azure-devops-repository.md` — how Enterprise Modeler connects directly to an Azure DevOps Git model repository.
 
 ## Enterprise Model root
 
