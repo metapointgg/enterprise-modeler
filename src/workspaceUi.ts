@@ -68,6 +68,7 @@ const sidebarSections: SidebarSection[] = [
     icon: '▣',
     actions: [
       { label: 'Open Enterprise Model', targetButtonId: 'open-model-button' },
+      { label: 'Create New Enterprise Model', targetButtonId: 'create-model-button' },
     ],
   },
   {
@@ -188,6 +189,12 @@ function createSidebar(shellElement: HTMLElement): void {
         if (targetButtonId === 'open-model-button') {
           workspaceDebug('open Enterprise Model requested from sidebar');
           document.dispatchEvent(new CustomEvent('enterprise-modeler:open-enterprise-model'));
+          return;
+        }
+
+        if (targetButtonId === 'create-model-button') {
+          workspaceDebug('create Enterprise Model requested from sidebar');
+          document.dispatchEvent(new CustomEvent('enterprise-modeler:create-enterprise-model'));
           return;
         }
 
