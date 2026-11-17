@@ -10,6 +10,18 @@ import {
   type OrganisationData,
 } from './organisation';
 
+const WORKSPACE_DEBUG = new URLSearchParams(window.location.search).has('debugModeler')
+  || localStorage.getItem('enterprise-modeler.debug') === 'true';
+
+function workspaceDebug(message: string, detail?: unknown): void {
+  if (!WORKSPACE_DEBUG) return;
+  if (detail === undefined) {
+    console.debug(`[EnterpriseModeler:Workspace] ${message}`);
+    return;
+  }
+  console.debug(`[EnterpriseModeler:Workspace] ${message}`, detail);
+}
+
 interface HoverProcessLink {
   type?: string;
   targetProcessId?: string;
@@ -99,6 +111,12 @@ function initialiseWorkspaceUi(
   canvasElement: HTMLElement,
   status: HTMLElement,
 ): void {
+  workspaceDebug('initialising', {
+    legacyToolbarPresent: Boolean(document.querySelector('.toolbar')),
+    legacyToolbarDisplay: document.querySelector<HTMLElement>('.toolbar')
+      ? getComputedStyle(document.querySelector<HTMLElement>('.toolbar') as HTMLElement).display
+      : null,
+  });
   createSidebar(shellElement);
   moveStatusToHeader(status);
   initialiseHeaderContext(status);
@@ -127,6 +145,10 @@ function createSidebar(shellElement: HTMLElement): void {
 
   document.body.appendChild(sidebar);
   shellElement.classList.add('enterprise-modeler-shell-with-sidebar');
+  workspaceDebug('sidebar mounted', {
+    sections: sidebarSections.map((section) => section.id),
+    openEnterpriseModelAvailable: Boolean(document.getElementById('open-model-button')),
+  });
 
   const toggle = sidebar.querySelector<HTMLButtonElement>('.enterprise-modeler-sidebar-toggle');
   toggle?.addEventListener('click', () => {
