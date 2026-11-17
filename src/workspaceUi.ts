@@ -68,6 +68,7 @@ const sidebarSections: SidebarSection[] = [
     icon: '▣',
     actions: [
       { label: 'Open Enterprise Model', targetButtonId: 'open-model-button' },
+      { label: 'Open Azure DevOps Repository', targetButtonId: 'open-azure-devops-model-button' },
       { label: 'Create New Enterprise Model', targetButtonId: 'create-model-button' },
     ],
   },
@@ -189,6 +190,12 @@ function createSidebar(shellElement: HTMLElement): void {
         if (targetButtonId === 'open-model-button') {
           workspaceDebug('open Enterprise Model requested from sidebar');
           document.dispatchEvent(new CustomEvent('enterprise-modeler:open-enterprise-model'));
+          return;
+        }
+
+        if (targetButtonId === 'open-azure-devops-model-button') {
+          workspaceDebug('open Azure DevOps Enterprise Model requested from sidebar');
+          document.dispatchEvent(new CustomEvent('enterprise-modeler:open-azure-devops-model'));
           return;
         }
 
