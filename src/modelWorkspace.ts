@@ -1,3 +1,15 @@
+import {
+  activateAzureDevOpsRepository,
+  deactivateAzureDevOpsRepository,
+  getActiveAzureDevOpsRepository,
+  readAzureDevOpsModelText,
+  writeAzureDevOpsModelText,
+} from './azureDevOpsRepository';
+import {
+  hasAzureDevOpsSession,
+  normaliseAzureDevOpsConnection,
+  type AzureDevOpsModelConnection,
+} from './azureDevOpsAuth';
 import { MODEL_ROOT, modelUrl } from './modelRepository';
 
 export interface LocalFileHandle {
@@ -26,7 +38,7 @@ interface MemoryWorkspaceSnapshot {
   files: Array<[string, string]>;
 }
 
-export type EnterpriseModelWorkspaceMode = 'directory' | 'memory' | 'remote' | null;
+export type EnterpriseModelWorkspaceMode = 'directory' | 'memory' | 'remote' | 'azure-devops' | null;
 
 const WORKSPACE_DB_NAME = 'enterprise-modeler-workspace';
 const WORKSPACE_DB_VERSION = 1;
@@ -34,6 +46,8 @@ const WORKSPACE_STORE = 'workspace';
 const LAST_DIRECTORY_KEY = 'last-directory';
 const LAST_MEMORY_KEY = 'last-memory';
 const LAST_MODEL_NAME_KEY = 'enterprise-modeler.last-model-name';
+const LAST_MODE_KEY = 'enterprise-modeler.last-workspace-mode';
+const LAST_AZURE_DEVOPS_CONNECTION_KEY = 'enterprise-modeler.last-azure-devops-connection.v1';
 
 let activeModelDirectory: LocalDirectoryHandle | null = null;
 let activeMemoryFiles: Map<string, string> | null = null;
@@ -60,12 +74,42 @@ export function getRememberedEnterpriseModelName(): string {
   return localStorage.getItem(LAST_MODEL_NAME_KEY) ?? '';
 }
 
+export function getRememberedAzureDevOpsConnection(): AzureDevOpsModelConnection | null {
+  const raw = localStorage.getItem(LAST_AZURE_DEVOPS_CONNECTION_KEY);
+  if (!raw) return null;
+  try {
+    return normaliseAzureDevOpsConnection(JSON.parse(raw) as Partial<AzureDevOpsModelConnection>);
+  } catch {
+    return null;
+  }
+}
+
+export async function activateAzureDevOpsEnterpriseModel(
+  connectionInput: AzureDevOpsModelConnection,
+): Promise<string> {
+  const state = await activateAzureDevOpsRepository(connectionInput);
+  activeModelDirectory = null;
+  activeMemoryFiles = null;
+  activeModelName = state.name;
+  activeMode = 'azure-devops';
+  rememberModelName(activeModelName);
+  rememberWorkspaceMode('azure-devops');
+  localStorage.setItem(
+    LAST_AZURE_DEVOPS_CONNECTION_KEY,
+    JSON.stringify(state.connection),
+  );
+  dispatchWorkspaceChanged();
+  return activeModelName;
+}
+
 export function activateRemoteEnterpriseModel(name = 'Shared Enterprise Model'): void {
+  deactivateAzureDevOpsRepository();
   activeModelDirectory = null;
   activeMemoryFiles = null;
   activeModelName = name;
   activeMode = 'remote';
   rememberModelName(name);
+  rememberWorkspaceMode('remote');
 }
 
 export async function selectEnterpriseModelFolder(): Promise<LocalDirectoryHandle> {
@@ -80,11 +124,13 @@ export async function selectEnterpriseModelFolder(): Promise<LocalDirectoryHandl
 }
 
 export function activateEnterpriseModelFolder(directory: LocalDirectoryHandle): string {
+  deactivateAzureDevOpsRepository();
   activeModelDirectory = directory;
   activeMemoryFiles = null;
   activeModelName = directory.name;
   activeMode = 'directory';
   rememberModelName(activeModelName);
+  rememberWorkspaceMode('directory');
   void rememberDirectory(directory);
   dispatchWorkspaceChanged();
   return activeModelName;
@@ -95,6 +141,48 @@ export async function openEnterpriseModelFolder(): Promise<string> {
 }
 
 export async function restoreLastEnterpriseModel(): Promise<boolean> {
+  const lastMode = localStorage.getItem(LAST_MODE_KEY) as EnterpriseModelWorkspaceMode;
+
+  if (lastMode === 'azure-devops') {
+    const connection = getRememberedAzureDevOpsConnection();
+    if (!connection || !hasAzureDevOpsSession()) return false;
+    try {
+      await activateAzureDevOpsEnterpriseModel(connection);
+      return true;
+    } catch (error) {
+      console.warn('Unable to restore the previous Azure DevOps Enterprise Model.', error);
+      return false;
+    }
+  }
+
+  if (lastMode === 'directory' && supportsDirectModelFolderAccess()) {
+    const directory = await readWorkspaceValue<LocalDirectoryHandle>(LAST_DIRECTORY_KEY);
+    if (directory) {
+      try {
+        const permission = directory.queryPermission
+          ? await directory.queryPermission({ mode: 'readwrite' })
+          : 'granted';
+        if (permission === 'granted') {
+          activateEnterpriseModelFolder(directory);
+          return true;
+        }
+        return false;
+      } catch (error) {
+        console.warn('Unable to restore the previous Enterprise Model folder.', error);
+        return false;
+      }
+    }
+  }
+
+  if (lastMode === 'memory') {
+    const snapshot = await readWorkspaceValue<MemoryWorkspaceSnapshot>(LAST_MEMORY_KEY);
+    if (snapshot?.files?.length) {
+      activateMemoryWorkspace(snapshot.name, new Map(snapshot.files), false);
+      return true;
+    }
+    return false;
+  }
+
   if (supportsDirectModelFolderAccess()) {
     const directory = await readWorkspaceValue<LocalDirectoryHandle>(LAST_DIRECTORY_KEY);
     if (directory) {
@@ -106,13 +194,8 @@ export async function restoreLastEnterpriseModel(): Promise<boolean> {
           activateEnterpriseModelFolder(directory);
           return true;
         }
-        // A remembered filesystem model exists but the browser requires the
-        // user to grant permission again. Show the chooser rather than
-        // silently restoring an older browser-backed model.
-        return false;
       } catch (error) {
-        console.warn('Unable to restore the previous Enterprise Model folder.', error);
-        return false;
+        console.warn('Unable to restore a remembered Enterprise Model folder.', error);
       }
     }
   }
@@ -201,6 +284,10 @@ export async function readModelText(path: string): Promise<string> {
     return value;
   }
 
+  if (activeMode === 'azure-devops') {
+    return readAzureDevOpsModelText(relativePath);
+  }
+
   if (activeMode === 'remote') {
     const response = await fetch(modelUrl(`/${relativePath}`), { cache: 'no-store' });
     if (!response.ok) {
@@ -228,6 +315,10 @@ export async function writeModelText(path: string, contents: string): Promise<bo
     activeMemoryFiles.set(relativePath, contents);
     await persistMemoryWorkspace();
     return true;
+  }
+
+  if (activeMode === 'azure-devops') {
+    return writeAzureDevOpsModelText(relativePath, contents);
   }
 
   // Remote repository writes are handled by repositoryLocalSync/repositoryTransport.
@@ -258,11 +349,13 @@ export async function writeDirectoryJson(
 }
 
 function activateMemoryWorkspace(name: string, files: Map<string, string>, persist: boolean): void {
+  deactivateAzureDevOpsRepository();
   activeModelDirectory = null;
   activeMemoryFiles = files;
   activeModelName = name;
   activeMode = 'memory';
   rememberModelName(name);
+  rememberWorkspaceMode('memory');
   if (persist) void persistMemoryWorkspace();
   dispatchWorkspaceChanged();
 }
@@ -288,11 +381,18 @@ function rememberModelName(name: string): void {
   if (name) localStorage.setItem(LAST_MODEL_NAME_KEY, name);
 }
 
+function rememberWorkspaceMode(mode: Exclude<EnterpriseModelWorkspaceMode, null>): void {
+  localStorage.setItem(LAST_MODE_KEY, mode);
+}
+
 function dispatchWorkspaceChanged(): void {
   document.dispatchEvent(new CustomEvent('enterprise-modeler:model-folder-changed', {
     detail: {
       name: activeModelName,
       mode: activeMode,
+      azureDevOps: activeMode === 'azure-devops'
+        ? getActiveAzureDevOpsRepository()?.connection ?? null
+        : null,
     },
   }));
 }
