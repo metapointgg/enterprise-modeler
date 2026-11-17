@@ -32,10 +32,13 @@ import {
   type ProcessDefinition,
 } from './processCatalog';
 import {
+  activateEnterpriseModelFiles,
   activateEnterpriseModelFolder,
+  chooseEnterpriseModelFiles,
   getOpenEnterpriseModelName,
   hasOpenEnterpriseModel,
   selectEnterpriseModelFolder,
+  supportsDirectModelFolderAccess,
   readModelJson,
   readModelText,
   writeModelJson,
@@ -1525,9 +1528,16 @@ function handleOpenProcessEvent(event: Event): void {
 
 async function openEnterpriseModel(): Promise<void> {
   try {
-    const selectedDirectory = await selectEnterpriseModelFolder();
+    const directAccess = supportsDirectModelFolderAccess();
+    const selectedDirectory = directAccess ? await selectEnterpriseModelFolder() : null;
+    const selectedFiles = directAccess ? null : await chooseEnterpriseModelFiles();
+
     await persistCurrentDiagram();
-    const name = activateEnterpriseModelFolder(selectedDirectory);
+
+    const name = selectedDirectory
+      ? activateEnterpriseModelFolder(selectedDirectory)
+      : await activateEnterpriseModelFiles(selectedFiles ?? []);
+
     await initialiseProcessRepository(false);
     currentOrganisation = await loadOrganisation(false);
     organisationManager.setData(currentOrganisation);
