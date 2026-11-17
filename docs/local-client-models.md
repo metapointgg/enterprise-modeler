@@ -77,3 +77,18 @@ VITE_MODEL_ROOT=/client-models
 Confirm the client models load correctly before reverting any tracked model-file changes.
 
 After migration, application functionality can be updated independently with normal Git pulls while client model files remain local and untouched.
+
+## Application files that must remain with Enterprise Modeler
+
+The external Enterprise Model folder contains model data only. Do **not** move the application runtime configuration out of the Enterprise Modeler repository.
+
+Keep this application folder in place:
+
+```text
+public/config/
+  runtime.json
+  runtime.standalone.json
+```
+
+A client Enterprise Model root should contain only model domains such as `architecture/`, `processes/`, `metadata/`, `organisation/`, `data/`, `governance/` and `model/`.
+
