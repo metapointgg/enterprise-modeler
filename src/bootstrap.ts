@@ -4,8 +4,13 @@ import { verifyAuthenticatedApi } from './apiClient';
 async function bootstrap(): Promise<void> {
   const authContext = await initialiseAuthentication();
 
-  const { installRepositoryTransport } = await import('./repositoryTransport');
+  const { installRepositoryTransport, isRemoteRepositoryEnabled } = await import('./repositoryTransport');
   await installRepositoryTransport();
+
+  const { initialiseEnterpriseModelWorkspace } = await import('./modelWorkspaceStartup');
+  await initialiseEnterpriseModelWorkspace({
+    remoteRepositoryEnabled: await isRemoteRepositoryEnabled(),
+  });
 
   await import('./baselineMigration');
 
