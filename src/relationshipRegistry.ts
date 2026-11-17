@@ -1,3 +1,4 @@
+import { hasOpenEnterpriseModel, readModelJson, writeModelJson } from './modelWorkspace';
 import type {
   EnterpriseEntityType,
   EnterpriseRelationship,
@@ -48,7 +49,7 @@ function normaliseRelationships(
 export async function loadEnterpriseRelationships(
   preferAutosave = true,
 ): Promise<EnterpriseRelationshipData> {
-  if (preferAutosave) {
+  if (preferAutosave && !hasOpenEnterpriseModel()) {
     const saved = localStorage.getItem(RELATIONSHIPS_AUTOSAVE_KEY);
     if (saved) {
       try {
@@ -61,22 +62,20 @@ export async function loadEnterpriseRelationships(
     }
   }
 
-  const response = await fetch(RELATIONSHIPS_URL, { cache: 'no-store' });
-  if (!response.ok) {
-    throw new Error(`Unable to load enterprise relationships. HTTP ${response.status}.`);
-  }
   return normaliseRelationships(
-    await response.json() as Partial<EnterpriseRelationshipData>,
+    await readModelJson<Partial<EnterpriseRelationshipData>>(RELATIONSHIPS_URL),
   );
 }
 
 export function saveEnterpriseRelationshipsLocally(
   data: EnterpriseRelationshipData,
 ): void {
+  const normalised = normaliseRelationships(data);
   localStorage.setItem(
     RELATIONSHIPS_AUTOSAVE_KEY,
-    JSON.stringify(normaliseRelationships(data), null, 2),
+    JSON.stringify(normalised, null, 2),
   );
+  void writeModelJson(RELATIONSHIPS_URL, normalised);
   document.dispatchEvent(
     new CustomEvent('enterprise-modeler:relationships-changed'),
   );
