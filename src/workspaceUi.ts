@@ -185,6 +185,12 @@ function createSidebar(shellElement: HTMLElement): void {
           return;
         }
 
+        if (targetButtonId === 'open-model-button') {
+          workspaceDebug('open Enterprise Model requested from sidebar');
+          document.dispatchEvent(new CustomEvent('enterprise-modeler:open-enterprise-model'));
+          return;
+        }
+
         const target = document.getElementById(targetButtonId) as HTMLButtonElement | null;
         if (!target) {
           window.alert(`${button.textContent?.trim() || 'This action'} is not available yet.`);
