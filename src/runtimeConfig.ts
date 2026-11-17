@@ -61,8 +61,16 @@ async function fetchRuntimeConfig(): Promise<RuntimeConfig> {
 
   let raw: Partial<RuntimeConfig>;
   try {
-    raw = await response.json() as Partial<RuntimeConfig>;
+    const text = await response.text();
+    raw = JSON.parse(text) as Partial<RuntimeConfig>;
   } catch (error) {
+    if (isLocalDevelopmentHost()) {
+      console.warn(
+        'Runtime configuration was missing or invalid during local development. Using local-development defaults.',
+        error,
+      );
+      return cloneDefaultConfig();
+    }
     throw new Error(`Runtime configuration is not valid JSON: ${error instanceof Error ? error.message : String(error)}`);
   }
 
