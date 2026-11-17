@@ -1,5 +1,3 @@
-import './workspaceUi.css';
-
 import {
   PROCESS_CATALOG,
   PROCESS_METADATA_AUTOSAVE_PREFIX,
@@ -50,6 +48,14 @@ const sidebarSections: SidebarSection[] = [
     actions: [
       { label: 'Home Model', targetButtonId: 'home-button' },
       { label: 'Back', targetButtonId: 'back-button' },
+    ],
+  },
+  {
+    id: 'model',
+    label: 'Model',
+    icon: '▣',
+    actions: [
+      { label: 'Open Enterprise Model', targetButtonId: 'open-model-button' },
     ],
   },
   {
