@@ -48,3 +48,6 @@
   marker-start:url(#enterprise-interface-arrow)!important;
   marker-end:url(#enterprise-interface-arrow)!important
 }
+
+.solution-architecture-bpmn-workspace.solution-architecture-bpmn-context-hidden{grid-template-columns:minmax(0,1fr)}
+.solution-architecture-bpmn-context[hidden]{display:none!important}
