@@ -28,7 +28,7 @@ export function getOpenEnterpriseModelName(): string {
   return activeModelDirectory?.name ?? '';
 }
 
-export async function openEnterpriseModelFolder(): Promise<string> {
+export async function selectEnterpriseModelFolder(): Promise<LocalDirectoryHandle> {
   const picker = (window as DirectoryPickerWindow).showDirectoryPicker;
   if (!picker) {
     throw new Error(
@@ -36,11 +36,19 @@ export async function openEnterpriseModelFolder(): Promise<string> {
     );
   }
 
-  activeModelDirectory = await picker.call(window);
+  return picker.call(window);
+}
+
+export function activateEnterpriseModelFolder(directory: LocalDirectoryHandle): string {
+  activeModelDirectory = directory;
   document.dispatchEvent(new CustomEvent('enterprise-modeler:model-folder-changed', {
     detail: { name: activeModelDirectory.name },
   }));
   return activeModelDirectory.name;
+}
+
+export async function openEnterpriseModelFolder(): Promise<string> {
+  return activateEnterpriseModelFolder(await selectEnterpriseModelFolder());
 }
 
 export async function readModelText(path: string): Promise<string> {
