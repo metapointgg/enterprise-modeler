@@ -4,6 +4,7 @@ import 'bpmn-js/dist/assets/diagram-js.css';
 import 'bpmn-js/dist/assets/bpmn-font/css/bpmn.css';
 
 import './style.css';
+import './workspaceUi.css';
 
 import { OrganisationManager } from './organisationManager';
 import {
