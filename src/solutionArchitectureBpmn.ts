@@ -60,6 +60,13 @@ interface CanvasService {
 
 interface ModelingService {
   updateProperties(element: DiagramElement, properties: Record<string, unknown>): void;
+  reconnect(
+    connection: DiagramElement,
+    source: DiagramElement,
+    target: DiagramElement,
+    dockingOrPoints?: unknown,
+    hints?: Record<string, unknown>,
+  ): void;
 }
 
 interface ReplaceService {
@@ -108,6 +115,13 @@ const ARCHITECTURE_PROCESS_PREFIX = 'ArchitectureProcess_';
 const PROCESS_FADED_MARKER = 'architecture-bpmn-faded';
 const ENVIRONMENT_FADED_MARKER = 'architecture-bpmn-environment-faded';
 const LINE_STYLE_MARKERS = ['architecture-line-solid', 'architecture-line-dashed', 'architecture-line-dotted'] as const;
+const DIRECTION_MARKERS = [
+  'architecture-direction-outbound',
+  'architecture-direction-inbound',
+  'architecture-direction-bidirectional',
+] as const;
+const ARCHITECTURE_DEBUG = new URLSearchParams(window.location.search).has('debugModeler')
+  || localStorage.getItem('enterprise-modeler.debug') === 'true';
 
 class SolutionArchitectureBpmnPage {
   private readonly dialog: HTMLDialogElement;
@@ -145,6 +159,7 @@ class SolutionArchitectureBpmnPage {
     this.contextPanel = contextPanel;
 
     this.modeler = new BpmnModeler({ container: this.canvasHost });
+    architectureDebug('initialised', { canvas: '#solution-architecture-bpmn-canvas' });
     this.ensureInterfaceArrowMarkers();
     this.bindModelerEvents();
     this.bindPageEvents();
@@ -217,6 +232,10 @@ class SolutionArchitectureBpmnPage {
       const selection = (event as SelectionChangedEvent).newSelection ?? [];
       const selected = selection[0] ?? null;
       this.selectedElement = selected ? this.resolveContextElement(selected) : null;
+      architectureDebug('selection.changed', {
+        selectedId: this.selectedElement?.id ?? null,
+        selectedType: this.selectedElement?.businessObject?.$type ?? this.selectedElement?.type ?? null,
+      });
       this.renderContextPanel();
     });
 
@@ -226,9 +245,6 @@ class SolutionArchitectureBpmnPage {
       this.scheduleRegistrySync();
     });
 
-    eventBus.on('elements.changed', () => {
-      window.setTimeout(() => this.applyAllInterfacePresentation(), 0);
-    });
   }
 
   private bindContextPadProvider(): void {
@@ -298,6 +314,7 @@ class SolutionArchitectureBpmnPage {
         );
       });
 
+      architectureDebug('contextPad.systemEntries', { elementId: target.id, entries: Object.keys(entries) });
       return entries;
     }
 
@@ -357,6 +374,7 @@ class SolutionArchitectureBpmnPage {
         );
       });
 
+      architectureDebug('contextPad.interfaceEntries', { elementId: target.id, entries: Object.keys(entries) });
       return entries;
     }
 
@@ -370,6 +388,11 @@ class SolutionArchitectureBpmnPage {
       });
     }
 
+    architectureDebug('contextPad.entries', {
+      elementId: target.id,
+      elementType: target.businessObject?.$type ?? target.type ?? '',
+      entries: Object.keys(entries),
+    });
     return entries;
   }
 
@@ -704,6 +727,13 @@ class SolutionArchitectureBpmnPage {
           || existing.targetSystemId !== targetId
           || existing.status === 'retired'
         ) {
+          architectureDebug('interface.registry.sync', {
+            interfaceId: existing.id,
+            previousSource: existing.sourceSystemId,
+            previousTarget: existing.targetSystemId,
+            sourceId,
+            targetId,
+          });
           existing.name = name;
           existing.sourceSystemId = sourceId;
           existing.targetSystemId = targetId;
@@ -993,8 +1023,6 @@ class SolutionArchitectureBpmnPage {
   }
 
   private renderInterfaceContext(record: InterfaceRecord): string {
-    const source = this.data.systems.find((system) => system.id === record.sourceSystemId);
-    const target = this.data.systems.find((system) => system.id === record.targetSystemId);
     return `
       <div class="solution-architecture-context-header">
         <div><strong>Interface</strong><small>${escapeHtml(record.id)}</small></div>
@@ -1002,9 +1030,9 @@ class SolutionArchitectureBpmnPage {
       </div>
       <form id="architecture-bpmn-interface-form" class="solution-architecture-context-form">
         <label><span>Name</span><input id="architecture-bpmn-interface-name" required value="${escapeHtml(record.name)}" /></label>
-        <label><span>Source</span><input value="${escapeHtml(source?.name ?? record.sourceSystemId)}" readonly /></label>
-        <label><span>Target</span><input value="${escapeHtml(target?.name ?? record.targetSystemId)}" readonly /></label>
-        <div class="solution-architecture-context-note">Reconnect the native BPMN Flow to change its source or target.</div>
+        <label><span>Source system</span><select id="architecture-bpmn-interface-source">${this.systemOptions(record.sourceSystemId)}</select></label>
+        <label><span>Target system</span><select id="architecture-bpmn-interface-target">${this.systemOptions(record.targetSystemId)}</select></label>
+        <div class="solution-architecture-context-note">Source and target can be changed here or by reconnecting the BPMN flow on the canvas.</div>
         <label><span>Direction</span><select id="architecture-bpmn-interface-direction">${this.directionOptions(record.direction)}</select></label>
         <label><span>Line style</span><select id="architecture-bpmn-interface-line-style">${this.lineStyleOptions(record.lineStyle ?? 'solid')}</select></label>
         <fieldset>
@@ -1031,6 +1059,42 @@ class SolutionArchitectureBpmnPage {
     const form = this.contextPanel.querySelector<HTMLFormElement>('#architecture-bpmn-interface-form');
     form?.addEventListener('submit', (event) => {
       event.preventDefault();
+      const requestedSourceId = this.selectValue('#architecture-bpmn-interface-source');
+      const requestedTargetId = this.selectValue('#architecture-bpmn-interface-target');
+      if (!requestedSourceId || !requestedTargetId || requestedSourceId === requestedTargetId) {
+        window.alert('An interface must have two different source and target systems.');
+        return;
+      }
+
+      const elementRegistry = this.modeler.get<ElementRegistryService>('elementRegistry');
+      const requestedSource = elementRegistry.get(requestedSourceId);
+      const requestedTarget = elementRegistry.get(requestedTargetId);
+      if (!requestedSource || !requestedTarget) {
+        window.alert('The selected source or target system is not present on the Solution Architecture canvas.');
+        return;
+      }
+
+      if (element.source?.id !== requestedSourceId || element.target?.id !== requestedTargetId) {
+        architectureDebug('interface.reconnect.requested', {
+          interfaceId: record.id,
+          previousSource: element.source?.id ?? '',
+          previousTarget: element.target?.id ?? '',
+          requestedSource: requestedSourceId,
+          requestedTarget: requestedTargetId,
+        });
+        try {
+          this.modeler.get<ModelingService>('modeling').reconnect(
+            element,
+            requestedSource,
+            requestedTarget,
+          );
+        } catch (error) {
+          console.error('Unable to reconnect Solution Architecture interface.', error);
+          window.alert('The BPMN connection could not be reconnected to those systems.');
+          return;
+        }
+      }
+
       record.name = this.inputValue('#architecture-bpmn-interface-name') || record.name;
       record.direction = this.selectValue('#architecture-bpmn-interface-direction') as InterfaceRecord['direction'];
       record.lineStyle = this.selectValue('#architecture-bpmn-interface-line-style') as NonNullable<InterfaceRecord['lineStyle']>;
@@ -1042,8 +1106,8 @@ class SolutionArchitectureBpmnPage {
       record.status = this.selectValue('#architecture-bpmn-interface-status') as InterfaceRecord['status'];
       record.documentationReference = this.inputValue('#architecture-bpmn-interface-documentation');
       record.notes = this.textareaValue('#architecture-bpmn-interface-notes');
-      record.sourceSystemId = element.source?.id ?? record.sourceSystemId;
-      record.targetSystemId = element.target?.id ?? record.targetSystemId;
+      record.sourceSystemId = requestedSourceId;
+      record.targetSystemId = requestedTargetId;
 
       this.internalRegistryWrite = true;
       try {
@@ -1088,6 +1152,16 @@ class SolutionArchitectureBpmnPage {
 
   private systemName(systemId: string): string {
     return this.data.systems.find((system) => system.id === systemId)?.name ?? '';
+  }
+
+  private systemOptions(selected: string): string {
+    return this.data.systems
+      .filter((system) => system.active || system.id === selected)
+      .sort((left, right) => left.name.localeCompare(right.name))
+      .map((system) =>
+        `<option value="${escapeHtml(system.id)}"${system.id === selected ? ' selected' : ''}>${escapeHtml(system.name)}</option>`,
+      )
+      .join('');
   }
 
   private positionOptions(selected: string): string {
@@ -1137,6 +1211,7 @@ class SolutionArchitectureBpmnPage {
 
   private applyAllInterfacePresentation(): void {
     this.ensureInterfaceArrowMarkers();
+    architectureDebug('interface.presentation.refresh', { interfaceCount: this.data.interfaces.length });
     const registry = this.modeler.get<ElementRegistryService>('elementRegistry');
     this.data.interfaces.forEach((record) => {
       const element = registry.get(record.id);
@@ -1146,25 +1221,23 @@ class SolutionArchitectureBpmnPage {
     });
   }
 
-  private applyInterfaceDirection(record: InterfaceRecord, element: DiagramElement): void {
+  private applyInterfaceDirection(
+    record: InterfaceRecord,
+    element: DiagramElement,
+    canvas = this.modeler.get<CanvasService>('canvas'),
+  ): void {
     this.ensureInterfaceArrowMarkers();
-    const shape = this.canvasHost.querySelector<SVGPathElement>(
-      `[data-element-id="${CSS.escape(element.id)}"] .djs-visual > path`,
-    );
-    if (!shape) return;
-
-    const marker = 'url(#enterprise-interface-arrow)';
-    shape.removeAttribute('marker-start');
-    shape.removeAttribute('marker-end');
-
-    if (record.direction === 'inbound') {
-      shape.setAttribute('marker-start', marker);
-    } else if (record.direction === 'bidirectional') {
-      shape.setAttribute('marker-start', marker);
-      shape.setAttribute('marker-end', marker);
-    } else {
-      shape.setAttribute('marker-end', marker);
-    }
+    DIRECTION_MARKERS.forEach((marker) => canvas.removeMarker(element.id, marker));
+    const direction = record.direction === 'inbound' || record.direction === 'bidirectional'
+      ? record.direction
+      : 'outbound';
+    canvas.addMarker(element.id, `architecture-direction-${direction}`);
+    architectureDebug('interface.direction.applied', {
+      interfaceId: record.id,
+      direction,
+      sourceSystemId: record.sourceSystemId,
+      targetSystemId: record.targetSystemId,
+    });
   }
 
   private applyInterfaceLineStyle(
@@ -1224,6 +1297,15 @@ class SolutionArchitectureBpmnPage {
   private textareaValue(selector: string): string {
     return this.contextPanel.querySelector<HTMLTextAreaElement>(selector)?.value.trim() ?? '';
   }
+}
+
+function architectureDebug(message: string, detail?: unknown): void {
+  if (!ARCHITECTURE_DEBUG) return;
+  if (detail === undefined) {
+    console.debug(`[EnterpriseModeler:Architecture] ${message}`);
+    return;
+  }
+  console.debug(`[EnterpriseModeler:Architecture] ${message}`, detail);
 }
 
 function capitalise(value: string): string {
