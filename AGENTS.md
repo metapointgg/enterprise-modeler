@@ -98,3 +98,7 @@ Examples include:
 - What is the blast radius of retiring a system, interface or process?
 
 Use the traversal recipes in `docs/ai-model-interrogation.md` for these questions.
+
+## Application/configuration boundary
+
+The Enterprise Model root contains model data only. Do not treat `public/config/` as model data and do not move it into a client model repository. Runtime configuration belongs to the Enterprise Modeler application repository.
