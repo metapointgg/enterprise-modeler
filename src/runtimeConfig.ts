@@ -140,8 +140,15 @@ async function fetchRuntimeConfig(): Promise<RuntimeConfig> {
 
   const isStandalone = config.environment.toLowerCase() === 'standalone';
 
-  if (!config.auth.enabled && !isLocalDevelopmentHost() && !isStandalone) {
-    throw new Error('Cognito authentication must be enabled for a deployed Process Modeler environment.');
+  if (
+    !config.auth.enabled
+    && !config.azureDevOps.enabled
+    && !isLocalDevelopmentHost()
+    && !isStandalone
+  ) {
+    throw new Error(
+      'A deployed Enterprise Modeler environment must enable either application authentication or Azure DevOps repository authentication.',
+    );
   }
 
   if (config.auth.enabled) {
