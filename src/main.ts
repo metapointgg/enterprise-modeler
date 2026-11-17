@@ -1562,10 +1562,12 @@ async function createEnterpriseModel(): Promise<void> {
   }
 
   try {
-    const name = window.prompt('Enterprise Model name', 'Enterprise Model')?.trim();
+    // Invoke the filesystem chooser first so it is directly associated with
+    // the user's click and is not blocked by browser user-activation rules.
+    const directory = await selectEnterpriseModelFolder();
+    const name = window.prompt('Enterprise Model name', directory.name || 'Enterprise Model')?.trim();
     if (!name) return;
     const organisationName = window.prompt('Organisation name', name)?.trim() || name;
-    const directory = await selectEnterpriseModelFolder();
 
     await persistCurrentDiagram();
     const modelName = await createStarterEnterpriseModel(directory, { name, organisationName });
