@@ -1,3 +1,4 @@
+import { hasOpenEnterpriseModel, readModelJson, writeModelJson } from './modelWorkspace';
 import type {
   BusinessRuleRecord,
   ControlRecord,
@@ -91,7 +92,7 @@ function normalise(value: Partial<GovernanceCatalogueData>): GovernanceCatalogue
 }
 
 export async function loadGovernanceCatalogue(preferAutosave = true): Promise<GovernanceCatalogueData> {
-  if (preferAutosave) {
+  if (preferAutosave && !hasOpenEnterpriseModel()) {
     const saved = localStorage.getItem(GOVERNANCE_CATALOGUE_AUTOSAVE_KEY);
     if (saved) {
       try {
@@ -101,12 +102,14 @@ export async function loadGovernanceCatalogue(preferAutosave = true): Promise<Go
       }
     }
   }
-  const response = await fetch(GOVERNANCE_CATALOGUE_URL, { cache: 'no-store' });
-  if (!response.ok) throw new Error(`Unable to load governance catalogue. HTTP ${response.status}.`);
-  return normalise(await response.json() as Partial<GovernanceCatalogueData>);
+  return normalise(
+    await readModelJson<Partial<GovernanceCatalogueData>>(GOVERNANCE_CATALOGUE_URL),
+  );
 }
 
 export function saveGovernanceCatalogueLocally(data: GovernanceCatalogueData): void {
-  localStorage.setItem(GOVERNANCE_CATALOGUE_AUTOSAVE_KEY, JSON.stringify(normalise(data), null, 2));
+  const normalised = normalise(data);
+  localStorage.setItem(GOVERNANCE_CATALOGUE_AUTOSAVE_KEY, JSON.stringify(normalised, null, 2));
+  void writeModelJson(GOVERNANCE_CATALOGUE_URL, normalised);
   document.dispatchEvent(new CustomEvent('enterprise-modeler:governance-catalogue-changed'));
 }
