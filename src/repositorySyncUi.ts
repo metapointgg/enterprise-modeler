@@ -4,15 +4,18 @@ import {
   isRemoteRepositoryEnabled,
   type RepositorySyncEventDetail,
 } from './repositoryTransport';
+import { getEnterpriseModelWorkspaceMode } from './modelWorkspace';
 
 let banner: HTMLElement | null = null;
 let blockingConflict: RepositorySyncEventDetail | null = null;
 
 export async function initialiseRepositorySyncUi(): Promise<void> {
-  if (!await isRemoteRepositoryEnabled()) return;
+  const remoteRepositoryEnabled = await isRemoteRepositoryEnabled();
+  const azureDevOpsEnabled = getEnterpriseModelWorkspaceMode() === 'azure-devops';
+  if (!remoteRepositoryEnabled && !azureDevOpsEnabled) return;
 
   ensureStatusElement();
-  updateFooter();
+  updateFooter(azureDevOpsEnabled);
 
   document.addEventListener('enterprise-modeler:repository-sync-status', (event) => {
     const detail = (event as CustomEvent<RepositorySyncEventDetail>).detail;
@@ -22,17 +25,23 @@ export async function initialiseRepositorySyncUi(): Promise<void> {
 }
 
 function ensureStatusElement(): HTMLElement | null {
-  const details = document.querySelector<HTMLElement>('.auth-user-details');
-  if (!details) return null;
-
-  const existing = details.querySelector<HTMLElement>('.auth-repository-status');
+  const existing = document.querySelector<HTMLElement>('.auth-repository-status');
   if (existing) return existing;
+
+  const host = document.querySelector<HTMLElement>('.auth-user-details')
+    ?? document.querySelector<HTMLElement>('.document-information');
+  if (!host) return null;
 
   const status = document.createElement('small');
   status.className = 'auth-repository-status';
+  if (host.classList.contains('document-information')) {
+    status.classList.add('repository-header-status');
+  }
   status.dataset.state = 'synced';
-  status.textContent = 'Shared repository ready';
-  details.appendChild(status);
+  status.textContent = getEnterpriseModelWorkspaceMode() === 'azure-devops'
+    ? 'Azure DevOps repository ready'
+    : 'Shared repository ready';
+  host.appendChild(status);
   return status;
 }
 
@@ -81,13 +90,17 @@ function dismissBanner(): void {
   banner = null;
 }
 
-function updateFooter(): void {
+function updateFooter(azureDevOpsEnabled: boolean): void {
   const footer = document.querySelector<HTMLElement>('.application-footer');
   if (!footer) return;
 
   const spans = footer.querySelectorAll<HTMLSpanElement>('span');
   if (spans[0]) spans[0].textContent = 'Browser autosave is a working draft for the current session.';
-  if (spans[1]) spans[1].textContent = 'The authenticated private S3 repository is the shared system of record.';
+  if (spans[1]) {
+    spans[1].textContent = azureDevOpsEnabled
+      ? 'The selected Azure DevOps Git repository is the shared system of record.'
+      : 'The authenticated private repository is the shared system of record.';
+  }
 }
 
 function escapeHtml(value: string): string {
