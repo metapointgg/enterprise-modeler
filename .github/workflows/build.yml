@@ -45,7 +45,7 @@ jobs:
           done
           echo "Protected repository data is absent from the production bundle."
 
-      - name: Build standalone reference distribution
+      - name: Build standalone application distribution
         run: npm run build:standalone
 
       - name: Configure standalone runtime
@@ -54,15 +54,19 @@ jobs:
           set -euo pipefail
           cp public/config/runtime.standalone.json dist/config/runtime.json
 
-      - name: Verify standalone reference data is present
+      - name: Verify standalone application contains no model data
         shell: bash
         run: |
           set -euo pipefail
           test -f dist/index.html
-          test -f dist/architecture/solution-architecture.bpmn
-          test -f dist/architecture/integrations.json
           grep -q '"environment": "standalone"' dist/config/runtime.json
-          echo "Standalone distribution contains the reference repository and requires no runtime dependency download."
+          for directory in processes metadata organisation architecture governance data model; do
+            if [ -e "dist/$directory" ]; then
+              echo "Standalone application unexpectedly contains model data in dist/$directory"
+              exit 1
+            fi
+          done
+          echo "Standalone distribution is application-only; Enterprise Models are selected at runtime."
 
       - name: Publish standalone build into repository
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
