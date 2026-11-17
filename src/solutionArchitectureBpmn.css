@@ -34,3 +34,17 @@
 .solution-architecture-bpmn-canvas .djs-context-pad .architecture-context-icon-inbound::before{content:"←";font-size:17px}
 .solution-architecture-bpmn-canvas .djs-context-pad .architecture-context-icon-bidirectional::before{content:"↔";font-size:17px}
 .solution-architecture-bpmn-canvas .djs-context-pad .architecture-context-icon-fit::before{content:"⤢";font-size:16px}
+
+
+.solution-architecture-bpmn-canvas .djs-connection.architecture-direction-outbound .djs-visual>path{
+  marker-start:none!important;
+  marker-end:url(#enterprise-interface-arrow)!important
+}
+.solution-architecture-bpmn-canvas .djs-connection.architecture-direction-inbound .djs-visual>path{
+  marker-start:url(#enterprise-interface-arrow)!important;
+  marker-end:none!important
+}
+.solution-architecture-bpmn-canvas .djs-connection.architecture-direction-bidirectional .djs-visual>path{
+  marker-start:url(#enterprise-interface-arrow)!important;
+  marker-end:url(#enterprise-interface-arrow)!important
+}
