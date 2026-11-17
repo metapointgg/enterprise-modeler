@@ -174,6 +174,13 @@ export function logout(): void {
 
 async function handleOAuthCallback(auth: RuntimeAuthConfig): Promise<void> {
   const url = new URL(window.location.href);
+  const callbackState = url.searchParams.get('state') ?? '';
+  if (callbackState.startsWith('ado:')) {
+    // Azure DevOps uses its own Microsoft Entra PKCE flow. Leave these
+    // callback parameters intact for modelWorkspaceStartup to consume.
+    return;
+  }
+
   const error = url.searchParams.get('error');
   const errorDescription = url.searchParams.get('error_description');
 
