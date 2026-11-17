@@ -9,6 +9,12 @@ import './workspaceUi.css';
 import { OrganisationManager } from './organisationManager';
 import { createStarterEnterpriseModel } from './enterpriseModelSeed';
 import {
+  beginAzureDevOpsLogin,
+  getAzureDevOpsRuntimeConfig,
+  hasAzureDevOpsSession,
+  type AzureDevOpsModelConnection,
+} from './azureDevOpsAuth';
+import {
   createEmptyOrganisation,
   exportOrganisationJson,
   getDepartmentName,
@@ -33,10 +39,12 @@ import {
   type ProcessDefinition,
 } from './processCatalog';
 import {
+  activateAzureDevOpsEnterpriseModel,
   activateEnterpriseModelFiles,
   activateEnterpriseModelFolder,
   chooseEnterpriseModelFiles,
   getOpenEnterpriseModelName,
+  getRememberedAzureDevOpsConnection,
   hasOpenEnterpriseModel,
   selectEnterpriseModelFolder,
   supportsDirectModelFolderAccess,
@@ -1587,6 +1595,80 @@ async function createEnterpriseModel(): Promise<void> {
   }
 }
 
+async function openAzureDevOpsEnterpriseModel(): Promise<void> {
+  try {
+    const config = await getAzureDevOpsRuntimeConfig();
+    if (!config.enabled) {
+      window.alert(
+        'Azure DevOps integration is not enabled. Configure azureDevOps in public/config/runtime.json.',
+      );
+      return;
+    }
+
+    const remembered = getRememberedAzureDevOpsConnection();
+    const organization = window.prompt(
+      'Azure DevOps organisation',
+      remembered?.organization || config.defaultOrganization,
+    )?.trim();
+    if (!organization) return;
+
+    const project = window.prompt(
+      'Azure DevOps project',
+      remembered?.project || config.defaultProject,
+    )?.trim();
+    if (!project) return;
+
+    const repository = window.prompt(
+      'Azure DevOps repository',
+      remembered?.repository || config.defaultRepository,
+    )?.trim();
+    if (!repository) return;
+
+    const branch = window.prompt(
+      'Branch',
+      remembered?.branch || config.defaultBranch || 'main',
+    )?.trim() || 'main';
+
+    const modelPath = window.prompt(
+      'Model path within the repository (leave blank when the model is at repository root)',
+      remembered?.modelPath || config.defaultModelPath,
+    )?.trim() || '';
+
+    const connection: AzureDevOpsModelConnection = {
+      organization,
+      project,
+      repository,
+      branch,
+      modelPath,
+    };
+
+    await persistCurrentDiagram();
+
+    if (!hasAzureDevOpsSession()) {
+      await beginAzureDevOpsLogin(connection);
+      return;
+    }
+
+    const name = await activateAzureDevOpsEnterpriseModel(connection);
+    await initialiseProcessRepository(false);
+    currentOrganisation = await loadOrganisation(false);
+    organisationManager.setData(currentOrganisation);
+
+    const rootProcess = getProcessById(ROOT_PROCESS_ID)
+      ?? Object.values(PROCESS_CATALOG).find((process) => process.active)
+      ?? Object.values(PROCESS_CATALOG)[0];
+
+    if (rootProcess) await loadCatalogProcess(rootProcess.id, false);
+    setStatus(`Azure DevOps Enterprise Model opened: ${name}`, 'success');
+  } catch (error) {
+    console.error('Unable to open Azure DevOps Enterprise Model.', error);
+    setStatus(
+      error instanceof Error ? error.message : 'Unable to open Azure DevOps Enterprise Model',
+      'error',
+    );
+  }
+}
+
 async function initialise(): Promise<void> {
   try {
     await initialiseProcessRepository(true);
@@ -1621,6 +1703,7 @@ openButton.addEventListener('click', () => {
 openModelButton.addEventListener('click', () => void openEnterpriseModel());
 document.addEventListener('enterprise-modeler:open-enterprise-model', () => void openEnterpriseModel());
 document.addEventListener('enterprise-modeler:create-enterprise-model', () => void createEnterpriseModel());
+document.addEventListener('enterprise-modeler:open-azure-devops-model', () => void openAzureDevOpsEnterpriseModel());
 homeButton.addEventListener('click', () => {
   const home = getProcessById(ROOT_PROCESS_ID);
   if (home) {
