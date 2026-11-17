@@ -13,7 +13,9 @@ Read these two guides before creating, editing, or interrogating model data:
 
 ## Enterprise Model root
 
-An Enterprise Model is one folder containing the related model domains:
+Enterprise Model data is external to the Enterprise Modeler application repository. Do not look under `public/` for model data.
+
+An Enterprise Model is one selected folder/repository containing the related model domains:
 
 ```text
 <enterprise-model-root>/
@@ -101,4 +103,4 @@ Use the traversal recipes in `docs/ai-model-interrogation.md` for these question
 
 ## Application/configuration boundary
 
-The Enterprise Model root contains model data only. Do not treat `public/config/` as model data and do not move it into a client model repository. Runtime configuration belongs to the Enterprise Modeler application repository.
+The Enterprise Model root contains model data only. Runtime configuration remains in the Enterprise Modeler application repository under `public/config/`. All model interrogation must target the selected/external Enterprise Model repository, not application `public/` paths.
