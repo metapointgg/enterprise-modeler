@@ -85,6 +85,7 @@ This repository includes instructions for AI agents that build or interrogate En
 - `AGENTS.md` — agent entry point and model-root conventions.
 - `docs/ai-model-authoring.md` — organisation, process, systems/integration, data and governance authoring rules.
 - `docs/ai-model-interrogation.md` — dependency traversal, impact analysis, stakeholder discovery and data-lineage interrogation.
+- `docs/azure-devops-repository.md` — direct Azure DevOps Git repository workspace setup, authentication and save/conflict behaviour.
 
 The guidance is designed so an agent can answer questions such as which downstream systems, data, processes and owners are affected by changing a system or integration point.
 
