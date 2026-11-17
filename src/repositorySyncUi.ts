@@ -11,16 +11,28 @@ let blockingConflict: RepositorySyncEventDetail | null = null;
 
 export async function initialiseRepositorySyncUi(): Promise<void> {
   const remoteRepositoryEnabled = await isRemoteRepositoryEnabled();
-  const azureDevOpsEnabled = getEnterpriseModelWorkspaceMode() === 'azure-devops';
-  if (!remoteRepositoryEnabled && !azureDevOpsEnabled) return;
 
-  ensureStatusElement();
-  updateFooter(azureDevOpsEnabled);
+  const refreshWorkspaceState = (): void => {
+    const azureDevOpsEnabled = getEnterpriseModelWorkspaceMode() === 'azure-devops';
+    if (remoteRepositoryEnabled || azureDevOpsEnabled) {
+      ensureStatusElement();
+      updateFooter(azureDevOpsEnabled);
+    }
+  };
+
+  refreshWorkspaceState();
 
   document.addEventListener('enterprise-modeler:repository-sync-status', (event) => {
     const detail = (event as CustomEvent<RepositorySyncEventDetail>).detail;
     if (!detail) return;
+    ensureStatusElement();
     renderStatus(detail);
+  });
+
+  document.addEventListener('enterprise-modeler:model-folder-changed', () => {
+    blockingConflict = null;
+    dismissBanner();
+    refreshWorkspaceState();
   });
 }
 
