@@ -7,7 +7,30 @@
     "userPoolId": "",
     "redirectUri": "",
     "logoutUri": "",
-    "scopes": ["openid", "email", "profile"]
+    "scopes": [
+      "openid",
+      "email",
+      "profile"
+    ]
   },
-  "api": { "baseUrl": "" }
+  "api": {
+    "baseUrl": ""
+  },
+  "azureDevOps": {
+    "enabled": false,
+    "tenantId": "",
+    "clientId": "",
+    "redirectUri": "",
+    "scopes": [
+      "openid",
+      "profile",
+      "offline_access",
+      "499b84ac-1321-427f-aa17-267ca6975798/.default"
+    ],
+    "defaultOrganization": "",
+    "defaultProject": "",
+    "defaultRepository": "",
+    "defaultBranch": "main",
+    "defaultModelPath": ""
+  }
 }
