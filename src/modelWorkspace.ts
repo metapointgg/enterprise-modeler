@@ -326,7 +326,12 @@ export async function writeModelText(path: string, contents: string): Promise<bo
 }
 
 export async function writeModelJson(path: string, value: unknown): Promise<boolean> {
-  return writeModelText(path, `${JSON.stringify(value, null, 2)}\n`);
+  try {
+    return await writeModelText(path, `${JSON.stringify(value, null, 2)}\n`);
+  } catch (error) {
+    console.error(`Unable to save Enterprise Model JSON ${normaliseModelPath(path)}.`, error);
+    return false;
+  }
 }
 
 export async function writeDirectoryText(
