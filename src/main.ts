@@ -32,9 +32,10 @@ import {
   type ProcessDefinition,
 } from './processCatalog';
 import {
+  activateEnterpriseModelFolder,
   getOpenEnterpriseModelName,
   hasOpenEnterpriseModel,
-  openEnterpriseModelFolder,
+  selectEnterpriseModelFolder,
   readModelJson,
   readModelText,
   writeModelJson,
@@ -1524,8 +1525,9 @@ function handleOpenProcessEvent(event: Event): void {
 
 async function openEnterpriseModel(): Promise<void> {
   try {
+    const selectedDirectory = await selectEnterpriseModelFolder();
     await persistCurrentDiagram();
-    const name = await openEnterpriseModelFolder();
+    const name = activateEnterpriseModelFolder(selectedDirectory);
     await initialiseProcessRepository(false);
     currentOrganisation = await loadOrganisation(false);
     organisationManager.setData(currentOrganisation);
@@ -1574,6 +1576,7 @@ openButton.addEventListener('click', () => {
   fileInput.click();
 });
 openModelButton.addEventListener('click', () => void openEnterpriseModel());
+document.addEventListener('enterprise-modeler:open-enterprise-model', () => void openEnterpriseModel());
 homeButton.addEventListener('click', () => {
   const home = getProcessById(ROOT_PROCESS_ID);
   if (home) {
