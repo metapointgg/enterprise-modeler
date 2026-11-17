@@ -397,6 +397,7 @@ class SolutionArchitectureBpmnPage {
   }
 
   private refreshContextPad(element: DiagramElement): void {
+    if (!this.dialog.open) return;
     const current = this.modeler.get<ElementRegistryService>('elementRegistry').get(element.id);
     if (!current) return;
     const contextPad = this.modeler.get<ContextPadService>('contextPad');
