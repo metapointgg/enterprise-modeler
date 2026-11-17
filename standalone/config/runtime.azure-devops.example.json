@@ -1,0 +1,36 @@
+{
+  "environment": "local",
+  "auth": {
+    "enabled": false,
+    "domain": "",
+    "clientId": "",
+    "userPoolId": "",
+    "redirectUri": "",
+    "logoutUri": "",
+    "scopes": [
+      "openid",
+      "email",
+      "profile"
+    ]
+  },
+  "api": {
+    "baseUrl": ""
+  },
+  "azureDevOps": {
+    "enabled": true,
+    "tenantId": "<microsoft-entra-tenant-id>",
+    "clientId": "<enterprise-modeler-entra-spa-client-id>",
+    "redirectUri": "http://localhost:5173/",
+    "scopes": [
+      "openid",
+      "profile",
+      "offline_access",
+      "499b84ac-1321-427f-aa17-267ca6975798/.default"
+    ],
+    "defaultOrganization": "<azure-devops-organisation>",
+    "defaultProject": "<azure-devops-project>",
+    "defaultRepository": "client-enterprise-model",
+    "defaultBranch": "main",
+    "defaultModelPath": ""
+  }
+}
