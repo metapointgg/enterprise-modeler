@@ -1209,18 +1209,6 @@ class SolutionArchitectureBpmnPage {
     defs.appendChild(marker);
   }
 
-  private applyAllInterfacePresentation(): void {
-    this.ensureInterfaceArrowMarkers();
-    architectureDebug('interface.presentation.refresh', { interfaceCount: this.data.interfaces.length });
-    const registry = this.modeler.get<ElementRegistryService>('elementRegistry');
-    this.data.interfaces.forEach((record) => {
-      const element = registry.get(record.id);
-      if (!element || !this.isInterfaceElement(element)) return;
-      this.applyInterfaceLineStyle(record, element);
-      this.applyInterfaceDirection(record, element);
-    });
-  }
-
   private applyInterfaceDirection(
     record: InterfaceRecord,
     element: DiagramElement,
