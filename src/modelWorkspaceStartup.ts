@@ -1,9 +1,18 @@
+import {
+  beginAzureDevOpsLogin,
+  getAzureDevOpsRuntimeConfig,
+  handleAzureDevOpsOAuthCallback,
+  hasAzureDevOpsSession,
+  type AzureDevOpsModelConnection,
+} from './azureDevOpsAuth';
 import { createStarterEnterpriseModel } from './enterpriseModelSeed';
 import {
+  activateAzureDevOpsEnterpriseModel,
   activateEnterpriseModelFiles,
   activateEnterpriseModelFolder,
   activateRemoteEnterpriseModel,
   chooseEnterpriseModelFiles,
+  getRememberedAzureDevOpsConnection,
   getRememberedEnterpriseModelName,
   reopenRememberedEnterpriseModel,
   restoreLastEnterpriseModel,
@@ -18,16 +27,39 @@ export interface EnterpriseModelWorkspaceStartupOptions {
 export async function initialiseEnterpriseModelWorkspace(
   options: EnterpriseModelWorkspaceStartupOptions,
 ): Promise<void> {
+  let callbackError: unknown = null;
+
+  try {
+    const azureConnection = await handleAzureDevOpsOAuthCallback();
+    if (azureConnection) {
+      await activateAzureDevOpsEnterpriseModel(azureConnection);
+      return;
+    }
+  } catch (error) {
+    console.error('Unable to complete Azure DevOps authentication.', error);
+    callbackError = error;
+  }
+
   if (options.remoteRepositoryEnabled) {
     activateRemoteEnterpriseModel();
     return;
   }
 
   if (await restoreLastEnterpriseModel()) return;
-  await showWorkspaceChooser();
+  await showWorkspaceChooser(callbackError);
 }
 
-async function showWorkspaceChooser(): Promise<void> {
+async function showWorkspaceChooser(initialError: unknown = null): Promise<void> {
+  const azureConfig = await getAzureDevOpsRuntimeConfig();
+  const rememberedAzure = getRememberedAzureDevOpsConnection();
+  const azureDefaults: AzureDevOpsModelConnection = {
+    organization: rememberedAzure?.organization || azureConfig.defaultOrganization,
+    project: rememberedAzure?.project || azureConfig.defaultProject,
+    repository: rememberedAzure?.repository || azureConfig.defaultRepository,
+    branch: rememberedAzure?.branch || azureConfig.defaultBranch || 'main',
+    modelPath: rememberedAzure?.modelPath || azureConfig.defaultModelPath,
+  };
+
   return new Promise((resolve) => {
     const overlay = document.createElement('div');
     overlay.id = 'enterprise-model-workspace-chooser';
@@ -62,6 +94,36 @@ async function showWorkspaceChooser(): Promise<void> {
           <button id="workspace-open" type="button" style="${secondaryButtonStyle()}">
             Open existing Enterprise Model
           </button>
+          ${azureConfig.enabled ? `
+            <div style="height:1px;background:#e2e8f0;margin:4px 0"></div>
+            <div style="font-size:13px;font-weight:700;color:#0f172a">Azure DevOps repository</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+              <label style="display:grid;gap:6px;font-size:12px;font-weight:600;color:#334155">
+                Organisation
+                <input id="workspace-ado-organisation" value="${escapeHtml(azureDefaults.organization)}" placeholder="contoso" style="${inputStyle()}" />
+              </label>
+              <label style="display:grid;gap:6px;font-size:12px;font-weight:600;color:#334155">
+                Project
+                <input id="workspace-ado-project" value="${escapeHtml(azureDefaults.project)}" placeholder="Enterprise Architecture" style="${inputStyle()}" />
+              </label>
+              <label style="display:grid;gap:6px;font-size:12px;font-weight:600;color:#334155">
+                Repository
+                <input id="workspace-ado-repository" value="${escapeHtml(azureDefaults.repository)}" placeholder="client-enterprise-model" style="${inputStyle()}" />
+              </label>
+              <label style="display:grid;gap:6px;font-size:12px;font-weight:600;color:#334155">
+                Branch
+                <input id="workspace-ado-branch" value="${escapeHtml(azureDefaults.branch)}" placeholder="main" style="${inputStyle()}" />
+              </label>
+            </div>
+            <label style="display:grid;gap:6px;font-size:12px;font-weight:600;color:#334155">
+              Model path in repository
+              <input id="workspace-ado-model-path" value="${escapeHtml(azureDefaults.modelPath)}" placeholder="Leave blank when the model is at repository root" style="${inputStyle()}" />
+            </label>
+            <button id="workspace-ado-connect" type="button" style="${primaryButtonStyle()}">
+              ${hasAzureDevOpsSession() ? 'Open Azure DevOps Enterprise Model' : 'Sign in and open Azure DevOps Enterprise Model'}
+            </button>
+            <p style="margin:0;color:#64748b;font-size:11px;line-height:1.45">Uses Microsoft Entra delegated access. Enterprise Model changes are committed to the selected branch; no PAT is stored in the browser.</p>
+          ` : ''}
           <div style="height:1px;background:#e2e8f0;margin:4px 0"></div>
           <label style="display:grid;gap:6px;font-size:12px;font-weight:600;color:#334155">
             New model name
@@ -96,6 +158,8 @@ async function showWorkspaceChooser(): Promise<void> {
       resolve();
     };
 
+    if (initialError) showError(initialError);
+
     overlay.querySelector<HTMLButtonElement>('#workspace-reopen')?.addEventListener('click', () => {
       void (async () => {
         try {
@@ -115,6 +179,30 @@ async function showWorkspaceChooser(): Promise<void> {
           } else {
             await activateEnterpriseModelFiles(await chooseEnterpriseModelFiles());
           }
+          finish();
+        } catch (error) {
+          showError(error);
+        }
+      })();
+    });
+
+    overlay.querySelector<HTMLButtonElement>('#workspace-ado-connect')?.addEventListener('click', () => {
+      void (async () => {
+        try {
+          const connection: AzureDevOpsModelConnection = {
+            organization: overlay.querySelector<HTMLInputElement>('#workspace-ado-organisation')?.value.trim() ?? '',
+            project: overlay.querySelector<HTMLInputElement>('#workspace-ado-project')?.value.trim() ?? '',
+            repository: overlay.querySelector<HTMLInputElement>('#workspace-ado-repository')?.value.trim() ?? '',
+            branch: overlay.querySelector<HTMLInputElement>('#workspace-ado-branch')?.value.trim() || 'main',
+            modelPath: overlay.querySelector<HTMLInputElement>('#workspace-ado-model-path')?.value.trim() ?? '',
+          };
+
+          if (!hasAzureDevOpsSession()) {
+            await beginAzureDevOpsLogin(connection);
+            return;
+          }
+
+          await activateAzureDevOpsEnterpriseModel(connection);
           finish();
         } catch (error) {
           showError(error);
