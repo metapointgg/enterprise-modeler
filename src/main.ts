@@ -7,6 +7,7 @@ import './style.css';
 import './workspaceUi.css';
 
 import { OrganisationManager } from './organisationManager';
+import { createStarterEnterpriseModel } from './enterpriseModelSeed';
 import {
   createEmptyOrganisation,
   exportOrganisationJson,
@@ -1554,6 +1555,36 @@ async function openEnterpriseModel(): Promise<void> {
   }
 }
 
+async function createEnterpriseModel(): Promise<void> {
+  if (!supportsDirectModelFolderAccess()) {
+    window.alert('Creating a filesystem-backed Enterprise Model requires a browser with direct folder access, such as Microsoft Edge or Google Chrome.');
+    return;
+  }
+
+  try {
+    const name = window.prompt('Enterprise Model name', 'Enterprise Model')?.trim();
+    if (!name) return;
+    const organisationName = window.prompt('Organisation name', name)?.trim() || name;
+    const directory = await selectEnterpriseModelFolder();
+
+    await persistCurrentDiagram();
+    const modelName = await createStarterEnterpriseModel(directory, { name, organisationName });
+    await initialiseProcessRepository(false);
+    currentOrganisation = await loadOrganisation(false);
+    organisationManager.setData(currentOrganisation);
+
+    const rootProcess = getProcessById(ROOT_PROCESS_ID)
+      ?? Object.values(PROCESS_CATALOG).find((process) => process.active)
+      ?? Object.values(PROCESS_CATALOG)[0];
+
+    if (rootProcess) await loadCatalogProcess(rootProcess.id, false);
+    setStatus(`Enterprise Model created: ${modelName}`, 'success');
+  } catch (error) {
+    console.error('Unable to create Enterprise Model.', error);
+    setStatus(error instanceof Error ? error.message : 'Unable to create Enterprise Model', 'error');
+  }
+}
+
 async function initialise(): Promise<void> {
   try {
     await initialiseProcessRepository(true);
@@ -1587,6 +1618,7 @@ openButton.addEventListener('click', () => {
 });
 openModelButton.addEventListener('click', () => void openEnterpriseModel());
 document.addEventListener('enterprise-modeler:open-enterprise-model', () => void openEnterpriseModel());
+document.addEventListener('enterprise-modeler:create-enterprise-model', () => void createEnterpriseModel());
 homeButton.addEventListener('click', () => {
   const home = getProcessById(ROOT_PROCESS_ID);
   if (home) {
