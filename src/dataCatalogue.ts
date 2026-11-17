@@ -1,3 +1,4 @@
+import { hasOpenEnterpriseModel, readModelJson, writeModelJson } from './modelWorkspace';
 import type {
   DataCatalogueData,
   DataFlowRecord,
@@ -80,7 +81,7 @@ function normaliseDataCatalogue(
 export async function loadDataCatalogue(
   preferAutosave = true,
 ): Promise<DataCatalogueData> {
-  if (preferAutosave) {
+  if (preferAutosave && !hasOpenEnterpriseModel()) {
     const saved = localStorage.getItem(DATA_CATALOGUE_AUTOSAVE_KEY);
     if (saved) {
       try {
@@ -93,20 +94,18 @@ export async function loadDataCatalogue(
     }
   }
 
-  const response = await fetch(DATA_CATALOGUE_URL, { cache: 'no-store' });
-  if (!response.ok) {
-    throw new Error(`Unable to load data catalogue. HTTP ${response.status}.`);
-  }
   return normaliseDataCatalogue(
-    await response.json() as Partial<DataCatalogueData>,
+    await readModelJson<Partial<DataCatalogueData>>(DATA_CATALOGUE_URL),
   );
 }
 
 export function saveDataCatalogueLocally(data: DataCatalogueData): void {
+  const normalised = normaliseDataCatalogue(data);
   localStorage.setItem(
     DATA_CATALOGUE_AUTOSAVE_KEY,
-    JSON.stringify(normaliseDataCatalogue(data), null, 2),
+    JSON.stringify(normalised, null, 2),
   );
+  void writeModelJson(DATA_CATALOGUE_URL, normalised);
   document.dispatchEvent(
     new CustomEvent('enterprise-modeler:data-catalogue-changed'),
   );
