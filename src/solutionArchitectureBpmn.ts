@@ -44,6 +44,7 @@ interface DiagramElement {
   parent?: DiagramElement;
   source?: DiagramElement;
   target?: DiagramElement;
+  labelTarget?: DiagramElement;
 }
 
 interface ElementRegistryService {
@@ -144,6 +145,7 @@ class SolutionArchitectureBpmnPage {
     this.contextPanel = contextPanel;
 
     this.modeler = new BpmnModeler({ container: this.canvasHost });
+    this.ensureInterfaceArrowMarkers();
     this.bindModelerEvents();
     this.bindPageEvents();
     this.bindContextPadProvider();
@@ -213,7 +215,8 @@ class SolutionArchitectureBpmnPage {
 
     eventBus.on('selection.changed', (event) => {
       const selection = (event as SelectionChangedEvent).newSelection ?? [];
-      this.selectedElement = selection[0] ?? null;
+      const selected = selection[0] ?? null;
+      this.selectedElement = selected ? this.resolveContextElement(selected) : null;
       this.renderContextPanel();
     });
 
@@ -222,16 +225,21 @@ class SolutionArchitectureBpmnPage {
       this.scheduleAutosave();
       this.scheduleRegistrySync();
     });
+
+    eventBus.on('elements.changed', () => {
+      window.setTimeout(() => this.applyAllInterfacePresentation(), 0);
+    });
   }
 
   private bindContextPadProvider(): void {
     const contextPad = this.modeler.get<ContextPadService>('contextPad');
-    contextPad.registerProvider(1600, {
+    contextPad.registerProvider(500, {
       getContextPadEntries: (element) => this.getEnterpriseContextPadEntries(element),
     });
   }
 
   private getEnterpriseContextPadEntries(element: DiagramElement): Record<string, ContextPadEntry> {
+    const target = this.resolveContextElement(element);
     const entries: Record<string, ContextPadEntry> = {};
 
     const add = (
@@ -249,14 +257,14 @@ class SolutionArchitectureBpmnPage {
         action: {
           click: () => {
             action();
-            this.refreshContextPad(element);
+            
           },
         },
       };
     };
 
-    if (this.isSystemElement(element)) {
-      const system = this.data.systems.find((candidate) => candidate.id === element.id);
+    if (this.isSystemElement(target)) {
+      const system = this.data.systems.find((candidate) => candidate.id === target.id);
       if (!system) return entries;
 
       add('enterprise-system-details', 'enterprise-details', 'System details', 'architecture-context-icon-info', () => {
@@ -270,7 +278,7 @@ class SolutionArchitectureBpmnPage {
         'enterprise-details',
         system.isContainer ? 'System container' : 'Convert to system container',
         system.isContainer ? 'architecture-context-icon-container-active' : 'architecture-context-icon-container',
-        () => this.convertSystemToContainer(system, element),
+        () => this.convertSystemToContainer(system, target),
         system.isContainer === true,
       );
 
@@ -293,8 +301,8 @@ class SolutionArchitectureBpmnPage {
       return entries;
     }
 
-    if (this.isInterfaceElement(element)) {
-      const record = this.data.interfaces.find((candidate) => candidate.id === element.id);
+    if (this.isInterfaceElement(target)) {
+      const record = this.data.interfaces.find((candidate) => candidate.id === target.id);
       if (!record) return entries;
 
       add('enterprise-interface-details', 'enterprise-details', 'Interface details', 'architecture-context-icon-info', () => {
@@ -313,7 +321,7 @@ class SolutionArchitectureBpmnPage {
           'enterprise-line-style',
           title,
           iconClass,
-          () => this.setInterfaceLineStyle(record, element, style),
+          () => this.setInterfaceLineStyle(record, target, style),
           (record.lineStyle ?? 'solid') === style,
         );
       });
@@ -352,9 +360,9 @@ class SolutionArchitectureBpmnPage {
       return entries;
     }
 
-    if (element.businessObject?.$type === 'bpmn:Participant') {
+    if (target.businessObject?.$type === 'bpmn:Participant') {
       add('enterprise-lane-details', 'enterprise-details', 'Lane details', 'architecture-context-icon-info', () => {
-        this.selectedElement = element;
+        this.selectedElement = target;
         this.renderContextPanel();
       });
       add('enterprise-fit-view', 'enterprise-details', 'Fit view', 'architecture-context-icon-fit', () => {
@@ -365,12 +373,8 @@ class SolutionArchitectureBpmnPage {
     return entries;
   }
 
-  private refreshContextPad(element: DiagramElement): void {
-    const contextPad = this.modeler.get<ContextPadService>('contextPad');
-    window.setTimeout(() => {
-      contextPad.close();
-      contextPad.open(element);
-    }, 0);
+  private resolveContextElement(element: DiagramElement): DiagramElement {
+    return element.type === 'label' && element.labelTarget ? element.labelTarget : element;
   }
 
   private convertSystemToContainer(system: SystemRecord, element: DiagramElement): void {
@@ -448,7 +452,6 @@ class SolutionArchitectureBpmnPage {
     this.applyInterfaceLineStyle(record, element);
     this.renderContextPanel();
 
-    this.refreshContextPad(element);
   }
 
   private bindPageEvents(): void {
@@ -1103,22 +1106,57 @@ class SolutionArchitectureBpmnPage {
       .join('');
   }
 
+  private ensureInterfaceArrowMarkers(): void {
+    const svg = this.canvasHost.querySelector<SVGSVGElement>('svg');
+    if (!svg || svg.querySelector('#enterprise-interface-arrow')) return;
+
+    const namespace = 'http://www.w3.org/2000/svg';
+    let defs = svg.querySelector<SVGDefsElement>('defs');
+    if (!defs) {
+      defs = document.createElementNS(namespace, 'defs');
+      svg.prepend(defs);
+    }
+
+    const marker = document.createElementNS(namespace, 'marker');
+    marker.id = 'enterprise-interface-arrow';
+    marker.setAttribute('viewBox', '0 0 10 10');
+    marker.setAttribute('refX', '9');
+    marker.setAttribute('refY', '5');
+    marker.setAttribute('markerWidth', '8');
+    marker.setAttribute('markerHeight', '8');
+    marker.setAttribute('orient', 'auto-start-reverse');
+    marker.setAttribute('markerUnits', 'strokeWidth');
+
+    const arrow = document.createElementNS(namespace, 'path');
+    arrow.setAttribute('d', 'M 0 0 L 10 5 L 0 10 z');
+    arrow.setAttribute('fill', '#334155');
+    arrow.setAttribute('stroke', 'none');
+    marker.appendChild(arrow);
+    defs.appendChild(marker);
+  }
+
+  private applyAllInterfacePresentation(): void {
+    this.ensureInterfaceArrowMarkers();
+    const registry = this.modeler.get<ElementRegistryService>('elementRegistry');
+    this.data.interfaces.forEach((record) => {
+      const element = registry.get(record.id);
+      if (!element || !this.isInterfaceElement(element)) return;
+      this.applyInterfaceLineStyle(record, element);
+      this.applyInterfaceDirection(record, element);
+    });
+  }
+
   private applyInterfaceDirection(record: InterfaceRecord, element: DiagramElement): void {
+    this.ensureInterfaceArrowMarkers();
     const shape = this.canvasHost.querySelector<SVGPathElement>(
       `[data-element-id="${CSS.escape(element.id)}"] .djs-visual > path`,
     );
     if (!shape) return;
 
-    const storedMarker = shape.dataset.enterpriseMarkerEnd || shape.getAttribute('marker-end') || '';
-    if (storedMarker && !shape.dataset.enterpriseMarkerEnd) {
-      shape.dataset.enterpriseMarkerEnd = storedMarker;
-    }
-
-    const marker = shape.dataset.enterpriseMarkerEnd || storedMarker;
+    const marker = 'url(#enterprise-interface-arrow)';
     shape.removeAttribute('marker-start');
     shape.removeAttribute('marker-end');
 
-    if (!marker) return;
     if (record.direction === 'inbound') {
       shape.setAttribute('marker-start', marker);
     } else if (record.direction === 'bidirectional') {
