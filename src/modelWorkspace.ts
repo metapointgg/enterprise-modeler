@@ -106,8 +106,13 @@ export async function restoreLastEnterpriseModel(): Promise<boolean> {
           activateEnterpriseModelFolder(directory);
           return true;
         }
+        // A remembered filesystem model exists but the browser requires the
+        // user to grant permission again. Show the chooser rather than
+        // silently restoring an older browser-backed model.
+        return false;
       } catch (error) {
         console.warn('Unable to restore the previous Enterprise Model folder.', error);
+        return false;
       }
     }
   }
