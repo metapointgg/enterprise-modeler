@@ -96,7 +96,7 @@ interface ContextPadProvider {
 
 interface ContextPadService {
   registerProvider(priority: number, provider: ContextPadProvider): void;
-  open(element: DiagramElement): void;
+  open(element: DiagramElement, force?: boolean): void;
   close(): void;
 }
 
@@ -273,7 +273,7 @@ class SolutionArchitectureBpmnPage {
         action: {
           click: () => {
             action();
-            
+            window.setTimeout(() => this.refreshContextPad(target), 0);
           },
         },
       };
@@ -394,6 +394,14 @@ class SolutionArchitectureBpmnPage {
       entries: Object.keys(entries),
     });
     return entries;
+  }
+
+  private refreshContextPad(element: DiagramElement): void {
+    const current = this.modeler.get<ElementRegistryService>('elementRegistry').get(element.id);
+    if (!current) return;
+    const contextPad = this.modeler.get<ContextPadService>('contextPad');
+    contextPad.open(current, true);
+    architectureDebug('contextPad.refreshed', { elementId: current.id });
   }
 
   private resolveContextElement(element: DiagramElement): DiagramElement {
@@ -891,10 +899,16 @@ class SolutionArchitectureBpmnPage {
   }
   private renderContextPanel(): void {
     const element = this.selectedElement;
+    const workspace = this.contextPanel.parentElement;
     if (!element) {
-      this.contextPanel.innerHTML = this.renderEmptyContext();
+      this.contextPanel.hidden = true;
+      workspace?.classList.add('solution-architecture-bpmn-context-hidden');
+      this.contextPanel.innerHTML = '';
       return;
     }
+
+    this.contextPanel.hidden = false;
+    workspace?.classList.remove('solution-architecture-bpmn-context-hidden');
 
     const system = this.data.systems.find((record) => record.id === element.id);
     if (system && this.isSystemElement(element)) {
@@ -930,18 +944,6 @@ class SolutionArchitectureBpmnPage {
       <div class="solution-architecture-context-summary">
         <strong>${escapeHtml(element.businessObject?.name ?? element.businessObject?.$type ?? 'Element')}</strong>
         <p>This is a native BPMN element. System and interface catalogue metadata is available when a System Task or Interface Flow is selected.</p>
-      </div>
-    `;
-  }
-
-  private renderEmptyContext(): string {
-    return `
-      <div class="solution-architecture-context-header">
-        <div><strong>Context</strong><small>Solution architecture</small></div>
-      </div>
-      <div class="solution-architecture-context-summary">
-        <p>Select a System Task or Interface Flow to edit its catalogue metadata.</p>
-        <p>The BPMN palette and context pad are native bpmn-js controls.</p>
       </div>
     `;
   }
