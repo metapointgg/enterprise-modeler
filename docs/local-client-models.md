@@ -1,88 +1,50 @@
-# Local client model repository
+# External Enterprise Model workspaces
 
-Enterprise Modeler application code can be updated from Git without overwriting client-specific BPMN, architecture or model data.
+Enterprise Modeler application code and Enterprise Model data are separate repositories/folders.
 
-## Local folder
+## Recommended local layout
 
-Client model files should live under:
-
-```
-public/client-models/
-```
-
-That folder is ignored by Git.
-
-The folder mirrors the normal `public/` model structure:
-
-```
-public/client-models/
-  architecture/
-    integrations.json
-    solution-architecture.bpmn
-  processes/
-    process-layers.json
-    process-catalog.json
-    ...
-  metadata/
-    ...
-  organisation/
-    org-chart.json
-  governance/
-    process-governance.json
-    regulations.json
+```text
+C:\\ProjectsGit\\
+├── enterprise-modeler\\
+│   └── public\\config\\
+│       ├── runtime.json
+│       └── runtime.standalone.json
+└── client-enterprise-model\\
+    ├── architecture\\
+    ├── processes\\
+    ├── metadata\\
+    ├── organisation\\
+    ├── data\\
+    ├── governance\\
+    └── model\\
 ```
 
-## Select the local model repository
+Do not place client model data under `enterprise-modeler/public/`.
 
-Create a local file named `.env.local` in the repository root:
+## Startup behaviour
 
-```
-VITE_MODEL_ROOT=/client-models
-```
+Enterprise Modeler attempts to restore the last model workspace. If it cannot, it presents a chooser to open an existing model or create a new one.
 
-`.env.local` is ignored by Git.
+Creating a new model generates a minimal but valid set of model files including:
 
-Restart `npm run dev` after changing it.
+- a root L0 process and BPMN file;
+- a minimal organisation and model-owner position;
+- an empty systems/integration catalogue and valid Solution Architecture BPMN;
+- empty data catalogue;
+- initial process governance;
+- empty regulations, governance catalogue and relationship graph;
+- `model/manifest.json`.
 
-With no `VITE_MODEL_ROOT`, Enterprise Modeler continues to load the generic sample data from the normal `public/` folders.
+## Browser storage
 
-## One-time migration for an existing client checkout
+Chromium browsers can retain a directory handle in browser storage. On restart, the browser may require permission to reopen it.
 
-Before resetting or pulling over client-modified model files, copy the current client data into `public/client-models`.
+Browsers without direct File System Access can open an existing folder as a browser-backed workspace. They cannot write arbitrary filesystem folders directly, so filesystem-backed model creation requires a browser/platform that provides directory write access.
 
-PowerShell example:
+## Application files
 
-```powershell
-New-Item -ItemType Directory -Force public/client-models | Out-Null
-
-$folders = @(
-  "architecture",
-  "processes",
-  "metadata",
-  "organisation",
-  "governance"
-)
-
-foreach ($folder in $folders) {
-  if (Test-Path "public/$folder") {
-    Copy-Item "public/$folder" "public/client-models/$folder" -Recurse -Force
-  }
-}
-
-@"
-VITE_MODEL_ROOT=/client-models
-"@ | Set-Content .env.local
-```
-
-Confirm the client models load correctly before reverting any tracked model-file changes.
-
-After migration, application functionality can be updated independently with normal Git pulls while client model files remain local and untouched.
-
-## Application files that must remain with Enterprise Modeler
-
-The external Enterprise Model folder contains model data only. Do **not** move the application runtime configuration out of the Enterprise Modeler repository.
-
-Keep this application folder in place:
+Only application runtime configuration belongs under `enterprise-modeler/public/`:
 
 ```text
 public/config/
@@ -90,5 +52,4 @@ public/config/
   runtime.standalone.json
 ```
 
-A client Enterprise Model root should contain only model domains such as `architecture/`, `processes/`, `metadata/`, `organisation/`, `data/`, `governance/` and `model/`.
-
+All model-domain folders belong in the selected Enterprise Model repository.
